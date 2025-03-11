@@ -12,5 +12,10 @@ public class TestScript : MonoBehaviour
             ScenesManager.Instance.FadeLoadTargetScene(SceneManager.GetActiveScene().name);
 
         }
+
+        if (Input.GetKeyDown(KeyCode.H))
+        {
+            GameLogManager.Instance.Log("Test");
+        }
     }
 }

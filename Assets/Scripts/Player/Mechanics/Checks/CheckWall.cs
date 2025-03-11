@@ -38,7 +38,7 @@ public class CheckWall : MonoBehaviour
         RaycastHit2D hit = Physics2D.Raycast(origin, MoveDirection, rayLength + circleCollider2D.radius, wallLayer);
         hitWall = hit.collider != null;
 
-        if (drawRaycasts) Debug.DrawRay(origin, Vector2.right * MoveDirection, Color.blue);
+        if (drawRaycasts) Debug.DrawRay(origin, MoveDirection, Color.blue);
 
         return hitWall;
     }
