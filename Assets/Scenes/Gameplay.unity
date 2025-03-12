@@ -2651,11 +2651,13 @@ MonoBehaviour:
   dashEnabled: 1
   movementInput: {fileID: 1504673631}
   mouseDirectionHandler: {fileID: 1274821768}
-  dashDistance: 2
+  movementDirectionHandler: {fileID: 1274821771}
+  directionMode: 1
+  dashDistance: 3
   dashTime: 0.2
-  dashResistance: 20
+  dashResistance: 30
   betweenDashesTime: 0.1
-  dashRefillTime: 1
+  dashRefillTime: 0.5
   dashLimit: 2
   dashesPerformed: 0
   currentDashDirection: {x: 0, y: 0}
@@ -4727,8 +4729,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a495a0147abcf6542b705de0e7c5f665, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidbody2D: {fileID: 0}
+  playerMovement: {fileID: 640079897}
+  _rigidbody2D: {fileID: 640079896}
   lastMovementDirection: {x: 0, y: 0}
+  defaultStartingMovementDirection: {x: 1, y: 0}
 --- !u!1001 &1293086069
 PrefabInstance:
   m_ObjectHideFlags: 0

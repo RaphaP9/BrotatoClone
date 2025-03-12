@@ -13,8 +13,11 @@ public class PlayerDash : MonoBehaviour
     [Header("Components")]
     [SerializeField] private MovementInput movementInput;
     [SerializeField] private MouseDirectionHandler mouseDirectionHandler;
+    [SerializeField] private MovementDirectionHandler movementDirectionHandler;
 
     [Header("Settings")]
+    [SerializeField] private DirectionMode directionMode;
+    [Space]
     [SerializeField, Range(1f, 12f)] private float dashDistance;
     [SerializeField, Range(0.1f, 1f)] private float dashTime;
     [SerializeField, Range(0f, 50f)] private float dashResistance;
@@ -38,6 +41,8 @@ public class PlayerDash : MonoBehaviour
 
     private bool DashPressed => movementInput.GetDashDown();
     private bool shouldDash;
+
+    private enum DirectionMode {MousePosition, LastMovementDirection}
 
     public static event EventHandler<OnPlayerDashEventArgs> OnPlayerDash;
     public static event EventHandler<OnPlayerDashEventArgs> OnPlayerDashPre;
@@ -178,7 +183,14 @@ public class PlayerDash : MonoBehaviour
 
     private Vector2 DefineDashDirection()
     {
-        return mouseDirectionHandler.NormalizedMouseDirection;
+        switch (directionMode)
+        {
+            case DirectionMode.MousePosition:
+                return mouseDirectionHandler.NormalizedMouseDirection;
+            case DirectionMode.LastMovementDirection:
+            default:
+                return movementDirectionHandler.LastMovementDirection;
+        }
     }
     #endregion
 
