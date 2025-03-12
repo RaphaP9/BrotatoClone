@@ -35,6 +35,19 @@ public class PlayerMovement : MonoBehaviour
     public Vector2 FinalMoveValue { get; private set; }
     public bool MovementEnabled => movementEnabled;
 
+    private void OnEnable()
+    {
+        MoveSpeedStatManager.OnMoveSpeedStatInitialized += MoveSpeedStatManager_OnMoveSpeedStatInitialized;
+        MoveSpeedStatManager.OnMoveSpeedStatUpdated += MoveSpeedStatManager_OnMoveSpeedStatUpdated;
+    }
+
+    private void OnDisable()
+    {
+        MoveSpeedStatManager.OnMoveSpeedStatInitialized -= MoveSpeedStatManager_OnMoveSpeedStatInitialized;
+        MoveSpeedStatManager.OnMoveSpeedStatUpdated -= MoveSpeedStatManager_OnMoveSpeedStatUpdated;
+    }
+
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -115,4 +128,18 @@ public class PlayerMovement : MonoBehaviour
 
         _rigidbody2D.velocity = new Vector2(FinalMoveValue.x, FinalMoveValue.y);
     }
+
+    private void SetMoveSpeed(float value) => moveSpeed = value;
+
+    #region Subscriptions
+    private void MoveSpeedStatManager_OnMoveSpeedStatInitialized(object sender, MoveSpeedStatManager.OnMoveSpeedStatEventArgs e)
+    {
+        SetMoveSpeed(e.moveSpeedStat);
+    }
+
+    private void MoveSpeedStatManager_OnMoveSpeedStatUpdated(object sender, MoveSpeedStatManager.OnMoveSpeedStatEventArgs e)
+    {
+        SetMoveSpeed(e.moveSpeedStat);
+    }
+    #endregion
 }
