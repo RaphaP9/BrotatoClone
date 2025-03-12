@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class MovementInput : MonoBehaviour, IMovementInput
+public abstract class ScreenInput : MonoBehaviour
 {
-    public static MovementInput Instance { get; private set; }
+    public static ScreenInput Instance { get; private set; }
 
     protected virtual void Awake()
     {
@@ -15,14 +15,13 @@ public abstract class MovementInput : MonoBehaviour, IMovementInput
     {
         if (Instance != null)
         {
-            Debug.LogError("There is more than one MovementInput instance");
+            Debug.LogError("There is more than one ScreenInput instance");
         }
 
         Instance = this;
     }
 
     public abstract bool CanProcessInput();
-    public abstract Vector2 GetMovementInputNormalized();
 
-    public abstract bool GetDashDown();
+    public abstract Vector2 GetWorldMousePosition();
 }

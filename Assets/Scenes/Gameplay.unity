@@ -1983,7 +1983,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -2586,6 +2586,7 @@ Transform:
   - {fileID: 1927587686}
   - {fileID: 2122620688}
   - {fileID: 802914299}
+  - {fileID: 1274821770}
   - {fileID: 831775652}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2631,9 +2632,10 @@ MonoBehaviour:
   movementEnabled: 1
   movementInput: {fileID: 1504673631}
   checkWall: {fileID: 802914300}
+  playerDash: {fileID: 640079898}
   moveSpeed: 5
-  smoothVelocityFactor: 10
-  smoothDirectionFactor: 10
+  smoothVelocityFactor: 20
+  smoothDirectionFactor: 20
 --- !u!114 &640079898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2643,14 +2645,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 640079893}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375b0e6aa81312142bd846cdea5ec351, type: 3}
+  m_Script: {fileID: 11500000, guid: 19d685ccb65641f469fe67a2d6d3684d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRange: 2
-  enemiesLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  enemies: []
+  dashEnabled: 1
+  movementInput: {fileID: 1504673631}
+  mouseDirectionHandler: {fileID: 1274821768}
+  dashDistance: 2
+  dashTime: 0.2
+  dashResistance: 20
+  betweenDashesTime: 0.1
+  dashRefillTime: 1
+  dashLimit: 2
+  dashesPerformed: 0
+  currentDashDirection: {x: 0, y: 0}
 --- !u!1 &646319345
 GameObject:
   m_ObjectHideFlags: 0
@@ -2916,6 +2924,7 @@ Transform:
   m_Children:
   - {fileID: 1504673630}
   - {fileID: 784775979}
+  - {fileID: 1197875864}
   m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &784775978
@@ -3024,10 +3033,10 @@ PolygonCollider2D:
   m_AutoTiling: 0
   m_Points:
     m_Paths:
-    - - {x: 10, y: 10}
-      - {x: -10, y: 10}
-      - {x: -10, y: -10}
-      - {x: 10, y: -10}
+    - - {x: 20, y: 20}
+      - {x: -20, y: 20}
+      - {x: -20, y: -20}
+      - {x: 20, y: -20}
   m_UseDelaunayMesh: 0
 --- !u!4 &787322400
 Transform:
@@ -4176,6 +4185,51 @@ MonoBehaviour:
   m_AmplitudeGain: 0
   m_FrequencyGain: 0
   mNoiseOffsets: {x: 0, y: 0, z: 0}
+--- !u!1 &1197875863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1197875864}
+  - component: {fileID: 1197875865}
+  m_Layer: 0
+  m_Name: ScreenInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1197875864
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197875863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 771802979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1197875865
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1197875863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a3ad176e1d52ce4cab8d820e2db2ea2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camera: {fileID: 519420031}
 --- !u!1 &1209165985
 GameObject:
   m_ObjectHideFlags: 0
@@ -4596,6 +4650,85 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1260384104}
   m_CullTransparentMesh: 1
+--- !u!1 &1274821767
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1274821770}
+  - component: {fileID: 1274821769}
+  - component: {fileID: 1274821768}
+  - component: {fileID: 1274821771}
+  m_Layer: 6
+  m_Name: Handlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1274821768
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274821767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1603836acce8cf74e986d7c504afb98f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  screenInput: {fileID: 1197875865}
+  normalizedMouseDirection: {x: 0, y: 0}
+--- !u!114 &1274821769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274821767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 375b0e6aa81312142bd846cdea5ec351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  detectionRange: 2
+  enemiesLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  enemies: []
+--- !u!4 &1274821770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274821767}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 640079895}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1274821771
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1274821767}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a495a0147abcf6542b705de0e7c5f665, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidbody2D: {fileID: 0}
+  lastMovementDirection: {x: 0, y: 0}
 --- !u!1001 &1293086069
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5130,7 +5263,7 @@ MonoBehaviour:
   m_Follow: {fileID: 831775652}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 5
+    OrthographicSize: 10
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -8222,6 +8355,6 @@ SceneRoots:
   - {fileID: 104079981}
   - {fileID: 743903930}
   - {fileID: 1654720388}
+  - {fileID: 640079895}
   - {fileID: 536943497}
   - {fileID: 583671959}
-  - {fileID: 640079895}

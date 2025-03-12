@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private MovementInput movementInput;
     [Space]
     [SerializeField] private CheckWall checkWall;
-    //[SerializeField] private PlayerDash playerDash;
+    [SerializeField] private PlayerDash playerDash;
 
     [Header("Movement Settings")]
     [SerializeField,Range(1f, 10f)] private float moveSpeed;
@@ -111,7 +111,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void ApplyMovement()
     {
-        //if (playerDash.IsDashing) return;
+        if (playerDash.IsDashing) return;
 
         _rigidbody2D.velocity = new Vector2(FinalMoveValue.x, FinalMoveValue.y);
     }
