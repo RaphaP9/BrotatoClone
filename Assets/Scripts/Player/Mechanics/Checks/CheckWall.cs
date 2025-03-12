@@ -42,19 +42,4 @@ public class CheckWall : MonoBehaviour
 
         return hitWall;
     }
-
-    private bool CheckIfWallAtPoint(Vector2 origin, float rayLength)
-    {
-        bool hitWall = false;
-
-        if (MoveDirection != Vector2.zero)
-        {
-            RaycastHit2D hit = Physics2D.Raycast(origin, Vector2.right * MoveDirection, rayLength, wallLayer);
-            hitWall = hit.collider != null;
-        }
-
-        if (drawRaycasts) Debug.DrawRay(origin, Vector2.right * MoveDirection, Color.blue);
-
-        return hitWall;
-    }
 }
