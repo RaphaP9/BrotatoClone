@@ -15,8 +15,14 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     public List<WeaponSO> WeaponsInventory => weaponsInventory;
 
+    public static event EventHandler<OnWeaponsEventArgs> OnWeaponsInventoryInitialized;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponAddedToInventory;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponRemovedFromInventory;
+
+    public class OnWeaponsEventArgs : EventArgs
+    {
+        public List<WeaponSO> weaponSOs;
+    }
 
     public class OnWeaponEventArgs : EventArgs
     {
@@ -31,6 +37,11 @@ public class WeaponsInventoryManager : MonoBehaviour
     private void OnDisable()
     {
 
+    }
+
+    private void Start()
+    {
+        InitializeWeaponsInventory();
     }
 
     private void Awake()
@@ -49,6 +60,11 @@ public class WeaponsInventoryManager : MonoBehaviour
             Debug.LogWarning("There is more than one WeaponsInventoryManager instance, proceding to destroy duplicate");
             Destroy(gameObject);
         }
+    }
+
+    private void InitializeWeaponsInventory()
+    {
+        OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weaponSOs = weaponsInventory });
     }
 
     private void AddWeaponToInventory(WeaponSO weaponSO)

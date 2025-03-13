@@ -8,4 +8,5 @@ public class RangedWeaponSO : WeaponSO
 {
     [Header("Ranged Weapon Settings")]
     [Range(0f, 5f)] public float attackRange;
+    [Range(0f, 0.1f)] public float dispersionPercentage;
 }
