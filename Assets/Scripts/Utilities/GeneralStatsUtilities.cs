@@ -27,6 +27,12 @@ public static class GeneralStatsUtilities
     #endregion
 
     #region Attacks
+    public static float MIN_ATTACK_SPEED = 0.5f;
+    public static float MAX_ATTACK_SPEED = 4f;
+
+    public static float MIN_ATTACK_RANGE = 1f;
+    public static float MAX_ATTACK_RANGE = 4f;
+
     public static float MIN_ATTACK_DAMAGE_MULTIPLIER = 1f;
     public static float MAX_ATTACK_DAMAGE_MULTIPLIER = 2f;
 
@@ -35,6 +41,25 @@ public static class GeneralStatsUtilities
 
     public static float MIN_ATTACK_CRIT_DAMAGE_MULTIPLIER = 0.5f;
     public static float MAX_ATTACK_CRIT_DAMAGE_MULTIPLIER = 2f;
+    #endregion
+
+    #region Abilities
+    public static float MIN_ABILITY_COOLDOWN_REDUCTION = 0f;
+    public static float MAX_ABILITY_COOLDOWN_REDUCTION = 0.5f;
+
+    public static float MIN_ABILITY_EFFECT_MULTIPLIER = 1f;
+    public static float MAX_ABILITY_EFFECT_MULTIPLIER = 2f;
+
+    public static float MIN_ABILITY_CRIT_CHANCE = 0f;
+    public static float MAX_ABILITY_CRIT_CHANCE = 1f;
+
+    public static float MIN_ABILITY_CRIT_EFFECT_MULTIPLIER = 0.5f;
+    public static float MAX_ABILITY_CRIT_EFFECT_MULTIPLIER = 2f;
+    #endregion
+
+    #region Lifesteal
+    public static float MIN_LIFESTEAL = 0f;
+    public static float MAX_LIFESTEAL = 0.5f;
     #endregion
 
     public enum StatRoundingType

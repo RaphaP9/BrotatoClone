@@ -23,6 +23,7 @@ MonoBehaviour:
   attackDamageMultiplier: 1
   attackCritChance: 0
   attackCritDamageMultiplier: 0.5
+  abilityCooldownReduction: 0
   abilityEffectMultiplier: 1
   abilityCritChance: 0
   abilityCritEffectMultiplier: 0.5

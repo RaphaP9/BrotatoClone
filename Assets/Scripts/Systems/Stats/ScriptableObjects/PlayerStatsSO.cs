@@ -14,11 +14,13 @@ public class PlayerStatsSO : ScriptableObject
     [Range(0, 3)] public int dashes;
     [Space]
     [Range(0.5f, 2f)] public float attackSpeed;
-    [Range(1f, 3f)] public float attackRange;
+    [Range(1f, 4f)] public float attackRange;
     [Space]
     [Range(1f, 2f)] public float attackDamageMultiplier;
     [Range(0f, 1f)] public float attackCritChance;
     [Range(0.5f, 2f)] public float attackCritDamageMultiplier;
+    [Space]
+    [Range(0f, 0.5f)] public float abilityCooldownReduction;
     [Space]
     [Range(1f, 2f)] public float abilityEffectMultiplier;
     [Range(0f, 1f)] public float abilityCritChance;
