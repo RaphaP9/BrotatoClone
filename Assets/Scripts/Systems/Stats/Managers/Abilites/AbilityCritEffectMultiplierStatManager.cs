@@ -45,7 +45,7 @@ public class AbilityCritEffectMultiplierStatManager : StatManager
 
     private void ProcessAbilityCritEffectMultiplierStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.abilityCritEffectMultiplier, GeneralStatsUtilities.MIN_ABILITY_CRIT_EFFECT_MULTIPLIER, GeneralStatsUtilities.MAX_ABILITY_CRIT_EFFECT_MULTIPLIER);
+        float calculatedStatValue = CalculateStatValue(BaseStats.abilityCritEffectMultiplier, GeneralStatsUtilities.MIN_ABILITY_CRIT_EFFECT_MULTIPLIER, GeneralStatsUtilities.MAX_ABILITY_CRIT_EFFECT_MULTIPLIER);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAbilityCritEffectMultiplierStat(roundedValue);
     }

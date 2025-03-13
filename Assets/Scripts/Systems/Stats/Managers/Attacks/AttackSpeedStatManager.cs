@@ -45,7 +45,7 @@ public class AttackSpeedStatManager : StatManager
 
     private void ProcessAttackSpeedStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.attackSpeed, GeneralStatsUtilities.MIN_ATTACK_SPEED, GeneralStatsUtilities.MAX_ATTACK_SPEED);
+        float calculatedStatValue = CalculateStatValue(BaseStats.attackSpeed, GeneralStatsUtilities.MIN_ATTACK_SPEED, GeneralStatsUtilities.MAX_ATTACK_SPEED);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAttackSpeedStat(roundedValue);
     }

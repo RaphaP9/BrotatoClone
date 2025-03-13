@@ -45,7 +45,7 @@ public class MaxHealthStatManager : StatManager
 
     private void ProcessMaxHealthStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.maxHealth, GeneralStatsUtilities.MIN_MAX_HEALTH, GeneralStatsUtilities.MAX_MAX_HEALTH);
+        float calculatedStatValue = CalculateStatValue(BaseStats.maxHealth, GeneralStatsUtilities.MIN_MAX_HEALTH, GeneralStatsUtilities.MAX_MAX_HEALTH);
         int roundedValue = GeneralStatsUtilities.RoundFloatStatToInt(calculatedStatValue, GeneralStatsUtilities.StatRoundingType.Ceil);
         SetMaxHealthStat(roundedValue);
     }

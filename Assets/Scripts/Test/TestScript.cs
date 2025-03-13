@@ -10,24 +10,24 @@ public class TestScript : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
+        PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
     }
 
     private void OnDisable()
     {
-        PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
+        PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
     }
 
-    private void PlayerHealth_OnPlayerTakeRegularDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
+    private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
     {
-        Debug.Log($"Bleeding: {e.damageTaken}");
+        Debug.Log($"Bleeding: {e.damageTaken}, IsCrit {e.isCrit}");
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.B))
         {
-            playerHealth.TakeRegularDamage(1);
+            playerHealth.Bleed(5,4,1, true);
         }
     }
 }

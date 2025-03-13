@@ -45,7 +45,7 @@ public class ArmorPercentageStatManager : StatManager
 
     private void ProcessArmorPercentageStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.armorPercentage, GeneralStatsUtilities.MIN_ARMOR_PERCENTAGE, GeneralStatsUtilities.MAX_ARMOR_PERCENTAGE);
+        float calculatedStatValue = CalculateStatValue(BaseStats.armorPercentage, GeneralStatsUtilities.MIN_ARMOR_PERCENTAGE, GeneralStatsUtilities.MAX_ARMOR_PERCENTAGE);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetHealthRegenStat(roundedValue);
     }

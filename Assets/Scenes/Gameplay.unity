@@ -2620,6 +2620,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceafbe4cda2883b4ab0e9c1bbb418c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHealth: {fileID: 640079900}
 --- !u!4 &583671959
 Transform:
   m_ObjectHideFlags: 0
@@ -2712,6 +2713,7 @@ GameObject:
   - component: {fileID: 640079894}
   - component: {fileID: 640079896}
   - component: {fileID: 640079899}
+  - component: {fileID: 640079900}
   - component: {fileID: 640079897}
   - component: {fileID: 640079898}
   m_Layer: 6
@@ -2816,6 +2818,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementEnabled: 1
   movementInput: {fileID: 1504673631}
+  playerHealth: {fileID: 640079900}
   checkWall: {fileID: 802914300}
   playerDash: {fileID: 640079898}
   moveSpeed: 5
@@ -2837,6 +2840,7 @@ MonoBehaviour:
   movementInput: {fileID: 1504673631}
   mouseDirectionHandler: {fileID: 1274821768}
   movementDirectionHandler: {fileID: 1274821771}
+  playerHealth: {fileID: 640079900}
   dashLimit: 2
   directionMode: 1
   dashDistance: 3
@@ -2859,6 +2863,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   baseStats: {fileID: 11400000, guid: c9af1e58f7219b54cb4110d050467427, type: 2}
+--- !u!114 &640079900
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 640079893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 765c42a1313bc0e48b9447dc1f1c4b6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  armorPercentage: 0
+  dodgeChance: 0
+  healthRegen: 0
 --- !u!1 &646319345
 GameObject:
   m_ObjectHideFlags: 0
@@ -3825,6 +3846,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerMovement: {fileID: 640079897}
   playerDash: {fileID: 640079898}
+  playerHealth: {fileID: 640079900}
   spriteRenderer: {fileID: 2122620690}
 --- !u!1 &964745077
 GameObject:

@@ -45,7 +45,7 @@ public class AttackRangeStatManager : StatManager
 
     private void ProcessAttackRangeStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.attackRange, GeneralStatsUtilities.MIN_ATTACK_RANGE, GeneralStatsUtilities.MAX_ATTACK_RANGE);
+        float calculatedStatValue = CalculateStatValue(BaseStats.attackRange, GeneralStatsUtilities.MIN_ATTACK_RANGE, GeneralStatsUtilities.MAX_ATTACK_RANGE);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAttackRangeStat(roundedValue);
     }

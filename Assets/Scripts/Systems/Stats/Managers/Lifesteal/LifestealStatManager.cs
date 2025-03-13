@@ -45,7 +45,7 @@ public class LifestealStatManager : StatManager
 
     private void ProcessLifestealStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.lifesteal, GeneralStatsUtilities.MIN_LIFESTEAL, GeneralStatsUtilities.MAX_LIFESTEAL);
+        float calculatedStatValue = CalculateStatValue(BaseStats.lifesteal, GeneralStatsUtilities.MIN_LIFESTEAL, GeneralStatsUtilities.MAX_LIFESTEAL);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetLifestealStat(roundedValue);
     }

@@ -45,7 +45,7 @@ public class AttackCritChanceStatManager : StatManager
 
     private void ProcessAttackCritChanceStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.attackCritChance, GeneralStatsUtilities.MIN_ATTACK_CRIT_CHANCE, GeneralStatsUtilities.MAX_ATTACK_CRIT_CHANCE);
+        float calculatedStatValue = CalculateStatValue(BaseStats.attackCritChance, GeneralStatsUtilities.MIN_ATTACK_CRIT_CHANCE, GeneralStatsUtilities.MAX_ATTACK_CRIT_CHANCE);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAttackCritChanceMultiplierStat(roundedValue);
     }

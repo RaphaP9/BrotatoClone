@@ -20,6 +20,7 @@ public abstract class EntityHealth : MonoBehaviour
     {
         public int damageTaken;
         public int newCurrentHealth;
+        public bool isCrit;
     }
 
     public class OnEntityHealthEventArgs : EventArgs
@@ -47,17 +48,19 @@ public abstract class EntityHealth : MonoBehaviour
     }
 
     #region RegularDamage
-    public void TakeRegularDamage(int baseDamage)
+    public void TakeRegularDamage(int baseDamage, bool isCrit)
     {
         int mitigatedBleedDamage = MitigateByArmor(baseDamage);
-        TakeFinalRegularDamage(mitigatedBleedDamage);
+        TakeFinalRegularDamage(mitigatedBleedDamage, isCrit);
     }
 
-    protected void TakeFinalRegularDamage(int damage)
+    protected void TakeFinalRegularDamage(int damage, bool isCrit)
     {
+        if (!IsAlive()) return;
+
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
-        OnTakeRegularDamage(damage, currentHealth);
+        OnTakeRegularDamage(damage, currentHealth, isCrit);
 
         if (!IsAlive()) OnDeath();
     }
@@ -66,12 +69,12 @@ public abstract class EntityHealth : MonoBehaviour
 
     #region Bleed
 
-    public void Bleed(int baseDamage, float bleedDuration, float tickTime)
+    public void Bleed(int baseDamage, float bleedDuration, float tickTime, bool isCrit)
     {
-        StartCoroutine(BleedCoroutine(baseDamage, bleedDuration, tickTime));
+        StartCoroutine(BleedCoroutine(baseDamage, bleedDuration, tickTime, isCrit));
     }
 
-    protected IEnumerator BleedCoroutine(int baseDamage, float bleedDuration, float tickTime)
+    protected IEnumerator BleedCoroutine(int baseDamage, float bleedDuration, float tickTime, bool isCrit)
     {
         int tickNumber = Mathf.FloorToInt(bleedDuration / tickTime);
 
@@ -88,27 +91,29 @@ public abstract class EntityHealth : MonoBehaviour
                 yield return null;
             }
 
-            TakeBleedDamage(baseDamage);
+            TakeBleedDamage(baseDamage, isCrit);
         }
     }
-    protected void TakeBleedDamage(int baseDamage)
+    protected void TakeBleedDamage(int baseDamage, bool isCrit)
     {
         int mitigatedBleedDamage = MitigateByArmor(baseDamage);
-        TakeFinalBleedDamage(mitigatedBleedDamage);
+        TakeFinalBleedDamage(mitigatedBleedDamage, isCrit);
     }
 
-    protected void TakeFinalBleedDamage(int damage)
+    protected void TakeFinalBleedDamage(int damage, bool isCrit)
     {
+        if (!IsAlive()) return;
+
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
-        OnTakeBleedDamage(damage, currentHealth);
+        OnTakeBleedDamage(damage, currentHealth, isCrit);
 
         if (!IsAlive()) OnDeath();
     }
     #endregion
 
 
-    protected bool IsAlive() => currentHealth > 0;
+    public bool IsAlive() => currentHealth > 0;
 
     protected void SetMaxHealth(int health)
     {
@@ -146,8 +151,8 @@ public abstract class EntityHealth : MonoBehaviour
 
     #region Abstracts For Events
     protected abstract void OnDodge();
-    protected abstract void OnTakeRegularDamage(int damage, int currentHealth);
-    protected abstract void OnTakeBleedDamage(int bleedDamage, int currentHealth);
+    protected abstract void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit);
+    protected abstract void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit);
     protected abstract void OnDeath();
     //
     protected abstract void OnMaxHealhSet(int maxHealth);

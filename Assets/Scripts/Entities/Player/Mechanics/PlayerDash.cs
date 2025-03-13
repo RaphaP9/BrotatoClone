@@ -14,6 +14,7 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private MovementInput movementInput;
     [SerializeField] private MouseDirectionHandler mouseDirectionHandler;
     [SerializeField] private MovementDirectionHandler movementDirectionHandler;
+    [SerializeField] private PlayerHealth playerHealth;
 
     [Header("Settings")]
     [SerializeField, Range(0, 3)] private int dashLimit;
@@ -118,7 +119,7 @@ public class PlayerDash : MonoBehaviour
 
     private bool CanDash()
     {
-
+        if (!playerHealth.IsAlive()) return false;
         if (!HasDashesLeft()) return false;
         if (InBetweenDashesInCooldown()) return false;
 

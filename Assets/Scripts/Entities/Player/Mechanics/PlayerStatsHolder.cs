@@ -7,9 +7,9 @@ public class PlayerStatsHolder : MonoBehaviour
     public static PlayerStatsHolder Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private PlayerStatsSO baseStats;
+    [SerializeField] private PlayerSO baseStats;
 
-    public PlayerStatsSO BaseStats => baseStats;
+    public PlayerSO BaseStats => baseStats;
 
     private void Awake()
     {

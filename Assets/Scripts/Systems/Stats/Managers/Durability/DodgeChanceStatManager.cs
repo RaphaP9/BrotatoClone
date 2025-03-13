@@ -45,7 +45,7 @@ public class DodgeChanceStatManager : StatManager
 
     private void ProcessDodgeChanceStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.dodgeChance, GeneralStatsUtilities.MIN_DODGE_CHANCE, GeneralStatsUtilities.MAX_DODGE_CHANCE);
+        float calculatedStatValue = CalculateStatValue(BaseStats.dodgeChance, GeneralStatsUtilities.MIN_DODGE_CHANCE, GeneralStatsUtilities.MAX_DODGE_CHANCE);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetDodgeChanceStat(roundedValue);
     }

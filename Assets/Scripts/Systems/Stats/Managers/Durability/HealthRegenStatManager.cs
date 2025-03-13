@@ -45,7 +45,7 @@ public class HealthRegenStatManager : StatManager
 
     private void ProcessHealthRegenStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.healthRegen, GeneralStatsUtilities.MIN_HEALTH_REGEN, GeneralStatsUtilities.MAX_HEALTH_REGEN);
+        float calculatedStatValue = CalculateStatValue(BaseStats.healthRegen, GeneralStatsUtilities.MIN_HEALTH_REGEN, GeneralStatsUtilities.MAX_HEALTH_REGEN);
         int roundedValue = GeneralStatsUtilities.RoundFloatStatToInt(calculatedStatValue, GeneralStatsUtilities.StatRoundingType.Ceil);
         SetHealthRegenStat(roundedValue);
     }

@@ -12,6 +12,7 @@ public class PlayerMovement : MonoBehaviour
 
     [Header("Components")]
     [SerializeField] private MovementInput movementInput;
+    [SerializeField] private PlayerHealth playerHealth;
     [Space]
     [SerializeField] private CheckWall checkWall;
     [SerializeField] private PlayerDash playerDash;
@@ -102,6 +103,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (DirectionInput == Vector2.zero) return false;
         if (checkWall.HitWall) return false;
+        if (!playerHealth.IsAlive()) return false;
 
         return true;
     }

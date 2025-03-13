@@ -9,17 +9,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bdb3d9e2b774f04890b1fadc380a3a6, type: 3}
-  m_Name: BaseStats
+  m_Script: {fileID: 11500000, guid: 7998b7b71d4c534418a79e60dba56d5c, type: 3}
+  m_Name: Player
   m_EditorClassIdentifier: 
+  id: 1
+  entityName: Player
+  sprite: {fileID: 0}
   maxHealth: 50
-  healthRegen: 5
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
-  dashes: 1
   attackSpeed: 1
   attackRange: 2
+  lifesteal: 0
+  healthRegen: 5
+  dashes: 1
   attackDamageMultiplier: 1
   attackCritChance: 0
   attackCritDamageMultiplier: 0.5
@@ -27,4 +31,3 @@ MonoBehaviour:
   abilityEffectMultiplier: 1
   abilityCritChance: 0
   abilityCritEffectMultiplier: 0.5
-  lifesteal: 0

@@ -45,7 +45,7 @@ public class AttackCritDamageMultiplierStatManager : StatManager
 
     private void ProcessAttackCritDamageMultiplierStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.attackCritDamageMultiplier, GeneralStatsUtilities.MIN_ATTACK_CRIT_DAMAGE_MULTIPLIER, GeneralStatsUtilities.MAX_ATTACK_CRIT_DAMAGE_MULTIPLIER);
+        float calculatedStatValue = CalculateStatValue(BaseStats.attackCritDamageMultiplier, GeneralStatsUtilities.MIN_ATTACK_CRIT_DAMAGE_MULTIPLIER, GeneralStatsUtilities.MAX_ATTACK_CRIT_DAMAGE_MULTIPLIER);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAttackCritDamageMultiplierStat(roundedValue);
     }

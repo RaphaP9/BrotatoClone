@@ -45,7 +45,7 @@ public class AbilityEffectMultiplierStatManager : StatManager
 
     private void ProcessAbilityEffectMultiplierStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.abilityEffectMultiplier, GeneralStatsUtilities.MIN_ABILITY_EFFECT_MULTIPLIER, GeneralStatsUtilities.MAX_ABILITY_EFFECT_MULTIPLIER);
+        float calculatedStatValue = CalculateStatValue(BaseStats.abilityEffectMultiplier, GeneralStatsUtilities.MIN_ABILITY_EFFECT_MULTIPLIER, GeneralStatsUtilities.MAX_ABILITY_EFFECT_MULTIPLIER);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAbilityEffectMultiplierStat(roundedValue);
     }

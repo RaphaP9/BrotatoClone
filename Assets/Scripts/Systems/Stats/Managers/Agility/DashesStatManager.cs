@@ -45,7 +45,7 @@ public class DashesStatManager : StatManager
 
     private void ProcessDashesStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.dashes, GeneralStatsUtilities.MIN_DASHES, GeneralStatsUtilities.MAX_DASHES);
+        float calculatedStatValue = CalculateStatValue(BaseStats.dashes, GeneralStatsUtilities.MIN_DASHES, GeneralStatsUtilities.MAX_DASHES);
         int roundedValue = GeneralStatsUtilities.RoundFloatStatToInt(calculatedStatValue, GeneralStatsUtilities.StatRoundingType.Ceil);
         SetDashesStat(roundedValue);
     }

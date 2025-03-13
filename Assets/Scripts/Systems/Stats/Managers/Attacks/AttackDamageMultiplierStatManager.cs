@@ -45,7 +45,7 @@ public class AttackDamageMultiplierStatManager : StatManager
 
     private void ProcessAttackDamageMultiplierStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.attackDamageMultiplier, GeneralStatsUtilities.MIN_ATTACK_DAMAGE_MULTIPLIER, GeneralStatsUtilities.MAX_ATTACK_DAMAGE_MULTIPLIER);
+        float calculatedStatValue = CalculateStatValue(BaseStats.attackDamageMultiplier, GeneralStatsUtilities.MIN_ATTACK_DAMAGE_MULTIPLIER, GeneralStatsUtilities.MAX_ATTACK_DAMAGE_MULTIPLIER);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAttackDamageMultiplierStat(roundedValue);
     }

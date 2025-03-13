@@ -45,7 +45,7 @@ public class AbilityCritChanceStatManager : StatManager
 
     private void ProcessAbilityCritChanceStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.abilityCritChance, GeneralStatsUtilities.MIN_ABILITY_CRIT_CHANCE, GeneralStatsUtilities.MAX_ABILITY_CRIT_CHANCE);
+        float calculatedStatValue = CalculateStatValue(BaseStats.abilityCritChance, GeneralStatsUtilities.MIN_ABILITY_CRIT_CHANCE, GeneralStatsUtilities.MAX_ABILITY_CRIT_CHANCE);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAbilityCritChanceMultiplierStat(roundedValue);
     }

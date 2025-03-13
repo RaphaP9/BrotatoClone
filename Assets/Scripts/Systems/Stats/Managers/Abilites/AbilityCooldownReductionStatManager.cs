@@ -45,7 +45,7 @@ public class AbilityCooldownReductionStatManager : StatManager
 
     private void ProcessAbilityCooldownReductionStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.abilityCooldownReduction, GeneralStatsUtilities.MIN_ABILITY_COOLDOWN_REDUCTION, GeneralStatsUtilities.MAX_ABILITY_COOLDOWN_REDUCTION);
+        float calculatedStatValue = CalculateStatValue(BaseStats.abilityCooldownReduction, GeneralStatsUtilities.MIN_ABILITY_COOLDOWN_REDUCTION, GeneralStatsUtilities.MAX_ABILITY_COOLDOWN_REDUCTION);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAbilityCooldownReductionStat(roundedValue);
     }

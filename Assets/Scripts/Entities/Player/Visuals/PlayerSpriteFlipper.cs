@@ -8,6 +8,7 @@ public class PlayerSpriteFlipper : MonoBehaviour
     [Header("Components")]
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerDash playerDash;
+    [SerializeField] private PlayerHealth playerHealth;
     [Space]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
@@ -30,6 +31,7 @@ public class PlayerSpriteFlipper : MonoBehaviour
 
     private void HandleFacingDueToMovement()
     {
+        if (!playerHealth.IsAlive()) return;
         if (playerDash.IsDashing) return;
 
         if (playerMovement.DirectionInput.x> 0f)
