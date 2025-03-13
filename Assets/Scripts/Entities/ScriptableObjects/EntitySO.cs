@@ -16,8 +16,5 @@ public abstract class EntitySO : ScriptableObject
     [Space]
     [Range(1f, 10f)] public float moveSpeed;
     [Space]
-    [Range(0.5f, 2f)] public float attackSpeed;
-    [Range(1f, 4f)] public float attackRange;
-    [Space]
     [Range(0f, 1f)] public float lifesteal;
 }

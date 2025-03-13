@@ -8,5 +8,6 @@ public abstract class InventoryObjectSO : ScriptableObject
     public string inventoryObjectName;
     public InventoryObjectType type;
     public InventoryObjectRarityType rarityType;
+    [TextArea(3,10)] public string description;
     public Sprite sprite;
 }

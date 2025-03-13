@@ -27,11 +27,14 @@ public static class GeneralStatsUtilities
     #endregion
 
     #region Attacks
-    public static float MIN_ATTACK_SPEED = 0.5f;
-    public static float MAX_ATTACK_SPEED = 4f;
+    public static float MIN_AREA_MULTIPLIER = 0.5f;
+    public static float MAX_AREA_MULTIPLIER = 4f;
 
-    public static float MIN_ATTACK_RANGE = 1f;
-    public static float MAX_ATTACK_RANGE = 4f;
+    public static float MIN_ATTACK_SPEED_MULTIPLIER = 0.5f;
+    public static float MAX_ATTACK_SPEED_MULTIPLIER = 4f;
+
+    public static float MIN_ATTACK_RANGE_MULTIPLIER = 0.5f;
+    public static float MAX_ATTACK_RANGE_MULTIPLIER = 4f;
 
     public static float MIN_ATTACK_DAMAGE_MULTIPLIER = 1f;
     public static float MAX_ATTACK_DAMAGE_MULTIPLIER = 2f;
@@ -68,7 +71,6 @@ public static class GeneralStatsUtilities
         Ceil,
         Floor
     }
-
 
     public static int RoundFloatStatToInt(float statValue, StatRoundingType statRoundingType )
     {

@@ -10,6 +10,11 @@ public class PlayerSO : EntitySO
     [Space]
     [Range(0, 3)] public int dashes;
     [Space]
+    [Range(0.5f, 4f)] public float areaMultiplier;
+    [Space]
+    [Range(0.5f, 4f)] public float attackSpeedMultiplier;
+    [Range(0.5f, 4f)] public float attackRangeMultiplier;
+    [Space]
     [Range(1f, 2f)] public float attackDamageMultiplier;
     [Range(0f, 1f)] public float attackCritChance;
     [Range(0.5f, 2f)] public float attackCritDamageMultiplier;

@@ -19,11 +19,12 @@ MonoBehaviour:
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
-  attackSpeed: 1
-  attackRange: 2
   lifesteal: 0
   healthRegen: 5
   dashes: 1
+  areaMultiplier: 1
+  attackSpeedMultiplier: 1
+  attackRangeMultiplier: 1
   attackDamageMultiplier: 1
   attackCritChance: 0
   attackCritDamageMultiplier: 0.5

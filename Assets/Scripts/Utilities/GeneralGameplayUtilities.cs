@@ -27,7 +27,7 @@ public static class GeneralGameplayUtilities
         float clampedArmor = GeneralUtilities.ClampNumber01(armor);
         float resultingDamage = baseDamage * (1- clampedArmor);
 
-        int roundedDamage = Mathf.RoundToInt(resultingDamage);
+        int roundedDamage = Mathf.CeilToInt(resultingDamage);
 
         return roundedDamage;
     }
