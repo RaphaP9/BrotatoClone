@@ -60,7 +60,7 @@ public abstract class VolumeUIHandler : MonoBehaviour
 
         if (desiredVolume > volumeManager.GetMaxVolume()) return;
 
-        desiredVolume = GeneralMethods.RoundToNDecimalPlaces(desiredVolume, 1);
+        desiredVolume = GeneralUtilities.RoundToNDecimalPlaces(desiredVolume, 1);
         volumeManager.ChangeVolume(desiredVolume);
     }
 
@@ -71,14 +71,14 @@ public abstract class VolumeUIHandler : MonoBehaviour
 
         if (desiredVolume < 0f) return;
 
-        desiredVolume = GeneralMethods.RoundToNDecimalPlaces(desiredVolume, 1);
+        desiredVolume = GeneralUtilities.RoundToNDecimalPlaces(desiredVolume, 1);
         volumeManager.ChangeVolume(desiredVolume);
     }
 
     protected void UpdateVisual()
     {
         HideAllOptionBars();
-        float currentValue = GeneralMethods.RoundToNDecimalPlaces(volumeManager.GetLinearVolume(),1);
+        float currentValue = GeneralUtilities.RoundToNDecimalPlaces(volumeManager.GetLinearVolume(),1);
 
         foreach (OptionBarUI optionBarUI in optionBarUIs)
         {

@@ -2,13 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public static class GeneralStatUtilities 
+public static class GeneralStatsUtilities 
 {
+    #region Durability
     public static int MIN_MAX_HEALTH = 10;
     public static int MAX_MAX_HEALTH = 100;
 
+    public static int MIN_HEALTH_REGEN = 0;
+    public static int MAX_HEALTH_REGEN = 10;
+
+    public static float MIN_ARMOR_PERCENTAGE = 0f;
+    public static float MAX_ARMOR_PERCENTAGE = 0.9f;
+
+    public static float MIN_DODGE_CHANCE = 0f;
+    public static float MAX_DODGE_CHANCE = 0.5f;
+    #endregion
+
+    #region Agility
     public static float MIN_MOVE_SPEED = 1f;
     public static float MAX_MOVE_SPEED = 10f;
+
+    public static int MIN_DASHES = 0;
+    public static int MAX_DASHES = 4;
+    #endregion
+
+    #region Attacks
+    public static float MIN_ATTACK_DAMAGE_MULTIPLIER = 1f;
+    public static float MAX_ATTACK_DAMAGE_MULTIPLIER = 2f;
+
+    public static float MIN_ATTACK_CRIT_CHANCE = 0f;
+    public static float MAX_ATTACK_CRIT_CHANCE = 1f;
+
+    public static float MIN_ATTACK_CRIT_DAMAGE_MULTIPLIER = 0.5f;
+    public static float MAX_ATTACK_CRIT_DAMAGE_MULTIPLIER = 2f;
+    #endregion
 
     public enum StatRoundingType
     {

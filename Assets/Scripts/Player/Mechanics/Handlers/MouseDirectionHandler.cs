@@ -19,7 +19,7 @@ public class MouseDirectionHandler : MonoBehaviour
 
     private void HandleMouseDirection()
     {
-        Vector2 rawDirection = screenInput.GetWorldMousePosition() - GeneralMethods.TransformPositionVector2(transform);
+        Vector2 rawDirection = screenInput.GetWorldMousePosition() - GeneralUtilities.TransformPositionVector2(transform);
         normalizedMouseDirection = rawDirection.normalized;
     }
 }

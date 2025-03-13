@@ -33,7 +33,7 @@ public class CheckWall : MonoBehaviour
 
         if (MoveDirection == Vector2.zero) return hitWall;
 
-        Vector2 origin = GeneralMethods.TransformPositionVector2(transform);
+        Vector2 origin = GeneralUtilities.TransformPositionVector2(transform);
 
         RaycastHit2D hit = Physics2D.Raycast(origin, MoveDirection, rayLength + circleCollider2D.radius, wallLayer);
         hitWall = hit.collider != null;

@@ -6,6 +6,7 @@ using UnityEngine;
 public class MovementDirectionHandler : MonoBehaviour
 {
     [Header("Components")]
+    [SerializeField] private MovementInput movementInput;
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private Rigidbody2D _rigidbody2D;
 
@@ -16,7 +17,7 @@ public class MovementDirectionHandler : MonoBehaviour
 
     public Vector2 LastMovementDirection => lastMovementDirection;
 
-    private enum EvaluationMode { RigidbodyVelocity, LastNonZeroInput }
+    private enum EvaluationMode { RigidbodyVelocity, LastNonZeroInput, CurrentDirectionInput }
 
 
     private void Start()
@@ -47,6 +48,10 @@ public class MovementDirectionHandler : MonoBehaviour
             case EvaluationMode.LastNonZeroInput:
                 valueToEvaluate = playerMovement.LastNonZeroInput;
                 break;
+            case EvaluationMode.CurrentDirectionInput:
+                valueToEvaluate = movementInput.GetMovementInputNormalized();
+                break;
+
         }
 
         Vector2 rawLastMovementDirection = valueToEvaluate != Vector2.zero? valueToEvaluate : lastMovementDirection;

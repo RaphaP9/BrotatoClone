@@ -13,4 +13,17 @@ MonoBehaviour:
   m_Name: BaseStats
   m_EditorClassIdentifier: 
   maxHealth: 50
+  healthRegen: 5
+  armorPercentage: 0
+  dodgeChance: 0
   moveSpeed: 5
+  dashes: 1
+  attackSpeed: 1
+  attackRange: 2
+  attackDamageMultiplier: 1
+  attackCritChance: 0
+  attackCritDamageMultiplier: 0.5
+  abilityEffectMultiplier: 1
+  abilityCritChance: 0
+  abilityCritEffectMultiplier: 0.5
+  lifesteal: 0

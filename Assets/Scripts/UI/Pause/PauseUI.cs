@@ -53,7 +53,7 @@ public class PauseUI : BaseUI
 
     private void InitializeVariables()
     {
-        GeneralUIMethods.SetCanvasGroupAlpha(canvasGroup, 0f);
+        GeneralUIUtilities.SetCanvasGroupAlpha(canvasGroup, 0f);
         canvasGroup.interactable = false;
         canvasGroup.blocksRaycasts = false;
     }

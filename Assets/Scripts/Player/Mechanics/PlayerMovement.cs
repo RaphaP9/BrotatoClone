@@ -31,8 +31,10 @@ public class PlayerMovement : MonoBehaviour
     public float SmoothCurrentSpeed { get; private set; }
 
     public Vector2 SmoothDirectionInput { get; private set; }
-    public Vector2 LastNonZeroInput { get; private set; }
+    public Vector2 LastNonZeroInput  { get; private set; }
     public Vector2 FinalMoveValue { get; private set; }
+
+    public Vector2 ScaledMovementVector { get; private set; }
     public bool MovementEnabled => movementEnabled;
 
     private void OnEnable()
@@ -88,6 +90,7 @@ public class PlayerMovement : MonoBehaviour
         SmoothDirection();
 
         CalculateFinalMovement();
+        ScaleFinalMovement();
     }
 
     private void CalculateDesiredSpeed()
@@ -122,11 +125,16 @@ public class PlayerMovement : MonoBehaviour
         FinalMoveValue = roundedFinalInput;
     }
 
+    private void ScaleFinalMovement()
+    {
+        ScaledMovementVector = GeneralGameplayUtilities.ScaleVector2ToPerspective(FinalMoveValue);
+    }
+
     private void ApplyMovement()
     {
         if (playerDash.IsDashing) return;
 
-        _rigidbody2D.velocity = new Vector2(FinalMoveValue.x, FinalMoveValue.y);
+        _rigidbody2D.velocity = new Vector2(ScaledMovementVector.x, ScaledMovementVector.y);
     }
 
     private void SetMoveSpeed(float value) => moveSpeed = value;

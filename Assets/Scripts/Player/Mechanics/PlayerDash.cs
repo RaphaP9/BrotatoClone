@@ -16,6 +16,8 @@ public class PlayerDash : MonoBehaviour
     [SerializeField] private MovementDirectionHandler movementDirectionHandler;
 
     [Header("Settings")]
+    [SerializeField, Range(0, 3)] private int dashLimit;
+    [Space]
     [SerializeField] private DirectionMode directionMode;
     [Space]
     [SerializeField, Range(1f, 12f)] private float dashDistance;
@@ -24,8 +26,6 @@ public class PlayerDash : MonoBehaviour
     [Space]
     [SerializeField, Range(0f, 10f)] private float betweenDashesTime;
     [SerializeField, Range(0f, 10f)] private float dashRefillTime;
-    [Space]
-    [SerializeField, Range(0, 3)] private int dashLimit;
 
     [Header("Other")]
     [SerializeField] private int dashesPerformed;
@@ -52,6 +52,18 @@ public class PlayerDash : MonoBehaviour
     {
         public Vector2 dashDirection;
         public int dashesPerformed;
+    }
+
+    private void OnEnable()
+    {
+        DashesStatManager.OnDashesStatInitialized += DashesStatManager_OnDashesStatInitialized;
+        DashesStatManager.OnDashesStatUpdated += DashesStatManager_OnDashesStatUpdated;
+    }
+
+    private void OnDisable()
+    {
+        DashesStatManager.OnDashesStatInitialized -= DashesStatManager_OnDashesStatInitialized;
+        DashesStatManager.OnDashesStatUpdated -= DashesStatManager_OnDashesStatUpdated;
     }
 
     private void Awake()
@@ -164,8 +176,11 @@ public class PlayerDash : MonoBehaviour
         currentDashDirection = DefineDashDirection();
 
         float dashForce = dashDistance / dashTime;
+        Vector2 dashVector = currentDashDirection * dashForce;
 
-        _rigidbody2D.velocity = currentDashDirection * dashForce;
+        Vector2 scaledDashVector = GeneralGameplayUtilities.ScaleVector2ToPerspective(dashVector);
+
+        _rigidbody2D.velocity = scaledDashVector;
         IsDashing = true;
 
         OnPlayerDash?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection});
@@ -210,4 +225,18 @@ public class PlayerDash : MonoBehaviour
     private void AddDashesPerformed(int quantity) => dashesPerformed += quantity;
     private bool HasDashesLeft() => dashesPerformed < dashLimit;
 
+    private void SetDashesLimit(int value) => dashLimit = value;
+
+    #region Subscriptions
+    private void DashesStatManager_OnDashesStatInitialized(object sender, DashesStatManager.OnDashesStatEventArgs e)
+    {
+        SetDashesLimit(e.dashesStat);
+    }
+
+    private void DashesStatManager_OnDashesStatUpdated(object sender, DashesStatManager.OnDashesStatEventArgs e)
+    {
+        SetDashesLimit(e.dashesStat);
+    }
+
+    #endregion
 }

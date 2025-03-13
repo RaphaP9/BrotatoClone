@@ -17,7 +17,7 @@ public class NewScreenInput : ScreenInput
         if(!CanProcessInput()) return Vector2.zero;
 
         Vector3 rawPosition = _camera.ScreenToWorldPoint(Input.mousePosition);
-        Vector2 screenPosition = GeneralMethods.SupressZComponent(rawPosition);
+        Vector2 screenPosition = GeneralUtilities.SupressZComponent(rawPosition);
 
         return screenPosition;
     }

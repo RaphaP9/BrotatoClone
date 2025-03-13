@@ -45,8 +45,8 @@ public class MoveSpeedStatManager : StatManager
 
     private void ProcessMoveSpeedStat()
     {
-        float calculatedStatValue = CalculateStatValue(baseStats.moveSpeed, GeneralStatUtilities.MIN_MOVE_SPEED, GeneralStatUtilities.MAX_MOVE_SPEED);
-        float roundedValue = GeneralStatUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
+        float calculatedStatValue = CalculateStatValue(baseStats.moveSpeed, GeneralStatsUtilities.MIN_MOVE_SPEED, GeneralStatsUtilities.MAX_MOVE_SPEED);
+        float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetMoveSpeedStat(roundedValue);
     }
 

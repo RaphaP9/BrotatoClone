@@ -20,9 +20,9 @@ public class EnemyDetectionHandler : MonoBehaviour
 
     private void HandleEnemyDetection()
     {
-        Collider2D[] detectedEnemiesColliders = Physics2D.OverlapCircleAll(GeneralMethods.TransformPositionVector2(transform), detectionRange, enemiesLayerMask);
+        Collider2D[] detectedEnemiesColliders = Physics2D.OverlapCircleAll(GeneralUtilities.TransformPositionVector2(transform), detectionRange, enemiesLayerMask);
 
-        List<Transform> detectedEnemies = GeneralMethods.GetTransformsByColliders(detectedEnemiesColliders);
+        List<Transform> detectedEnemies = GeneralUtilities.GetTransformsByColliders(detectedEnemiesColliders);
 
         //Get New and Old Enemies using Linq
         List<Transform> newEnemiesDetected = detectedEnemies.Except(enemies).ToList();

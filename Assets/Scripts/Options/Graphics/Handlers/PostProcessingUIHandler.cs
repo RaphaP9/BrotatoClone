@@ -58,7 +58,7 @@ public abstract class PostProcessingUIHandler : MonoBehaviour
         float currentIntensity = postProcessingManager.GetNormalizedIntensity();
         float desiredIntensity = currentIntensity + INTENSITY_BUTTON_CHANGE;
 
-        desiredIntensity = GeneralMethods.RoundToNDecimalPlaces(desiredIntensity, 1);
+        desiredIntensity = GeneralUtilities.RoundToNDecimalPlaces(desiredIntensity, 1);
 
         if (desiredIntensity > postProcessingManager.GetMaxNormalizedIntensity()) return;
 
@@ -70,7 +70,7 @@ public abstract class PostProcessingUIHandler : MonoBehaviour
         float currentIntensity = postProcessingManager.GetNormalizedIntensity();
         float desiredIntensity = currentIntensity - INTENSITY_BUTTON_CHANGE;
 
-        desiredIntensity = GeneralMethods.RoundToNDecimalPlaces(desiredIntensity, 1);
+        desiredIntensity = GeneralUtilities.RoundToNDecimalPlaces(desiredIntensity, 1);
 
         if (desiredIntensity < postProcessingManager.GetMinNormalizedIntensity()) return;
 
@@ -80,7 +80,7 @@ public abstract class PostProcessingUIHandler : MonoBehaviour
     protected void UpdateVisual()
     {
         HideAllOptionBars();
-        float currentValue = GeneralMethods.RoundToNDecimalPlaces(postProcessingManager.GetNormalizedIntensity(), 1);
+        float currentValue = GeneralUtilities.RoundToNDecimalPlaces(postProcessingManager.GetNormalizedIntensity(), 1);
 
         foreach (OptionBarUI optionBarUI in optionBarUIs)
         {

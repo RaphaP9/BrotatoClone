@@ -2,6 +2,18 @@ public enum StatType
 {
     MaxHealth,
     HealthRegen,
-    AttackDamage,
-    MoveSpeed
+    ArmorPercentage,
+    DodgeChance,
+    MoveSpeed,
+    Dashes,
+    AttackSpeed,
+    AttackRange,
+    AttackDamageMultiplier,
+    AttackCritChance,
+    AttackCritDamageMultiplier,
+    AbilityEffectMultiplier,
+    AbilityCritChance,
+    AbilityCritEffectMultiplier,
+    Lifesteal
 }
+

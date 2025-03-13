@@ -5,13 +5,12 @@ using UnityEngine;
 
 public abstract class StatManager : MonoBehaviour
 {
-    [Header("Components")]
-    [SerializeField] protected StatsSO baseStats;
-
     [Header("Settings")]
     [SerializeField] protected List<StatModifier> statModifiers;
 
     public List<StatModifier> StatModifiers => statModifiers;
+
+    protected PlayerStatsSO baseStats => PlayerStatsHolder.Instance.BaseStats;
 
     protected virtual void Awake()
     {
