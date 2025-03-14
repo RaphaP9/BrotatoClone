@@ -17,6 +17,34 @@ public static class GeneralGameplayUtilities
     }
 
     #region DamageTakenProcessing
+
+    public static bool CheckDodgeByTransform(Transform transform)
+    {
+        EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
+
+        if(entityHealth == null)
+        {
+            if (DEBUG) Debug.Log("Transform does not contain an EntityHealth component. Dodge check will be ignored");
+            return false;
+        }
+
+        if (entityHealth.TryDodge()) return true;
+        return false;
+    }
+
+    public static bool CheckIsAliveByTransform(Transform transform)
+    {
+        EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
+
+        if (entityHealth == null)
+        {
+            if (DEBUG) Debug.Log("Transform does not contain an EntityHealth component. Dodge check will be ignored");
+            return false;
+        }
+
+        return entityHealth.IsAlive();
+    }
+
     public static bool EvaluateDodgeChance(float dodgeChance)
     {
         float randomNumber = Random.Range(0f, 1f);
@@ -90,25 +118,80 @@ public static class GeneralGameplayUtilities
 
     #region DamageDealing
 
-    public static void DealRegularDamageInArea(int damage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
-    {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
-        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
-
-        foreach(EntityHealth entityHealth in entityHealthsInRange)
-        {
-            entityHealth.TakeRegularDamage(damage, isCrit, damageSource);
-        }
-    }
-
-    public static void DealBleedDamageInArea(int damage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealRegularAndBleedDodgeableDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
         List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
-            entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit, damageSource);
+            bool dodged = entityHealth.TryDodge();
+            if (dodged) continue;
+
+            entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
+            entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
+        }
+    }
+
+    public static void DealDodgeableRegularDamageInArea(int regularDamage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    {
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
+
+        foreach (EntityHealth entityHealth in entityHealthsInRange)
+        {
+            bool dodged = entityHealth.TryDodge();
+            if (dodged) continue;
+
+            entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
+        }
+    }
+
+    public static void DealDodgeableBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    {
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
+
+        foreach (EntityHealth entityHealth in entityHealthsInRange)
+        {
+            bool dodged = entityHealth.TryDodge();
+            if (dodged) continue;
+
+            entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
+        }
+    }
+
+    public static void DealRegularAndBleedDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    {
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
+
+        foreach (EntityHealth entityHealth in entityHealthsInRange)
+        {
+            entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
+            entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
+        }
+    }
+
+    public static void DealRegularDamageInArea(int regularDamage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    {
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
+
+        foreach(EntityHealth entityHealth in entityHealthsInRange)
+        {
+            entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
+        }
+    }
+
+    public static void DealBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    {
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
+
+        foreach (EntityHealth entityHealth in entityHealthsInRange)
+        {
+            entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
         }
     }
 

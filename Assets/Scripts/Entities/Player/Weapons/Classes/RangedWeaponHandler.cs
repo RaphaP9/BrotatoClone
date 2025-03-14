@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,7 +10,23 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
 
     protected RangedWeaponSO RangedWeaponSO => weaponSO as RangedWeaponSO;
 
-    protected void ShootProjectile(Transform projectile, Vector2 position, Vector2 shootDirection)
+    public static event EventHandler<OnWeaponAttackEventArgs> OnRangedFire;
+    public event EventHandler<OnWeaponAttackEventArgs> OnThisRangedFire;
+
+    protected void ShootProjectile(Transform projectilePrefab, Transform firePoint)
+    {
+        bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetWeaponModifiedCritChance());
+
+        Vector2 shootDirection = weaponAim.AimDirection;
+        Vector2 shootPosition = GeneralUtilities.TransformPositionVector2(firePoint);
+
+        CreateProjectile(projectilePrefab, shootPosition, shootDirection, isCrit);
+
+        OnRangedFire?.Invoke(this, new OnWeaponAttackEventArgs { id = RangedWeaponSO.id, attackPoint = firePoint, isCrit = isCrit });
+        OnThisRangedFire?.Invoke(this, new OnWeaponAttackEventArgs { id = RangedWeaponSO.id, attackPoint = firePoint, isCrit = isCrit });
+    }
+
+    protected void CreateProjectile(Transform projectile, Vector2 position, Vector2 shootDirection, bool isCrit)
     {
         Vector3 vector3Position = GeneralUtilities.Vector2ToVector3(position);
         Transform instantiatedProjectile = Instantiate(projectile, vector3Position, Quaternion.identity);
@@ -26,6 +43,6 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
 
         projectileHandler.SetProjectile(RangedWeaponSO.projectileSpeed, RangedWeaponSO.projectileRange, RangedWeaponSO.regularDamage,
             RangedWeaponSO.bleedDamage, RangedWeaponSO.bleedDuration, RangedWeaponSO.bleedTickTime, RangedWeaponSO.critChance,RangedWeaponSO.critDamageMultiplier, RangedWeaponSO.projectileDamageType,
-            RangedWeaponSO.projectileArea, RangedWeaponSO, processedShootDirection);
+            RangedWeaponSO.projectileArea, RangedWeaponSO, processedShootDirection, isCrit);
     }
 }

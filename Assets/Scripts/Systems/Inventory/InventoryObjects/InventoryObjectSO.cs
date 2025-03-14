@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class InventoryObjectSO : ScriptableObject
 {
-    public string id;
+    public int id;
     public string inventoryObjectName;
     public InventoryObjectType type;
     public InventoryObjectRarityType rarityType;

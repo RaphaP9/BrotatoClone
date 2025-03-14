@@ -33,4 +33,4 @@ MonoBehaviour:
   projectileSpeed: 15
   dispersionAngle: 5
   projectileDamageType: 0
-  projectileArea: 0
+  projectileArea: 1

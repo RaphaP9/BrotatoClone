@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static AttackBasedWeaponHandler;
 
 public class ProjectileHandler : MonoBehaviour
 {
@@ -23,6 +22,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private float bleedDuration;
     [SerializeField] private float bleedTickTime;
     [Space]
+    [SerializeField] private bool isCrit;
     [SerializeField] private float critChance;
     [SerializeField] private float critDamageMultiplier;
     [Space]
@@ -86,26 +86,51 @@ public class ProjectileHandler : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!GeneralUtilities.CheckGameObjectInLayerMask(collision.gameObject, impactLayermask)) return;
-
-        switch (projectileDamageType)
+        if (GeneralUtilities.CheckGameObjectInLayerMask(collision.gameObject, targetLayermask))
         {
-            case ProjectileDamageType.Singular:
-            default:
-                if (!GeneralUtilities.CheckGameObjectInLayerMask(collision.gameObject, targetLayermask)) return;
-                DealDamageToTransform(collision.transform);
-                break;
-            case ProjectileDamageType.Area:
-                DealDamageInArea();
-                break;
+            bool isAlive = GeneralGameplayUtilities.CheckIsAliveByTransform(collision.transform);
+            if (!isAlive) return;
+
+            bool dodged = GeneralGameplayUtilities.CheckDodgeByTransform(collision.transform);
+            if (dodged) return;
+
+            switch (projectileDamageType)
+            {
+                case ProjectileDamageType.Singular:
+                default:
+                    DealDamageToTransform(collision.transform);
+                    break;
+                case ProjectileDamageType.Area:
+                    DealDamageInArea();
+                    break;
+            }
+
+            ImpactProjectile();
+            return;
         }
 
-        ImpactProjectile();
+
+        if (GeneralUtilities.CheckGameObjectInLayerMask(collision.gameObject, impactLayermask))
+        {
+            switch (projectileDamageType)
+            {
+                case ProjectileDamageType.Singular:
+                default:
+                    //
+                    break;
+                case ProjectileDamageType.Area:
+                    DealDamageInArea();
+                    break;
+            }
+
+            ImpactProjectile();
+            return;
+        }      
     }
 
     private void DealDamageToTransform(Transform transform)
     {
-        bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetProjectileModifiedCritChance());
+        //bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetProjectileModifiedCritChance());
 
         int damage = GetProjectileModifiedRegularDamage();
         int bleedDamage = GetProjectileModifiedBleedDamage();
@@ -121,7 +146,7 @@ public class ProjectileHandler : MonoBehaviour
             GeneralGameplayUtilities.DealRegularDamageToTransform(damage, isCrit, transform, projectileSource);
         }
 
-        if (HasBleed())
+        if (HasBleedDamage())
         {
             GeneralGameplayUtilities.DealBleedDamageToTransform(bleedDamage, bleedDuration, bleedTickTime, isCrit, transform, projectileSource);
         }
@@ -129,7 +154,7 @@ public class ProjectileHandler : MonoBehaviour
 
     private void DealDamageInArea()
     {
-        bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetProjectileModifiedCritChance());
+        //bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetProjectileModifiedCritChance());
 
         int damage = GetProjectileModifiedRegularDamage();
         int bleedDamage = GetProjectileModifiedBleedDamage();
@@ -140,22 +165,30 @@ public class ProjectileHandler : MonoBehaviour
             bleedDamage = GeneralGameplayUtilities.CalculateCritDamage(bleedDamage, GetProjectileModifiedCritDamageMultiplier());
         }
 
+        if(HasRegularDamage() && HasBleedDamage())
+        {
+            GeneralGameplayUtilities.DealRegularAndBleedDamageInArea(damage, bleedDamage, bleedDuration, bleedTickTime, GeneralUtilities.TransformPositionVector2(transform), projectileArea, isCrit, targetLayermask, projectileSource);
+            return;
+        }
+
         if (HasRegularDamage())
         {
             GeneralGameplayUtilities.DealRegularDamageInArea(damage,GeneralUtilities.TransformPositionVector2(transform),projectileArea ,isCrit, targetLayermask, projectileSource);
+            return;
         }
 
-        if (HasBleed())
+        if (HasBleedDamage())
         {
             GeneralGameplayUtilities.DealBleedDamageInArea(bleedDamage,bleedDuration,bleedTickTime, GeneralUtilities.TransformPositionVector2(transform), projectileArea, isCrit, targetLayermask, projectileSource);
+            return;
         }
     }
 
-    public void SetProjectile(float projectileSpeed, float range, int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier, ProjectileDamageType projectileDamageType, float projectileArea, IDamageDealer projectileSource, Vector2 direction)
+    public void SetProjectile(float projectileSpeed, float range, int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier, ProjectileDamageType projectileDamageType, float projectileArea, IDamageDealer projectileSource, Vector2 direction, bool isCrit)
     {
         SetSpeed(projectileSpeed);
         SetLifespan(projectileSpeed, range);
-        SetAllDamage(regularDamage, bleedDamage, bleedDuration, bleedTickTime, critChance, critDamageMultiplier);
+        SetAllDamage(regularDamage, bleedDamage, bleedDuration, bleedTickTime, critChance, critDamageMultiplier, isCrit);
         SetProjectileDamageType(projectileDamageType,projectileArea);
         SetProjectileSource(projectileSource);
         SetProjectileDirection(direction);
@@ -163,7 +196,7 @@ public class ProjectileHandler : MonoBehaviour
 
     protected void SetSpeed(float speed) => this.speed = speed;
     protected void SetLifespan(float speed, float range) => lifespan = range/speed;
-    protected void SetAllDamage(int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier)
+    protected void SetAllDamage(int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier, bool isCrit)
     {
         this.regularDamage = regularDamage;
         this.bleedDamage = bleedDamage;
@@ -171,6 +204,7 @@ public class ProjectileHandler : MonoBehaviour
         this.bleedTickTime = bleedTickTime;
         this.critChance = critChance;
         this.critDamageMultiplier = critDamageMultiplier;
+        this.isCrit = isCrit;
     }
 
     protected void SetProjectileDamageType(ProjectileDamageType projectileDamageType, float projectileArea)
@@ -181,7 +215,7 @@ public class ProjectileHandler : MonoBehaviour
 
     protected void SetProjectileSource(IDamageDealer projectileSource) => this.projectileSource = projectileSource;
     protected void SetProjectileDirection(Vector2 direction) => this.direction = direction;
-    protected bool HasBleed() => bleedDamage > 0f;
+    protected bool HasBleedDamage() => bleedDamage > 0f;
     protected bool HasRegularDamage() => regularDamage > 0f;
 
     protected int GetProjectileModifiedRegularDamage() => GeneralGameplayUtilities.GetModifiedDamage(regularDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);

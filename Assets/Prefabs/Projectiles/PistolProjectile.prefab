@@ -147,13 +147,15 @@ MonoBehaviour:
     m_Bits: 128
   impactLayermask:
     serializedVersion: 2
-    m_Bits: 129
+    m_Bits: 1
   speed: 5
   lifespan: 5
   regularDamage: 0
   bleedDamage: 0
   bleedDuration: 0
   bleedTickTime: 0
+  critChance: 0
+  critDamageMultiplier: 0
   projectileDamageType: 0
   projectileArea: 0
   direction: {x: 1, y: 0}

@@ -9,21 +9,15 @@ public class PistolHandler : RangedWeaponHandler
     [SerializeField] private Transform firePoint;
     [SerializeField] private Transform projectilePrefab;
 
-    public static event EventHandler<OnWeaponAttackEventArgs> OnPistolFire;
-
     protected override void Attack()
     {
-        bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetWeaponModifiedCritChance());
+        ShootProjectile(projectilePrefab, firePoint);
+    }
 
-        int damage = GetWeaponModifiedRegularDamage();
-        if (isCrit) damage = GeneralGameplayUtilities.CalculateCritDamage(damage, GetWeaponModifiedCritDamageMultiplier());
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmosColor;
 
-        Vector2 firePosition = GeneralUtilities.TransformPositionVector2(firePoint);
-
-        Vector2 shootDirection = weaponAim.AimDirection;
-
-        ShootProjectile(projectilePrefab, firePosition, shootDirection);
-
-        OnPistolFire?.Invoke(this, new OnWeaponAttackEventArgs { damage = damage, isCrit = isCrit });
+        Gizmos.DrawLine(firePoint.position, firePoint.position + GeneralUtilities.Vector2ToVector3(weaponAim.AimDirection)*RangedWeaponSO.projectileRange);
     }
 }
