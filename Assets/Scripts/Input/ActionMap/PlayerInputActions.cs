@@ -116,6 +116,34 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ]
         },
         {
+            ""name"": ""Attacking"",
+            ""id"": ""f921cb78-8372-4be3-bbe0-178f43b545c0"",
+            ""actions"": [
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""df1e9b5f-c3e5-479a-8aaa-57bd51dbe519"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""457f6f1c-eb18-4bb0-bbee-0c3ca08ec592"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
+        },
+        {
             ""name"": ""UI"",
             ""id"": ""52dec63e-c206-4284-a033-d870bf7e8497"",
             ""actions"": [
@@ -150,6 +178,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
         m_Movement_Dash = m_Movement.FindAction("Dash", throwIfNotFound: true);
+        // Attacking
+        m_Attacking = asset.FindActionMap("Attacking", throwIfNotFound: true);
+        m_Attacking_Attack = m_Attacking.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -265,6 +296,52 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     }
     public MovementActions @Movement => new MovementActions(this);
 
+    // Attacking
+    private readonly InputActionMap m_Attacking;
+    private List<IAttackingActions> m_AttackingActionsCallbackInterfaces = new List<IAttackingActions>();
+    private readonly InputAction m_Attacking_Attack;
+    public struct AttackingActions
+    {
+        private @PlayerInputActions m_Wrapper;
+        public AttackingActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Attack => m_Wrapper.m_Attacking_Attack;
+        public InputActionMap Get() { return m_Wrapper.m_Attacking; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(AttackingActions set) { return set.Get(); }
+        public void AddCallbacks(IAttackingActions instance)
+        {
+            if (instance == null || m_Wrapper.m_AttackingActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_AttackingActionsCallbackInterfaces.Add(instance);
+            @Attack.started += instance.OnAttack;
+            @Attack.performed += instance.OnAttack;
+            @Attack.canceled += instance.OnAttack;
+        }
+
+        private void UnregisterCallbacks(IAttackingActions instance)
+        {
+            @Attack.started -= instance.OnAttack;
+            @Attack.performed -= instance.OnAttack;
+            @Attack.canceled -= instance.OnAttack;
+        }
+
+        public void RemoveCallbacks(IAttackingActions instance)
+        {
+            if (m_Wrapper.m_AttackingActionsCallbackInterfaces.Remove(instance))
+                UnregisterCallbacks(instance);
+        }
+
+        public void SetCallbacks(IAttackingActions instance)
+        {
+            foreach (var item in m_Wrapper.m_AttackingActionsCallbackInterfaces)
+                UnregisterCallbacks(item);
+            m_Wrapper.m_AttackingActionsCallbackInterfaces.Clear();
+            AddCallbacks(instance);
+        }
+    }
+    public AttackingActions @Attacking => new AttackingActions(this);
+
     // UI
     private readonly InputActionMap m_UI;
     private List<IUIActions> m_UIActionsCallbackInterfaces = new List<IUIActions>();
@@ -314,6 +391,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+    }
+    public interface IAttackingActions
+    {
+        void OnAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

@@ -13,6 +13,8 @@ public class AbilityCritEffectMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float abilityCritEffectMultiplierStat;
 
+    public float AbilityCritEffectMultiplierStat => abilityCritEffectMultiplierStat;
+
     public class OnAbilityCritEffectMultiplierStatEventArgs : EventArgs
     {
         public float abilityCritEffectMultiplierStat;

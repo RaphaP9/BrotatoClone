@@ -13,6 +13,8 @@ public class AbilityCritChanceStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float abilityCritChanceStat;
 
+    public float AbilityCritChanceStat => abilityCritChanceStat;
+
     public class OnAbilityCritChanceStatEventArgs : EventArgs
     {
         public float abilityCritChanceStat;

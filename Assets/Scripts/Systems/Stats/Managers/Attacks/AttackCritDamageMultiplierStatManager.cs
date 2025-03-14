@@ -13,6 +13,8 @@ public class AttackCritDamageMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float attackCritDamageMultiplierStat;
 
+    public float AttackCritDamageMultiplierStat => attackCritDamageMultiplierStat;
+
     public class OnAttackCritDamageMultiplierStatEventArgs : EventArgs
     {
         public float attackCritDamageMultiplierStat;

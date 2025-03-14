@@ -6,9 +6,8 @@ public class WeaponHandler : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] protected WeaponSO weaponSO;
-    [SerializeField] protected EnemyDetector enemyDetector;
 
     public WeaponSO WeaponSO => weaponSO;
 
-    private float timer = 0f;
+    protected bool InputAttack => AttackInput.Instance.GetAttackDown();
 }

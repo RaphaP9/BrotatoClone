@@ -2666,7 +2666,7 @@ GameObject:
   m_Layer: 0
   m_Name: Test
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 2488908585195742037, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2682,7 +2682,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceafbe4cda2883b4ab0e9c1bbb418c6e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerHealth: {fileID: 640079900}
+  playerTransform: {fileID: 640079895}
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!4 &583671959
 Transform:
   m_ObjectHideFlags: 0
@@ -2692,7 +2695,7 @@ Transform:
   m_GameObject: {fileID: 583671957}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 3.25, y: -1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3354,6 +3357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1504673630}
+  - {fileID: 1304748193}
   - {fileID: 784775979}
   - {fileID: 1197875864}
   m_Father: {fileID: 2042103032}
@@ -4993,17 +4997,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointWeaponSlots:
   - point: {fileID: 1251311416}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   - point: {fileID: 145982060}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   - point: {fileID: 365306437}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   - point: {fileID: 2042535094}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   - point: {fileID: 1915099203}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   - point: {fileID: 1224389198}
-    weaponHandler: {fileID: 0}
+    weaponIdentifier: {fileID: 0}
   debug: 1
 --- !u!1 &1197875863
 GameObject:
@@ -5595,7 +5599,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1274821770}
-  - component: {fileID: 1274821769}
   - component: {fileID: 1274821768}
   - component: {fileID: 1274821771}
   m_Layer: 6
@@ -5619,23 +5622,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   screenInput: {fileID: 1197875865}
   normalizedMouseDirection: {x: 0, y: 0}
---- !u!114 &1274821769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1274821767}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 375b0e6aa81312142bd846cdea5ec351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  detectionRange: 2
-  enemiesLayerMask:
-    serializedVersion: 2
-    m_Bits: 128
-  enemies: []
 --- !u!4 &1274821770
 Transform:
   m_ObjectHideFlags: 0
@@ -6235,6 +6221,50 @@ MonoBehaviour:
   m_BoundingShape2D: {fileID: 787322399}
   m_Damping: 0.5
   m_MaxWindowSize: -1
+--- !u!1 &1304748192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1304748193}
+  - component: {fileID: 1304748194}
+  m_Layer: 0
+  m_Name: AttackInput
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1304748193
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304748192}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 771802979}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1304748194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1304748192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 36f0bf8390394464ca74b5e0d4eb77ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1315594156
 GameObject:
   m_ObjectHideFlags: 0

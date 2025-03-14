@@ -13,6 +13,8 @@ public class MoveSpeedStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float moveSpeedStat;
 
+    public float MoveSpeedStat => moveSpeedStat;
+
     public class OnMoveSpeedStatEventArgs : EventArgs
     {
         public float moveSpeedStat;

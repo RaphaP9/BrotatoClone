@@ -13,6 +13,8 @@ public class DashesStatManager : StatManager
     [Header("Value")]
     [SerializeField] private int dashesStat;
 
+    public int DashesStat => dashesStat;
+
     public class OnDashesStatEventArgs : EventArgs
     {
         public int dashesStat;

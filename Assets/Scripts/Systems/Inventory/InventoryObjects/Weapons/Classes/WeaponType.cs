@@ -1,5 +1,6 @@
 public enum WeaponType
 {
     Melee,
-    Range
+    Range,
+    Effect
 }

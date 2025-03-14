@@ -13,6 +13,7 @@ public class HealthRegenStatManager : StatManager
     [Header("Value")]
     [SerializeField] private int healthRegenStat;
 
+    public int HealthRegenStat => healthRegenStat;
     public class OnHealthRegenStatEventArgs : EventArgs
     {
         public int healthRegenStat;

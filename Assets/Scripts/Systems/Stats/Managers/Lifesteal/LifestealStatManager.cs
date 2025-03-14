@@ -13,6 +13,8 @@ public class LifestealStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float lifestealStat;
 
+    public float LifestealStat => lifestealStat;
+
     public class OnLifestealStatEventArgs : EventArgs
     {
         public float lifestealStat;

@@ -13,6 +13,8 @@ public class AttackRangeMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float attackRangeMultiplierStat;
 
+    public float AttackRangeMultiplierStat => attackRangeMultiplierStat;
+
     public class OnAttackRangeMultiplierStatEventArgs : EventArgs
     {
         public float attackRangeMultiplierStat;

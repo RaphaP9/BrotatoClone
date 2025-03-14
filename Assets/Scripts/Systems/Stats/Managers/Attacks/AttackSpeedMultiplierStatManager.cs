@@ -13,6 +13,8 @@ public class AttackSpeedMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float attackSpeedMultiplierStat;
 
+    public float AttackSpeedMultiplierStat => attackSpeedMultiplierStat;
+
     public class OnAttackSpeedMultiplierStatEventArgs : EventArgs
     {
         public float attackSpeedMultiplierStat;

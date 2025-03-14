@@ -13,6 +13,8 @@ public class AbilityEffectMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float abilityEffectMultiplierStat;
 
+    public float AbilityEffectMultiplierStat => abilityEffectMultiplierStat;
+
     public class OnAbilityEffectMultiplierStatEventArgs : EventArgs
     {
         public float abilityEffectMultiplierStat;

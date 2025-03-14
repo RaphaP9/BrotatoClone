@@ -12,8 +12,6 @@ public abstract class WeaponSO : InventoryObjectSO, IDamageDealer
     [Range(2f, 10f)] public float bleedDuration;
     [Range(0.25f, 2f)] public float bleedTickTime;
     [Space]
-    [Range(0.25f, 4f)] public float attackSpeed;
-    [Space]
     [ColorUsage(true, true)] public Color damageColor;
     [Space]
     public Transform weaponTransform;

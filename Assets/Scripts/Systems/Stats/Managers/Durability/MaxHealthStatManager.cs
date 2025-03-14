@@ -13,6 +13,8 @@ public class MaxHealthStatManager : StatManager
     [Header("Value")]
     [SerializeField] private int maxHealthStat;
 
+    public int MaxHealthStat => maxHealthStat;
+
     public class OnMaxHealthStatEventArgs : EventArgs
     {
         public int maxHealthStat;

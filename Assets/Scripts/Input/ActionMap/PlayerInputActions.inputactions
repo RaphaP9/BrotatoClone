@@ -94,6 +94,34 @@
             ]
         },
         {
+            "name": "Attacking",
+            "id": "f921cb78-8372-4be3-bbe0-178f43b545c0",
+            "actions": [
+                {
+                    "name": "Attack",
+                    "type": "Button",
+                    "id": "df1e9b5f-c3e5-479a-8aaa-57bd51dbe519",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "457f6f1c-eb18-4bb0-bbee-0c3ca08ec592",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Attack",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "UI",
             "id": "52dec63e-c206-4284-a033-d870bf7e8497",
             "actions": [

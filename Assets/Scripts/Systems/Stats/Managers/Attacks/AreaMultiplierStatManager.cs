@@ -13,6 +13,8 @@ public class AreaMultiplierStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float areaMultiplierStat;
 
+    public float AreaMultiplierStat => areaMultiplierStat;
+
     public class OnAreaMultiplierStatEventArgs : EventArgs
     {
         public float areaMultiplierStat;

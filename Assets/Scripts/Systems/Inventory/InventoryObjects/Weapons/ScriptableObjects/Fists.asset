@@ -23,7 +23,7 @@ MonoBehaviour:
   bleedDamage: 0
   bleedDuration: 2
   bleedTickTime: 0.25
-  attackSpeed: 0.5
   damageColor: {r: 0.3962264, g: 0.057938762, b: 0.057938762, a: 1}
   weaponTransform: {fileID: 625562748042871188, guid: 7ae9907639faaf6478aecd438c450575, type: 3}
+  attackSpeed: 1
   attackArea: 1

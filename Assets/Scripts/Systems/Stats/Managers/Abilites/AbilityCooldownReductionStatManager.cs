@@ -13,6 +13,8 @@ public class AbilityCooldownReductionStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float abilityCooldownReductionStat;
 
+    public float AbilityCooldownReductionStat => abilityCooldownReductionStat;
+
     public class OnAbilityCooldownReductionStatEventArgs : EventArgs
     {
         public float abilityCooldownReductionStat;

@@ -4,7 +4,7 @@ using UnityEngine;
 
 [CreateAssetMenu(fileName = "NewRangedWeaponSO", menuName = "ScriptableObjects/Inventory/Weapons/RangedWeapon")]
 
-public class RangedWeaponSO : WeaponSO
+public class RangedWeaponSO : AttackBasedWeaponSO
 {
     [Header("Ranged Weapon Settings")]
     [Range(0f, 5f)] public float attackRange;

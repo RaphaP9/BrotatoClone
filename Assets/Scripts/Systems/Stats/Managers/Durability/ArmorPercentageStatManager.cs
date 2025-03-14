@@ -13,6 +13,8 @@ public class ArmorPercentageStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float armorPercentageStat;
 
+    public float ArmorPercentageStat => armorPercentageStat;
+
     public class OnArmorPercentageStatEventArgs : EventArgs
     {
         public float armorPercentageStat;

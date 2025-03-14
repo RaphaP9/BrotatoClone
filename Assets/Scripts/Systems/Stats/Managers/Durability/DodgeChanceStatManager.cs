@@ -13,6 +13,8 @@ public class DodgeChanceStatManager : StatManager
     [Header("Value")]
     [SerializeField] private float dodgeChanceStat;
 
+    public float DodgeChanceStat => dodgeChanceStat;
+
     public class OnDodgeChanceStatEventArgs : EventArgs
     {
         public float dodgeChanceStat;
