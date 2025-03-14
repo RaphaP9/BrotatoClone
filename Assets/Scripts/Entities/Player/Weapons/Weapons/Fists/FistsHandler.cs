@@ -5,10 +5,10 @@ using UnityEngine;
 
 public class FistsHandler : MeleeWeaponHandler
 {
-    [Header("FistsComponents")]
+    [Header("Fists Components")]
     [SerializeField] private Transform attackPoint;
 
-    public static event EventHandler OnFistsAttack;
+    public static event EventHandler<OnWeaponAttackEventArgs> OnFistsAttack;
 
     protected override void Attack()
     {

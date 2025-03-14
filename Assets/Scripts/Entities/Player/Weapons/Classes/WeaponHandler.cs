@@ -7,9 +7,6 @@ public class WeaponHandler : MonoBehaviour
     [Header("Components")]
     [SerializeField] protected WeaponSO weaponSO;
 
-    [Header("Settings")]
-    [SerializeField] protected LayerMask enemyLayerMask;
-
     [Header("Debug")]
     [SerializeField] protected bool debug;
     [SerializeField] protected Color gizmosColor;

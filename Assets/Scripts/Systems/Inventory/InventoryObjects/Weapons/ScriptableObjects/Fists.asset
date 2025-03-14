@@ -19,7 +19,7 @@ MonoBehaviour:
   description: Basic Weapon
   sprite: {fileID: 0}
   weaponType: 0
-  fireType: 0
+  fireType: 1
   regularDamage: 3
   bleedDamage: 0
   bleedDuration: 2

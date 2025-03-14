@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,9 @@ public static class GeneralUtilities
     public static Vector2 SupressZComponent(Vector3 vector3) => new Vector2(vector3.x, vector3.y);
 
     public static float GetVector2AngleDegrees(Vector2 vector2) => Mathf.Atan2(vector2.y, vector2.x) * Mathf.Rad2Deg;
+
+    public static Vector3 Vector2ToVector3(Vector2 vector2) => new Vector3(vector2.x, vector2.y, 0f );
+    
     #endregion
 
     #region Floats
@@ -35,5 +39,9 @@ public static class GeneralUtilities
     }
 
     public static Transform GetTransformByCollider(Collider2D collider) => collider.transform;
-    #endregion  
+    #endregion
+
+    #region LayerMasks
+    public static bool CheckGameObjectInLayerMask(GameObject gameObject, LayerMask layerMask) => ((1 << gameObject.layer) & layerMask) != 0;
+    #endregion
 }

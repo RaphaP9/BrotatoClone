@@ -5,6 +5,10 @@ using UnityEngine.UIElements;
 
 public class WeaponAim : MonoBehaviour
 {
+    [Header("Settings")]
+    [SerializeField] private Vector2 aimDirection;
+
+    public Vector2 AimDirection => aimDirection;
     public bool FacingRight {  get; private set; }
 
     private const float FACING_RIGHT_UPPER_LIMIT = 90f;
@@ -19,6 +23,8 @@ public class WeaponAim : MonoBehaviour
     {
         if (!CanAim()) return;
 
+        UpdateAimDirection();
+
         float aimAngle = CalculateAimAngle();
         SetZRotation(aimAngle);
 
@@ -30,6 +36,11 @@ public class WeaponAim : MonoBehaviour
         if (!PlayerHealth.Instance.IsAlive()) return false;
 
         return true;
+    }
+
+    private void UpdateAimDirection()
+    {
+        aimDirection = CalculateAimUnitaryVector();
     }
 
     private float CalculateAimAngle()

@@ -1,6 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using System.Linq;
 using UnityEngine;
 
 public static class GeneralGameplayUtilities
@@ -92,7 +92,7 @@ public static class GeneralGameplayUtilities
 
     public static void DealRegularDamageInArea(int damage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransforms(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach(EntityHealth entityHealth in entityHealthsInRange)
@@ -103,7 +103,7 @@ public static class GeneralGameplayUtilities
 
     public static void DealBleedDamageInArea(int damage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransforms(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
@@ -134,7 +134,26 @@ public static class GeneralGameplayUtilities
     #endregion
 
     #region Detection
-    public static List<Transform> DetectTransforms(Vector2 position, float detectionRange, LayerMask layerMask)
+
+    public static List<Transform> DetectTransformsInMultipleRanges(List<Vector2> positions,float detectionRange,LayerMask layerMask)
+    {
+        HashSet<Transform> uniqueTransforms = new HashSet<Transform>();
+
+        foreach(Vector2 position in positions)
+        {
+            List<Transform> detectedTransforms = DetectTransformsInRange(position, detectionRange, layerMask);
+            
+            foreach(Transform transform in detectedTransforms)
+            {
+                uniqueTransforms.Add(transform);
+            }
+        }
+      
+        List<Transform> uniqueTransformsList = uniqueTransforms.ToList();
+        return uniqueTransformsList;
+    }
+
+    public static List<Transform> DetectTransformsInRange(Vector2 position, float detectionRange, LayerMask layerMask)
     {
         Collider2D[] colliders = Physics2D.OverlapCircleAll(position, detectionRange, layerMask);
 
@@ -174,4 +193,10 @@ public static class GeneralGameplayUtilities
     }
     #endregion
 
+    #region Projectiles
+    public static Vector2 DeviateShootDirection(Vector2 shootDirection, float dispersionAngle)
+    {
+        return shootDirection;
+    }
+    #endregion
 }
