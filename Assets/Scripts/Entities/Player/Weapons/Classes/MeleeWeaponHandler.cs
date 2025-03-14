@@ -4,11 +4,7 @@ using UnityEngine;
 
 public abstract class MeleeWeaponHandler : AttackBasedWeaponHandler
 {
-    private MeleeWeaponSO MeleeWeaponSO => weaponSO as MeleeWeaponSO;
+    protected MeleeWeaponSO MeleeWeaponSO => weaponSO as MeleeWeaponSO;
 
-    protected void DealAreaDamage(Vector2 position, float damage)
-    {
-
-    }
-
+    protected float GetWeaponModifiedArea() => GeneralGameplayUtilities.GetWeaponModifiedArea(MeleeWeaponSO.attackArea, AreaMultiplierStatManager.Instance.AreaMultiplierStat);
 }

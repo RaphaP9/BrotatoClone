@@ -4830,7 +4830,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f4584d8e0d3d5d46893c7e7d03a2fdf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers: []
+  statModifiers:
+  - originGUID: 
+    statType: 0
+    statModificationType: 1
+    value: 0.5
   attackDamageMultiplierStat: 0
 --- !u!1 &1176138030
 GameObject:
@@ -5261,15 +5265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531ed19740b35854bbc0bd9bc9755889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers:
-  - originGUID: 
-    statType: 9
-    statModificationType: 0
-    value: 0.15
-  - originGUID: 
-    statType: 9
-    statModificationType: 1
-    value: 0.15
+  statModifiers: []
   attackCritChanceStat: 0
 --- !u!1 &1250075494
 GameObject:
@@ -7993,12 +7989,12 @@ MonoBehaviour:
   statModifiers:
   - originGUID: 
     statType: 0
-    statModificationType: 0
-    value: 1
+    statModificationType: 1
+    value: 0.2
   - originGUID: 
     statType: 0
     statModificationType: 1
-    value: 0.5
+    value: 0.4
   areaMultiplierStat: 0
 --- !u!1 &1614470072
 GameObject:
@@ -8999,7 +8995,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1dd2a5071887044a847870a2707f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers: []
+  statModifiers:
+  - originGUID: 
+    statType: 0
+    statModificationType: 1
+    value: 1.17
   attackSpeedMultiplierStat: 0
 --- !u!1 &2005504544
 GameObject:

@@ -6,11 +6,14 @@ public abstract class WeaponSO : InventoryObjectSO, IDamageDealer
 {
     [Header("WeaponSO Settings")]
     public WeaponType weaponType;
-    [Range(1, 10)] public int damage;
+    [Range(1, 10)] public int regularDamage;
     [Space]
     [Range(0f, 10)] public int bleedDamage;
     [Range(2f, 10f)] public float bleedDuration;
     [Range(0.25f, 2f)] public float bleedTickTime;
+    [Space]
+    [Range(0f, 1f)] public float critChance;
+    [Range(0f,1f)] public float critDamageMultiplier;
     [Space]
     [ColorUsage(true, true)] public Color damageColor;
     [Space]

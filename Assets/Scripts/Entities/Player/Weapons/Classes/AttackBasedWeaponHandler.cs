@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,12 @@ public abstract class AttackBasedWeaponHandler : WeaponHandler
     public AttackBasedWeaponSO AttackBasedWeaponSO => weaponSO as AttackBasedWeaponSO;
 
     protected float attackTimer = 0f;
+
+    public class OnWeaponAttackEventArgs: EventArgs
+    {
+        public int damage;
+        public bool isCrit;
+    }
 
     protected virtual void Start()
     {
@@ -45,5 +52,5 @@ public abstract class AttackBasedWeaponHandler : WeaponHandler
     private void ResetAttackTimer() => attackTimer = 0f;
     private bool AttackOnCooldown() => attackTimer > 0f;
     private void ResetTimer() => attackTimer = 1f / GetWeaponModifiedAttackSpeed();
-    private float GetWeaponModifiedAttackSpeed() => GeneralGameplayUtilities.GetModifiedAttackSpeed(AttackBasedWeaponSO.attackSpeed, AttackSpeedMultiplierStatManager.Instance.AttackSpeedMultiplierStat);
+    protected float GetWeaponModifiedAttackSpeed() => GeneralGameplayUtilities.GetWeaponModifiedAttackSpeed(AttackBasedWeaponSO.attackSpeed, AttackSpeedMultiplierStatManager.Instance.AttackSpeedMultiplierStat);
 }

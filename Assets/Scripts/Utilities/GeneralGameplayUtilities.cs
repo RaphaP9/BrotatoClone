@@ -37,13 +37,37 @@ public static class GeneralGameplayUtilities
 
     #endregion
 
-    #region AttackSpeedProcessing
-    public static float GetModifiedAttackSpeed(float baseAttackSpeed, float attackSpeedModificationPercentage)
+    #region WeaponStatProcessing
+    public static int GetWeaponModifiedDamage(int damage, float attackDamageModificationPercentage)
     {
-        float modifiedAttackSpeed = baseAttackSpeed * attackSpeedModificationPercentage;
+        float modifiedAttackDamage = damage * attackDamageModificationPercentage;
+        int roundedModificatedDamage = Mathf.CeilToInt(modifiedAttackDamage);
+        return roundedModificatedDamage;
+    }
+
+    public static float GetWeaponModifiedCritChance(float baseWeaponCritChance, float critChanceModificationValue)
+    {
+        float modifiedCritChande = baseWeaponCritChance + critChanceModificationValue;
+        return modifiedCritChande;
+    }
+
+    public static float GetWeaponModifiedCritDamageMultiplier(float baseWeaponCritDamageMultiplier, float critDamageModificationValue)
+    {
+        float modifiedCritDamage = baseWeaponCritDamageMultiplier + critDamageModificationValue;
+        return modifiedCritDamage;
+    }
+
+    public static float GetWeaponModifiedAttackSpeed(float baseWeaponAttackSpeed, float attackSpeedModificationPercentage)
+    {
+        float modifiedAttackSpeed = baseWeaponAttackSpeed * attackSpeedModificationPercentage;
         return modifiedAttackSpeed;
     }
 
+    public static float GetWeaponModifiedArea(float baseWeaponArea, float areaModificationPercentage)
+    {
+        float modifiedArea = baseWeaponArea * areaModificationPercentage;
+        return modifiedArea;
+    }
     #endregion
 
     #region DamageProcessing
@@ -53,17 +77,6 @@ public static class GeneralGameplayUtilities
 
         if (critChance >= randomNumber) return true;
         return false;
-    }
-    public static (bool, int) ProcessAttackDamage(int baseDamage, float critChance, float critDamagePercentage)
-    {
-        bool shouldCrit = EvaluateCritAttack(critChance);
-        int damage;
-
-        if (shouldCrit) damage = CalculateCritDamage(baseDamage, critDamagePercentage);
-        else damage = baseDamage;
-
-        return (shouldCrit, damage);
-  
     }
 
     public static int CalculateCritDamage(int baseDamage, float critDamagePercentage)

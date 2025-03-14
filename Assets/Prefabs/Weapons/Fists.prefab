@@ -126,6 +126,7 @@ GameObject:
   m_Component:
   - component: {fileID: 625562748042871188}
   - component: {fileID: 1316487805018563532}
+  - component: {fileID: 1729454621835466683}
   m_Layer: 6
   m_Name: Fists
   m_TagString: Untagged
@@ -162,6 +163,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponSO: {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+--- !u!114 &1729454621835466683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3588473697295914581}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20d21072a87aaa74fb0fa7972a4aee10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weaponSO: {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  enemyLayerMask:
+    serializedVersion: 2
+    m_Bits: 128
+  attackPoint: {fileID: 5097152873224567439}
 --- !u!1 &4434281173345800443
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,6 +220,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4794230015642904152}
+  - component: {fileID: 9174486885048150431}
   m_Layer: 6
   m_Name: Rotatives
   m_TagString: Untagged
@@ -226,3 +245,15 @@ Transform:
   - {fileID: 5097152873224567439}
   m_Father: {fileID: 625562748042871188}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &9174486885048150431
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5638355212641342373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 728cd74fd94b9b94ca06f5edfefc503f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
