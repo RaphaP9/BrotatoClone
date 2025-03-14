@@ -141,16 +141,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc82e5e107c8ed04797ce81c8203a4e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  id: 0
   targetLayermask:
     serializedVersion: 2
     m_Bits: 128
+  impactLayermask:
+    serializedVersion: 2
+    m_Bits: 129
   speed: 5
   lifespan: 5
   regularDamage: 0
   bleedDamage: 0
   bleedDuration: 0
   bleedTickTime: 0
-  damageType: 0
+  projectileDamageType: 0
   projectileArea: 0
   direction: {x: 1, y: 0}
 --- !u!1 &7194684746368560150

@@ -5,11 +5,11 @@ using UnityEngine;
 
 public abstract class EntityHealth : MonoBehaviour
 {
-    [Header("Entity Settings")]
-    [SerializeField] private int maxHealth;
-    [SerializeField] private int currentHealth;
-    [SerializeField, Range(0f,1f)] private float armorPercentage;
-    [SerializeField, Range(0f, 1f)] private float dodgeChance;
+    [Header("Entity Settings - RuntimeFilled")]
+    [SerializeField] protected int maxHealth;
+    [SerializeField] protected int currentHealth;
+    [SerializeField, Range(0f,1f)] protected float armorPercentage;
+    [SerializeField, Range(0f, 1f)] protected float dodgeChance;
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -24,6 +24,16 @@ public abstract class EntityHealth : MonoBehaviour
         public IDamageDealer damageSource;
     }
 
+    public class OnEntityDodgeChanceEventArgs : EventArgs
+    {
+        public float dodgeChance;
+    }
+
+    public class OnEntityArmorPercentageEventArgs : EventArgs
+    {
+        public float armorPercentage;
+    }
+
     public class OnEntityHealthEventArgs : EventArgs
     {
         public int health;
@@ -34,14 +44,14 @@ public abstract class EntityHealth : MonoBehaviour
         public int healAmount;
         public int newCurrentHealth;
     }
-
-    protected bool TryDodge()
+   
+    public bool TryDodge()
     {
         bool dodged = GeneralGameplayUtilities.EvaluateDodgeChance(dodgeChance);
         if (dodged) OnDodge();
         return dodged;
     }
-
+    
     protected int MitigateByArmor(int baseDamage)
     {
         int mitigatedDamage = GeneralGameplayUtilities.MitigateDamageByPercentage(baseDamage, armorPercentage);
@@ -57,8 +67,6 @@ public abstract class EntityHealth : MonoBehaviour
 
     protected void TakeFinalRegularDamage(int damage, bool isCrit, IDamageDealer damageSource)
     {
-        if (!IsAlive()) return;
-
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
         OnTakeRegularDamage(damage, currentHealth, isCrit, damageSource);
@@ -116,6 +124,18 @@ public abstract class EntityHealth : MonoBehaviour
 
     public bool IsAlive() => currentHealth > 0;
 
+    protected void SetDodgeChance(float value)
+    {
+        dodgeChance = value;
+        OnDodgeChanceSet(dodgeChance);
+    }
+
+    protected void SetArmorPercentage(float value)
+    {
+        armorPercentage = value;
+        OnArmorPercentageSet(armorPercentage);
+    }
+
     protected void SetMaxHealth(int health)
     {
         maxHealth = health;
@@ -156,6 +176,8 @@ public abstract class EntityHealth : MonoBehaviour
     protected abstract void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit, IDamageDealer damageSource);
     protected abstract void OnDeath();
     //
+    protected abstract void OnDodgeChanceSet(float dodgeChance);
+    protected abstract void OnArmorPercentageSet(float armorPercentage);
     protected abstract void OnMaxHealhSet(int maxHealth);
     protected abstract void OnCurrentHealthSet(int currentHealth);
     protected abstract void OnAllHealthRestored(int currentHealth);

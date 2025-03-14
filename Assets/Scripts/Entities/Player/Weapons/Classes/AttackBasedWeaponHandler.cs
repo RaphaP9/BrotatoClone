@@ -52,5 +52,5 @@ public abstract class AttackBasedWeaponHandler : WeaponHandler
     private void ResetAttackTimer() => attackTimer = 0f;
     private bool AttackOnCooldown() => attackTimer > 0f;
     private void ResetTimer() => attackTimer = 1f / GetWeaponModifiedAttackSpeed();
-    protected float GetWeaponModifiedAttackSpeed() => GeneralGameplayUtilities.GetWeaponModifiedAttackSpeed(AttackBasedWeaponSO.attackSpeed, AttackSpeedMultiplierStatManager.Instance.AttackSpeedMultiplierStat);
+    protected float GetWeaponModifiedAttackSpeed() => GeneralGameplayUtilities.GetModifiedAttackSpeed(AttackBasedWeaponSO.attackSpeed, AttackSpeedMultiplierStatManager.Instance.AttackSpeedMultiplierStat);
 }

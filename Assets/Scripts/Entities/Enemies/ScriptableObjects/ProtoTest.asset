@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fa2cca65fc9b9e94ab3aa86dfb0c9999, type: 3}
+  m_Name: ProtoTest
+  m_EditorClassIdentifier: 
+  id: 1
+  enemyName: ProtoTest
+  description: 
+  sprite: {fileID: 0}
+  maxHealth: 20
+  armorPercentage: 0
+  dodgeChance: 0.5
+  oreDrop: 0
+  moveSpeed: 1
+  collisionDamage: 1
+  collisionDetectionRange: 1
+  collisionDamageRange: 1
+  damageColor: {r: 0.5566038, g: 0, b: 0, a: 1}

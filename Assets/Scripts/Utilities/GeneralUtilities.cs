@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.PlayerSettings;
 
 public static class GeneralUtilities
 {
@@ -11,7 +12,24 @@ public static class GeneralUtilities
     public static float GetVector2AngleDegrees(Vector2 vector2) => Mathf.Atan2(vector2.y, vector2.x) * Mathf.Rad2Deg;
 
     public static Vector3 Vector2ToVector3(Vector2 vector2) => new Vector3(vector2.x, vector2.y, 0f );
-    
+
+    public static Vector2 RotateVector2ByAngleDegrees(Vector2 vector, float angleDegrees)
+    {
+        float magnitude = vector.magnitude;
+
+        float angleRadians = angleDegrees * Mathf.Deg2Rad;
+
+        float rotationSin = Mathf.Sin(angleRadians);
+        float rotationCos = Mathf.Cos(angleRadians);
+
+        Vector2 rotatedVector = new Vector2(vector.x * rotationCos - vector.y * rotationSin, vector.x * rotationSin + vector.y * rotationCos);
+        rotatedVector.Normalize();
+
+        Vector2 finalVector = rotatedVector * magnitude;
+
+        return finalVector;
+
+    }
     #endregion
 
     #region Floats

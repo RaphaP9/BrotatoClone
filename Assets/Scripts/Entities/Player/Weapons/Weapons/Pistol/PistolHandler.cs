@@ -21,9 +21,8 @@ public class PistolHandler : RangedWeaponHandler
         Vector2 firePosition = GeneralUtilities.TransformPositionVector2(firePoint);
 
         Vector2 shootDirection = weaponAim.AimDirection;
-        Vector2 processedShootDirection = GeneralGameplayUtilities.DeviateShootDirection(shootDirection, RangedWeaponSO.dispersionAngle);
 
-        ShootProjectile(projectilePrefab, firePosition, processedShootDirection);
+        ShootProjectile(projectilePrefab, firePosition, shootDirection);
 
         OnPistolFire?.Invoke(this, new OnWeaponAttackEventArgs { damage = damage, isCrit = isCrit });
     }

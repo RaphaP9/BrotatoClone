@@ -15,6 +15,8 @@ public class PlayerHealth : EntityHealth
     public static event EventHandler<OnEntityTakeDamageEventArgs> OnPlayerTakeBleedDamage;
     public static event EventHandler<OnEntityTakeDamageEventArgs> OnPlayerTakeRegularDamage;
 
+    public static event EventHandler<OnEntityDodgeChanceEventArgs> OnPlayerDodgeChanceSet;
+    public static event EventHandler<OnEntityArmorPercentageEventArgs> OnPlayerArmorPercentageSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerMaxHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerCurrentHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerAllHealthRestored;
@@ -29,6 +31,12 @@ public class PlayerHealth : EntityHealth
 
         HealthRegenStatManager.OnHealthRegenStatInitialized += HealthRegenStatManager_OnHealthRegenStatInitialized;
         HealthRegenStatManager.OnHealthRegenStatUpdated += HealthRegenStatManager_OnHealthRegenStatUpdated;
+
+        DodgeChanceStatManager.OnDodgeChanceStatInitialized += DodgeChanceStatManager_OnDodgeChanceStatInitialized;
+        DodgeChanceStatManager.OnDodgeChanceStatUpdated += DodgeChanceStatManager_OnDodgeChanceStatUpdated;
+
+        ArmorPercentageStatManager.OnArmorPercentageStatInitialized += ArmorPercentageStatManager_OnArmorPercentageStatInitialized;
+        ArmorPercentageStatManager.OnArmorPercentageStatUpdated += ArmorPercentageStatManager_OnArmorPercentageStatUpdated;
     }
 
     private void OnDisable()
@@ -38,6 +46,12 @@ public class PlayerHealth : EntityHealth
 
         HealthRegenStatManager.OnHealthRegenStatInitialized -= HealthRegenStatManager_OnHealthRegenStatInitialized;
         HealthRegenStatManager.OnHealthRegenStatUpdated -= HealthRegenStatManager_OnHealthRegenStatUpdated;
+
+        DodgeChanceStatManager.OnDodgeChanceStatInitialized -= DodgeChanceStatManager_OnDodgeChanceStatInitialized;
+        DodgeChanceStatManager.OnDodgeChanceStatUpdated -= DodgeChanceStatManager_OnDodgeChanceStatUpdated;
+
+        ArmorPercentageStatManager.OnArmorPercentageStatInitialized -= ArmorPercentageStatManager_OnArmorPercentageStatInitialized;
+        ArmorPercentageStatManager.OnArmorPercentageStatUpdated -= ArmorPercentageStatManager_OnArmorPercentageStatUpdated;
     }
 
     private void Awake()
@@ -57,6 +71,20 @@ public class PlayerHealth : EntityHealth
             Destroy(gameObject);
         }
     }
+
+    #region DodgeChance
+    protected override void OnDodgeChanceSet(float dodgeChance)
+    {
+        OnPlayerDodgeChanceSet?.Invoke(this, new OnEntityDodgeChanceEventArgs { dodgeChance = dodgeChance });
+    }
+    #endregion
+
+    #region ArmorPercentage
+    protected override void OnArmorPercentageSet(float armorPercentage)
+    {
+        OnPlayerArmorPercentageSet?.Invoke(this, new OnEntityArmorPercentageEventArgs { armorPercentage = armorPercentage });
+    }
+    #endregion
 
     #region Damage
     protected override void OnDeath()
@@ -124,6 +152,24 @@ public class PlayerHealth : EntityHealth
     private void HealthRegenStatManager_OnHealthRegenStatUpdated(object sender, HealthRegenStatManager.OnHealthRegenStatEventArgs e)
     {
         SetHealthRegen(e.healthRegenStat);
+    }
+    private void DodgeChanceStatManager_OnDodgeChanceStatInitialized(object sender, DodgeChanceStatManager.OnDodgeChanceStatEventArgs e)
+    {
+        SetDodgeChance(e.dodgeChanceStat);
+    }
+
+    private void DodgeChanceStatManager_OnDodgeChanceStatUpdated(object sender, DodgeChanceStatManager.OnDodgeChanceStatEventArgs e)
+    {
+        SetDodgeChance(e.dodgeChanceStat);
+    }
+    private void ArmorPercentageStatManager_OnArmorPercentageStatInitialized(object sender, ArmorPercentageStatManager.OnArmorPercentageStatEventArgs e)
+    {
+        SetArmorPercentage(e.armorPercentageStat);
+    }
+
+    private void ArmorPercentageStatManager_OnArmorPercentageStatUpdated(object sender, ArmorPercentageStatManager.OnArmorPercentageStatEventArgs e)
+    {
+        SetArmorPercentage(e.armorPercentageStat);
     }
     #endregion
 }

@@ -14,12 +14,18 @@ public class TestScript : MonoBehaviour
     {
         PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
+
+        EnemyHealth.OnEnemyDodge += EnemyHealth_OnEnemyDodge;
     }
+
+
 
     private void OnDisable()
     {
         PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
+
+        EnemyHealth.OnEnemyDodge -= EnemyHealth_OnEnemyDodge;
     }
 
 
@@ -40,5 +46,9 @@ public class TestScript : MonoBehaviour
     {
         Debug.Log($"Damage: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");
 
+    }
+    private void EnemyHealth_OnEnemyDodge(object sender, System.EventArgs e)
+    {
+        Debug.Log("EnemyDodged!");
     }
 }

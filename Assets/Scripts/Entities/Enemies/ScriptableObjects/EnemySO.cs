@@ -6,12 +6,16 @@ using UnityEngine;
 public abstract class EnemySO : ScriptableObject, IDamageDealer
 {
     [Header("Enemy Identifiers")]
-    public string id;
+    public int id;
     public string enemyName;
     [TextArea(3, 10)] public string description;
     public Sprite sprite;
 
     [Header("Enemy Stats Settings")]
+    [Range(10, 100)] public int maxHealth;
+    [Range(0f, 1f)] public float armorPercentage;
+    [Range(0f, 1f)] public float dodgeChance;
+    [Space]
     [Range(0,5)] public int oreDrop;
     [Range(1f, 10f)] public float moveSpeed;
     [Space]
@@ -19,7 +23,7 @@ public abstract class EnemySO : ScriptableObject, IDamageDealer
     [Range(1f, 10f)] public float collisionDetectionRange;
     [Range(1f, 10f)] public float collisionDamageRange;
     [Space]
-    [Range(2f, 10f)] public Color damageColor;
+    [ColorUsage(true,true)] public Color damageColor;
 
     public string GetName() => enemyName;
     public Color GetDamageColor() => damageColor;

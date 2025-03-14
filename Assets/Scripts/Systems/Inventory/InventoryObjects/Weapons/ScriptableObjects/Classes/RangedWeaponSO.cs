@@ -8,7 +8,7 @@ public class RangedWeaponSO : AttackBasedWeaponSO, IProjectileSpawner
 {
     [Header("Ranged Weapon Settings")]
     [Range(3f, 20f)] public float projectileRange;
-    [Range(5f, 15f)] public float projectileSpeed;
+    [Range(5f, 30f)] public float projectileSpeed;
     [Range(0f, 20f)] public float dispersionAngle;
     [Space]
     public ProjectileDamageType projectileDamageType;

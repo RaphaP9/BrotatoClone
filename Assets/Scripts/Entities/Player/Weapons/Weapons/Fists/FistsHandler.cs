@@ -13,7 +13,6 @@ public class FistsHandler : MeleeWeaponHandler
     protected override void Attack()
     {
         bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetWeaponModifiedCritChance());
-
         int damage = GetWeaponModifiedRegularDamage();
         if (isCrit) damage = GeneralGameplayUtilities.CalculateCritDamage(damage, GetWeaponModifiedCritDamageMultiplier());
 

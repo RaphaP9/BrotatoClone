@@ -37,27 +37,27 @@ public static class GeneralGameplayUtilities
 
     #endregion
 
-    #region WeaponStatProcessing
-    public static int GetWeaponModifiedDamage(int damage, float attackDamageModificationPercentage)
+    #region StatProcessing
+    public static int GetModifiedDamage(int damage, float attackDamageModificationPercentage)
     {
         float modifiedAttackDamage = damage * attackDamageModificationPercentage;
         int roundedModificatedDamage = Mathf.CeilToInt(modifiedAttackDamage);
         return roundedModificatedDamage;
     }
 
-    public static float GetWeaponModifiedCritChance(float baseWeaponCritChance, float critChanceModificationValue)
+    public static float GetModifiedCritChance(float baseWeaponCritChance, float critChanceModificationValue)
     {
         float modifiedCritChande = baseWeaponCritChance + critChanceModificationValue;
         return modifiedCritChande;
     }
 
-    public static float GetWeaponModifiedCritDamageMultiplier(float baseWeaponCritDamageMultiplier, float critDamageModificationValue)
+    public static float GetModifiedCritDamageMultiplier(float baseWeaponCritDamageMultiplier, float critDamageModificationValue)
     {
         float modifiedCritDamage = baseWeaponCritDamageMultiplier + critDamageModificationValue;
         return modifiedCritDamage;
     }
 
-    public static float GetWeaponModifiedAttackSpeed(float baseWeaponAttackSpeed, float attackSpeedModificationPercentage)
+    public static float GetModifiedAttackSpeed(float baseWeaponAttackSpeed, float attackSpeedModificationPercentage)
     {
         float modifiedAttackSpeed = baseWeaponAttackSpeed * attackSpeedModificationPercentage;
         return modifiedAttackSpeed;
@@ -116,7 +116,11 @@ public static class GeneralGameplayUtilities
     {
         EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
 
-        if (entityHealth == null) return;
+        if (entityHealth == null)
+        {
+            if (DEBUG) Debug.Log("Transform does not contain a EntityHealth component. Damage will be ignored.");
+            return;
+        }
 
         entityHealth.TakeRegularDamage(damage, isCrit, damageSource);  
     }
@@ -125,7 +129,11 @@ public static class GeneralGameplayUtilities
     {
         EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
 
-        if (entityHealth == null) return;
+        if (entityHealth == null)
+        {
+            if (DEBUG) Debug.Log("Transform does not contain a EntityHealth component. Damage will be ignored.");
+            return;
+        }
 
         entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit, damageSource);
     }
@@ -185,7 +193,7 @@ public static class GeneralGameplayUtilities
 
         if (entityHealth == null)
         {
-            if (DEBUG) Debug.Log("Transform does not contain an EntityHealthComponent");
+            if (DEBUG) Debug.Log("Transform does not contain an EntityHealthComponent.");
             return null;
         }
 
@@ -196,7 +204,12 @@ public static class GeneralGameplayUtilities
     #region Projectiles
     public static Vector2 DeviateShootDirection(Vector2 shootDirection, float dispersionAngle)
     {
-        return shootDirection;
+        float randomAngle = Random.Range(-dispersionAngle, dispersionAngle);
+
+        Vector2 deviatedDirection = GeneralUtilities.RotateVector2ByAngleDegrees(shootDirection, randomAngle);
+        deviatedDirection.Normalize();
+
+        return deviatedDirection;
     }
     #endregion
 }

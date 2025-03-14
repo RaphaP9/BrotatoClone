@@ -16,10 +16,10 @@ public class WeaponHandler : MonoBehaviour
     protected bool SemiAutomaticInputAttack => AttackInput.Instance.GetAttackDown();
     protected bool AutomaticInputAttack => AttackInput.Instance.GetAttackHold();
 
-    protected int GetWeaponModifiedRegularDamage() => GeneralGameplayUtilities.GetWeaponModifiedDamage(weaponSO.regularDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);
-    protected int GetWeaponModifiedBleedDamage() => GeneralGameplayUtilities.GetWeaponModifiedDamage(weaponSO.bleedDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);
-    protected float GetWeaponModifiedCritChance() => GeneralGameplayUtilities.GetWeaponModifiedCritChance(weaponSO.critChance, AttackCritChanceStatManager.Instance.AttackCritChanceStat);
-    protected float GetWeaponModifiedCritDamageMultiplier() => GeneralGameplayUtilities.GetWeaponModifiedCritDamageMultiplier(weaponSO.critDamageMultiplier, AttackCritDamageMultiplierStatManager.Instance.AttackCritDamageMultiplierStat);
+    protected int GetWeaponModifiedRegularDamage() => GeneralGameplayUtilities.GetModifiedDamage(weaponSO.regularDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);
+    protected int GetWeaponModifiedBleedDamage() => GeneralGameplayUtilities.GetModifiedDamage(weaponSO.bleedDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);
+    protected float GetWeaponModifiedCritChance() => GeneralGameplayUtilities.GetModifiedCritChance(weaponSO.critChance, AttackCritChanceStatManager.Instance.AttackCritChanceStat);
+    protected float GetWeaponModifiedCritDamageMultiplier() => GeneralGameplayUtilities.GetModifiedCritDamageMultiplier(weaponSO.critDamageMultiplier, AttackCritDamageMultiplierStatManager.Instance.AttackCritDamageMultiplierStat);
 
     protected bool GetAttackInput()
     {
