@@ -9,24 +9,26 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75243dc7122d8c24e941d81c3888e838, type: 3}
-  m_Name: Fists
+  m_Script: {fileID: 11500000, guid: de5109eb4757c484d8ce0e668c97c32d, type: 3}
+  m_Name: Pistol
   m_EditorClassIdentifier: 
-  id: 1
-  inventoryObjectName: Fists
+  id: 2
+  inventoryObjectName: Pistol
   type: 1
   rarityType: 0
-  description: Basic Weapon
+  description: Common Pistol
   sprite: {fileID: 0}
-  weaponType: 0
-  fireType: 0
-  regularDamage: 3
+  weaponType: 1
+  fireType: 1
+  regularDamage: 2
   bleedDamage: 0
   bleedDuration: 2
   bleedTickTime: 0.25
   critChance: 0
   critDamageMultiplier: 0
-  damageColor: {r: 0.3962264, g: 0.057938762, b: 0.057938762, a: 1}
-  weaponTransform: {fileID: 625562748042871188, guid: 7ae9907639faaf6478aecd438c450575, type: 3}
-  attackSpeed: 1
-  attackArea: 1
+  damageColor: {r: 0.3490566, g: 0, b: 0, a: 1}
+  weaponTransform: {fileID: 625562748042871188, guid: 117e45db0eeec0b4683ed3f856f43bac, type: 3}
+  attackSpeed: 2
+  attackRange: 3
+  projectileSpeed: 10
+  dispersionPercentage: 0

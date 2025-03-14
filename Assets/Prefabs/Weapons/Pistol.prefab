@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 1316487805018563532}
   - component: {fileID: 1729454621835466683}
   m_Layer: 6
-  m_Name: Fists
+  m_Name: Pistol
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3916ec3055d50b40abce2ca5858868d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSO: {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  weaponSO: {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
 --- !u!114 &1729454621835466683
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,7 +190,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20d21072a87aaa74fb0fa7972a4aee10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponSO: {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  weaponSO: {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
   enemyLayerMask:
     serializedVersion: 2
     m_Bits: 128

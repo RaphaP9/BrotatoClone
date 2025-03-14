@@ -90,44 +90,44 @@ public static class GeneralGameplayUtilities
 
     #region DamageDealing
 
-    public static void DealRegularDamageInArea(int damage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask)
+    public static void DealRegularDamageInArea(int damage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
         List<Transform> detectedEnemyTransforms = DetectTransforms(position, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach(EntityHealth entityHealth in entityHealthsInRange)
         {
-            entityHealth.TakeRegularDamage(damage, isCrit);
+            entityHealth.TakeRegularDamage(damage, isCrit, damageSource);
         }
     }
 
-    public static void DealBleedDamageInArea(int damage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask)
+    public static void DealBleedDamageInArea(int damage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
         List<Transform> detectedEnemyTransforms = DetectTransforms(position, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
-            entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit);
+            entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit, damageSource);
         }
     }
 
-    public static void DealRegularDamageToTransform(int damage, bool isCrit, Transform transform)
+    public static void DealRegularDamageToTransform(int damage, bool isCrit, Transform transform, IDamageDealer damageSource)
     {
         EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
 
         if (entityHealth == null) return;
 
-        entityHealth.TakeRegularDamage(damage,isCrit);  
+        entityHealth.TakeRegularDamage(damage, isCrit, damageSource);  
     }
 
-    public static void DealBleedDamageToTransform(int damage, float bleedDuration, float tickTime, bool isCrit, Transform transform)
+    public static void DealBleedDamageToTransform(int damage, float bleedDuration, float tickTime, bool isCrit, Transform transform, IDamageDealer damageSource)
     {
         EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
 
         if (entityHealth == null) return;
 
-        entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit);
+        entityHealth.Bleed(damage, bleedDuration, tickTime, isCrit, damageSource);
     }
 
 

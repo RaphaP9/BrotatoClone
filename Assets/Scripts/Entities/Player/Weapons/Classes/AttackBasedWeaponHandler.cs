@@ -34,7 +34,7 @@ public abstract class AttackBasedWeaponHandler : WeaponHandler
     private void HandleAttack()
     {
         if (AttackOnCooldown()) return;
-        if (!InputAttack) return;
+        if (!GetAttackInput()) return;
 
         Attack();
         ResetTimer();

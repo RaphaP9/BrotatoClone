@@ -2686,6 +2686,7 @@ MonoBehaviour:
   layerMask:
     serializedVersion: 2
     m_Bits: 64
+  testWeapon: {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
 --- !u!4 &583671959
 Transform:
   m_ObjectHideFlags: 0
@@ -3125,6 +3126,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsInventory:
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
   - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
   debug: 1
 --- !u!1 &654384809
@@ -8995,11 +9001,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff1dd2a5071887044a847870a2707f49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers:
-  - originGUID: 
-    statType: 0
-    statModificationType: 1
-    value: 1.17
+  statModifiers: []
   attackSpeedMultiplierStat: 0
 --- !u!1 &2005504544
 GameObject:

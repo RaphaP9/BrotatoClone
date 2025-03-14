@@ -6,6 +6,8 @@ public static class GeneralUtilities
 {
     #region Vectors
     public static Vector2 SupressZComponent(Vector3 vector3) => new Vector2(vector3.x, vector3.y);
+
+    public static float GetVector2AngleDegrees(Vector2 vector2) => Mathf.Atan2(vector2.y, vector2.x) * Mathf.Rad2Deg;
     #endregion
 
     #region Floats

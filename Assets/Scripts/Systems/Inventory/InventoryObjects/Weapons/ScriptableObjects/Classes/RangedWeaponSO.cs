@@ -8,5 +8,11 @@ public class RangedWeaponSO : AttackBasedWeaponSO
 {
     [Header("Ranged Weapon Settings")]
     [Range(0f, 5f)] public float attackRange;
+    [Range(5f, 15f)] public float projectileSpeed;
     [Range(0f, 0.1f)] public float dispersionPercentage;
+
+    protected void FireProjectile()
+    {
+
+    }
 }

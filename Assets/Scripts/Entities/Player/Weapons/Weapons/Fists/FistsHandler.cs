@@ -17,8 +17,15 @@ public class FistsHandler : MeleeWeaponHandler
         int damage = GetWeaponModifiedRegularDamage();
         if (isCrit) damage = GeneralGameplayUtilities.CalculateCritDamage(damage, GetWeaponModifiedCritDamageMultiplier());
 
-        GeneralGameplayUtilities.DealRegularDamageInArea(damage, GeneralUtilities.TransformPositionVector2(attackPoint), GetWeaponModifiedArea(), isCrit, enemyLayerMask);
+        GeneralGameplayUtilities.DealRegularDamageInArea(damage, GeneralUtilities.TransformPositionVector2(attackPoint), GetWeaponModifiedArea(), isCrit, enemyLayerMask, weaponSO);
 
         OnFistsAttack?.Invoke(this, new OnWeaponAttackEventArgs { damage = damage, isCrit = isCrit});
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmosColor;
+
+        Gizmos.DrawWireSphere(attackPoint.position, GetWeaponModifiedArea());
     }
 }

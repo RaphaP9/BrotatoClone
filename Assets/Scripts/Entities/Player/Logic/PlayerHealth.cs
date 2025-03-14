@@ -69,14 +69,14 @@ public class PlayerHealth : EntityHealth
         OnPlayerDodge?.Invoke(this, EventArgs.Empty);
     }
 
-    protected override void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit)
+    protected override void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnPlayerTakeRegularDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit});
+        OnPlayerTakeRegularDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource });
     }
 
-    protected override void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit)
+    protected override void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnPlayerTakeBleedDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit});
+        OnPlayerTakeBleedDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource});
     }
     #endregion
 
