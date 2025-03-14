@@ -3126,7 +3126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsInventory:
-  - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
+  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
   debug: 1
 --- !u!1 &654384809
 GameObject:
@@ -9605,7 +9605,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 10
+  m_SortingOrder: 5
   m_Sprite: {fileID: -458418905, guid: daf8963787108874c95eb38356d9f707, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

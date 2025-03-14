@@ -215,8 +215,8 @@ public class ProjectileHandler : MonoBehaviour
 
     protected void SetProjectileSource(IDamageDealer projectileSource) => this.projectileSource = projectileSource;
     protected void SetProjectileDirection(Vector2 direction) => this.direction = direction;
-    protected bool HasBleedDamage() => bleedDamage > 0f;
-    protected bool HasRegularDamage() => regularDamage > 0f;
+    protected bool HasBleedDamage() => bleedDamage > 0;
+    protected bool HasRegularDamage() => regularDamage > 0;
 
     protected int GetProjectileModifiedRegularDamage() => GeneralGameplayUtilities.GetModifiedDamage(regularDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);
     protected int GetProjectileModifiedBleedDamage() => GeneralGameplayUtilities.GetModifiedDamage(bleedDamage, AttackDamageMultiplierStatManager.Instance.AttackDamageMultiplierStat);

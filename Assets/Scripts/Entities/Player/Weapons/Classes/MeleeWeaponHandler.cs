@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Data.Common;
 
 public abstract class MeleeWeaponHandler : AttackBasedWeaponHandler
 {
@@ -51,8 +52,8 @@ public abstract class MeleeWeaponHandler : AttackBasedWeaponHandler
     }
 
 
-    protected bool HasBleedDamage() => MeleeWeaponSO.regularDamage > 0f;
-    protected bool HasRegularDamage() => MeleeWeaponSO.bleedDamage > 0f;
+    protected bool HasRegularDamage() => MeleeWeaponSO.regularDamage > 0;
+    protected bool HasBleedDamage() => MeleeWeaponSO.bleedDamage > 0;
 
     protected float GetWeaponModifiedArea() => GeneralGameplayUtilities.GetWeaponModifiedArea(MeleeWeaponSO.attackArea, AreaMultiplierStatManager.Instance.AreaMultiplierStat);
 }

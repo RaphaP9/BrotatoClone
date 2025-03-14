@@ -7,7 +7,7 @@ public abstract class WeaponSO : InventoryObjectSO, IDamageDealer
     [Header("WeaponSO Settings")]
     public WeaponType weaponType;
     public FireType fireType;
-    [Range(1, 10)] public int regularDamage;
+    [Range(0, 10)] public int regularDamage;
     [Space]
     [Range(0f, 10)] public int bleedDamage;
     [Range(2f, 10f)] public float bleedDuration;

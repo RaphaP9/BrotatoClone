@@ -125,8 +125,8 @@ public static class GeneralGameplayUtilities
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
-            bool dodged = entityHealth.TryDodge();
-            if (dodged) continue;
+            if (!entityHealth.IsAlive()) continue;
+            if (entityHealth.TryDodge()) continue;
 
             entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
             entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
@@ -140,8 +140,8 @@ public static class GeneralGameplayUtilities
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
-            bool dodged = entityHealth.TryDodge();
-            if (dodged) continue;
+            if (!entityHealth.IsAlive()) continue;
+            if (entityHealth.TryDodge()) continue;
 
             entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
         }
@@ -154,8 +154,8 @@ public static class GeneralGameplayUtilities
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
-            bool dodged = entityHealth.TryDodge();
-            if (dodged) continue;
+            if (!entityHealth.IsAlive()) continue;
+            if (entityHealth.TryDodge()) continue;
 
             entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
         }
@@ -168,6 +168,8 @@ public static class GeneralGameplayUtilities
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
+            if (!entityHealth.IsAlive()) continue;
+
             entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
             entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
         }
@@ -180,6 +182,8 @@ public static class GeneralGameplayUtilities
 
         foreach(EntityHealth entityHealth in entityHealthsInRange)
         {
+            if (!entityHealth.IsAlive()) continue;
+
             entityHealth.TakeRegularDamage(regularDamage, isCrit, damageSource);
         }
     }
@@ -191,6 +195,8 @@ public static class GeneralGameplayUtilities
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
         {
+            if (!entityHealth.IsAlive()) continue;
+
             entityHealth.Bleed(bleedDamage, bleedDuration, tickTime, isCrit, damageSource);
         }
     }
