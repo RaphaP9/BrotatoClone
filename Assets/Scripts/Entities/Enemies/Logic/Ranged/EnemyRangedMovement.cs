@@ -10,7 +10,7 @@ public class EnemyRangedMovement : EnemyMovement
     [Header("States")]
     [SerializeField] private State state;
 
-    public enum State { Still, TowardsPreferredPoint}
+    public enum State {StartingStill, Still, TowardsPreferredPoint}
     public State MovingState => state;
 
     private RangedEnemySO RangedEnemySO => enemyIdentifier.EnemySO as RangedEnemySO;
@@ -19,7 +19,7 @@ public class EnemyRangedMovement : EnemyMovement
 
     private void Start()
     {
-        SetMovingState(State.Still);
+        SetMovingState(State.StartingStill);
     }
 
     private void Update()
@@ -31,6 +31,9 @@ public class EnemyRangedMovement : EnemyMovement
     {
         switch (state)
         {
+            case State.StartingStill:
+                StartingStillLogic();
+                break;
             case State.Still:
                 StillLogic();
                 break;
@@ -39,12 +42,24 @@ public class EnemyRangedMovement : EnemyMovement
                 break;
         }
     }
+    private void StartingStillLogic()
+    {
+        StopMovement();
+
+        if (!CanMove()) return;
+
+        if (!InPreferredDistance())
+        {
+            SetMovingState(State.TowardsPreferredPoint);
+            return;
+        }
+    }
 
     private void StillLogic()
     {
-        if (!CanMove()) return;
-
         StopMovement();
+
+        if (!CanMove()) return;
 
         if (!InStillDistance())
         {          
@@ -71,7 +86,7 @@ public class EnemyRangedMovement : EnemyMovement
         }
     }
 
-    private bool InStillDistance()
+    public bool InStillDistance()
     {
         if (GetDistanceToPlayer() < RangedEnemySO.tooCloseDistance) return false;
         if (GetDistanceToPlayer() > RangedEnemySO.tooFarDistance) return false;
@@ -79,7 +94,7 @@ public class EnemyRangedMovement : EnemyMovement
         return true;
     }
 
-    private bool InPreferredDistance()
+    public bool InPreferredDistance()
     {
         if (Mathf.Abs(GetDistanceToPlayer()-RangedEnemySO.preferredDistance) > PREFERRED_POSITION_THRESHOLD ) return false;
         return true;

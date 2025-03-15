@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   entityName: Incendium
   description: 
-  sprite: {fileID: 0}
+  sprite: {fileID: 629127556, guid: 56f7fc5433420f84c91b988f519aeddd, type: 3}
   damageColor: {r: 1, g: 0.5273675, b: 0, a: 1}
   maxHealth: 70
   armorPercentage: 0
@@ -25,12 +25,20 @@ MonoBehaviour:
   oreDrop: 0
   spawnDuration: 3
   cleanupTime: 3
+  critChance: 0
+  critDamageMultiplier: 0
   tooCloseDistance: 3
   preferredDistance: 8
   tooFarDistance: 15
+  aimingTime: 1
+  shootingTime: 1
+  postShootTime: 1
   projectileRegularDamage: 2
   projectileBleedDamage: 0
   projectileBleedDuration: 0
   projectileBleedTickTime: 0
+  projectileRange: 10
+  projectileSpeed: 5
+  dispersionAngle: 0
   projectileDamageType: 0
   projectileArea: 0

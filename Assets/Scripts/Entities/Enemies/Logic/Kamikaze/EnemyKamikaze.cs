@@ -92,14 +92,16 @@ public class EnemyKamikaze : MonoBehaviour
         Vector2 position = GeneralUtilities.TransformPositionVector2(transform);
         positions.Add(position);
 
+        bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(KamikazeEnemySO.critChance);
+
         if (HasKamikazeRegularDamage())
         {
-            GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeRegularDamage, positions, kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
+            GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeRegularDamage, positions, kamikazeDamageRange, isCrit, playerLayerMask, enemyIdentifier.EnemySO);
         }
 
         if (HasKamikazeBleedDamage())
         {
-            GeneralGameplayUtilities.DealBleedDamageInArea(kamikazeBleedDamage, kamikazeBleedDuration, kamikazeBleedTickTime, positions, kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
+            GeneralGameplayUtilities.DealBleedDamageInArea(kamikazeBleedDamage, kamikazeBleedDuration, kamikazeBleedTickTime, positions, kamikazeDamageRange, isCrit, playerLayerMask, enemyIdentifier.EnemySO);
         }
 
         OnEnemyExplosion?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });

@@ -34,7 +34,7 @@ public class ShootPointHandler : MonoBehaviour
     {
         if (enemySpawningHandler.IsSpawning) return;
         if (!enemyHealth.IsAlive()) return;
-        if (enemyShoot.IsShooting()) return;
+        //if (enemyShoot.IsShooting()) return;
 
         if (enemyMovement.PlayerOnRight())
         {

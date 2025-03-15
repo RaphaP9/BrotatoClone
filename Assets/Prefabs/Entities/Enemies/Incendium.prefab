@@ -255,10 +255,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIdentifier: {fileID: 7288238993718476968}
-  enemyMovement: {fileID: 7706264347671127833}
+  enemyRangedMovement: {fileID: 7706264347671127833}
+  enemySpawningHandler: {fileID: 6000539653414035718}
   enemyHealth: {fileID: 1715791615252644950}
+  projectilePrefab: {fileID: 909037060864899003, guid: 3c361aca19d8adc4aa04f3701e2317c2, type: 3}
   shootPoint: {fileID: 3789266233139483715}
   state: 0
+  debug: 0
 --- !u!114 &7706264347671127833
 MonoBehaviour:
   m_ObjectHideFlags: 0

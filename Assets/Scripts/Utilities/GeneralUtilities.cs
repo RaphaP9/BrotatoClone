@@ -42,6 +42,12 @@ public static class GeneralUtilities
     #region Transforms
     public static Vector2 TransformPositionVector2(Transform transform) => new Vector2(transform.position.x, transform.position.y);
 
+    public static void RotateTransformTowardsVector2(Transform transform, Vector2 direction)
+    {
+        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0, 0, angle);
+    }
+
     public static List<Vector2> TransformPositionVector2List(List<Transform> transforms)
     {
         List<Vector2> vectorList = new List<Vector2>();

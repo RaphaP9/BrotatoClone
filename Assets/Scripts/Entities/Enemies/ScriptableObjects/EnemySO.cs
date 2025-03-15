@@ -9,4 +9,7 @@ public abstract class EnemySO : EntitySO
     [Space]
     [Range(1f, 5f)] public float spawnDuration;
     [Range(1f, 10f)] public float cleanupTime;
+    [Space]
+    [Range(0f, 1f)] public float critChance;
+    [Range(0f, 1f)] public float critDamageMultiplier;
 }

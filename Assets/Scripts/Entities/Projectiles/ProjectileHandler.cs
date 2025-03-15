@@ -40,9 +40,16 @@ public class ProjectileHandler : MonoBehaviour
     public static event EventHandler<OnProjectileEventArgs> OnProjectileImpact;
     public static event EventHandler<OnProjectileEventArgs> OnProjectileLifespanEnd;
 
+    public event EventHandler<OnProjectileDirectionEventArgs> OnProjectileDirectionSet;
+
     public class OnProjectileEventArgs : EventArgs
     {
         public int id;
+    }
+
+    public class OnProjectileDirectionEventArgs : EventArgs
+    {
+        public Vector2 direction;
     }
 
     private void Awake()
@@ -218,7 +225,12 @@ public class ProjectileHandler : MonoBehaviour
     }
 
     protected void SetProjectileSource(IDamageDealer projectileSource) => this.projectileSource = projectileSource;
-    protected void SetProjectileDirection(Vector2 direction) => this.direction = direction;
+    protected void SetProjectileDirection(Vector2 direction)
+    {
+        this.direction = direction;
+        OnProjectileDirectionSet?.Invoke(this, new OnProjectileDirectionEventArgs { direction = direction });
+    }
+
     protected bool HasBleedDamage() => bleedDamage > 0;
     protected bool HasRegularDamage() => regularDamage > 0;
 
