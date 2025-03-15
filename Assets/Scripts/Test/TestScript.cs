@@ -34,10 +34,7 @@ public class TestScript : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B))
-        {
-            GeneralGameplayUtilities.DealBleedDamageInArea(2,4,1, transform.position, 1f, true, layerMask, testWeapon);
-        }
+        
     }
 
 

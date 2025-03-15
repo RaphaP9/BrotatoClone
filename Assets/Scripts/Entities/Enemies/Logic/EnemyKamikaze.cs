@@ -9,6 +9,7 @@ public class EnemyKamikaze : MonoBehaviour
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
     [SerializeField] private EnemyPlayerDetector enemyPlayerDetector;
+    [SerializeField] private EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
 
     [Header("Settings")]
@@ -33,12 +34,24 @@ public class EnemyKamikaze : MonoBehaviour
         enemyPlayerDetector.OnPlayerDetected -= EnemyPlayerDetector_OnPlayerDetected;
     }
 
+    private bool CanSelfDestroy()
+    {
+        if (!enemyHealth.IsAlive()) return false;
+        if (enemySpawningHandler.IsSpawning) return false;
+
+        return true;
+    }
+
     private void SelfDestroy()
     {
         int kamikazeDamage = enemyIdentifier.EnemySO.kamikazeDamage;
         float kamikazeDamageRange = enemyIdentifier.EnemySO.kamikazeDamageRange;
 
-        GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeDamage, transform.position, kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
+        List<Vector2> positions = new List<Vector2>();
+        Vector2 position = GeneralUtilities.TransformPositionVector2(transform);
+        positions.Add(position);
+
+        GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeDamage, positions , kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
 
         OnEnemySelfDestroy?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = kamikazeDamage });
         OnThisEnemySelfDestroy?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = kamikazeDamage });
@@ -46,7 +59,7 @@ public class EnemyKamikaze : MonoBehaviour
 
     private void EnemyPlayerDetector_OnPlayerDetected(object sender, System.EventArgs e)
     {
-        if (!enemyHealth.IsAlive()) return;
+        if (!CanSelfDestroy()) return;
         SelfDestroy();
     }
 }

@@ -159,6 +159,10 @@ public class ProjectileHandler : MonoBehaviour
         int damage = GetProjectileModifiedRegularDamage();
         int bleedDamage = GetProjectileModifiedBleedDamage();
 
+        List<Vector2> positions = new List<Vector2>();
+        Vector2 position = GeneralUtilities.TransformPositionVector2(transform);
+        positions.Add(position);
+
         if (isCrit)
         {
             damage = GeneralGameplayUtilities.CalculateCritDamage(damage, GetProjectileModifiedCritDamageMultiplier());
@@ -167,19 +171,19 @@ public class ProjectileHandler : MonoBehaviour
 
         if(HasRegularDamage() && HasBleedDamage())
         {
-            GeneralGameplayUtilities.DealRegularAndBleedDamageInArea(damage, bleedDamage, bleedDuration, bleedTickTime, GeneralUtilities.TransformPositionVector2(transform), projectileArea, isCrit, targetLayermask, projectileSource);
+            GeneralGameplayUtilities.DealRegularAndBleedDamageInArea(damage, bleedDamage, bleedDuration, bleedTickTime, positions, projectileArea, isCrit, targetLayermask, projectileSource);
             return;
         }
 
         if (HasRegularDamage())
         {
-            GeneralGameplayUtilities.DealRegularDamageInArea(damage,GeneralUtilities.TransformPositionVector2(transform),projectileArea ,isCrit, targetLayermask, projectileSource);
+            GeneralGameplayUtilities.DealRegularDamageInArea(damage,positions,projectileArea ,isCrit, targetLayermask, projectileSource);
             return;
         }
 
         if (HasBleedDamage())
         {
-            GeneralGameplayUtilities.DealBleedDamageInArea(bleedDamage,bleedDuration,bleedTickTime, GeneralUtilities.TransformPositionVector2(transform), projectileArea, isCrit, targetLayermask, projectileSource);
+            GeneralGameplayUtilities.DealBleedDamageInArea(bleedDamage,bleedDuration,bleedTickTime, positions, projectileArea, isCrit, targetLayermask, projectileSource);
             return;
         }
     }

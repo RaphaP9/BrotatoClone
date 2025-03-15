@@ -118,9 +118,9 @@ public static class GeneralGameplayUtilities
 
     #region DamageDealing
 
-    public static void DealRegularAndBleedDodgeableDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealRegularAndBleedDodgeableDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
@@ -133,9 +133,9 @@ public static class GeneralGameplayUtilities
         }
     }
 
-    public static void DealDodgeableRegularDamageInArea(int regularDamage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealDodgeableRegularDamageInArea(int regularDamage, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
@@ -147,9 +147,9 @@ public static class GeneralGameplayUtilities
         }
     }
 
-    public static void DealDodgeableBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealDodgeableBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
@@ -161,9 +161,9 @@ public static class GeneralGameplayUtilities
         }
     }
 
-    public static void DealRegularAndBleedDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealRegularAndBleedDamageInArea(int regularDamage, int bleedDamage, float bleedDuration, float tickTime, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)
@@ -175,9 +175,9 @@ public static class GeneralGameplayUtilities
         }
     }
 
-    public static void DealRegularDamageInArea(int regularDamage, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealRegularDamageInArea(int regularDamage, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach(EntityHealth entityHealth in entityHealthsInRange)
@@ -188,9 +188,9 @@ public static class GeneralGameplayUtilities
         }
     }
 
-    public static void DealBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, Vector2 position, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
+    public static void DealBleedDamageInArea(int bleedDamage, float bleedDuration, float tickTime, List<Vector2> positions, float areaRadius, bool isCrit, LayerMask layermask, IDamageDealer damageSource)
     {
-        List<Transform> detectedEnemyTransforms = DetectTransformsInRange(position, areaRadius, layermask);
+        List<Transform> detectedEnemyTransforms = DetectTransformsInMultipleRanges(positions, areaRadius, layermask);
         List<EntityHealth> entityHealthsInRange = GetEntityHealthComponentsByTransforms(detectedEnemyTransforms);
 
         foreach (EntityHealth entityHealth in entityHealthsInRange)

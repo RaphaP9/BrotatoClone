@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
-  moveSpeed: 1
+  moveSpeed: 3
   lifeSteal: 0
   oreDrop: 0
   kamikazeDamage: 5

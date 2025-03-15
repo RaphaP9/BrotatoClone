@@ -24,7 +24,7 @@ public class EnemyPlayerDetector : MonoBehaviour
         circleCollider.radius = enemyIdentifier.EnemySO.kamikazeDetectionRange;
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
         if (!GeneralUtilities.CheckGameObjectInLayerMask(collision.gameObject, playerLayerMask)) return;
 

@@ -16,7 +16,7 @@ public abstract class EntitySO : ScriptableObject, IDamageDealer
     [Range(0f, 1f)] public float armorPercentage;
     [Range(0f, 1f)] public float dodgeChance;
     [Space]
-    [Range(1f, 10f)] public float moveSpeed;
+    [Range(0f, 10f)] public float moveSpeed;
     [Space]
     [Range(0f, 1f)] public float lifeSteal;
 

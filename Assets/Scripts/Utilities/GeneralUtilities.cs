@@ -42,6 +42,18 @@ public static class GeneralUtilities
     #region Transforms
     public static Vector2 TransformPositionVector2(Transform transform) => new Vector2(transform.position.x, transform.position.y);
 
+    public static List<Vector2> TransformPositionVector2List(List<Transform> transforms)
+    {
+        List<Vector2> vectorList = new List<Vector2>();
+
+        foreach (Transform transform in transforms)
+        {
+            vectorList.Add(TransformPositionVector2(transform));
+        }
+
+        return vectorList;
+    }
+
     public static List<Transform> GetTransformsByColliders(Collider2D[] colliders)
     {
         List<Transform> transforms = new List<Transform>();

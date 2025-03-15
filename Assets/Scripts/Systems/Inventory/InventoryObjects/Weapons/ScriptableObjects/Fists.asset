@@ -20,7 +20,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   weaponType: 0
   fireType: 1
-  regularDamage: 1
+  regularDamage: 2
   bleedDamage: 0
   bleedDuration: 2
   bleedTickTime: 0.25

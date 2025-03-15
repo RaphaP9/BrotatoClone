@@ -6,17 +6,20 @@ using UnityEngine;
 public class FistsHandler : MeleeWeaponHandler
 {
     [Header("Fists Components")]
-    [SerializeField] private Transform attackPoint;
+    [SerializeField] private List<Transform> attackPoints;
 
     protected override void Attack()
     {
-        MeleeAttack(attackPoint);
+        MeleeAttack(attackPoints);
     }
 
     private void OnDrawGizmos()
     {
         Gizmos.color = gizmosColor;
 
-        Gizmos.DrawWireSphere(attackPoint.position, GetWeaponModifiedArea());
+        foreach (Transform attackPoint in attackPoints)
+        {
+            Gizmos.DrawWireSphere(attackPoint.position, GetWeaponModifiedArea());
+        }
     }
 }

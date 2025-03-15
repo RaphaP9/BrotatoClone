@@ -12,7 +12,6 @@ public abstract class AttackBasedWeaponHandler : WeaponHandler
     public class OnWeaponAttackEventArgs: EventArgs
     {
         public int id;
-        public Transform attackPoint;
         public bool isCrit;
     }
 

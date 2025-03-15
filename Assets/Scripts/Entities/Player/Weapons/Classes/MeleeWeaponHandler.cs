@@ -10,17 +10,23 @@ public abstract class MeleeWeaponHandler : AttackBasedWeaponHandler
     [SerializeField] protected LayerMask enemyLayerMask;
     protected MeleeWeaponSO MeleeWeaponSO => weaponSO as MeleeWeaponSO;
 
-    public static event EventHandler<OnWeaponAttackEventArgs> OnMeleeAttack;
-    public event EventHandler<OnWeaponAttackEventArgs> OnThisMeleeAttack;
+    public static event EventHandler<OnMeleeWeaponAttackEventArgs> OnMeleeAttack;
+    public event EventHandler<OnMeleeWeaponAttackEventArgs> OnThisMeleeAttack;
 
-    protected void MeleeAttack(Transform attackPoint)
+    public class OnMeleeWeaponAttackEventArgs : OnWeaponAttackEventArgs
+    {
+        public List<Transform> attackPoints;
+    }
+
+    protected void MeleeAttack(List<Transform> attackPoints)
     {
         bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetWeaponModifiedCritChance());
 
         int damage = GetWeaponModifiedRegularDamage();
         int bleedDamage = GetWeaponModifiedBleedDamage();
         float areaRadius = GetWeaponModifiedArea();
-        Vector2 position = GeneralUtilities.TransformPositionVector2(attackPoint);
+
+        List<Vector2> positions = GeneralUtilities.TransformPositionVector2List(attackPoints);
 
         if (isCrit)
         {
@@ -30,25 +36,25 @@ public abstract class MeleeWeaponHandler : AttackBasedWeaponHandler
 
         if (HasRegularDamage() && HasBleedDamage())
         {
-            GeneralGameplayUtilities.DealRegularAndBleedDodgeableDamageInArea(damage, bleedDamage, MeleeWeaponSO.bleedDuration, MeleeWeaponSO.bleedTickTime, position, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
+            GeneralGameplayUtilities.DealRegularAndBleedDodgeableDamageInArea(damage, bleedDamage, MeleeWeaponSO.bleedDuration, MeleeWeaponSO.bleedTickTime, positions, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
             return;
         }
 
         if (HasRegularDamage())
         {
-            GeneralGameplayUtilities.DealDodgeableRegularDamageInArea(damage, position, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
+            GeneralGameplayUtilities.DealDodgeableRegularDamageInArea(damage, positions, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
             return;
         }
 
         if (HasBleedDamage())
         {
-            GeneralGameplayUtilities.DealDodgeableBleedDamageInArea(bleedDamage, MeleeWeaponSO.bleedDuration, MeleeWeaponSO.bleedTickTime, position, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
+            GeneralGameplayUtilities.DealDodgeableBleedDamageInArea(bleedDamage, MeleeWeaponSO.bleedDuration, MeleeWeaponSO.bleedTickTime, positions, areaRadius, isCrit, enemyLayerMask, MeleeWeaponSO);
 
             return;
         }
 
-        OnMeleeAttack?.Invoke(this, new OnWeaponAttackEventArgs { id = MeleeWeaponSO.id, attackPoint = attackPoint, isCrit = isCrit });
-        OnThisMeleeAttack?.Invoke(this, new OnWeaponAttackEventArgs { id = MeleeWeaponSO.id, attackPoint = attackPoint, isCrit = isCrit });
+        OnMeleeAttack?.Invoke(this, new OnMeleeWeaponAttackEventArgs { id = MeleeWeaponSO.id, isCrit = isCrit, attackPoints = attackPoints });
+        OnThisMeleeAttack?.Invoke(this, new OnMeleeWeaponAttackEventArgs { id = MeleeWeaponSO.id, isCrit = isCrit, attackPoints = attackPoints});
     }
 
 

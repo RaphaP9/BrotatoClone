@@ -10,8 +10,13 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
 
     protected RangedWeaponSO RangedWeaponSO => weaponSO as RangedWeaponSO;
 
-    public static event EventHandler<OnWeaponAttackEventArgs> OnRangedFire;
-    public event EventHandler<OnWeaponAttackEventArgs> OnThisRangedFire;
+    public static event EventHandler<OnRangedWeaponAttackEventArgs> OnRangedFire;
+    public event EventHandler<OnRangedWeaponAttackEventArgs> OnThisRangedFire;
+
+    public class OnRangedWeaponAttackEventArgs : OnWeaponAttackEventArgs
+    {
+        public Transform firePoint;
+    }
 
     protected void ShootProjectile(Transform projectilePrefab, Transform firePoint)
     {
@@ -22,8 +27,8 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
 
         CreateProjectile(projectilePrefab, shootPosition, shootDirection, isCrit);
 
-        OnRangedFire?.Invoke(this, new OnWeaponAttackEventArgs { id = RangedWeaponSO.id, attackPoint = firePoint, isCrit = isCrit });
-        OnThisRangedFire?.Invoke(this, new OnWeaponAttackEventArgs { id = RangedWeaponSO.id, attackPoint = firePoint, isCrit = isCrit });
+        OnRangedFire?.Invoke(this, new OnRangedWeaponAttackEventArgs { id = RangedWeaponSO.id,  isCrit = isCrit, firePoint = firePoint, });
+        OnThisRangedFire?.Invoke(this, new OnRangedWeaponAttackEventArgs { id = RangedWeaponSO.id, isCrit = isCrit, firePoint = firePoint, });
     }
 
     protected void CreateProjectile(Transform projectile, Vector2 position, Vector2 shootDirection, bool isCrit)
