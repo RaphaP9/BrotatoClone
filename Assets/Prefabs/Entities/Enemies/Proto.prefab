@@ -277,6 +277,7 @@ MonoBehaviour:
   enemyIdentifier: {fileID: 7288238993718476968}
   enemyHealth: {fileID: 1715791615252644950}
   spawningHandler: {fileID: 6000539653414035718}
+  enemyKamikaze: {fileID: 7666346366631817283}
 --- !u!114 &6000539653414035718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -317,7 +318,7 @@ GameObject:
   - component: {fileID: 8579375531850286961}
   - component: {fileID: 7653967834186784828}
   m_Layer: 9
-  m_Name: PlayerDetector
+  m_Name: KamikazePlayerDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -8,7 +8,6 @@ public class EnemyHealth : EntityHealth
     [Header("Enemy Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
     [SerializeField] private EnemySpawningHandler enemySpawningHandler;
-    [SerializeField] private EnemyKamikaze enemyKamikaze;
 
     public static event EventHandler OnEnemyDodge;
     public static event EventHandler OnEnemyDeath;
@@ -43,16 +42,12 @@ public class EnemyHealth : EntityHealth
 
     private void OnEnable()
     {
-        enemyKamikaze.OnThisEnemySelfDestroy += EnemyKamikaze_OnThisEnemySelfDestroy;
-
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
     }
 
     private void OnDisable()
     {
-        enemyKamikaze.OnThisEnemySelfDestroy -= EnemyKamikaze_OnThisEnemySelfDestroy;
-
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
     }
@@ -154,7 +149,7 @@ public class EnemyHealth : EntityHealth
         return true;
     }
 
-    protected override void InstaKill()
+    public override void InstaKill()
     {
         TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO);
     }

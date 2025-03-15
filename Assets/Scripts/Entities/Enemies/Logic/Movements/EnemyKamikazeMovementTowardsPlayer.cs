@@ -2,11 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyMovementTowardsPlayer : EnemyMovement
+public class EnemyKamikazeMovementTowardsPlayer : EnemyMovement
 {
+    [Header("Kamikaze Components")]
+    [SerializeField] private EnemyKamikaze enemyKamikaze;
+
     private void Update()
     {
         HandleMovementTowardsPlayer();
+    }
+
+    protected override bool CanMove()
+    {
+        if (enemyKamikaze.IsExploding) return false;
+        if (spawningHandler.IsSpawning) return false;
+        if (!enemyHealth.IsAlive()) return false;
+
+        return true;
     }
 
     private void HandleMovementTowardsPlayer()

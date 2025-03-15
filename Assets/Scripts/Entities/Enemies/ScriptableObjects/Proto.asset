@@ -23,8 +23,12 @@ MonoBehaviour:
   moveSpeed: 3
   lifeSteal: 0
   oreDrop: 0
-  kamikazeDamage: 5
-  kamikazeDamageRange: 1
-  kamikazeDetectionRange: 1
   spawnDuration: 5
   cleanupTime: 3
+  kamikazeRegularDamage: 5
+  kamikazeBleedDamage: 1
+  kamikazeBleedDuration: 4
+  kamikazeBleedTickTime: 1
+  kamikazeExplosionTime: 1
+  kamikazeDamageRange: 1
+  kamikazeDetectionRange: 1

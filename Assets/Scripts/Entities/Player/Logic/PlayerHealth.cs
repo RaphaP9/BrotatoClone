@@ -159,7 +159,7 @@ public class PlayerHealth : EntityHealth
         return true;
     }
 
-    protected override void InstaKill()
+    public override void InstaKill()
     {
         TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, playerIdentifier.PlayerSO);
     }

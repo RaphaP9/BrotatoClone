@@ -201,7 +201,7 @@ public abstract class EntityHealth : MonoBehaviour
         Heal(healAmount);
     }
 
-    protected abstract void InstaKill();
+    public abstract void InstaKill();
 
     #region Abstracts For Events
     protected abstract void OnDodge();

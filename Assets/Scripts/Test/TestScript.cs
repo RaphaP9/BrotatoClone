@@ -16,7 +16,7 @@ public class TestScript : MonoBehaviour
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
 
         EnemyHealth.OnEnemyDodge += EnemyHealth_OnEnemyDodge;
-        EnemyKamikaze.OnEnemySelfDestroy += EnemyKamikaze_OnEnemySelfDestroy;
+        EnemyKamikaze.OnEnemySelfDestroyCompleted += EnemyKamikaze_OnEnemySelfDestroy;
     }
 
 
@@ -27,7 +27,7 @@ public class TestScript : MonoBehaviour
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
 
         EnemyHealth.OnEnemyDodge -= EnemyHealth_OnEnemyDodge;
-        EnemyKamikaze.OnEnemySelfDestroy -= EnemyKamikaze_OnEnemySelfDestroy;
+        EnemyKamikaze.OnEnemySelfDestroyCompleted -= EnemyKamikaze_OnEnemySelfDestroy;
 
     }
 

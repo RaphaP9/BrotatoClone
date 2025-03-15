@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class EnemyPlayerDetector : MonoBehaviour
+public class EnemyPlayerKamikazeDetector : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
@@ -14,6 +14,8 @@ public class EnemyPlayerDetector : MonoBehaviour
 
     public event EventHandler OnPlayerDetected;
 
+    private KamikazeEnemySO KamikazeEnemySO => enemyIdentifier.EnemySO as KamikazeEnemySO;
+
     private void Start()
     {
         InitializeColliderSize();
@@ -21,7 +23,7 @@ public class EnemyPlayerDetector : MonoBehaviour
 
     private void InitializeColliderSize()
     {
-        circleCollider.radius = enemyIdentifier.EnemySO.kamikazeDetectionRange;
+        circleCollider.radius = KamikazeEnemySO.kamikazeDetectionRange;
     }
 
     private void OnTriggerStay2D(Collider2D collision)

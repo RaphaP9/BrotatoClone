@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
     }
 
-    protected bool CanMove()
+    protected virtual bool CanMove()
     {
         if (spawningHandler.IsSpawning) return false;
         if (!enemyHealth.IsAlive()) return false;
