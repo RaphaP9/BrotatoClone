@@ -25,7 +25,9 @@ MonoBehaviour:
   oreDrop: 0
   spawnDuration: 3
   cleanupTime: 3
-  shootDistance: 10
+  tooCloseDistance: 3
+  preferredDistance: 8
+  tooFarDistance: 15
   projectileRegularDamage: 2
   projectileBleedDamage: 0
   projectileBleedDuration: 0

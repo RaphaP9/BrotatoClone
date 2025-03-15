@@ -6,7 +6,7 @@ public class EnemyShoot : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
-    [SerializeField] private EnemyMovement enemyMovement;
+    [SerializeField] private EnemyRangedMovement enemyRangedMovement;
     [SerializeField] private EnemyHealth enemyHealth;
     [Space]
     [SerializeField] private Transform shootPoint;
@@ -58,21 +58,18 @@ public class EnemyShoot : MonoBehaviour
 
     private bool CanShoot()
     {
-        if (!enemyHealth.IsAlive()) return false;
-        if (!PlayerInShootRange()) return false;
-
-        return true;
-    }
-
-    private bool PlayerInShootRange()
-    {
-        if(enemyMovement.GetDistanceToPlayer() < RangedEnemySO.minShootDistance) return false;
-        if(enemyMovement.GetDistanceToPlayer() > RangedEnemySO.maxShootDistance) return false;
+        if (!enemyRangedMovement.IsStill()) return false;
 
         return true;
     }
 
     private void SetShootState(State state) => this.state = state;
 
-    public bool IsShooting() => state != State.NotShooting;
+    public bool IsShooting()
+    {
+        if(state == State.Aiming) return true;
+        if (state == State.Shooting) return true;
+
+        return false;
+    }
 }

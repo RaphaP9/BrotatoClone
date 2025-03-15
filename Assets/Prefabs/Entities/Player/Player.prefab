@@ -683,7 +683,7 @@ MonoBehaviour:
   dashLimit: 2
   directionMode: 1
   dashDistance: 4
-  dashTime: 0.45
+  dashTime: 0.35
   dashResistance: 0
   betweenDashesTime: 0.01
   dashRefillTime: 0.5

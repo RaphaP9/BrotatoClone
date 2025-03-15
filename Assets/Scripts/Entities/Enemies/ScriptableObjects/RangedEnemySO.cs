@@ -6,9 +6,9 @@ using UnityEngine;
 public class RangedEnemySO : EnemySO, IProjectileSpawner 
 {
     [Header("Ranged Settings")]
-    [Range(3f, 20f)] public float maxShootDistance;
-    [Range(3f, 20f)] public float preferredShootDistance;
-    [Range(3f, 20f)] public float minShootDistance;
+    [Range(3f, 20f)] public float tooCloseDistance;
+    [Range(3f, 20f)] public float preferredDistance;
+    [Range(3f, 20f)] public float tooFarDistance;
     [Space] 
     [Range(0, 10)] public int projectileRegularDamage;
     [Space]

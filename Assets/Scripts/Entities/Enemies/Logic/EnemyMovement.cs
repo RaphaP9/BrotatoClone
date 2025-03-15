@@ -30,6 +30,13 @@ public class EnemyMovement : MonoBehaviour
         _rigidbody2D.velocity = normalizedDirection * speed;
     }
 
+    protected void MoveTowardsPosition(Vector2 targetPosition, float speed)
+    {
+        Vector2 direction = targetPosition - GeneralUtilities.TransformPositionVector2(transform);
+        direction.Normalize();
+        _rigidbody2D.velocity = direction * speed;
+    }
+
     protected Vector2 GetNormalizedDirectionToPlayer()
     {
         Vector2 directionVector = GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player) - GeneralUtilities.TransformPositionVector2(transform);
@@ -43,6 +50,12 @@ public class EnemyMovement : MonoBehaviour
     {
         _rigidbody2D.velocity = Vector2.zero;
     }
+
+    protected Vector2 GetPlayerPosition()
+    {
+        return GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player);
+    }
+
     public bool PlayerOnRight()
     {
         Vector2 movementDirectionVector = GetNormalizedDirectionToPlayer();
@@ -53,7 +66,7 @@ public class EnemyMovement : MonoBehaviour
 
     public float GetDistanceToPlayer()
     {
-        Vector2 directionVector = GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player) - GeneralUtilities.TransformPositionVector2(transform);
+        Vector2 directionVector = GetPlayerPosition() - GeneralUtilities.TransformPositionVector2(transform);
         return directionVector.magnitude;
     }
 

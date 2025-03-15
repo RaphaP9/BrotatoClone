@@ -274,6 +274,8 @@ MonoBehaviour:
   enemyIdentifier: {fileID: 7288238993718476968}
   enemyHealth: {fileID: 1715791615252644950}
   spawningHandler: {fileID: 6000539653414035718}
+  enemyShoot: {fileID: 6511095033016286744}
+  state: 0
 --- !u!114 &6000539653414035718
 MonoBehaviour:
   m_ObjectHideFlags: 0
