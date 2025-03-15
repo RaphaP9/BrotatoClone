@@ -682,8 +682,8 @@ MonoBehaviour:
   playerHealth: {fileID: 5522695071689123836}
   dashLimit: 2
   directionMode: 1
-  dashDistance: 3.5
-  dashTime: 0.3
+  dashDistance: 4
+  dashTime: 0.45
   dashResistance: 0
   betweenDashesTime: 0.01
   dashRefillTime: 0.5

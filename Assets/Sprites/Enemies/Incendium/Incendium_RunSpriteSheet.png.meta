@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d2ee58343f4cd794cbe0f59eb5adede2
+guid: 56f7fc5433420f84c91b988f519aeddd
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_0
+      name: Incendium_RunSpriteSheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 600
-        width: 200
-        height: 200
+        y: 540
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 122feaf3418d6674a9c0fc65064c04fd
-      internalID: -529303533
+      spriteID: 0ae1634a9c22cd74b9447f7a2f56fc9e
+      internalID: 629127556
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_1
+      name: Incendium_RunSpriteSheet_1
       rect:
         serializedVersion: 2
-        x: 200
-        y: 600
-        width: 200
-        height: 200
+        x: 180
+        y: 540
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 085f6408e138f2e42ba75f2ee145f182
-      internalID: 1180912186
+      spriteID: c3e99fa52325bc44799f3ebc86006b4d
+      internalID: 766993941
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_2
+      name: Incendium_RunSpriteSheet_2
       rect:
         serializedVersion: 2
-        x: 400
-        y: 600
-        width: 200
-        height: 200
+        x: 360
+        y: 540
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +166,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dfdf1fe443001714498d862ed8706ed8
-      internalID: 1474293492
+      spriteID: 919a1803d1a87ef46b13237d7c5c6412
+      internalID: 1673785137
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_3
+      name: Incendium_RunSpriteSheet_3
       rect:
         serializedVersion: 2
-        x: 600
-        y: 600
-        width: 200
-        height: 200
+        x: 540
+        y: 540
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,41 +187,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cd1d1e023a3d74549847e0bd0ade9de1
-      internalID: 720549218
+      spriteID: 4614163c50b231c4abeaff32a7371a31
+      internalID: 292796993
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_4
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 600
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 78cfd65d7163c6640b08418ba2af7362
-      internalID: 1169326422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player2_RunSpriteSheet_5
+      name: Incendium_RunSpriteSheet_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 400
-        width: 200
-        height: 200
+        y: 360
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -229,20 +208,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c5af4b12a3c8b747948062f42d3f1bd
-      internalID: -394309579
+      spriteID: b58545a7db9c56d49868356b34034792
+      internalID: -57212204
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_6
+      name: Incendium_RunSpriteSheet_5
       rect:
         serializedVersion: 2
-        x: 200
-        y: 400
-        width: 200
-        height: 200
+        x: 180
+        y: 360
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -250,20 +229,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 08e16d6ca9533914fb6e65d5bb3ab5c5
-      internalID: 53787954
+      spriteID: 82938bdbaa8f4644aaa199f92d6aed7a
+      internalID: -250513022
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_7
+      name: Incendium_RunSpriteSheet_6
       rect:
         serializedVersion: 2
-        x: 400
-        y: 400
-        width: 200
-        height: 200
+        x: 360
+        y: 360
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -271,20 +250,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a074105d38a8e5440b0b3a51f9203b35
-      internalID: -1633666810
+      spriteID: d295e9edd0462c44bba8a03890d51c95
+      internalID: 787406986
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_8
+      name: Incendium_RunSpriteSheet_7
       rect:
         serializedVersion: 2
-        x: 600
-        y: 400
-        width: 200
-        height: 200
+        x: 540
+        y: 360
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -292,41 +271,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a3f4f4b7d8b6c324b88a06aee1242f80
-      internalID: -1816103162
+      spriteID: 075d90b312cb2a14dbf444b28bcd6455
+      internalID: -313730728
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_9
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 400
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dc0591dcf6419f94a941c75588453055
-      internalID: 303568588
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player2_RunSpriteSheet_10
+      name: Incendium_RunSpriteSheet_8
       rect:
         serializedVersion: 2
         x: 0
-        y: 200
-        width: 200
-        height: 200
+        y: 180
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -334,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8f6b8e3852570340a6e5f455f511e12
-      internalID: -1856747764
+      spriteID: e789bc7e854e091499028376dada82fd
+      internalID: -1763052898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_11
+      name: Incendium_RunSpriteSheet_9
       rect:
         serializedVersion: 2
-        x: 200
-        y: 200
-        width: 200
-        height: 200
+        x: 180
+        y: 180
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,20 +313,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb01543153f41814fbb3092f14ede59d
-      internalID: -150419716
+      spriteID: 29909c5edc51dbf4d888d19b3fe81668
+      internalID: 1020883981
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_12
+      name: Incendium_RunSpriteSheet_10
       rect:
         serializedVersion: 2
-        x: 400
-        y: 200
-        width: 200
-        height: 200
+        x: 360
+        y: 180
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -376,20 +334,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4ba4a48ceccaeb469b0c3cfc7df3358
-      internalID: -1350411315
+      spriteID: 5a4ee057da7f28c49a24e1f1de382515
+      internalID: 784336796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_13
+      name: Incendium_RunSpriteSheet_11
       rect:
         serializedVersion: 2
-        x: 600
-        y: 200
-        width: 200
-        height: 200
+        x: 540
+        y: 180
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -397,41 +355,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 15c0d225893dc5546b29f9d7775cb89a
-      internalID: 1774818044
+      spriteID: ae3b84c9e6810e24a9993e5bf8414e55
+      internalID: -55263679
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player2_RunSpriteSheet_14
-      rect:
-        serializedVersion: 2
-        x: 800
-        y: 200
-        width: 200
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: bd9e5a0c8008d88418a92b51a1d0521d
-      internalID: 1923957432
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player2_RunSpriteSheet_15
+      name: Incendium_RunSpriteSheet_12
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 200
-        height: 200
+        width: 180
+        height: 180
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -439,8 +376,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5dbe020720a43d241a9ae3dd394d3b20
-      internalID: 1780800653
+      spriteID: 96bf0468f162645469a61ce0f10e07f4
+      internalID: -1227878693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Incendium_RunSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 0
+        width: 180
+        height: 180
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d73598efcaa27de479cfab997c0f7f3e
+      internalID: 1000495977
       vertices: []
       indices: 
       edges: []
@@ -456,22 +414,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Player2_RunSpriteSheet_0: -529303533
-      Player2_RunSpriteSheet_1: 1180912186
-      Player2_RunSpriteSheet_10: -1856747764
-      Player2_RunSpriteSheet_11: -150419716
-      Player2_RunSpriteSheet_12: -1350411315
-      Player2_RunSpriteSheet_13: 1774818044
-      Player2_RunSpriteSheet_14: 1923957432
-      Player2_RunSpriteSheet_15: 1780800653
-      Player2_RunSpriteSheet_2: 1474293492
-      Player2_RunSpriteSheet_3: 720549218
-      Player2_RunSpriteSheet_4: 1169326422
-      Player2_RunSpriteSheet_5: -394309579
-      Player2_RunSpriteSheet_6: 53787954
-      Player2_RunSpriteSheet_7: -1633666810
-      Player2_RunSpriteSheet_8: -1816103162
-      Player2_RunSpriteSheet_9: 303568588
+      Incendium_RunSpriteSheet_0: 629127556
+      Incendium_RunSpriteSheet_1: 766993941
+      Incendium_RunSpriteSheet_10: 784336796
+      Incendium_RunSpriteSheet_11: -55263679
+      Incendium_RunSpriteSheet_12: -1227878693
+      Incendium_RunSpriteSheet_13: 1000495977
+      Incendium_RunSpriteSheet_2: 1673785137
+      Incendium_RunSpriteSheet_3: 292796993
+      Incendium_RunSpriteSheet_4: -57212204
+      Incendium_RunSpriteSheet_5: -250513022
+      Incendium_RunSpriteSheet_6: 787406986
+      Incendium_RunSpriteSheet_7: -313730728
+      Incendium_RunSpriteSheet_8: -1763052898
+      Incendium_RunSpriteSheet_9: 1020883981
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

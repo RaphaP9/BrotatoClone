@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyKamikazeMovementTowardsPlayer : EnemyMovement
+public class EnemyKamikazeMovement : EnemyMovement
 {
     [Header("Kamikaze Components")]
     [SerializeField] private EnemyKamikaze enemyKamikaze;

@@ -51,6 +51,12 @@ public class EnemyMovement : MonoBehaviour
         return false;
     }
 
+    public float GetDistanceToPlayer()
+    {
+        Vector2 directionVector = GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player) - GeneralUtilities.TransformPositionVector2(transform);
+        return directionVector.magnitude;
+    }
+
     public float GetSpeed()
     {
         Vector2 speedVector = _rigidbody2D.velocity;

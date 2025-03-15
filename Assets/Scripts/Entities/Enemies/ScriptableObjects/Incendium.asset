@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a382cec08eb61a49b06943b253f6911, type: 3}
+  m_Name: Incendium
+  m_EditorClassIdentifier: 
+  id: 2
+  entityName: Incendium
+  description: 
+  sprite: {fileID: 0}
+  damageColor: {r: 1, g: 0.5273675, b: 0, a: 1}
+  maxHealth: 70
+  armorPercentage: 0
+  dodgeChance: 0
+  moveSpeed: 3
+  lifeSteal: 0
+  oreDrop: 0
+  spawnDuration: 3
+  cleanupTime: 3
+  shootDistance: 10
+  projectileRegularDamage: 2
+  projectileBleedDamage: 0
+  projectileBleedDuration: 0
+  projectileBleedTickTime: 0
+  projectileDamageType: 0
+  projectileArea: 0
