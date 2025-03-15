@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1357456378, guid: cfd1cd81acdc57c4eae30e1ffbaaa6ce, type: 3}
+  m_Sprite: {fileID: 416101206, guid: 3288cd54d8bce9b458e011f4b241a46a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,7 +124,7 @@ GameObject:
   - component: {fileID: 6000539653414035718}
   - component: {fileID: 5719129700666416927}
   m_Layer: 7
-  m_Name: Proto
+  m_Name: Detonix
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -242,7 +242,6 @@ MonoBehaviour:
   lifeSteal: 0
   enemyIdentifier: {fileID: 7288238993718476968}
   enemySpawningHandler: {fileID: 6000539653414035718}
-  enemyKamikaze: {fileID: 7666346366631817283}
 --- !u!114 &7666346366631817283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -455,8 +454,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 7255662092305812705}
   enemyMovement: {fileID: 7938969834891608679}
-  enemyHealth: {fileID: 1715791615252644950}
   enemySpawningHandler: {fileID: 6000539653414035718}
+  enemyHealth: {fileID: 1715791615252644950}
+  enemyKamikaze: {fileID: 7666346366631817283}
 --- !u!1001 &6800812335243269157
 PrefabInstance:
   m_ObjectHideFlags: 0

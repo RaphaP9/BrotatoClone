@@ -4736,6 +4736,14 @@ MonoBehaviour:
       shakeTime: 0.1
       shakeFadeInTime: 0.05
       shakeFadeOutTime: 0.05
+  - id: 3
+    logToShake: Enemy/SelfDestroy/1
+    settings:
+      amplitude: 4
+      frequency: 2
+      shakeTime: 0.5
+      shakeFadeInTime: 0.05
+      shakeFadeOutTime: 0.05
 --- !u!1 &1227677501
 GameObject:
   m_ObjectHideFlags: 0
@@ -8738,6 +8746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cinemachineVirtualCamera: {fileID: 1294153528}
+  currentShakeAmplitude: 0
 --- !u!1 &2042103031
 GameObject:
   m_ObjectHideFlags: 0
@@ -9210,7 +9219,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 650243211589222648, guid: 49fe714a12a1d624d97dc64f37c05300, type: 3}
       propertyPath: m_Name
-      value: Proto
+      value: Detonix
       objectReference: {fileID: 0}
     - target: {fileID: 3877430779044931455, guid: 49fe714a12a1d624d97dc64f37c05300, type: 3}
       propertyPath: m_LocalPosition.x

@@ -12,10 +12,17 @@ public class CameraShakeHandler : MonoBehaviour
 
     private CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin;
 
+    public float currentShakeAmplitude;
+
     private void Awake()
     {
         cinemachineBasicMultiChannelPerlin = cinemachineVirtualCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         SetSingleton();
+    }
+
+    private void Start()
+    {
+        SetCurrentShakeAmplitude(0f);
     }
 
     private void SetSingleton()
@@ -31,14 +38,21 @@ public class CameraShakeHandler : MonoBehaviour
         }
     }
 
+    private void SetCurrentShakeAmplitude(float value) => currentShakeAmplitude = value;    
+    private void ClearCurrentShakeAmplitude() => currentShakeAmplitude = 0f;
+
     public void ShakeCamera(float amplitude, float frequency, float shakeTime, float fadeInTime, float fadeOutTime)
     {
+        if (currentShakeAmplitude > amplitude) return;
+
         StopAllCoroutines();
         StartCoroutine(ShakeCameraCoroutine(amplitude, frequency, shakeTime, fadeInTime, fadeOutTime));
     }
 
     private IEnumerator ShakeCameraCoroutine(float amplitude, float frequency, float shakeTime, float fadeInTime, float fadeOutTime)
     {
+        SetCurrentShakeAmplitude(amplitude);
+
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
         cinemachineBasicMultiChannelPerlin.m_FrequencyGain = 0f;
 
@@ -71,5 +85,7 @@ public class CameraShakeHandler : MonoBehaviour
 
         cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0f;
         cinemachineBasicMultiChannelPerlin.m_FrequencyGain = 0f;
+
+        ClearCurrentShakeAmplitude();
     }
 }

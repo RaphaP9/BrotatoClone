@@ -15,16 +15,20 @@ public class EnemyKamikaze : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private LayerMask playerLayerMask;
 
-    public static event EventHandler<OnEnemySelfDestroyEventArgs> OnEnemySelfDestroyCompleted;
-    public event EventHandler<OnEnemySelfDestroyEventArgs> OnThisEnemySelfDestroyCompleted;
+    public static event EventHandler<OnEnemyExplosionEventArgs> OnEnemySelfDestroyCompleted;
+    public event EventHandler<OnEnemyExplosionEventArgs> OnThisEnemySelfDestroyCompleted;
 
-    public static event EventHandler<OnEnemySelfDestroyEventArgs> OnEnemySelfDestroyBegin;
-    public event EventHandler<OnEnemySelfDestroyEventArgs> OnThisEnemySelfDestroyBegin;
+    public static event EventHandler<OnEnemyExplosionEventArgs> OnEnemySelfDestroyBegin;
+    public event EventHandler<OnEnemyExplosionEventArgs> OnThisEnemySelfDestroyBegin;
+
+    public static event EventHandler<OnEnemyExplosionEventArgs> OnEnemyExplosion;
+    public event EventHandler<OnEnemyExplosionEventArgs> OnThisEnemyExplosion;
 
     private KamikazeEnemySO KamikazeEnemySO => enemyIdentifier.EnemySO as KamikazeEnemySO;
     public bool IsExploding { get; private set; } = false;
+    public bool HasExplodedKamikaze { get; private set; } = false;
 
-    public class OnEnemySelfDestroyEventArgs : EventArgs
+    public class OnEnemyExplosionEventArgs : EventArgs
     {
         public EnemySO enemySO;
         public int damage;
@@ -33,11 +37,13 @@ public class EnemyKamikaze : MonoBehaviour
     private void OnEnable()
     {
         enemyPlayerDetector.OnPlayerDetected += EnemyPlayerDetector_OnPlayerDetected;
+        enemyHealth.OnThisEnemyDeath += EnemyHealth_OnThisEnemyDeath;
     }
 
     private void OnDisable()
     {
         enemyPlayerDetector.OnPlayerDetected -= EnemyPlayerDetector_OnPlayerDetected;
+        enemyHealth.OnThisEnemyDeath -= EnemyHealth_OnThisEnemyDeath;
     }
 
     private bool CanSelfDestroy()
@@ -49,18 +55,30 @@ public class EnemyKamikaze : MonoBehaviour
         return true;
     }
 
-    private IEnumerator SelfDestroyCoroutine()
+    private IEnumerator KamikazeCoroutine()
     {
         IsExploding = true;
 
-        OnEnemySelfDestroyBegin?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
-        OnThisEnemySelfDestroyBegin?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
+        OnEnemySelfDestroyBegin?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
+        OnThisEnemySelfDestroyBegin?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
 
         yield return new WaitForSeconds(KamikazeEnemySO.kamikazeExplosionTime);
-        SelfDestroy();
+        KamikazeSelfDestroy();
     }
 
-    private void SelfDestroy()
+    private void KamikazeSelfDestroy()
+    {
+        DealExplosionDamage();
+        HasExplodedKamikaze = true;
+        IsExploding = false;
+
+        OnEnemySelfDestroyCompleted?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
+        OnThisEnemySelfDestroyCompleted?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
+
+        enemyHealth.InstaKill();
+    }
+
+    private void DealExplosionDamage()
     {
         int kamikazeRegularDamage = KamikazeEnemySO.kamikazeRegularDamage;
 
@@ -76,19 +94,16 @@ public class EnemyKamikaze : MonoBehaviour
 
         if (HasKamikazeRegularDamage())
         {
-            GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeRegularDamage, positions , kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
+            GeneralGameplayUtilities.DealRegularDamageInArea(kamikazeRegularDamage, positions, kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
         }
 
         if (HasKamikazeBleedDamage())
         {
-            GeneralGameplayUtilities.DealBleedDamageInArea(kamikazeBleedDamage,kamikazeBleedDuration,kamikazeBleedTickTime, positions , kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
+            GeneralGameplayUtilities.DealBleedDamageInArea(kamikazeBleedDamage, kamikazeBleedDuration, kamikazeBleedTickTime, positions, kamikazeDamageRange, true, playerLayerMask, enemyIdentifier.EnemySO);
         }
 
-        OnEnemySelfDestroyCompleted?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
-        OnThisEnemySelfDestroyCompleted?.Invoke(this, new OnEnemySelfDestroyEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
-
-        enemyHealth.InstaKill();
-        IsExploding = false;
+        OnEnemyExplosion?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
+        OnThisEnemyExplosion?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
     }
 
     private bool HasKamikazeRegularDamage() => KamikazeEnemySO.kamikazeRegularDamage > 0;
@@ -99,6 +114,14 @@ public class EnemyKamikaze : MonoBehaviour
         if (!CanSelfDestroy()) return;
 
         IsExploding = true;
-        StartCoroutine(SelfDestroyCoroutine());
+        StartCoroutine(KamikazeCoroutine());
+    }
+
+    private void EnemyHealth_OnThisEnemyDeath(object sender, EventArgs e)
+    {
+        StopAllCoroutines();
+        if (HasExplodedKamikaze) return;
+
+        DealExplosionDamage();
     }
 }
