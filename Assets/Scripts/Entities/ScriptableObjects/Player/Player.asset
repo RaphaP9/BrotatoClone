@@ -14,12 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   entityName: Player
+  description: Basic Player
   sprite: {fileID: 0}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
   maxHealth: 50
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
-  lifesteal: 0
+  lifeSteal: 0
   healthRegen: 5
   dashes: 1
   areaMultiplier: 1

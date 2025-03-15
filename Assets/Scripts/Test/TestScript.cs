@@ -16,6 +16,7 @@ public class TestScript : MonoBehaviour
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
 
         EnemyHealth.OnEnemyDodge += EnemyHealth_OnEnemyDodge;
+        EnemyKamikaze.OnEnemySelfDestroy += EnemyKamikaze_OnEnemySelfDestroy;
     }
 
 
@@ -26,6 +27,8 @@ public class TestScript : MonoBehaviour
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
 
         EnemyHealth.OnEnemyDodge -= EnemyHealth_OnEnemyDodge;
+        EnemyKamikaze.OnEnemySelfDestroy -= EnemyKamikaze_OnEnemySelfDestroy;
+
     }
 
 
@@ -50,5 +53,9 @@ public class TestScript : MonoBehaviour
     private void EnemyHealth_OnEnemyDodge(object sender, System.EventArgs e)
     {
         Debug.Log("EnemyDodged!");
+    }
+    private void EnemyKamikaze_OnEnemySelfDestroy(object sender, System.EventArgs e)
+    {
+        Debug.Log("Kaboom");
     }
 }

@@ -2,14 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStatsHolder : MonoBehaviour
+public class PlayerIdentifier : MonoBehaviour
 {
-    public static PlayerStatsHolder Instance { get; private set; }
+    public static PlayerIdentifier Instance { get; private set; }
 
     [Header("Components")]
-    [SerializeField] private PlayerSO baseStats;
+    [SerializeField] private PlayerSO playerSO;
 
-    public PlayerSO BaseStats => baseStats;
+    public PlayerSO PlayerSO => playerSO;
 
     private void Awake()
     {

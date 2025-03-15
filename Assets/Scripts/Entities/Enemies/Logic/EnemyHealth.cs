@@ -7,6 +7,8 @@ public class EnemyHealth : EntityHealth
 {
     [Header("Enemy Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
+    [SerializeField] private EnemySpawningHandler enemySpawningHandler;
+    [SerializeField] private EnemyKamikaze enemyKamikaze;
 
     public static event EventHandler OnEnemyDodge;
     public static event EventHandler OnEnemyDeath;
@@ -15,6 +17,7 @@ public class EnemyHealth : EntityHealth
 
     public static event EventHandler<OnEntityDodgeChanceEventArgs> OnEnemyDodgeChanceSet;
     public static event EventHandler<OnEntityArmorPercentageEventArgs> OnEnemyArmorPercentageSet;
+    public static event EventHandler<OnEntityLifestealEventArgs> OnEnemyLifeStealSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnEnemyMaxHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnEnemyCurrentHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnEnemyAllHealthRestored;
@@ -27,6 +30,7 @@ public class EnemyHealth : EntityHealth
 
     public event EventHandler<OnEntityDodgeChanceEventArgs> OnThisEnemyDodgeChanceSet;
     public event EventHandler<OnEntityArmorPercentageEventArgs> OnThisEnemyArmorPercentageSet;
+    public event EventHandler<OnEntityLifestealEventArgs> OnThisEnemyLifeStealSet;
     public event EventHandler<OnEntityHealthEventArgs> OnThisEnemyMaxHealthSet;
     public event EventHandler<OnEntityHealthEventArgs> OnThisEnemyCurrentHealthSet;
     public event EventHandler<OnEntityHealthEventArgs> OnThisEnemyAllHealthRestored;
@@ -35,6 +39,22 @@ public class EnemyHealth : EntityHealth
     public class OnEnemyTakeDamageEventArgs : OnEntityTakeDamageEventArgs
     {
         public int id;
+    }
+
+    private void OnEnable()
+    {
+        enemyKamikaze.OnThisEnemySelfDestroy += EnemyKamikaze_OnThisEnemySelfDestroy;
+
+        PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
+        PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
+    }
+
+    private void OnDisable()
+    {
+        enemyKamikaze.OnThisEnemySelfDestroy -= EnemyKamikaze_OnThisEnemySelfDestroy;
+
+        PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
+        PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
     }
 
     private void Start()
@@ -48,6 +68,7 @@ public class EnemyHealth : EntityHealth
         SetCurrentHealth(enemyIdentifier.EnemySO.maxHealth);
         SetDodgeChance(enemyIdentifier.EnemySO.dodgeChance);
         SetArmorPercentage(enemyIdentifier.EnemySO.armorPercentage);
+        SetLifeSteal(enemyIdentifier.EnemySO.lifeSteal);
     }
 
     #region DodgeChance
@@ -63,6 +84,14 @@ public class EnemyHealth : EntityHealth
     {
         OnEnemyArmorPercentageSet?.Invoke(this, new OnEntityArmorPercentageEventArgs { armorPercentage = armorPercentage });
         OnThisEnemyArmorPercentageSet?.Invoke(this, new OnEntityArmorPercentageEventArgs { armorPercentage = armorPercentage });
+    }
+    #endregion
+
+    #region LifeSteal
+    protected override void OnLifeStealSet(float lifeSteal)
+    {
+        OnEnemyLifeStealSet?.Invoke(this, new OnEntityLifestealEventArgs { lifeSteal = lifeSteal });
+        OnThisEnemyLifeStealSet?.Invoke(this, new OnEntityLifestealEventArgs { lifeSteal = lifeSteal });
     }
     #endregion
 
@@ -115,5 +144,34 @@ public class EnemyHealth : EntityHealth
         OnEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth });
         OnThisEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth });
     }
+    #endregion
+
+    protected override bool CanTakeDamage()
+    {
+        if (enemySpawningHandler.IsSpawning) return false;
+
+        return true;
+    }
+
+    protected override void InstaKill()
+    {
+        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO);
+    }
+
+    #region Subscriptions
+    private void EnemyKamikaze_OnThisEnemySelfDestroy(object sender, EventArgs e)
+    {
+        InstaKill();
+    }
+    private void PlayerHealth_OnPlayerTakeRegularDamage(object sender, OnEntityTakeDamageEventArgs e)
+    {
+        //HealFromLifeSteal(e.damageTaken);
+    }
+
+    private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, OnEntityTakeDamageEventArgs e)
+    {
+        //HealFromLifeSteal(e.damageTaken);
+    }
+
     #endregion
 }

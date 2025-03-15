@@ -62,7 +62,7 @@ public static class GeneralStatsUtilities
 
     #region Lifesteal
     public static float MIN_LIFESTEAL = 0f;
-    public static float MAX_LIFESTEAL = 0.5f;
+    public static float MAX_LIFESTEAL = 1f;
     #endregion
 
     public enum StatRoundingType

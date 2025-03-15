@@ -10,10 +10,16 @@ public class CollisionIgnoreHandler : MonoBehaviour
     private void Start()
     {
         IgnorePlayerEnemiesCollision();
+        IgnoreEnemiesEnemiesCollision();
     }
 
     private void IgnorePlayerEnemiesCollision()
     {
         Physics2D.IgnoreLayerCollision(PLAYER_LAYER, ENEMY_LAYER);
+    }
+
+    private void IgnoreEnemiesEnemiesCollision()
+    {
+        Physics2D.IgnoreLayerCollision(ENEMY_LAYER, ENEMY_LAYER);
     }
 }

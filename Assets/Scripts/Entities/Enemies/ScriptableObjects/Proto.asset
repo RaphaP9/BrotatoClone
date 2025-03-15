@@ -10,18 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fa2cca65fc9b9e94ab3aa86dfb0c9999, type: 3}
-  m_Name: ProtoTest
+  m_Name: Proto
   m_EditorClassIdentifier: 
   id: 1
-  enemyName: ProtoTest
+  entityName: Proto
   description: 
   sprite: {fileID: 0}
+  damageColor: {r: 0.5566038, g: 0, b: 0, a: 1}
   maxHealth: 20
   armorPercentage: 0
-  dodgeChance: 0.5
-  oreDrop: 0
+  dodgeChance: 0
   moveSpeed: 1
-  collisionDamage: 1
-  collisionDetectionRange: 1
-  collisionDamageRange: 1
-  damageColor: {r: 0.5566038, g: 0, b: 0, a: 1}
+  lifeSteal: 0
+  oreDrop: 0
+  kamikazeDamage: 5
+  kamikazeDamageRange: 1
+  kamikazeDetectionRange: 1
+  spawnDuration: 5
+  cleanupTime: 3

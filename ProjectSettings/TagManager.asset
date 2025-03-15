@@ -14,7 +14,7 @@ TagManager:
   - PLAYER
   - ENEMY
   - CONFINER
-  - 
+  - PLAYER_DETECTOR_COLIDER
   - 
   - 
   - 

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public abstract class EntityHealth : MonoBehaviour
 {
@@ -10,11 +11,15 @@ public abstract class EntityHealth : MonoBehaviour
     [SerializeField] protected int currentHealth;
     [SerializeField, Range(0f,1f)] protected float armorPercentage;
     [SerializeField, Range(0f, 1f)] protected float dodgeChance;
+    [SerializeField, Range(0f, 1f)] protected float lifeSteal;
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
     public float ArmorPercentage => armorPercentage;
     public float DodgeChance => dodgeChance;
+    public float LifeSteal => lifeSteal;    
+
+    protected const int INSTA_KILL_DAMAGE = 999;
 
     public class OnEntityTakeDamageEventArgs : EventArgs
     {
@@ -33,6 +38,10 @@ public abstract class EntityHealth : MonoBehaviour
     {
         public float armorPercentage;
     }
+    public class OnEntityLifestealEventArgs : EventArgs
+    {
+        public float lifeSteal;
+    }
 
     public class OnEntityHealthEventArgs : EventArgs
     {
@@ -44,7 +53,9 @@ public abstract class EntityHealth : MonoBehaviour
         public int healAmount;
         public int newCurrentHealth;
     }
-   
+
+    protected abstract bool CanTakeDamage();
+
     public bool TryDodge()
     {
         bool dodged = GeneralGameplayUtilities.EvaluateDodgeChance(dodgeChance);
@@ -61,6 +72,8 @@ public abstract class EntityHealth : MonoBehaviour
     #region RegularDamage
     public void TakeRegularDamage(int baseDamage, bool isCrit, IDamageDealer damageSource)
     {
+        if (!CanTakeDamage()) return;
+
         int mitigatedBleedDamage = MitigateByArmor(baseDamage);
         TakeFinalRegularDamage(mitigatedBleedDamage, isCrit, damageSource);
     }
@@ -80,13 +93,14 @@ public abstract class EntityHealth : MonoBehaviour
 
     public void Bleed(int baseDamage, float bleedDuration, float tickTime, bool isCrit, IDamageDealer damageSource)
     {
+        if (!CanTakeDamage()) return;
+
         StartCoroutine(BleedCoroutine(baseDamage, bleedDuration, tickTime, isCrit, damageSource));
     }
 
     protected IEnumerator BleedCoroutine(int baseDamage, float bleedDuration, float tickTime, bool isCrit, IDamageDealer damageSource)
     {
         int tickNumber = Mathf.FloorToInt(bleedDuration / tickTime);
-
 
         for (int i = 0; i < tickNumber; i++)
         {
@@ -136,6 +150,12 @@ public abstract class EntityHealth : MonoBehaviour
         OnArmorPercentageSet(armorPercentage);
     }
 
+    protected void SetLifeSteal(float value)
+    {
+        lifeSteal = value;
+        OnLifeStealSet(lifeSteal);
+    }
+
     protected void SetMaxHealth(int health)
     {
         maxHealth = health;
@@ -170,6 +190,17 @@ public abstract class EntityHealth : MonoBehaviour
         OnHeal(realHealAmount, currentHealth);
     }
 
+    protected void HealFromLifeSteal(int damage)
+    {
+        int healAmount = Mathf.RoundToInt(damage * lifeSteal);
+
+        if (healAmount <= 0) return;
+
+        Heal(healAmount);
+    }
+
+    protected abstract void InstaKill();
+
     #region Abstracts For Events
     protected abstract void OnDodge();
     protected abstract void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit, IDamageDealer damageSource);
@@ -178,6 +209,7 @@ public abstract class EntityHealth : MonoBehaviour
     //
     protected abstract void OnDodgeChanceSet(float dodgeChance);
     protected abstract void OnArmorPercentageSet(float armorPercentage);
+    protected abstract void OnLifeStealSet(float lifeSteal);
     protected abstract void OnMaxHealhSet(int maxHealth);
     protected abstract void OnCurrentHealthSet(int currentHealth);
     protected abstract void OnAllHealthRestored(int currentHealth);

@@ -8,6 +8,7 @@ public class PlayerHealth : EntityHealth
     public static PlayerHealth Instance { get; private set; }
 
     [Header("Player Settings")]
+    [SerializeField] private PlayerIdentifier playerIdentifier;
     [SerializeField] private int healthRegen;
 
     public static event EventHandler OnPlayerDodge;
@@ -17,6 +18,7 @@ public class PlayerHealth : EntityHealth
 
     public static event EventHandler<OnEntityDodgeChanceEventArgs> OnPlayerDodgeChanceSet;
     public static event EventHandler<OnEntityArmorPercentageEventArgs> OnPlayerArmorPercentageSet;
+    public static event EventHandler<OnEntityLifestealEventArgs> OnPlayerLifestealSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerMaxHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerCurrentHealthSet;
     public static event EventHandler<OnEntityHealthEventArgs> OnPlayerAllHealthRestored;
@@ -37,6 +39,12 @@ public class PlayerHealth : EntityHealth
 
         ArmorPercentageStatManager.OnArmorPercentageStatInitialized += ArmorPercentageStatManager_OnArmorPercentageStatInitialized;
         ArmorPercentageStatManager.OnArmorPercentageStatUpdated += ArmorPercentageStatManager_OnArmorPercentageStatUpdated;
+
+        LifestealStatManager.OnLifestealStatInitialized += LifestealStatManager_OnLifestealStatInitialized;
+        LifestealStatManager.OnLifestealStatUpdated += LifestealStatManager_OnLifestealStatUpdated;
+
+        EnemyHealth.OnEnemyTakeRegularDamage += EnemyHealth_OnEnemyTakeRegularDamage;
+        EnemyHealth.OnEnemyTakeBleedDamage += EnemyHealth_OnEnemyTakeBleedDamage;
     }
 
     private void OnDisable()
@@ -52,6 +60,12 @@ public class PlayerHealth : EntityHealth
 
         ArmorPercentageStatManager.OnArmorPercentageStatInitialized -= ArmorPercentageStatManager_OnArmorPercentageStatInitialized;
         ArmorPercentageStatManager.OnArmorPercentageStatUpdated -= ArmorPercentageStatManager_OnArmorPercentageStatUpdated;
+
+        LifestealStatManager.OnLifestealStatInitialized -= LifestealStatManager_OnLifestealStatInitialized;
+        LifestealStatManager.OnLifestealStatUpdated -= LifestealStatManager_OnLifestealStatUpdated;
+
+        EnemyHealth.OnEnemyTakeRegularDamage -= EnemyHealth_OnEnemyTakeRegularDamage;
+        EnemyHealth.OnEnemyTakeBleedDamage -= EnemyHealth_OnEnemyTakeBleedDamage;
     }
 
     private void Awake()
@@ -83,6 +97,13 @@ public class PlayerHealth : EntityHealth
     protected override void OnArmorPercentageSet(float armorPercentage)
     {
         OnPlayerArmorPercentageSet?.Invoke(this, new OnEntityArmorPercentageEventArgs { armorPercentage = armorPercentage });
+    }
+    #endregion
+
+    #region LifeSteal
+    protected override void OnLifeStealSet(float lifeSteal)
+    {
+        OnPlayerLifestealSet?.Invoke(this, new OnEntityLifestealEventArgs { lifeSteal = lifeSteal });
     }
     #endregion
 
@@ -133,6 +154,21 @@ public class PlayerHealth : EntityHealth
     private void SetHealthRegen(int value) => healthRegen = value;
     #endregion
 
+    protected override bool CanTakeDamage()
+    {
+        return true;
+    }
+
+    protected override void InstaKill()
+    {
+        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, playerIdentifier.PlayerSO);
+    }
+
+    protected void HealFromHealthRegen()
+    {
+        Heal(healthRegen);
+    }
+
     #region Subscriptions
     private void MaxHealthStatManager_OnMaxHealthStatInitialized(object sender, MaxHealthStatManager.OnMaxHealthStatEventArgs e)
     {
@@ -171,5 +207,24 @@ public class PlayerHealth : EntityHealth
     {
         SetArmorPercentage(e.armorPercentageStat);
     }
+    private void LifestealStatManager_OnLifestealStatInitialized(object sender, LifestealStatManager.OnLifestealStatEventArgs e)
+    {
+        SetLifeSteal(e.lifestealStat);
+    }
+
+    private void LifestealStatManager_OnLifestealStatUpdated(object sender, LifestealStatManager.OnLifestealStatEventArgs e)
+    {
+        SetLifeSteal(e.lifestealStat);
+    }
+    private void EnemyHealth_OnEnemyTakeRegularDamage(object sender, EnemyHealth.OnEnemyTakeDamageEventArgs e)
+    {
+        HealFromLifeSteal(e.damageTaken);
+    }
+
+    private void EnemyHealth_OnEnemyTakeBleedDamage(object sender, EnemyHealth.OnEnemyTakeDamageEventArgs e)
+    {
+        HealFromLifeSteal(e.damageTaken);
+    }
+
     #endregion
 }
