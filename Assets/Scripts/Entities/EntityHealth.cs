@@ -82,6 +82,7 @@ public abstract class EntityHealth : MonoBehaviour
     {
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
+        OnCurrentHealthSet(currentHealth);
         OnTakeRegularDamage(damage, currentHealth, isCrit, damageSource);
 
         if (!IsAlive()) OnDeath();
@@ -129,6 +130,7 @@ public abstract class EntityHealth : MonoBehaviour
 
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
+        OnCurrentHealthSet(currentHealth);
         OnTakeBleedDamage(damage, currentHealth, isCrit, damageSource);
 
         if (!IsAlive()) OnDeath();

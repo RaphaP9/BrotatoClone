@@ -127,6 +127,7 @@ public class EnemyHealth : EntityHealth
         OnEnemyMaxHealthSet?.Invoke(this, new OnEntityHealthEventArgs { health = maxHealth });
         OnThisEnemyMaxHealthSet?.Invoke(this, new OnEntityHealthEventArgs { health = maxHealth });
     }
+
     protected override void OnCurrentHealthSet(int currentHealth)
     {
         OnEnemyCurrentHealthSet?.Invoke(this, new OnEntityHealthEventArgs { health = currentHealth });
