@@ -282,6 +282,7 @@ MonoBehaviour:
     m_Bits: 64
   state: 0
   debug: 0
+  gizmosColor: {r: 1, g: 0.3510228, b: 0, a: 1}
 --- !u!114 &6000539653414035718
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -544,7 +545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

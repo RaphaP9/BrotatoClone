@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIdentifier: {fileID: 7288238993718476968}
-  enemyRangedMovement: {fileID: 7706264347671127833}
+  rangedEnemyMovement: {fileID: 7706264347671127833}
   enemySpawningHandler: {fileID: 6000539653414035718}
   enemyHealth: {fileID: 1715791615252644950}
   projectilePrefab: {fileID: 909037060864899003, guid: 3c361aca19d8adc4aa04f3701e2317c2, type: 3}
@@ -509,7 +509,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1
+      value: 1.25
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
