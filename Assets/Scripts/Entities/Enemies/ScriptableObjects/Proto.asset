@@ -28,11 +28,11 @@ MonoBehaviour:
   critChance: 0
   critDamageMultiplier: 0
   attackDistance: 3
-  chargingTime: 1
-  attackingTime: 1
-  postAttackTime: 1
+  chargingTime: 0.3
+  attackingTime: 0.3
+  postAttackTime: 0.5
   attackRegularDamage: 1
   attackBleedDamage: 0
   attackBleedDuration: 2
   attackBleedTickTime: 0.25
-  attackArea: 2
+  attackArea: 1

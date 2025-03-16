@@ -7,7 +7,7 @@ public class EnemyShoot : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
-    [SerializeField] private RangedEnemyMovement enemyRangedMovement;
+    [SerializeField] private RangedEnemyMovement rangedEnemyMovement;
     [SerializeField] protected EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
     [Space]
@@ -74,7 +74,7 @@ public class EnemyShoot : MonoBehaviour
 
     private void NotShootingLogic()
     {
-        if (enemyRangedMovement.InPreferredDistance())
+        if (rangedEnemyMovement.InPreferredDistance())
         {
             SetShootState(State.Aiming);
             OnEnemyAim?.Invoke(this, new OnEnemyShootEventArgs { rangedEnemySO = RangedEnemySO, shootPoint = shootPoint });
@@ -88,7 +88,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if(timer < RangedEnemySO.aimingTime)
         {
-            if (!CriticalCanShoot())
+            if (!CanShoot())
             {
                 SetShootState(State.NotShooting);
                 ResetTimer();
@@ -109,7 +109,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (timer < RangedEnemySO.shootingTime)
         {
-            if (!CriticalCanShoot())
+            if (!CanShoot())
             {
                 SetShootState(State.NotShooting);
                 ResetTimer();
@@ -132,7 +132,7 @@ public class EnemyShoot : MonoBehaviour
     {
         if (timer < RangedEnemySO.postShootTime)
         {
-            if (!CriticalCanShoot())
+            if (!CanShoot())
             {
                 SetShootState(State.NotShooting);
                 ResetTimer();
@@ -143,7 +143,7 @@ public class EnemyShoot : MonoBehaviour
             return;
         }
 
-        if (enemyRangedMovement.InStillDistance())
+        if (rangedEnemyMovement.InStillDistance())
         {
             SetShootState(State.Aiming);
             OnEnemyAim?.Invoke(this, new OnEnemyShootEventArgs { rangedEnemySO = RangedEnemySO, shootPoint = shootPoint });
@@ -160,14 +160,6 @@ public class EnemyShoot : MonoBehaviour
     }
 
     private bool CanShoot()
-    {
-        if (enemySpawningHandler.IsSpawning) return false;
-        if (!enemyHealth.IsAlive()) return false;
-
-        return true;
-    }
-
-    private bool CriticalCanShoot()
     {
         if (enemySpawningHandler.IsSpawning) return false;
         if (!enemyHealth.IsAlive()) return false;
