@@ -1,0 +1,38 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d6b5f4c2fb29342b6b60b6d5ac10f4, type: 3}
+  m_Name: Proto
+  m_EditorClassIdentifier: 
+  id: 3
+  entityName: Proto
+  description: 
+  sprite: {fileID: 0}
+  damageColor: {r: 0, g: 0.1792453, b: 0.009828545, a: 1}
+  maxHealth: 20
+  armorPercentage: 0
+  dodgeChance: 0
+  moveSpeed: 3
+  lifeSteal: 0
+  oreDrop: 0
+  spawnDuration: 3
+  cleanupTime: 3
+  critChance: 0
+  critDamageMultiplier: 0
+  attackDistance: 3
+  chargingTime: 1
+  attackingTime: 1
+  postAttackTime: 1
+  attackRegularDamage: 1
+  attackBleedDamage: 0
+  attackBleedDuration: 2
+  attackBleedTickTime: 0.25
+  attackArea: 2

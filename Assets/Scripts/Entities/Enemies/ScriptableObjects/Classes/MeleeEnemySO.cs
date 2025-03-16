@@ -6,7 +6,11 @@ using UnityEngine;
 public class MeleeEnemySO : EnemySO
 {
     [Header("Melee Settings")]
-    [Range(3f, 20f)] public float maxAttackDistance;
+    [Range(3f, 20f)] public float attackDistance;
+    [Space]
+    [Range(0f, 3f)] public float chargingTime;
+    [Range(0f, 3f)] public float attackingTime;
+    [Range(0f, 3f)] public float postAttackTime;
     [Space]
     [Range(0, 10)] public int attackRegularDamage;
     [Space]

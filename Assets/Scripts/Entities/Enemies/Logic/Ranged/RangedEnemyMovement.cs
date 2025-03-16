@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyRangedMovement : EnemyMovement
+public class RangedEnemyMovement : EnemyMovement
 {
     [Header("Components")]
     [SerializeField] private EnemyShoot enemyShoot;

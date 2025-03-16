@@ -73,25 +73,25 @@ public class RangedEnemyAnimationController : MonoBehaviour
 
     private void EnemyShoot_OnThisEnemyAim(object sender, EnemyShoot.OnEnemyShootEventArgs e)
     {
-        if (!hasDied) return;
+        if (hasDied) return;
         animator.Play(AIM_ANIMATION_NAME);
     }
 
     private void EnemyShoot_OnThisEnemyShoot(object sender, EnemyShoot.OnEnemyShootEventArgs e)
     {
-        if (!hasDied) return;
+        if (hasDied) return;
         animator.Play(SHOOT_ANIMATION_NAME);
     }
 
     private void EnemyShoot_OnThisEnemyPostShoot(object sender, EnemyShoot.OnEnemyShootEventArgs e)
     {
-        if (!hasDied) return;
+        if (hasDied) return;
         animator.Play(POST_SHOOT_ANIMATION_NAME);
     }
 
     private void EnemyShoot_OnThisEnemyStopShooting(object sender, EnemyShoot.OnEnemyShootEventArgs e)
     {
-        if (!hasDied) return;
+        if (hasDied) return;
         animator.Play(MOVEMENT_BLEND_TREE_NAME);
     }
 

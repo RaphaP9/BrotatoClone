@@ -7,7 +7,7 @@ public class EnemyShoot : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
-    [SerializeField] private EnemyRangedMovement enemyRangedMovement;
+    [SerializeField] private RangedEnemyMovement enemyRangedMovement;
     [SerializeField] protected EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
     [Space]
