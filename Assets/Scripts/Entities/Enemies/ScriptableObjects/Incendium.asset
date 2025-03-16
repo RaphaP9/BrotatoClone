@@ -17,7 +17,7 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 629127556, guid: 56f7fc5433420f84c91b988f519aeddd, type: 3}
   damageColor: {r: 1, g: 0.5273675, b: 0, a: 1}
-  maxHealth: 70
+  maxHealth: 10
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 3
@@ -30,8 +30,8 @@ MonoBehaviour:
   tooCloseDistance: 3
   preferredDistance: 8
   tooFarDistance: 15
-  aimingTime: 1
-  shootingTime: 1
+  aimingTime: 0.33
+  shootingTime: 0.5
   postShootTime: 1
   projectileRegularDamage: 2
   projectileBleedDamage: 0

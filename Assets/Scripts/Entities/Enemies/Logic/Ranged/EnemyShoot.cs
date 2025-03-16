@@ -77,6 +77,8 @@ public class EnemyShoot : MonoBehaviour
         if (enemyRangedMovement.InPreferredDistance())
         {
             SetShootState(State.Aiming);
+            OnEnemyAim?.Invoke(this, new OnEnemyShootEventArgs { rangedEnemySO = RangedEnemySO, shootPoint = shootPoint });
+            OnThisEnemyAim?.Invoke(this, new OnEnemyShootEventArgs { rangedEnemySO = RangedEnemySO, shootPoint = shootPoint });
         }
 
         ResetTimer();

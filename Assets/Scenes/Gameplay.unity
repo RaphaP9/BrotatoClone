@@ -9278,10 +9278,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Detonix
       objectReference: {fileID: 0}
-    - target: {fileID: 650243211589222648, guid: 49fe714a12a1d624d97dc64f37c05300, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 3877430779044931455, guid: 49fe714a12a1d624d97dc64f37c05300, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5

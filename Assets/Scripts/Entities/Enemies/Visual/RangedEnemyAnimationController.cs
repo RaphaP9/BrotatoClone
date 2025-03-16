@@ -1,6 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class DetonixAnimationController : MonoBehaviour
+public class RangedEnemyAnimationController : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private Animator animator;
@@ -8,7 +10,7 @@ public class DetonixAnimationController : MonoBehaviour
     [SerializeField] private EnemyMovement enemyMovement;
     [SerializeField] private EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
-    [SerializeField] private EnemyKamikaze enemyKamikaze;
+    [SerializeField] private EnemyShoot enemyShoot;
 
     private const string SPEED_FLOAT = "Speed";
 
@@ -16,14 +18,22 @@ public class DetonixAnimationController : MonoBehaviour
 
     private const string SPAWN_ANIMATION_NAME = "Spawn";
     private const string DEATH_ANIMATION_NAME = "Death";
-    private const string KAMIKAZE_ANIMATION_NAME = "Kamikaze";
+    private const string AIM_ANIMATION_NAME = "Aim";
+    private const string SHOOT_ANIMATION_NAME = "Shoot";
+    private const string POST_SHOOT_ANIMATION_NAME = "PostShoot";
+
+    private bool hasDied = false;
 
     private void OnEnable()
     {
         enemySpawningHandler.OnThisEnemySpawnStart += EnemySpawningHandler_OnThisEnemySpawnStart;
         enemySpawningHandler.OnThisEnemySpawnComplete += EnemySpawningHandler_OnThisEnemySpawnComplete;
 
-        enemyKamikaze.OnThisEnemySelfDestroyBegin += EnemyKamikaze_OnThisEnemySelfDestroyBegin;
+        enemyShoot.OnThisEnemyAim += EnemyShoot_OnThisEnemyAim;
+        enemyShoot.OnThisEnemyShoot += EnemyShoot_OnThisEnemyShoot;
+        enemyShoot.OnThisEnemyPostShoot += EnemyShoot_OnThisEnemyPostShoot;
+        enemyShoot.OnThisEnemyStopShooting += EnemyShoot_OnThisEnemyStopShooting;
+
         enemyHealth.OnThisEnemyDeath += EnemyHealth_OnThisEnemyDeath;
     }
 
@@ -32,7 +42,11 @@ public class DetonixAnimationController : MonoBehaviour
         enemySpawningHandler.OnThisEnemySpawnStart -= EnemySpawningHandler_OnThisEnemySpawnStart;
         enemySpawningHandler.OnThisEnemySpawnComplete -= EnemySpawningHandler_OnThisEnemySpawnComplete;
 
-        enemyKamikaze.OnThisEnemySelfDestroyBegin -= EnemyKamikaze_OnThisEnemySelfDestroyBegin;
+        enemyShoot.OnThisEnemyAim -= EnemyShoot_OnThisEnemyAim;
+        enemyShoot.OnThisEnemyShoot -= EnemyShoot_OnThisEnemyShoot;
+        enemyShoot.OnThisEnemyPostShoot -= EnemyShoot_OnThisEnemyPostShoot;
+        enemyShoot.OnThisEnemyStopShooting -= EnemyShoot_OnThisEnemyStopShooting;
+
         enemyHealth.OnThisEnemyDeath -= EnemyHealth_OnThisEnemyDeath;
     }
 
@@ -57,18 +71,35 @@ public class DetonixAnimationController : MonoBehaviour
         animator.Play(MOVEMENT_BLEND_TREE_NAME);
     }
 
-    private void EnemyKamikaze_OnThisEnemySelfDestroyBegin(object sender, EnemyKamikaze.OnEnemyExplosionEventArgs e)
+    private void EnemyShoot_OnThisEnemyAim(object sender, EnemyShoot.OnEnemyShootEventArgs e)
     {
-        animator.Play(KAMIKAZE_ANIMATION_NAME);
+        if (!hasDied) return;
+        animator.Play(AIM_ANIMATION_NAME);
+    }
+
+    private void EnemyShoot_OnThisEnemyShoot(object sender, EnemyShoot.OnEnemyShootEventArgs e)
+    {
+        if (!hasDied) return;
+        animator.Play(SHOOT_ANIMATION_NAME);
+    }
+
+    private void EnemyShoot_OnThisEnemyPostShoot(object sender, EnemyShoot.OnEnemyShootEventArgs e)
+    {
+        if (!hasDied) return;
+        animator.Play(POST_SHOOT_ANIMATION_NAME);
+    }
+
+    private void EnemyShoot_OnThisEnemyStopShooting(object sender, EnemyShoot.OnEnemyShootEventArgs e)
+    {
+        if (!hasDied) return;
+        animator.Play(MOVEMENT_BLEND_TREE_NAME);
     }
 
     private void EnemyHealth_OnThisEnemyDeath(object sender, System.EventArgs e)
     {
-        if (enemyKamikaze.HasExplodedKamikaze) return;
+        hasDied = true;
         animator.Play(DEATH_ANIMATION_NAME);
     }
 
     #endregion
-
-
 }

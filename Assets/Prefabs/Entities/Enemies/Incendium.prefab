@@ -317,6 +317,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6738715435935704628}
   - component: {fileID: 6470762041360620951}
+  - component: {fileID: 2244993662934513171}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -356,6 +357,23 @@ MonoBehaviour:
   enemySpawningHandler: {fileID: 6000539653414035718}
   enemyHealth: {fileID: 1715791615252644950}
   spriteRenderer: {fileID: 3684491520837824643}
+--- !u!114 &2244993662934513171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4190407119827610817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 563c84b143429ac4395de122efe4d04c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animator: {fileID: 7255662092305812705}
+  enemyMovement: {fileID: 7706264347671127833}
+  enemySpawningHandler: {fileID: 6000539653414035718}
+  enemyHealth: {fileID: 1715791615252644950}
+  enemyShoot: {fileID: 6511095033016286744}
 --- !u!1 &8140726204368748326
 GameObject:
   m_ObjectHideFlags: 0
