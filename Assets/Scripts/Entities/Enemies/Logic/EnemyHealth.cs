@@ -105,14 +105,14 @@ public class EnemyHealth : EntityHealth
 
     protected override void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnEnemyTakeRegularDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource , id = enemyIdentifier.EnemySO.id});
-        OnThisEnemyTakeRegularDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource , id = enemyIdentifier.EnemySO.id});
+        OnEnemyTakeRegularDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource , entityHealth = this, id = enemyIdentifier.EnemySO.id});
+        OnThisEnemyTakeRegularDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource ,entityHealth = this, id = enemyIdentifier.EnemySO.id});
     }
 
     protected override void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnEnemyTakeBleedDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, id = enemyIdentifier.EnemySO.id });
-        OnThisEnemyTakeBleedDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, id = enemyIdentifier.EnemySO.id });
+        OnEnemyTakeBleedDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, entityHealth = this, id = enemyIdentifier.EnemySO.id });
+        OnThisEnemyTakeBleedDamage?.Invoke(this, new OnEnemyTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, entityHealth = this, id = enemyIdentifier.EnemySO.id });
     }
     #endregion
 
@@ -137,8 +137,8 @@ public class EnemyHealth : EntityHealth
 
     protected override void OnHeal(int healAmount, int currentHealth)
     {
-        OnEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth });
-        OnThisEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth });
+        OnEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth, entityHealth = this });
+        OnThisEnemyHeal?.Invoke(this, new OnEntityHealEventArgs { healAmount = healAmount, newCurrentHealth = currentHealth, entityHealth = this });
     }
     #endregion
 

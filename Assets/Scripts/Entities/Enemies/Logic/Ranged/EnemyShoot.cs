@@ -74,6 +74,12 @@ public class EnemyShoot : MonoBehaviour
 
     private void NotShootingLogic()
     {
+        if (!CanShoot())
+        {
+            ResetTimer();
+            return;
+        }
+
         if (rangedEnemyMovement.InPreferredDistance())
         {
             SetShootState(State.Aiming);

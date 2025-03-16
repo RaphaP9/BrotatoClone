@@ -120,12 +120,12 @@ public class PlayerHealth : EntityHealth
 
     protected override void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnPlayerTakeRegularDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource });
+        OnPlayerTakeRegularDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = damage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, entityHealth = this });
     }
 
     protected override void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit, IDamageDealer damageSource)
     {
-        OnPlayerTakeBleedDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource});
+        OnPlayerTakeBleedDamage?.Invoke(this, new OnEntityTakeDamageEventArgs { damageTaken = bleedDamage, newCurrentHealth = currentHealth, isCrit = isCrit, damageSource = damageSource, entityHealth = this});
     }
     #endregion
 
@@ -146,7 +146,7 @@ public class PlayerHealth : EntityHealth
 
     protected override void OnHeal(int healAmount, int currentHealth)
     {
-        OnPlayerHeal?.Invoke(this, new OnEntityHealEventArgs {healAmount = healAmount, newCurrentHealth = currentHealth});
+        OnPlayerHeal?.Invoke(this, new OnEntityHealEventArgs {healAmount = healAmount, newCurrentHealth = currentHealth, entityHealth = this});
     }
     #endregion
 

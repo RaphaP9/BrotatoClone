@@ -26,7 +26,7 @@ MonoBehaviour:
   bleedTickTime: 0.25
   critChance: 0
   critDamageMultiplier: 0
-  damageColor: {r: 0.3490566, g: 0, b: 0, a: 1}
+  damageColor: {r: 0, g: 3.562256, b: 4.594794, a: 1}
   weaponTransform: {fileID: 625562748042871188, guid: 117e45db0eeec0b4683ed3f856f43bac, type: 3}
   attackSpeed: 2
   projectileRange: 15

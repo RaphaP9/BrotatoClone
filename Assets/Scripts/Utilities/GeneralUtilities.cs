@@ -10,6 +10,13 @@ public static class GeneralUtilities
     public static Vector2 SupressZComponent(Vector3 vector3) => new Vector2(vector3.x, vector3.y);
 
     public static float GetVector2AngleDegrees(Vector2 vector2) => Mathf.Atan2(vector2.y, vector2.x) * Mathf.Rad2Deg;
+    public static Vector2 GetAngleDegreesVector2(float angle)
+    {
+        float radians = angle * Mathf.Deg2Rad;
+        Vector2 vector =  new Vector2(Mathf.Cos(radians), Mathf.Sin(radians));
+        vector.Normalize();
+        return vector;
+    }
 
     public static Vector3 Vector2ToVector3(Vector2 vector2) => new Vector3(vector2.x, vector2.y, 0f );
 

@@ -32,7 +32,7 @@ MonoBehaviour:
   attackingTime: 0.3
   postAttackTime: 0.5
   attackRegularDamage: 1
-  attackBleedDamage: 0
+  attackBleedDamage: 1
   attackBleedDuration: 2
-  attackBleedTickTime: 0.25
+  attackBleedTickTime: 0.5
   attackArea: 1

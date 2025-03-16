@@ -23,8 +23,10 @@ MonoBehaviour:
   moveSpeed: 3
   lifeSteal: 0
   oreDrop: 0
-  spawnDuration: 5
+  spawnDuration: 3
   cleanupTime: 3
+  critChance: 0
+  critDamageMultiplier: 0
   kamikazeRegularDamage: 5
   kamikazeBleedDamage: 1
   kamikazeBleedDuration: 4

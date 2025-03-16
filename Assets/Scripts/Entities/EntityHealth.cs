@@ -27,6 +27,7 @@ public abstract class EntityHealth : MonoBehaviour
         public int newCurrentHealth;
         public bool isCrit;
         public IDamageDealer damageSource;
+        public EntityHealth entityHealth;
     }
 
     public class OnEntityDodgeChanceEventArgs : EventArgs
@@ -52,6 +53,7 @@ public abstract class EntityHealth : MonoBehaviour
     {
         public int healAmount;
         public int newCurrentHealth;
+        public EntityHealth entityHealth;
     }
 
     protected abstract bool CanTakeDamage();
