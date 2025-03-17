@@ -39,7 +39,7 @@ public abstract class UIInput : MonoBehaviour, IUIInput
     public abstract bool GetPauseDown();
 
     public abstract bool GetStatsDown();
-    public void UseInput() => MaxInputCooldownTimer();
+    public void SetInputOnCooldown() => MaxInputCooldownTimer();
 
     private void HandleInputCooldown()
     {

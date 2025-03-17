@@ -39,8 +39,9 @@ public class NewUIInput : UIInput
     public override bool GetStatsDown()
     {
         if (!CanProcessInput()) return false;
+        if (InputOnCooldown()) return false;
 
-        bool pauseInput = playerInputActions.UI.Pause.WasPerformedThisFrame();
+        bool pauseInput = playerInputActions.UI.Stats.WasPerformedThisFrame();
         return pauseInput;
     }
 }

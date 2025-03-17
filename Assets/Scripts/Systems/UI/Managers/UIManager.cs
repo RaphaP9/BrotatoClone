@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
         if (PauseManager.Instance.GamePausedThisFrame) return;
 
         OnUIToCloseInput?.Invoke(this, new OnUIToCloseInputEventArgs { UIToClose = _UILayers[^1] });
-        UIInput.UseInput();
+        UIInput.SetInputOnCooldown();
     }
 
     public void CheckUIActive()

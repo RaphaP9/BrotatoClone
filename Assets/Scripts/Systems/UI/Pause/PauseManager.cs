@@ -78,7 +78,7 @@ public class PauseManager : MonoBehaviour
             PauseGame();
             GamePausedThisFrame = true;
 
-            UIInput.UseInput();
+            UIInput.SetInputOnCooldown();
         }
         else
         {
@@ -87,7 +87,7 @@ public class PauseManager : MonoBehaviour
                 ResumeGame();
             }
 
-            UIInput.UseInput();
+            UIInput.SetInputOnCooldown();
         }
     }
 
