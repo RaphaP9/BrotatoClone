@@ -101,6 +101,9 @@ public class ProjectileHandler : MonoBehaviour
             bool dodged = GeneralGameplayUtilities.CheckDodgeByTransform(collision.transform);
             if (dodged) return;
 
+            bool ghosted = GeneralGameplayUtilities.CheckGhostedByTransform(collision.transform);
+            if (ghosted) return;
+
             switch (projectileDamageType)
             {
                 case ProjectileDamageType.Singular:

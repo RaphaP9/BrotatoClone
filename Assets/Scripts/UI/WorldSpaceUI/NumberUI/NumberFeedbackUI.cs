@@ -54,7 +54,7 @@ public abstract class NumberFeedbackUI : MonoBehaviour
         animator.SetTrigger(HIDE_TRIGGER);
         yield return new WaitForSeconds(hidingTime);
 
-        Destroy(gameObject);
+        Destroy(transform.root.gameObject);
     }
 
     protected void HandleDisplacement()

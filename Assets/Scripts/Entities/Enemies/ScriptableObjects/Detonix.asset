@@ -27,6 +27,7 @@ MonoBehaviour:
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
+  enemyPrefab: {fileID: 3877430779044931455, guid: 49fe714a12a1d624d97dc64f37c05300, type: 3}
   kamikazeRegularDamage: 5
   kamikazeBleedDamage: 1
   kamikazeBleedDuration: 4

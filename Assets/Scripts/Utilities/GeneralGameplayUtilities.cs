@@ -32,13 +32,27 @@ public static class GeneralGameplayUtilities
         return false;
     }
 
+    public static bool CheckGhostedByTransform(Transform transform)
+    {
+        EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
+
+        if (entityHealth == null)
+        {
+            if (DEBUG) Debug.Log("Transform does not contain an EntityHealth component. Ghost check will be ignored");
+            return false;
+        }
+
+        if (entityHealth.IsGhosted) return true;
+        return false;
+    }
+
     public static bool CheckIsAliveByTransform(Transform transform)
     {
         EntityHealth entityHealth = GetEntityHealthComponentByTransform(transform);
 
         if (entityHealth == null)
         {
-            if (DEBUG) Debug.Log("Transform does not contain an EntityHealth component. Dodge check will be ignored");
+            if (DEBUG) Debug.Log("Transform does not contain an EntityHealth component. IsAlive check will be ignored");
             return false;
         }
 

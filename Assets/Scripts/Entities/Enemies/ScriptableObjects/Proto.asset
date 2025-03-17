@@ -27,6 +27,7 @@ MonoBehaviour:
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
+  enemyPrefab: {fileID: 3877430779044931455, guid: e00dd94e2a357a646bf8186c12d5e329, type: 3}
   attackDistance: 3
   chargingTime: 0.3
   attackingTime: 0.3

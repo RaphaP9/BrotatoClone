@@ -12,12 +12,14 @@ public abstract class EntityHealth : MonoBehaviour
     [SerializeField, Range(0f,1f)] protected float armorPercentage;
     [SerializeField, Range(0f, 1f)] protected float dodgeChance;
     [SerializeField, Range(0f, 1f)] protected float lifeSteal;
+    [SerializeField] protected bool isGhosted; 
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
     public float ArmorPercentage => armorPercentage;
     public float DodgeChance => dodgeChance;
     public float LifeSteal => lifeSteal;    
+    public bool IsGhosted => isGhosted;
 
     protected const int INSTA_KILL_DAMAGE = 999;
 
@@ -75,6 +77,7 @@ public abstract class EntityHealth : MonoBehaviour
     public void TakeRegularDamage(int baseDamage, bool isCrit, IDamageDealer damageSource)
     {
         if (!CanTakeDamage()) return;
+        if (isGhosted) return;
 
         int mitigatedBleedDamage = MitigateByArmor(baseDamage);
         TakeFinalRegularDamage(mitigatedBleedDamage, isCrit, damageSource);
@@ -129,6 +132,7 @@ public abstract class EntityHealth : MonoBehaviour
     protected void TakeFinalBleedDamage(int damage, bool isCrit, IDamageDealer damageSource)
     {
         if (!IsAlive()) return;
+        if (isGhosted) return;
 
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
@@ -202,6 +206,8 @@ public abstract class EntityHealth : MonoBehaviour
 
         Heal(healAmount);
     }
+
+    protected void SetIsGhosted(bool value) => isGhosted = value;
 
     public abstract void InstaKill();
 

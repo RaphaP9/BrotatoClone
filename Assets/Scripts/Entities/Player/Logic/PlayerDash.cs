@@ -27,6 +27,8 @@ public class PlayerDash : MonoBehaviour
     [Space]
     [SerializeField, Range(0f, 10f)] private float betweenDashesTime;
     [SerializeField, Range(0f, 10f)] private float dashRefillTime;
+    [Space]
+    [SerializeField] private bool ghostedWhileDashing;
 
     [Header("Other")]
     [SerializeField] private int dashesPerformed;
@@ -53,6 +55,7 @@ public class PlayerDash : MonoBehaviour
     {
         public Vector2 dashDirection;
         public int dashesPerformed;
+        public bool ghostedWhileDashing;
     }
 
     private void OnEnable()
@@ -172,7 +175,7 @@ public class PlayerDash : MonoBehaviour
     #region Dash
     public void Dash()
     {
-        OnPlayerDashPre?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection});
+        OnPlayerDashPre?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection, ghostedWhileDashing = ghostedWhileDashing});
 
         currentDashDirection = DefineDashDirection();
 
@@ -184,7 +187,7 @@ public class PlayerDash : MonoBehaviour
         _rigidbody2D.velocity = scaledDashVector;
         IsDashing = true;
 
-        OnPlayerDash?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection});
+        OnPlayerDash?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection, ghostedWhileDashing = ghostedWhileDashing});
     }
 
     private void StopDash()
@@ -194,7 +197,9 @@ public class PlayerDash : MonoBehaviour
         _rigidbody2D.velocity = Vector2.zero;
         IsDashing = false;
 
-        OnPlayerDashStopped?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed });
+        OnPlayerDashStopped?.Invoke(this, new OnPlayerDashEventArgs { dashesPerformed = dashesPerformed, dashDirection = currentDashDirection, ghostedWhileDashing = ghostedWhileDashing });
+
+        currentDashDirection = Vector2.zero;
     }
 
     private Vector2 DefineDashDirection()

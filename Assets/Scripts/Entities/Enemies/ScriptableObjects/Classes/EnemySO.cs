@@ -12,4 +12,6 @@ public abstract class EnemySO : EntitySO
     [Space]
     [Range(0f, 1f)] public float critChance;
     [Range(0f, 1f)] public float critDamageMultiplier;
+    [Space]
+    [SerializeField] private Transform enemyPrefab;
 }

@@ -11,7 +11,6 @@ public class EnemyShoot : MonoBehaviour
     [SerializeField] protected EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
     [Space]
-    [SerializeField] private Transform projectilePrefab;
     [SerializeField] private Transform shootPoint;
 
     [Header("States")]
@@ -105,7 +104,7 @@ public class EnemyShoot : MonoBehaviour
             return;
         }
 
-        ShootProjectile(projectilePrefab,shootPoint);
+        ShootProjectile(RangedEnemySO.projectilePrefab,shootPoint);
         SetShootState(State.Shooting);
    
         ResetTimer();

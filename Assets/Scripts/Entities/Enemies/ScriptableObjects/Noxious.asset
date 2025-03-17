@@ -27,6 +27,7 @@ MonoBehaviour:
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
+  enemyPrefab: {fileID: 5667900748043500077, guid: 08638218807a81c4083bb53804187620, type: 3}
   tooCloseDistance: 3
   preferredDistance: 8
   tooFarDistance: 15
@@ -42,3 +43,4 @@ MonoBehaviour:
   dispersionAngle: 0
   projectileDamageType: 0
   projectileArea: 0
+  projectilePrefab: {fileID: 909037060864899003, guid: b02332eac8959134b81b0c3d08c60410, type: 3}

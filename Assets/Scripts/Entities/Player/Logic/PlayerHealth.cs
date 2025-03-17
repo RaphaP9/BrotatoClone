@@ -9,6 +9,7 @@ public class PlayerHealth : EntityHealth
 
     [Header("Player Settings")]
     [SerializeField] private PlayerIdentifier playerIdentifier;
+    [SerializeField] private PlayerDash playerDash;
     [SerializeField] private int healthRegen;
 
     public static event EventHandler OnPlayerDodge;
@@ -45,7 +46,12 @@ public class PlayerHealth : EntityHealth
 
         EnemyHealth.OnEnemyTakeRegularDamage += EnemyHealth_OnEnemyTakeRegularDamage;
         EnemyHealth.OnEnemyTakeBleedDamage += EnemyHealth_OnEnemyTakeBleedDamage;
+
+        PlayerDash.OnPlayerDash += PlayerDash_OnPlayerDash;
+        PlayerDash.OnPlayerDashStopped += PlayerDash_OnPlayerDashStopped;
     }
+
+
 
     private void OnDisable()
     {
@@ -224,6 +230,18 @@ public class PlayerHealth : EntityHealth
     private void EnemyHealth_OnEnemyTakeBleedDamage(object sender, EnemyHealth.OnEnemyTakeDamageEventArgs e)
     {
         HealFromLifeSteal(e.damageTaken);
+    }
+
+    private void PlayerDash_OnPlayerDash(object sender, PlayerDash.OnPlayerDashEventArgs e)
+    {
+        if (!e.ghostedWhileDashing) return;
+        SetIsGhosted(true);
+    }
+
+    private void PlayerDash_OnPlayerDashStopped(object sender, PlayerDash.OnPlayerDashEventArgs e)
+    {
+        if (!e.ghostedWhileDashing) return;
+        SetIsGhosted(false);
     }
 
     #endregion

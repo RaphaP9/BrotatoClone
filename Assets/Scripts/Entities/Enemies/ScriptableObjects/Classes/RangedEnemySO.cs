@@ -12,8 +12,7 @@ public class RangedEnemySO : EnemySO, IProjectileSpawner
     [Space]
     [Range(0f, 3f)] public float aimingTime;
     [Range(0f, 3f)] public float shootingTime;
-    [Range(0f, 3f)] public float postShootTime;
-    [Space] 
+    [Range(0f, 3f)] public float postShootTime; 
 
     [Header("Projectile Settings")]
     [Range(0, 10)] public int projectileRegularDamage;
@@ -28,6 +27,8 @@ public class RangedEnemySO : EnemySO, IProjectileSpawner
     [Space]
     public ProjectileDamageType projectileDamageType;
     [Range(0f, 3f)] public float projectileArea;
+    [Space]
+    public Transform projectilePrefab;
 
     public ProjectileDamageType GetProjectileDamageType() => projectileDamageType;
     public float GetProjectileArea() => projectileArea;

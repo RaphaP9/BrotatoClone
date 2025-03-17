@@ -641,7 +641,9 @@ MonoBehaviour:
   armorPercentage: 0
   dodgeChance: 0
   lifeSteal: 0
+  isGhosted: 0
   playerIdentifier: {fileID: 2709480784950069962}
+  playerDash: {fileID: 0}
   healthRegen: 0
 --- !u!114 &5415705098753721570
 MonoBehaviour:
@@ -682,11 +684,12 @@ MonoBehaviour:
   playerHealth: {fileID: 5522695071689123836}
   dashLimit: 2
   directionMode: 1
-  dashDistance: 4
-  dashTime: 0.35
-  dashResistance: 0
+  dashDistance: 3
+  dashTime: 0.25
+  dashResistance: 2
   betweenDashesTime: 0.01
   dashRefillTime: 0.5
+  ghostedWhileDashing: 1
   dashesPerformed: 0
   currentDashDirection: {x: 0, y: 0}
 --- !u!1 &6698145028585677794
