@@ -35,4 +35,12 @@ public class NewUIInput : UIInput
         bool pauseInput = playerInputActions.UI.Pause.WasPerformedThisFrame();
         return pauseInput;
     }
+
+    public override bool GetStatsDown()
+    {
+        if (!CanProcessInput()) return false;
+
+        bool pauseInput = playerInputActions.UI.Pause.WasPerformedThisFrame();
+        return pauseInput;
+    }
 }

@@ -6,4 +6,5 @@ public interface IUIInput
 {
     public bool CanProcessInput();
     public bool GetPauseDown();
+    public bool GetStatsDown();
 }

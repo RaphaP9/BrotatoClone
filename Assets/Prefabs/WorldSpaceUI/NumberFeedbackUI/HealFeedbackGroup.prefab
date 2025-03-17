@@ -329,7 +329,7 @@ MonoBehaviour:
   minAngle: 89
   maxAngle: 91
   chosenDirection: {x: 0, y: 0}
-  healColor: {r: 0, g: 1, b: 0.1510973, a: 1}
+  healColor: {r: 0, g: 4, b: 0.6043892, a: 1}
 --- !u!1 &5332708980485238590
 GameObject:
   m_ObjectHideFlags: 0

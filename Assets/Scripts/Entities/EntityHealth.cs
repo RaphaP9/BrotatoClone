@@ -190,8 +190,12 @@ public abstract class EntityHealth : MonoBehaviour
 
     protected void Heal(int healAmount)
     {
+        if (IsFullHealth()) return;
+
         int previousHealth = currentHealth;
-        currentHealth = currentHealth + healAmount > maxHealth? maxHealth : currentHealth + healAmount;
+        int newHealth = currentHealth + healAmount > maxHealth? maxHealth : currentHealth + healAmount;
+
+        SetCurrentHealth(newHealth);
 
         int realHealAmount = currentHealth - previousHealth;
 
@@ -200,6 +204,7 @@ public abstract class EntityHealth : MonoBehaviour
 
     protected void HealFromLifeSteal(int damage)
     {
+
         int healAmount = Mathf.RoundToInt(damage * lifeSteal);
 
         if (healAmount <= 0) return;
@@ -208,6 +213,8 @@ public abstract class EntityHealth : MonoBehaviour
     }
 
     protected void SetIsGhosted(bool value) => isGhosted = value;
+
+    protected bool IsFullHealth() => currentHealth == maxHealth;
 
     public abstract void InstaKill();
 

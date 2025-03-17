@@ -19,7 +19,7 @@ public class PlayerSO : EntitySO
     [Range(0f, 1f)] public float attackCritChance;
     [Range(1f, 2f)] public float attackCritDamageMultiplier;
     [Space]
-    [Range(0f, 0.5f)] public float abilityCooldownReduction;
+    [Range(0f, 0.5f)] public float abilityCooldownReductionMultiplier;
     [Space]
     [Range(1f, 2f)] public float abilityEffectMultiplier;
     [Range(0f, 1f)] public float abilityCritChance;

@@ -3,19 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbilityCooldownReductionStatManager : StatManager
+public class AbilityCooldownReductionMultiplierStatManager : StatManager
 {
-    public static AbilityCooldownReductionStatManager Instance { get; private set; }
+    public static AbilityCooldownReductionMultiplierStatManager Instance { get; private set; }
 
-    public static event EventHandler<OnAbilityCooldownReductionStatEventArgs> OnAbilityCooldownReductionStatInitialized;
-    public static event EventHandler<OnAbilityCooldownReductionStatEventArgs> OnAbilityCooldownReductionStatUpdated;
+    public static event EventHandler<OnAbilityCooldownReductionMultiplierStatEventArgs> OnAbilityCooldownReductionMultiplierStatInitialized;
+    public static event EventHandler<OnAbilityCooldownReductionMultiplierStatEventArgs> OnAbilityCooldownReductionMultiplierStatUpdated;
 
     [Header("Value")]
     [SerializeField] private float abilityCooldownReductionStat;
 
     public float AbilityCooldownReductionStat => abilityCooldownReductionStat;
 
-    public class OnAbilityCooldownReductionStatEventArgs : EventArgs
+    public class OnAbilityCooldownReductionMultiplierStatEventArgs : EventArgs
     {
         public float abilityCooldownReductionStat;
     }
@@ -36,18 +36,18 @@ public class AbilityCooldownReductionStatManager : StatManager
     protected override void InitializeStat()
     {
         ProcessAbilityCooldownReductionStat();
-        OnAbilityCooldownReductionStatInitialized?.Invoke(this, new OnAbilityCooldownReductionStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
+        OnAbilityCooldownReductionMultiplierStatInitialized?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
     }
 
     protected override void UpdateStat()
     {
         ProcessAbilityCooldownReductionStat();
-        OnAbilityCooldownReductionStatUpdated?.Invoke(this, new OnAbilityCooldownReductionStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
+        OnAbilityCooldownReductionMultiplierStatUpdated?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
     }
 
     private void ProcessAbilityCooldownReductionStat()
     {
-        float calculatedStatValue = CalculateStatValue(BaseStats.abilityCooldownReduction, GeneralStatsUtilities.MIN_ABILITY_COOLDOWN_REDUCTION, GeneralStatsUtilities.MAX_ABILITY_COOLDOWN_REDUCTION);
+        float calculatedStatValue = CalculateStatValue(BaseStats.abilityCooldownReductionMultiplier, GeneralStatsUtilities.MIN_ABILITY_COOLDOWN_REDUCTION, GeneralStatsUtilities.MAX_ABILITY_COOLDOWN_REDUCTION);
         float roundedValue = GeneralStatsUtilities.RoundFloatStatToNDecimalPlaces(calculatedStatValue, 2);
         SetAbilityCooldownReductionStat(roundedValue);
     }

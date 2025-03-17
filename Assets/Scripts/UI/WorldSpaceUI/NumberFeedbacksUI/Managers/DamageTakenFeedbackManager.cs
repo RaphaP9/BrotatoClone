@@ -41,7 +41,7 @@ public class DamageTakenFeedbackManager : MonoBehaviour
 
         if(damageTakenUI == null)
         {
-            if (debug) Debug.Log("Instantiated feedback does not contain a damageTakenUI.");
+            if (debug) Debug.Log("Instantiated feedback does not contain a DamageTakenUI component.");
             return;
         }
 

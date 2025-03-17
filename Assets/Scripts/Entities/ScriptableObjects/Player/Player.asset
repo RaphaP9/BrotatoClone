@@ -21,7 +21,7 @@ MonoBehaviour:
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
-  lifeSteal: 0
+  lifeSteal: 0.5
   healthRegen: 5
   dashes: 1
   areaMultiplier: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
   attackDamageMultiplier: 1
   attackCritChance: 0
   attackCritDamageMultiplier: 1
-  abilityCooldownReduction: 0
+  abilityCooldownReductionMultiplier: 0
   abilityEffectMultiplier: 1
   abilityCritChance: 0
   abilityCritEffectMultiplier: 0.5
