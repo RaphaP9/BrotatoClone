@@ -21,7 +21,7 @@ MonoBehaviour:
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
-  lifeSteal: 0.5
+  lifeSteal: 0
   healthRegen: 5
   dashes: 1
   areaMultiplier: 1

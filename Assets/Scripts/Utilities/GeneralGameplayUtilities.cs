@@ -8,6 +8,8 @@ public static class GeneralGameplayUtilities
     public const float PERSPECTIVE_SCALE_X = 1f;
     public const float PERSPECTIVE_SCALE_Y = 1f;
 
+    private const string PERCENTAGE_CHARACTER = "%";
+
     private const bool DEBUG = true;
 
     public static Vector2 ScaleVector2ToPerspective(Vector2 baseVector)
@@ -313,6 +315,44 @@ public static class GeneralGameplayUtilities
         deviatedDirection.Normalize();
 
         return deviatedDirection;
+    }
+    #endregion
+
+    #region StatUIProcessing
+    public static string ProcessCurrentValueToSimpleString(float currentValue)
+    {
+        int intValue = Mathf.RoundToInt(currentValue);
+        string stringValue = intValue.ToString();
+        return stringValue;
+    }
+
+    public static string ProcessCurrentValueToSimpleFloat(float currentValue, int decimalPlaces)
+    {
+        float floatValue = GeneralUtilities.RoundToNDecimalPlaces(currentValue, decimalPlaces);
+        string stringValue = floatValue.ToString();
+        return stringValue;
+    }
+
+    public static string ProcessCurrentValueToPercentage(float currentValue, int decimalPlaces)
+    {
+        float floatValue = GeneralUtilities.RoundToNDecimalPlaces(currentValue, decimalPlaces);
+        string stringValue = TransformToPercentage(floatValue);
+        return stringValue;
+    }
+
+    public static string ProcessCurrentValueToExcessPercentage(float currentValue, int decimalPlaces)
+    {
+        float floatValue = GeneralUtilities.RoundToNDecimalPlaces(currentValue, decimalPlaces);
+        floatValue = floatValue - 1;
+        string stringValue = TransformToPercentage(floatValue);
+        return stringValue;
+    }
+
+    public static string TransformToPercentage(float value)
+    {
+        float percentageValue = value * 100;
+        string stringValue = percentageValue.ToString() + PERCENTAGE_CHARACTER;
+        return stringValue;
     }
     #endregion
 }

@@ -1187,6 +1187,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 183461370}
+  - component: {fileID: 183461371}
   m_Layer: 0
   m_Name: AttackSpeedMultiplierGroup
   m_TagString: Untagged
@@ -1215,6 +1216,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &183461371
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 183461369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9011ecb37c9e4c4f9507f614a398cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 1806050378}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &196953928
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1723,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 284982266}
+  - component: {fileID: 284982267}
   m_Layer: 0
   m_Name: DashesGroup
   m_TagString: Untagged
@@ -1733,6 +1752,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &284982267
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 284982265}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24bf1c74f7144c64981449b91674cd49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 1010345581}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &292819326
 GameObject:
   m_ObjectHideFlags: 0
@@ -2266,6 +2302,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320596593}
+  - component: {fileID: 320596594}
   m_Layer: 0
   m_Name: AreaMultiplierGroup
   m_TagString: Untagged
@@ -2294,6 +2331,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &320596594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 320596592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc699d0b83269494b8f87269638bf436, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 1909278158}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &330751290
 GameObject:
   m_ObjectHideFlags: 0
@@ -3865,6 +3919,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 530201792}
+  - component: {fileID: 530201793}
   m_Layer: 0
   m_Name: MoveSpeedGroup
   m_TagString: Untagged
@@ -3893,6 +3948,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &530201793
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 530201791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 664179adaa199d84cbfff45fd1635f47, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 2126667540}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &536943494
 GameObject:
   m_ObjectHideFlags: 0
@@ -4774,6 +4846,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b2bb77d9539edc64580843b733d20a45, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &681034529 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2709480784950069962, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
+  m_PrefabInstance: {fileID: 3423963489527315907}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 698d540b944cdad44b4dd6fa0e49b92c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &687035802
 GameObject:
   m_ObjectHideFlags: 0
@@ -5188,6 +5271,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 750932713}
+  - component: {fileID: 750932714}
   m_Layer: 0
   m_Name: ArmorPercentageGroup
   m_TagString: Untagged
@@ -5216,6 +5300,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &750932714
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750932712}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09f3b303443a2f641bf35fe2fec2b74a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 597381051}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &771802978
 GameObject:
   m_ObjectHideFlags: 0
@@ -7826,7 +7927,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: HP
+  m_text: MaxHealth
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8071,6 +8172,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1196180841}
+  - component: {fileID: 1196180842}
   m_Layer: 0
   m_Name: AttackRangeMultiplierGroup
   m_TagString: Untagged
@@ -8099,6 +8201,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1196180842
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1196180840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b76acc2dd6d99145a0fe067d2e11da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 944608927}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &1197875863
 GameObject:
   m_ObjectHideFlags: 0
@@ -10059,6 +10178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1379666781}
+  - component: {fileID: 1379666782}
   m_Layer: 0
   m_Name: MaxHealthGroup
   m_TagString: Untagged
@@ -10087,6 +10207,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1379666782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1379666780}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 339a34228a7b83440918583f6642ef31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 777037568}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.4575472, g: 1, b: 0.60240674, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.6179246, b: 0.6179246, a: 1}
 --- !u!1 &1400396766
 GameObject:
   m_ObjectHideFlags: 0
@@ -12626,6 +12763,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1762918084}
+  - component: {fileID: 1762918085}
   m_Layer: 0
   m_Name: DodgeChanceGroup
   m_TagString: Untagged
@@ -12654,6 +12792,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1762918085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1762918083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8bfb5afdafeb5034d92cd5b1b2a8ebfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 339386527}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &1770768497
 GameObject:
   m_ObjectHideFlags: 0
@@ -13005,7 +13160,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -250}
+  m_AnchoredPosition: {x: 100, y: -225}
   m_SizeDelta: {x: 350, y: 1000}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1872413210
@@ -13316,6 +13471,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1915709649}
+  - component: {fileID: 1915709650}
   m_Layer: 0
   m_Name: HealthRegenGroup
   m_TagString: Untagged
@@ -13344,6 +13500,23 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 350, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1915709650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1915709648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: afd1a2ebc97084641973dff451a611ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  valueText: {fileID: 1787450183}
+  playerIdentifier: {fileID: 681034529}
+  positiveColor: {r: 0.45882353, g: 1, b: 0.6039216, a: 1}
+  neutralColor: {r: 1, g: 1, b: 1, a: 1}
+  negativeColor: {r: 1, g: 0.61960787, b: 0.61960787, a: 1}
 --- !u!1 &1917311086
 GameObject:
   m_ObjectHideFlags: 0
