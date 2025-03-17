@@ -36,7 +36,7 @@ public static class GeneralStatsUtilities
     public static float MIN_ATTACK_RANGE_MULTIPLIER = 0.5f;
     public static float MAX_ATTACK_RANGE_MULTIPLIER = 4f;
 
-    public static float MIN_ATTACK_DAMAGE_MULTIPLIER = 1f;
+    public static float MIN_ATTACK_DAMAGE_MULTIPLIER = 0.5f;
     public static float MAX_ATTACK_DAMAGE_MULTIPLIER = 2f;
 
     public static float MIN_ATTACK_CRIT_CHANCE = 0f;
