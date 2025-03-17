@@ -8,7 +8,7 @@ public class AttackCritChanceStatManager : StatManager
     public static AttackCritChanceStatManager Instance { get; private set; }
 
     public static event EventHandler<OnAttackCritChanceStatEventArgs> OnAttackCritChanceStatInitialized;
-    public static event EventHandler<OnAttackCritChanceStatEventArgs> OnAttackCritChancerStatUpdated;
+    public static event EventHandler<OnAttackCritChanceStatEventArgs> OnAttackCritChanceStatUpdated;
 
     [Header("Value")]
     [SerializeField] private float attackCritChanceStat;
@@ -42,7 +42,7 @@ public class AttackCritChanceStatManager : StatManager
     protected override void UpdateStat()
     {
         ProcessAttackCritChanceStat();
-        OnAttackCritChancerStatUpdated?.Invoke(this, new OnAttackCritChanceStatEventArgs { attackCritChanceStat = attackCritChanceStat });
+        OnAttackCritChanceStatUpdated?.Invoke(this, new OnAttackCritChanceStatEventArgs { attackCritChanceStat = attackCritChanceStat });
     }
 
     private void ProcessAttackCritChanceStat()

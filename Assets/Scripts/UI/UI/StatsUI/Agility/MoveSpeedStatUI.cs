@@ -11,8 +11,8 @@ public class MoveSpeedStatUI : StatUI
     }
     private void OnDisable()
     {
-        MoveSpeedStatManager.OnMoveSpeedStatInitialized += MoveSpeedStatManager_OnMoveSpeedStatInitialized;
-        MoveSpeedStatManager.OnMoveSpeedStatUpdated += MoveSpeedStatManager_OnMoveSpeedStatUpdated;
+        MoveSpeedStatManager.OnMoveSpeedStatInitialized -= MoveSpeedStatManager_OnMoveSpeedStatInitialized;
+        MoveSpeedStatManager.OnMoveSpeedStatUpdated -= MoveSpeedStatManager_OnMoveSpeedStatUpdated;
     }
 
     protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleFloat(currentValue, 2);

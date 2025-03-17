@@ -126,7 +126,7 @@ public static class GeneralGameplayUtilities
     public static int CalculateCritDamage(int baseDamage, float critDamagePercentage)
     {
         float critDamage = baseDamage * critDamagePercentage;
-        int roundedCritDamage = Mathf.CeilToInt(critDamagePercentage);
+        int roundedCritDamage = Mathf.CeilToInt(critDamage);
 
         return roundedCritDamage;
     }

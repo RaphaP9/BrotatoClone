@@ -12,8 +12,8 @@ public class DashesStatUI : StatUI
 
     private void OnDisable()
     {
-        DashesStatManager.OnDashesStatInitialized += DashesStatManager_OnDashesStatInitialized;
-        DashesStatManager.OnDashesStatUpdated += DashesStatManager_OnDashesStatUpdated;
+        DashesStatManager.OnDashesStatInitialized -= DashesStatManager_OnDashesStatInitialized;
+        DashesStatManager.OnDashesStatUpdated -= DashesStatManager_OnDashesStatUpdated;
     }
 
     protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleString(currentValue);

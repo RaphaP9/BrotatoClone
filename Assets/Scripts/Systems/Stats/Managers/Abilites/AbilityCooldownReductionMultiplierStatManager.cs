@@ -11,13 +11,13 @@ public class AbilityCooldownReductionMultiplierStatManager : StatManager
     public static event EventHandler<OnAbilityCooldownReductionMultiplierStatEventArgs> OnAbilityCooldownReductionMultiplierStatUpdated;
 
     [Header("Value")]
-    [SerializeField] private float abilityCooldownReductionStat;
+    [SerializeField] private float abilityCooldownReductionMultiplierStat;
 
-    public float AbilityCooldownReductionStat => abilityCooldownReductionStat;
+    public float AbilityCooldownReductionStat => abilityCooldownReductionMultiplierStat;
 
     public class OnAbilityCooldownReductionMultiplierStatEventArgs : EventArgs
     {
-        public float abilityCooldownReductionStat;
+        public float abilityCooldownReductionMultiplierStat;
     }
 
     protected override void SetSingleton()
@@ -36,13 +36,13 @@ public class AbilityCooldownReductionMultiplierStatManager : StatManager
     protected override void InitializeStat()
     {
         ProcessAbilityCooldownReductionStat();
-        OnAbilityCooldownReductionMultiplierStatInitialized?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
+        OnAbilityCooldownReductionMultiplierStatInitialized?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionMultiplierStat = abilityCooldownReductionMultiplierStat });
     }
 
     protected override void UpdateStat()
     {
         ProcessAbilityCooldownReductionStat();
-        OnAbilityCooldownReductionMultiplierStatUpdated?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionStat = abilityCooldownReductionStat });
+        OnAbilityCooldownReductionMultiplierStatUpdated?.Invoke(this, new OnAbilityCooldownReductionMultiplierStatEventArgs { abilityCooldownReductionMultiplierStat = abilityCooldownReductionMultiplierStat });
     }
 
     private void ProcessAbilityCooldownReductionStat()
@@ -52,5 +52,5 @@ public class AbilityCooldownReductionMultiplierStatManager : StatManager
         SetAbilityCooldownReductionStat(roundedValue);
     }
 
-    private void SetAbilityCooldownReductionStat(float value) => abilityCooldownReductionStat = value;
+    private void SetAbilityCooldownReductionStat(float value) => abilityCooldownReductionMultiplierStat = value;
 }

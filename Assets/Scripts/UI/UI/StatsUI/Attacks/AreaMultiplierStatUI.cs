@@ -12,8 +12,8 @@ public class AreaMultiplierStatUI : StatUI
 
     private void OnDisable()
     {
-        AreaMultiplierStatManager.OnAreaMultiplierStatInitialized += AreaMultiplierStatManager_OnAreaMultiplierStatInitialized;
-        AreaMultiplierStatManager.OnAreaMultiplierStatUpdated += AreaMultiplierStatManager_OnAreaMultiplierStatUpdated;
+        AreaMultiplierStatManager.OnAreaMultiplierStatInitialized -= AreaMultiplierStatManager_OnAreaMultiplierStatInitialized;
+        AreaMultiplierStatManager.OnAreaMultiplierStatUpdated -= AreaMultiplierStatManager_OnAreaMultiplierStatUpdated;
     }
 
     protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToExcessPercentage(currentValue, 2);
