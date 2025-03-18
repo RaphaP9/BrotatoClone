@@ -4,6 +4,9 @@ using UnityEngine;
 
 public abstract class BaseUI : MonoBehaviour
 {
+    [Header("BaseUI Settings")]
+    [SerializeField] private bool canCloseFromUI;
+
     protected enum State { Closed, Opening, Open, Closing }
 
     [SerializeField] protected State state;
@@ -32,6 +35,7 @@ public abstract class BaseUI : MonoBehaviour
     {
         if (e.UIToClose != this) return;
         if (state != State.Open) return;
+        if(!canCloseFromUI) return;
 
         CloseFromUI();
     }

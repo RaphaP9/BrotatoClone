@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public static class GeneralUtilities
 {
@@ -86,5 +85,17 @@ public static class GeneralUtilities
 
     #region LayerMasks
     public static bool CheckGameObjectInLayerMask(GameObject gameObject, LayerMask layerMask) => ((1 << gameObject.layer) & layerMask) != 0;
+    #endregion
+
+    #region Lists
+
+    public static T ChooseRandomElementFromList<T>(List<T> elementsList) where T : class
+    {
+        if (elementsList.Count <= 0) return null;
+
+        int randomIndex = UnityEngine.Random.Range(0, elementsList.Count);
+        return elementsList[randomIndex];
+    }
+
     #endregion
 }
