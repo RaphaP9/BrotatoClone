@@ -7,7 +7,7 @@ public class EnemySpawnerManager : MonoBehaviour
     public static EnemySpawnerManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<EnemySpawnPoint> enemySpawnPoints;
+    [SerializeField] private List<Transform> enemySpawnPoints;
 
     [Header("Settings")]
     [SerializeField,Range(3f, 10f)] private float minDistanceToPlayer;
@@ -15,14 +15,8 @@ public class EnemySpawnerManager : MonoBehaviour
 
     [Header("Debug")]
     [SerializeField] private bool debug;
+    [SerializeField] private Color gizmosColor;
     [SerializeField] private EnemySO test;
-
-    [System.Serializable]
-    public class EnemySpawnPoint
-    {
-        public int id;
-        public Transform spawnPointTransform;
-    }
 
     private void Awake()
     {
@@ -52,7 +46,7 @@ public class EnemySpawnerManager : MonoBehaviour
 
     private void SpawnEnemy(EnemySO enemySO)
     {
-        EnemySpawnPoint chosenSpawnPoint = GetRandomValidSpawnPoint(enemySpawnPoints, minDistanceToPlayer, maxDistanceToPlayer);
+        Transform chosenSpawnPoint = GetRandomValidSpawnPoint(enemySpawnPoints, minDistanceToPlayer, maxDistanceToPlayer);
 
         if(chosenSpawnPoint == null)
         {
@@ -60,7 +54,7 @@ public class EnemySpawnerManager : MonoBehaviour
             return;
         }
 
-        SpawnEnemyAtPosition(enemySO, chosenSpawnPoint.spawnPointTransform.position);
+        SpawnEnemyAtPosition(enemySO, chosenSpawnPoint.position);
     }
 
     private void SpawnEnemyAtPosition(EnemySO enemySO, Vector3 position)
@@ -76,19 +70,19 @@ public class EnemySpawnerManager : MonoBehaviour
 
     #region SpawnPoint Filtering
 
-    private EnemySpawnPoint GetRandomValidSpawnPoint(List<EnemySpawnPoint> enemySpawnPointsPool, float minDistance, float maxDistance)
+    private Transform GetRandomValidSpawnPoint(List<Transform> enemySpawnPointsPool, float minDistance, float maxDistance)
     {
-        List<EnemySpawnPoint> validSpawnPoints = FilterValidEnemySpawnPointsByMinMaxDistanceRange(enemySpawnPointsPool, minDistance, maxDistance);
-        EnemySpawnPoint chosenSpawnPoint = ChooseRandomEnemySpawnPoint(validSpawnPoints);
+        List<Transform> validSpawnPoints = FilterValidEnemySpawnPointsByMinMaxDistanceRange(enemySpawnPointsPool, minDistance, maxDistance);
+        Transform chosenSpawnPoint = ChooseRandomEnemySpawnPoint(validSpawnPoints);
 
         return chosenSpawnPoint;
     }
 
-    private List<EnemySpawnPoint> FilterValidEnemySpawnPointsByMinMaxDistanceRange(List<EnemySpawnPoint> enemySpawnPointsPool, float minDistance, float maxDistance)
+    private List<Transform> FilterValidEnemySpawnPointsByMinMaxDistanceRange(List<Transform> enemySpawnPointsPool, float minDistance, float maxDistance)
     {
-        List<EnemySpawnPoint> validSpawnPoints = new List<EnemySpawnPoint>();
+        List<Transform> validSpawnPoints = new List<Transform>();
 
-        foreach(EnemySpawnPoint enemySpawnPoint in enemySpawnPointsPool)
+        foreach(Transform enemySpawnPoint in enemySpawnPointsPool)
         {
             if (!EnemySpawnPointOnMinDistanceRange(enemySpawnPoint, minDistance)) continue;
             if (!EnemySpawnPointOnMaxDistanceRange(enemySpawnPoint, maxDistance)) continue;
@@ -99,11 +93,11 @@ public class EnemySpawnerManager : MonoBehaviour
         return validSpawnPoints;
     }
 
-    private List<EnemySpawnPoint> FilterValidEnemySpawnPointsByMinDistanceRange(List<EnemySpawnPoint> enemySpawnPointsPool, float minDistance)
+    private List<Transform> FilterValidEnemySpawnPointsByMinDistanceRange(List<Transform> enemySpawnPointsPool, float minDistance)
     {
-        List<EnemySpawnPoint> validSpawnPoints = new List<EnemySpawnPoint>();
+        List<Transform> validSpawnPoints = new List<Transform>();
 
-        foreach (EnemySpawnPoint enemySpawnPoint in enemySpawnPointsPool)
+        foreach (Transform enemySpawnPoint in enemySpawnPointsPool)
         {
             if (!EnemySpawnPointOnMinDistanceRange(enemySpawnPoint, minDistance)) continue;
 
@@ -113,11 +107,11 @@ public class EnemySpawnerManager : MonoBehaviour
         return validSpawnPoints;
     }
 
-    private List<EnemySpawnPoint> ChooseValidEnemySpawnPointsByMaxDistanceRange(List<EnemySpawnPoint> enemySpawnPointsPool, float maxDistance)
+    private List<Transform> ChooseValidEnemySpawnPointsByMaxDistanceRange(List<Transform> enemySpawnPointsPool, float maxDistance)
     {
-        List<EnemySpawnPoint> validSpawnPoints = new List<EnemySpawnPoint>();
+        List<Transform> validSpawnPoints = new List<Transform>();
 
-        foreach (EnemySpawnPoint enemySpawnPoint in enemySpawnPointsPool)
+        foreach (Transform enemySpawnPoint in enemySpawnPointsPool)
         {
             if (!EnemySpawnPointOnMaxDistanceRange(enemySpawnPoint, maxDistance)) continue;
 
@@ -127,23 +121,31 @@ public class EnemySpawnerManager : MonoBehaviour
         return validSpawnPoints;
     }
 
-    private EnemySpawnPoint ChooseRandomEnemySpawnPoint(List<EnemySpawnPoint> enemySpawnPointsPool)
+    private Transform ChooseRandomEnemySpawnPoint(List<Transform> enemySpawnPointsPool)
     {
-        EnemySpawnPoint enemySpawnPoint = GeneralUtilities.ChooseRandomElementFromList(enemySpawnPointsPool);
+        Transform enemySpawnPoint = GeneralUtilities.ChooseRandomElementFromList(enemySpawnPointsPool);
         return enemySpawnPoint;
     }
 
-    private bool EnemySpawnPointOnMinDistanceRange(EnemySpawnPoint enemySpawnPoint, float minDistance)
+    private bool EnemySpawnPointOnMinDistanceRange(Transform enemySpawnPoint, float minDistance)
     {
-        if (Vector2.Distance(GeneralUtilities.TransformPositionVector2(enemySpawnPoint.spawnPointTransform), GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player)) > minDistance) return true;
+        if (Vector2.Distance(GeneralUtilities.TransformPositionVector2(enemySpawnPoint), GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player)) > minDistance) return true;
         return false;
     }
 
-    private bool EnemySpawnPointOnMaxDistanceRange(EnemySpawnPoint enemySpawnPoint, float maxDistance)
+    private bool EnemySpawnPointOnMaxDistanceRange(Transform enemySpawnPoint, float maxDistance)
     {
-        if (Vector2.Distance(GeneralUtilities.TransformPositionVector2(enemySpawnPoint.spawnPointTransform), GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player)) < maxDistance) return true;
+        if (Vector2.Distance(GeneralUtilities.TransformPositionVector2(enemySpawnPoint), GeneralUtilities.TransformPositionVector2(PlayerPositionHandler.Instance.Player)) < maxDistance) return true;
         return false;
     }
 
     #endregion
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = gizmosColor;
+
+        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, minDistanceToPlayer);
+        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, maxDistanceToPlayer);
+    }
 }

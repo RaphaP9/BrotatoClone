@@ -16,7 +16,7 @@ MonoBehaviour:
   entityName: Noxious
   description: 
   sprite: {fileID: 629127556, guid: 56f7fc5433420f84c91b988f519aeddd, type: 3}
-  damageColor: {r: 0.13143352, g: 0.6415094, b: 0, a: 1}
+  damageColor: {r: 0.43540037, g: 1, b: 0.28773582, a: 1}
   maxHealth: 10
   armorPercentage: 0
   dodgeChance: 0

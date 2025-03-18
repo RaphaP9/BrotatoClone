@@ -16,7 +16,7 @@ MonoBehaviour:
   entityName: Detonix
   description: 
   sprite: {fileID: 0}
-  damageColor: {r: 0.5566038, g: 0, b: 0, a: 1}
+  damageColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0

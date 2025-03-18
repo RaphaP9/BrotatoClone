@@ -8,6 +8,7 @@ public class EnemyHealth : EntityHealth
     [Header("Enemy Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
     [SerializeField] private EnemySpawningHandler enemySpawningHandler;
+    [SerializeField] private CircleCollider2D circleCollider2D;
 
     public static event EventHandler OnEnemyDodge;
     public static event EventHandler OnEnemyDeath;
@@ -93,6 +94,8 @@ public class EnemyHealth : EntityHealth
     #region Damage
     protected override void OnDeath()
     {
+        DisableCollider();
+
         OnEnemyDeath?.Invoke(this, EventArgs.Empty);
         OnThisEnemyDeath?.Invoke(this, EventArgs.Empty);
     }
@@ -152,6 +155,11 @@ public class EnemyHealth : EntityHealth
     public override void InstaKill()
     {
         TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO);
+    }
+
+    private void DisableCollider()
+    {
+        circleCollider2D.enabled = false;
     }
 
     #region Subscriptions

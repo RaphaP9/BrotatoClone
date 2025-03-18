@@ -21,9 +21,9 @@ public class PlayerAnimatorController : MonoBehaviour
     private const string DEATH_ANIMATION_NAME = "Death";
     private const string HEAL_ANIMATION_NAME = "Heal";
 
-    private const float REGULAR_DAMAGE_ANIMATION_DURATION = 0.5f;
-    private const float BLEED_DAMAGE_ANIMATION_DURATION = 0.25f;
-    private const float HEAL_ANIMATION_DURATION = 0.5f;
+    private const float REGULAR_DAMAGE_ANIMATION_DURATION = 0.35f;
+    private const float BLEED_DAMAGE_ANIMATION_DURATION = 0.15f;
+    private const float HEAL_ANIMATION_DURATION = 0.25f;
 
     private void OnEnable()
     {

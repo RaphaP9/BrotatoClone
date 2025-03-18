@@ -2773,10 +2773,76 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0417c59da49653f4980405065de10875, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySpawnPoints: []
+  enemySpawnPoints:
+  - {fileID: 1393986562}
+  - {fileID: 2103783661}
+  - {fileID: 612434039}
+  - {fileID: 1505894069}
+  - {fileID: 131125239}
+  - {fileID: 1429311876}
+  - {fileID: 1478800194}
+  - {fileID: 1023664583}
+  - {fileID: 941740697}
+  - {fileID: 120093003}
+  - {fileID: 1058176865}
+  - {fileID: 1878874954}
+  - {fileID: 1096801595}
+  - {fileID: 2119752524}
+  - {fileID: 470386385}
+  - {fileID: 1220685125}
+  - {fileID: 1003513087}
+  - {fileID: 1981375725}
+  - {fileID: 1286731260}
+  - {fileID: 90097664}
+  - {fileID: 1536348892}
+  - {fileID: 671236636}
+  - {fileID: 2001198124}
+  - {fileID: 1492180059}
+  - {fileID: 1708316199}
+  - {fileID: 994876115}
+  - {fileID: 2090488539}
+  - {fileID: 890780087}
+  - {fileID: 1468159838}
+  - {fileID: 781937844}
+  - {fileID: 327600638}
+  - {fileID: 668513304}
+  - {fileID: 1741936244}
+  - {fileID: 1943654202}
+  - {fileID: 611451651}
+  - {fileID: 1470295340}
+  - {fileID: 248727993}
+  - {fileID: 907815954}
+  - {fileID: 194971531}
+  - {fileID: 477391244}
+  - {fileID: 77383144}
+  - {fileID: 1903304754}
+  - {fileID: 796520186}
+  - {fileID: 374457380}
+  - {fileID: 203370633}
+  - {fileID: 1558206138}
+  - {fileID: 2056810794}
+  - {fileID: 2099050778}
+  - {fileID: 301480688}
+  - {fileID: 1487916582}
+  - {fileID: 518208536}
+  - {fileID: 284481482}
+  - {fileID: 1321486721}
+  - {fileID: 1368588719}
+  - {fileID: 1343406854}
+  - {fileID: 497658821}
+  - {fileID: 1519958551}
+  - {fileID: 461590642}
+  - {fileID: 131679738}
+  - {fileID: 1272026366}
+  - {fileID: 2034697141}
+  - {fileID: 1650443057}
+  - {fileID: 1419975923}
+  - {fileID: 545412318}
+  - {fileID: 1702879121}
   minDistanceToPlayer: 5
   maxDistanceToPlayer: 15
   debug: 1
+  gizmosColor: {r: 1, g: 0, b: 0, a: 1}
   test: {fileID: 11400000, guid: a0b72d5b03b739c4cb45d52ec0cd48b6, type: 2}
 --- !u!1 &336248209
 GameObject:
@@ -6664,7 +6730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef091d8876ba7542918fef0fd228267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers: []
+  statModifiers:
+  - originGUID: 
+    statType: 2
+    statModificationType: 0
+    value: 0.1
   armorPercentageStat: 0
 --- !u!1 &866452291
 GameObject:
@@ -13660,7 +13730,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d04da137519a2143bacac653d11862d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers: []
+  statModifiers:
+  - originGUID: 
+    statType: 5
+    statModificationType: 0
+    value: 1
   dashesStat: 0
 --- !u!1 &1622046862
 GameObject:
@@ -16860,6 +16934,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca01da5c198fe91419c186498ae6af00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ignorePlayerEnemiesCollision: 1
+  ignoreCollisionBetweenEnemies: 0
 --- !u!1 &2075207885
 GameObject:
   m_ObjectHideFlags: 0
@@ -18015,6 +18091,10 @@ PrefabInstance:
       propertyPath: screenInput
       value: 
       objectReference: {fileID: 1197875865}
+    - target: {fileID: 7933798781267263774, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
+      propertyPath: m_SortingLayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9084700900819049277, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
       propertyPath: movementInput
       value: 

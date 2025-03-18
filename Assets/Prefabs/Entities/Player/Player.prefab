@@ -42,6 +42,7 @@ GameObject:
   - component: {fileID: 8110624533264315344}
   - component: {fileID: 4299785466185495623}
   - component: {fileID: 3387856924683625711}
+  - component: {fileID: 4416405225017973259}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -63,6 +64,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6709244429022833426}
+  - {fileID: 1693850214636200818}
   m_Father: {fileID: 242600808619016491}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4299785466185495623
@@ -95,6 +97,21 @@ MonoBehaviour:
   playerDash: {fileID: 1396078125417198456}
   playerHealth: {fileID: 5522695071689123836}
   spriteRenderer: {fileID: 7933798781267263774}
+--- !u!114 &4416405225017973259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 42530903411492485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd44a164707c4d546828fff2d37e869b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderingRefference: {fileID: 1693850214636200818}
+  spriteRenderer: {fileID: 7933798781267263774}
+  UICanvas: {fileID: 2826997418885103831}
 --- !u!1 &153951631595984520
 GameObject:
   m_ObjectHideFlags: 0
@@ -218,9 +235,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingLayerID: 1532604799
+  m_SortingLayer: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -529303533, guid: d2ee58343f4cd794cbe0f59eb5adede2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -357,6 +374,37 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3620106367044665575}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4197987529241022096
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1693850214636200818}
+  m_Layer: 0
+  m_Name: RenderingRefference
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1693850214636200818
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4197987529241022096}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.748, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8110624533264315344}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5111233114399842907
 GameObject:
@@ -636,12 +684,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765c42a1313bc0e48b9447dc1f1c4b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bleedType: 0
   maxHealth: 0
   currentHealth: 0
   armorPercentage: 0
   dodgeChance: 0
   lifeSteal: 0
   isGhosted: 0
+  isBleeding: 0
   playerIdentifier: {fileID: 2709480784950069962}
   playerDash: {fileID: 0}
   healthRegen: 0
@@ -855,6 +905,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee9b8bd28864097409a6a7bef55128d9, type: 3}
+--- !u!223 &2826997418885103831 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 6253389615605918033, guid: ee9b8bd28864097409a6a7bef55128d9, type: 3}
+  m_PrefabInstance: {fileID: 8210910486759827846}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &4373860547542370778 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5566468291033210972, guid: ee9b8bd28864097409a6a7bef55128d9, type: 3}

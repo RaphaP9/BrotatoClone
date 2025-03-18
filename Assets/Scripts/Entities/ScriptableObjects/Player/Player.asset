@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Basic Player
   sprite: {fileID: 0}
   damageColor: {r: 1, g: 1, b: 1, a: 1}
-  maxHealth: 50
+  maxHealth: 100
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 5
