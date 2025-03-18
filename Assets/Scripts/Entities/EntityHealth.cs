@@ -6,13 +6,19 @@ using UnityEngine.Rendering;
 
 public abstract class EntityHealth : MonoBehaviour
 {
-    [Header("Entity Settings - RuntimeFilled")]
+    [Header("Entity Health Settings")]
+    [SerializeField] private BleedType bleedType;
+
+    private enum BleedType { Unrestricted, OnlyOneBleed, HighestBleedReplacement}
+
+    [Header("RuntimeFilled")]
     [SerializeField] protected int maxHealth;
     [SerializeField] protected int currentHealth;
     [SerializeField, Range(0f,1f)] protected float armorPercentage;
     [SerializeField, Range(0f, 1f)] protected float dodgeChance;
     [SerializeField, Range(0f, 1f)] protected float lifeSteal;
     [SerializeField] protected bool isGhosted; 
+    [SerializeField] protected bool isBleeding;
 
     public int MaxHealth => maxHealth;
     public int CurrentHealth => currentHealth;
@@ -20,6 +26,9 @@ public abstract class EntityHealth : MonoBehaviour
     public float DodgeChance => dodgeChance;
     public float LifeSteal => lifeSteal;    
     public bool IsGhosted => isGhosted;
+    public bool IsBleeding => isBleeding;
+
+    private int currentBleedDamage = 0;
 
     protected const int INSTA_KILL_DAMAGE = 999;
 
@@ -76,6 +85,7 @@ public abstract class EntityHealth : MonoBehaviour
     #region RegularDamage
     public void TakeRegularDamage(int baseDamage, bool isCrit, IDamageDealer damageSource)
     {
+        if (!IsAlive()) return;
         if (!CanTakeDamage()) return;
         if (isGhosted) return;
 
@@ -100,12 +110,30 @@ public abstract class EntityHealth : MonoBehaviour
     public void Bleed(int baseDamage, float bleedDuration, float tickTime, bool isCrit, IDamageDealer damageSource)
     {
         if (!CanTakeDamage()) return;
+        if (isGhosted) return;
+
+        if (bleedType == BleedType.OnlyOneBleed && IsBleeding) return;
+
+        if (bleedType == BleedType.HighestBleedReplacement && IsBleeding)
+        {
+            int realBleedDamage = MitigateByArmor(baseDamage);
+
+            //If post-armor mitigation bleed damage is lower or same as current bleed damage, do not apply bleeding.
+            //Otherwise, cancel current bleeding (Stop Bleeding Coroutine) and apply new bleeding
+            //Ex. if entity is bleeding for 2 and will take damage that causes it to bleed for 2, do not apply that bleeding
+            //Ex. if entity is bleeding for 2 and will take damage that causes it to bleed for 3, cancel the bleeding for 2 and apply bleeding for 3
+
+            if (realBleedDamage <= currentBleedDamage) return;
+            else StopAllCoroutines();
+        }
 
         StartCoroutine(BleedCoroutine(baseDamage, bleedDuration, tickTime, isCrit, damageSource));
     }
 
     protected IEnumerator BleedCoroutine(int baseDamage, float bleedDuration, float tickTime, bool isCrit, IDamageDealer damageSource)
     {
+        SetIsBleeding(true);
+
         int tickNumber = Mathf.FloorToInt(bleedDuration / tickTime);
 
         for (int i = 0; i < tickNumber; i++)
@@ -114,7 +142,12 @@ public abstract class EntityHealth : MonoBehaviour
 
             while(tickTimer < tickTime)
             {
-                if (!IsAlive()) yield break;
+                if (!IsAlive())
+                {
+                    SetIsBleeding(false);
+                    SetCurrentBleedDamage(0);
+                    yield break;
+                }
 
                 tickTimer += Time.deltaTime;
                 yield return null;
@@ -122,17 +155,32 @@ public abstract class EntityHealth : MonoBehaviour
 
             TakeBleedDamage(baseDamage, isCrit, damageSource);
         }
+
+        float finalTickTimer = 0f; //Final While Loop To SetIsBleeding(false) after a tickTime
+
+        while (finalTickTimer < tickTime)
+        {
+            if (!IsAlive()) break;
+
+            finalTickTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        SetCurrentBleedDamage(0);
+        SetIsBleeding(false);
     }
+
     protected void TakeBleedDamage(int baseDamage, bool isCrit, IDamageDealer damageSource)
     {
+        if (!IsAlive()) return;
+
         int mitigatedBleedDamage = MitigateByArmor(baseDamage);
         TakeFinalBleedDamage(mitigatedBleedDamage, isCrit, damageSource);
     }
 
     protected void TakeFinalBleedDamage(int damage, bool isCrit, IDamageDealer damageSource)
     {
-        if (!IsAlive()) return;
-        if (isGhosted) return;
+        SetCurrentBleedDamage(damage);
 
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
@@ -204,7 +252,6 @@ public abstract class EntityHealth : MonoBehaviour
 
     protected void HealFromLifeSteal(int damage)
     {
-
         int healAmount = Mathf.RoundToInt(damage * lifeSteal);
 
         if (healAmount <= 0) return;
@@ -212,8 +259,9 @@ public abstract class EntityHealth : MonoBehaviour
         Heal(healAmount);
     }
 
-    protected void SetIsGhosted(bool value) => isGhosted = value;
-
+    protected void SetIsBleeding(bool bleeding) => isBleeding = bleeding;
+    protected void SetCurrentBleedDamage(int damage) => currentBleedDamage = damage;
+    protected void SetIsGhosted(bool value) => isGhosted = value; //When Ghosted, entity does not take damage and proyectiles do not collide;
     protected bool IsFullHealth() => currentHealth == maxHealth;
 
     public abstract void InstaKill();

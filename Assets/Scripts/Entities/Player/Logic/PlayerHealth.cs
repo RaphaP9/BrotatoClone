@@ -51,8 +51,6 @@ public class PlayerHealth : EntityHealth
         PlayerDash.OnPlayerDashStopped += PlayerDash_OnPlayerDashStopped;
     }
 
-
-
     private void OnDisable()
     {
         MaxHealthStatManager.OnMaxHealthStatInitialized -= MaxHealthStatManager_OnMaxHealthStatInitialized;

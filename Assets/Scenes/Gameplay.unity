@@ -3431,7 +3431,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 650243211589222648, guid: 44b3d88947d2a4c489a04235f0fab5e6, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3877430779044931455, guid: 44b3d88947d2a4c489a04235f0fab5e6, type: 3}
       propertyPath: m_LocalPosition.x
@@ -4853,7 +4853,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   weaponsInventory:
-  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
   debug: 1
 --- !u!1 &654384809
 GameObject:
@@ -6040,6 +6040,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 866639053}
   m_CullTransparentMesh: 1
+--- !u!1 &879105836
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 879105837}
+  m_Layer: 0
+  m_Name: Game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &879105837
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 879105836}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1706760662}
+  m_Father: {fileID: 2042103032}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &893048509
 GameObject:
   m_ObjectHideFlags: 0
@@ -12476,6 +12508,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1674397583}
   m_CullTransparentMesh: 1
+--- !u!1 &1706760661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1706760662}
+  - component: {fileID: 1706760663}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1706760662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706760661}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879105837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1706760663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1706760661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e8ec7423197e0e45b32c21f417a5de4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1708489755
 GameObject:
   m_ObjectHideFlags: 0
@@ -14604,6 +14680,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 879105837}
   - {fileID: 771802979}
   - {fileID: 278022105}
   - {fileID: 141301750}
@@ -15632,6 +15709,10 @@ PrefabInstance:
       propertyPath: movementInput
       value: 
       objectReference: {fileID: 1504673631}
+    - target: {fileID: 5522695071689123836, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
+      propertyPath: bleedType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5969243355370090547, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
       propertyPath: m_Name
       value: Player
@@ -15841,7 +15922,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396816363032638244, guid: 08638218807a81c4083bb53804187620, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5667900748043500077, guid: 08638218807a81c4083bb53804187620, type: 3}
       propertyPath: m_LocalPosition.x

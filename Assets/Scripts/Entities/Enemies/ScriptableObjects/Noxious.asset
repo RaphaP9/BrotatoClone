@@ -28,7 +28,7 @@ MonoBehaviour:
   critChance: 0
   critDamageMultiplier: 0
   enemyPrefab: {fileID: 5667900748043500077, guid: 08638218807a81c4083bb53804187620, type: 3}
-  tooCloseDistance: 3
+  tooCloseDistance: 4.5
   preferredDistance: 8
   tooFarDistance: 15
   aimingTime: 0.25

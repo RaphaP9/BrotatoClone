@@ -116,7 +116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f47744491b64fe428b68baa88fd0e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 11400000, guid: 54b2bb9dfc7c6f24dbd653d5176ad77f, type: 2}
+  enemySO: {fileID: 11400000, guid: 3ce6b46db5640a5478c60ad11c3e0601, type: 2}
 --- !u!114 &177302009745114426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,11 +129,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8ae8da0ea9d92543af35e2cdf429d90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bleedType: 0
   maxHealth: 0
   currentHealth: 0
   armorPercentage: 0
   dodgeChance: 0
   lifeSteal: 0
+  isGhosted: 0
+  isBleeding: 0
   enemyIdentifier: {fileID: 5684173703756627380}
   enemySpawningHandler: {fileID: 1492865064805155145}
 --- !u!114 &6017307951750985834
@@ -152,7 +155,6 @@ MonoBehaviour:
   rangedEnemyMovement: {fileID: 6134312057778360347}
   enemySpawningHandler: {fileID: 1492865064805155145}
   enemyHealth: {fileID: 177302009745114426}
-  projectilePrefab: {fileID: 909037060864899003, guid: b02332eac8959134b81b0c3d08c60410, type: 3}
   shootPoint: {fileID: 3943972823386425350}
   state: 0
   debug: 0
