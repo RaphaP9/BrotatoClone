@@ -10,7 +10,7 @@ public abstract class StatManager : MonoBehaviour
 
     public List<StatModifier> StatModifiers => statModifiers;
 
-    protected PlayerSO BaseStats => PlayerIdentifier.Instance.PlayerSO;
+    protected CharacterSO BaseStats => PlayerIdentifier.Instance.CharacterSO;
 
     protected virtual void Awake()
     {

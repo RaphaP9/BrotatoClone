@@ -21,13 +21,13 @@ public class AttackDamageMultiplierStatUI : StatUI
 
     private void AttackDamageMultiplierStatManager_OnAttackDamageMultiplierStatInitialized(object sender, AttackDamageMultiplierStatManager.OnAttackDamageMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackDamageMultiplierStat, playerIdentifier.PlayerSO.attackDamageMultiplier);
+        UpdateUIByNewValue(e.attackDamageMultiplierStat, playerIdentifier.CharacterSO.attackDamageMultiplier);
 
     }
 
     private void AttackDamageMultiplierStatManager_OnAttackDamageMultiplierStatUpdated(object sender, AttackDamageMultiplierStatManager.OnAttackDamageMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackDamageMultiplierStat, playerIdentifier.PlayerSO.attackDamageMultiplier);
+        UpdateUIByNewValue(e.attackDamageMultiplierStat, playerIdentifier.CharacterSO.attackDamageMultiplier);
 
     }
 }

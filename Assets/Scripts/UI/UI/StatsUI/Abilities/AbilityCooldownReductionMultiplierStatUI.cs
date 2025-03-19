@@ -19,11 +19,11 @@ public class AbilityCooldownReductionMultiplierStatUI : StatUI
 
     private void AbilityCooldownReductionMultiplierStatManager_OnAbilityCooldownReductionMultiplierStatUpdated(object sender, AbilityCooldownReductionMultiplierStatManager.OnAbilityCooldownReductionMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCooldownReductionMultiplierStat, playerIdentifier.PlayerSO.abilityCooldownReductionMultiplier);
+        UpdateUIByNewValue(e.abilityCooldownReductionMultiplierStat, playerIdentifier.CharacterSO.abilityCooldownReductionMultiplier);
     }
 
     private void AbilityCooldownReductionMultiplierStatManager_OnAbilityCooldownReductionMultiplierStatInitialized(object sender, AbilityCooldownReductionMultiplierStatManager.OnAbilityCooldownReductionMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCooldownReductionMultiplierStat, playerIdentifier.PlayerSO.abilityCooldownReductionMultiplier);
+        UpdateUIByNewValue(e.abilityCooldownReductionMultiplierStat, playerIdentifier.CharacterSO.abilityCooldownReductionMultiplier);
     }
 }

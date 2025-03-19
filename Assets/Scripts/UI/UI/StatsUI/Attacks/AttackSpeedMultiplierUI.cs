@@ -20,11 +20,11 @@ public class AttackSpeedMultiplierUI : StatUI
 
     private void AttackSpeedMultiplierStatManager_OnAttackSpeedMultiplierStatInitialized(object sender, AttackSpeedMultiplierStatManager.OnAttackSpeedMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackSpeedMultiplierStat, playerIdentifier.PlayerSO.attackSpeedMultiplier);
+        UpdateUIByNewValue(e.attackSpeedMultiplierStat, playerIdentifier.CharacterSO.attackSpeedMultiplier);
     }
 
     private void AttackSpeedMultiplierStatManager_OnAttackSpeedMultiplierStatUpdated(object sender, AttackSpeedMultiplierStatManager.OnAttackSpeedMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackSpeedMultiplierStat, playerIdentifier.PlayerSO.attackSpeedMultiplier);
+        UpdateUIByNewValue(e.attackSpeedMultiplierStat, playerIdentifier.CharacterSO.attackSpeedMultiplier);
     }
 }

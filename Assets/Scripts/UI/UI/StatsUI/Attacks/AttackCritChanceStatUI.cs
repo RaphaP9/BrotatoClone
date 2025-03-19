@@ -21,11 +21,11 @@ public class AttackCritChanceStatUI : StatUI
 
     private void AttackCritChanceStatManager_OnAttackCritChanceStatUpdated(object sender, AttackCritChanceStatManager.OnAttackCritChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackCritChanceStat, playerIdentifier.PlayerSO.attackCritChance);
+        UpdateUIByNewValue(e.attackCritChanceStat, playerIdentifier.CharacterSO.attackCritChance);
     }
 
     private void AttackCritChanceStatManager_OnAttackCritChanceStatInitialized(object sender, AttackCritChanceStatManager.OnAttackCritChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackCritChanceStat, playerIdentifier.PlayerSO.attackCritChance);
+        UpdateUIByNewValue(e.attackCritChanceStat, playerIdentifier.CharacterSO.attackCritChance);
     }
 }

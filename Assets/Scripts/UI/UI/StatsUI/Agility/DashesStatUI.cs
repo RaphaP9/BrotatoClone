@@ -20,12 +20,12 @@ public class DashesStatUI : StatUI
 
     private void DashesStatManager_OnDashesStatInitialized(object sender, DashesStatManager.OnDashesStatEventArgs e)
     {
-        UpdateUIByNewValue(e.dashesStat, playerIdentifier.PlayerSO.dashes);
+        UpdateUIByNewValue(e.dashesStat, playerIdentifier.CharacterSO.dashes);
     }
 
     private void DashesStatManager_OnDashesStatUpdated(object sender, DashesStatManager.OnDashesStatEventArgs e)
     {
-        UpdateUIByNewValue(e.dashesStat, playerIdentifier.PlayerSO.dashes);
+        UpdateUIByNewValue(e.dashesStat, playerIdentifier.CharacterSO.dashes);
     }
 
 }

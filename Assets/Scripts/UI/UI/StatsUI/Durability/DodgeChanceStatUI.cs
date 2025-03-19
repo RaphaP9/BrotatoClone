@@ -19,12 +19,12 @@ public class DodgeChanceStatUI : StatUI
 
     private void DodgeChanceStatManager_OnDodgeChanceStatInitialized(object sender, DodgeChanceStatManager.OnDodgeChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.dodgeChanceStat, playerIdentifier.PlayerSO.dodgeChance);
+        UpdateUIByNewValue(e.dodgeChanceStat, playerIdentifier.CharacterSO.dodgeChance);
 
     }
 
     private void DodgeChanceStatManager_OnDodgeChanceStatUpdated(object sender, DodgeChanceStatManager.OnDodgeChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.dodgeChanceStat, playerIdentifier.PlayerSO.dodgeChance);
+        UpdateUIByNewValue(e.dodgeChanceStat, playerIdentifier.CharacterSO.dodgeChance);
     }
 }

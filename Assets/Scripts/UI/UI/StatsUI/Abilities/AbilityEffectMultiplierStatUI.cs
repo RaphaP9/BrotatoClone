@@ -21,12 +21,12 @@ public class AbilityEffectMultiplierStatUI : StatUI
 
     private void AbilityEffectMultiplierStatManager_OnAbilityEffectMultiplierStatInitialized(object sender, AbilityEffectMultiplierStatManager.OnAbilityEffectMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityEffectMultiplierStat, playerIdentifier.PlayerSO.abilityEffectMultiplier);
+        UpdateUIByNewValue(e.abilityEffectMultiplierStat, playerIdentifier.CharacterSO.abilityEffectMultiplier);
     }
 
     private void AbilityEffectMultiplierStatManager_OnAbilityEffectMultiplierStatUpdated(object sender, AbilityEffectMultiplierStatManager.OnAbilityEffectMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityEffectMultiplierStat, playerIdentifier.PlayerSO.abilityEffectMultiplier);
+        UpdateUIByNewValue(e.abilityEffectMultiplierStat, playerIdentifier.CharacterSO.abilityEffectMultiplier);
     }
 
 }

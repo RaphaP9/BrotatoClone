@@ -21,12 +21,12 @@ public class AbilityCritChanceStatUI : StatUI
 
     private void AbilityCritChanceStatManager_OnAbilityCritChanceStatInitialized(object sender, AbilityCritChanceStatManager.OnAbilityCritChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCritChanceStat, playerIdentifier.PlayerSO.abilityCritChance);
+        UpdateUIByNewValue(e.abilityCritChanceStat, playerIdentifier.CharacterSO.abilityCritChance);
     }
 
     private void AbilityCritChanceStatManager_OnAbilityCritChanceStatUpdated(object sender, AbilityCritChanceStatManager.OnAbilityCritChanceStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCritChanceStat, playerIdentifier.PlayerSO.abilityCritChance);
+        UpdateUIByNewValue(e.abilityCritChanceStat, playerIdentifier.CharacterSO.abilityCritChance);
     }
 
 }

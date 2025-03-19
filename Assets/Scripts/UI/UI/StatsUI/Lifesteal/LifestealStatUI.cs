@@ -20,11 +20,11 @@ public class LifestealStatUI : StatUI
 
     private void LifestealStatManager_OnLifestealStatInitialized(object sender, LifestealStatManager.OnLifestealStatEventArgs e)
     {
-        UpdateUIByNewValue(e.lifestealStat, playerIdentifier.PlayerSO.lifeSteal);
+        UpdateUIByNewValue(e.lifestealStat, playerIdentifier.CharacterSO.lifeSteal);
     }
 
     private void LifestealStatManager_OnLifestealStatUpdated(object sender, LifestealStatManager.OnLifestealStatEventArgs e)
     {
-        UpdateUIByNewValue(e.lifestealStat, playerIdentifier.PlayerSO.lifeSteal);
+        UpdateUIByNewValue(e.lifestealStat, playerIdentifier.CharacterSO.lifeSteal);
     }
 }

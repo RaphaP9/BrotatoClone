@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 698d540b944cdad44b4dd6fa0e49b92c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSO: {fileID: 11400000, guid: c9af1e58f7219b54cb4110d050467427, type: 2}
+  characterSO: {fileID: 0}
 --- !u!114 &5522695071689123836
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 765c42a1313bc0e48b9447dc1f1c4b6c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bleedType: 0
+  bleedType: 1
   maxHealth: 0
   currentHealth: 0
   armorPercentage: 0

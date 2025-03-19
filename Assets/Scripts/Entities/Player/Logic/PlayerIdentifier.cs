@@ -6,10 +6,10 @@ public class PlayerIdentifier : MonoBehaviour
 {
     public static PlayerIdentifier Instance { get; private set; }
 
-    [Header("Components")]
-    [SerializeField] private PlayerSO playerSO;
+    [Header("Components - Filled By Character Load Handler")]
+    [SerializeField] private CharacterSO characterSO;
 
-    public PlayerSO PlayerSO => playerSO;
+    public CharacterSO CharacterSO => characterSO;
 
     private void Awake()
     {
@@ -28,5 +28,7 @@ public class PlayerIdentifier : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    public void SetCharacterSO(CharacterSO characterSO) => this.characterSO = characterSO;
 
 }

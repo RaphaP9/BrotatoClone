@@ -1,0 +1,37 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7998b7b71d4c534418a79e60dba56d5c, type: 3}
+  m_Name: DefaultCharacter
+  m_EditorClassIdentifier: 
+  id: 1
+  entityName: DefaultCharacter
+  description: Default Character
+  sprite: {fileID: 0}
+  damageColor: {r: 1, g: 1, b: 1, a: 1}
+  maxHealth: 100
+  armorPercentage: 0
+  dodgeChance: 0
+  moveSpeed: 5
+  lifeSteal: 0
+  healthRegen: 5
+  dashes: 1
+  areaMultiplier: 1
+  attackSpeedMultiplier: 1
+  attackRangeMultiplier: 1
+  attackDamageMultiplier: 1
+  attackCritChance: 0
+  attackCritDamageMultiplier: 1.5
+  abilityCooldownReductionMultiplier: 0
+  abilityEffectMultiplier: 1
+  abilityCritChance: 0
+  abilityCritEffectMultiplier: 1.5
+  startingWeapons: []

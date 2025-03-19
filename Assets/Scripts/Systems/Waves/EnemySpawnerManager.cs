@@ -155,7 +155,7 @@ public class EnemySpawnerManager : MonoBehaviour
     {
         Gizmos.color = gizmosColor;
 
-        Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, minDistanceToPlayer);
-        Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, maxDistanceToPlayer);
+        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, minDistanceToPlayer);
+        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, maxDistanceToPlayer);
     }
 }

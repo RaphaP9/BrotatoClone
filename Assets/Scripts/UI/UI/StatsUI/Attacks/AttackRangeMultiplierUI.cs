@@ -21,11 +21,11 @@ public class AttackRangeMultiplierUI : StatUI
 
     private void AttackRangeMultiplierStatManager_OnAttackRangeMultiplierStatInitialized(object sender, AttackRangeMultiplierStatManager.OnAttackRangeMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackRangeMultiplierStat, playerIdentifier.PlayerSO.attackRangeMultiplier);
+        UpdateUIByNewValue(e.attackRangeMultiplierStat, playerIdentifier.CharacterSO.attackRangeMultiplier);
     }
 
     private void AttackRangeMultiplierStatManager_OnAttackRangeMultiplierStatUpdated(object sender, AttackRangeMultiplierStatManager.OnAttackRangeMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackRangeMultiplierStat, playerIdentifier.PlayerSO.attackRangeMultiplier);
+        UpdateUIByNewValue(e.attackRangeMultiplierStat, playerIdentifier.CharacterSO.attackRangeMultiplier);
     }
 }

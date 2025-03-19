@@ -20,12 +20,12 @@ public class AttackCritDamageMultiplierStatUI : StatUI
 
     private void AttackCritDamageMultiplierStatManager_OnAttackCritDamageMultiplierStatInitialized(object sender, AttackCritDamageMultiplierStatManager.OnAttackCritDamageMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackCritDamageMultiplierStat, playerIdentifier.PlayerSO.attackCritDamageMultiplier);
+        UpdateUIByNewValue(e.attackCritDamageMultiplierStat, playerIdentifier.CharacterSO.attackCritDamageMultiplier);
     }
 
     private void AttackCritDamageMultiplierStatManager_OnAttackCritDamageMultiplierStatUpdated(object sender, AttackCritDamageMultiplierStatManager.OnAttackCritDamageMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.attackCritDamageMultiplierStat, playerIdentifier.PlayerSO.attackCritDamageMultiplier);
+        UpdateUIByNewValue(e.attackCritDamageMultiplierStat, playerIdentifier.CharacterSO.attackCritDamageMultiplier);
 
     }
 }

@@ -20,11 +20,11 @@ public class AbilityCritEffectMultiplierStatUI : StatUI
 
     private void AbilityCritEffectMultiplierStatManager_OnAbilityCritEffectMultiplierStatInitialized(object sender, AbilityCritEffectMultiplierStatManager.OnAbilityCritEffectMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCritEffectMultiplierStat, playerIdentifier.PlayerSO.abilityCritEffectMultiplier);
+        UpdateUIByNewValue(e.abilityCritEffectMultiplierStat, playerIdentifier.CharacterSO.abilityCritEffectMultiplier);
     }
 
     private void AbilityCritEffectMultiplierStatManager_OnAbilityCritEffectMultiplierStatUpdated(object sender, AbilityCritEffectMultiplierStatManager.OnAbilityCritEffectMultiplierStatEventArgs e)
     {
-        UpdateUIByNewValue(e.abilityCritEffectMultiplierStat, playerIdentifier.PlayerSO.abilityCritEffectMultiplier);
+        UpdateUIByNewValue(e.abilityCritEffectMultiplierStat, playerIdentifier.CharacterSO.abilityCritEffectMultiplier);
     }
 }

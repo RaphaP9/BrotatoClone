@@ -19,11 +19,11 @@ public class HealthRegenStatUI : StatUI
 
     private void HealthRegenStatManager_OnHealthRegenStatInitialized(object sender, HealthRegenStatManager.OnHealthRegenStatEventArgs e)
     {
-        UpdateUIByNewValue(e.healthRegenStat, playerIdentifier.PlayerSO.healthRegen);
+        UpdateUIByNewValue(e.healthRegenStat, playerIdentifier.CharacterSO.healthRegen);
     }
     private void HealthRegenStatManager_OnHealthRegenStatUpdated(object sender, HealthRegenStatManager.OnHealthRegenStatEventArgs e)
     {
-        UpdateUIByNewValue(e.healthRegenStat, playerIdentifier.PlayerSO.healthRegen);
+        UpdateUIByNewValue(e.healthRegenStat, playerIdentifier.CharacterSO.healthRegen);
     }
 
 }

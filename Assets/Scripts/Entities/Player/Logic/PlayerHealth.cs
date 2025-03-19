@@ -165,7 +165,7 @@ public class PlayerHealth : EntityHealth
 
     public override void InstaKill()
     {
-        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, playerIdentifier.PlayerSO);
+        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, playerIdentifier.CharacterSO);
     }
 
     protected void HealFromHealthRegen()

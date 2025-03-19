@@ -41,6 +41,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void Start()
     {
+        SetWeaponInventoryFromCharacter();
         InitializeWeaponsInventory();
     }
 
@@ -104,4 +105,18 @@ public class WeaponsInventoryManager : MonoBehaviour
 
         OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weaponSO = weaponSO });
     }
+
+    private void SetWeaponInventoryFromCharacter()
+    {
+        ClearWeaponInventory();
+
+        foreach(WeaponSO weaponSO in PlayerIdentifier.Instance.CharacterSO.startingWeapons)
+        {
+            weaponsInventory.Add(weaponSO);
+        }
+    }
+
+    private void ClearWeaponInventory() => weaponsInventory.Clear();
+
+    public bool WeaponInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
 }

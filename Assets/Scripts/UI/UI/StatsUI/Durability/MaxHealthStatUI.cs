@@ -20,11 +20,11 @@ public class MaxHealthStatUI : StatUI
 
     private void MaxHealthStatManager_OnMaxHealthStatInitialized(object sender, MaxHealthStatManager.OnMaxHealthStatEventArgs e)
     {
-        UpdateUIByNewValue(e.maxHealthStat, playerIdentifier.PlayerSO.maxHealth);
+        UpdateUIByNewValue(e.maxHealthStat, playerIdentifier.CharacterSO.maxHealth);
     }
 
     private void MaxHealthStatManager_OnMaxHealthStatUpdated(object sender, MaxHealthStatManager.OnMaxHealthStatEventArgs e)
     {
-        UpdateUIByNewValue(e.maxHealthStat, playerIdentifier.PlayerSO.maxHealth);
+        UpdateUIByNewValue(e.maxHealthStat, playerIdentifier.CharacterSO.maxHealth);
     }
 }

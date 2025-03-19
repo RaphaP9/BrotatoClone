@@ -20,11 +20,11 @@ public class ArmorPercentageStatUI : StatUI
 
     private void ArmorPercentageStatManager_OnArmorPercentageStatInitialized(object sender, ArmorPercentageStatManager.OnArmorPercentageStatEventArgs e)
     {
-        UpdateUIByNewValue(e.armorPercentageStat, playerIdentifier.PlayerSO.armorPercentage);
+        UpdateUIByNewValue(e.armorPercentageStat, playerIdentifier.CharacterSO.armorPercentage);
     }
 
     private void ArmorPercentageStatManager_OnArmorPercentageStatUpdated(object sender, ArmorPercentageStatManager.OnArmorPercentageStatEventArgs e)
     {
-        UpdateUIByNewValue(e.armorPercentageStat, playerIdentifier.PlayerSO.armorPercentage);
+        UpdateUIByNewValue(e.armorPercentageStat, playerIdentifier.CharacterSO.armorPercentage);
     }
 }

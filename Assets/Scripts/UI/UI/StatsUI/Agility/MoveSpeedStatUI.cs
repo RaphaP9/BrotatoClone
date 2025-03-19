@@ -19,12 +19,12 @@ public class MoveSpeedStatUI : StatUI
 
     private void MoveSpeedStatManager_OnMoveSpeedStatInitialized(object sender, MoveSpeedStatManager.OnMoveSpeedStatEventArgs e)
     {
-        UpdateUIByNewValue(e.moveSpeedStat, playerIdentifier.PlayerSO.moveSpeed);
+        UpdateUIByNewValue(e.moveSpeedStat, playerIdentifier.CharacterSO.moveSpeed);
     }
 
     private void MoveSpeedStatManager_OnMoveSpeedStatUpdated(object sender, MoveSpeedStatManager.OnMoveSpeedStatEventArgs e)
     {
-        UpdateUIByNewValue(e.moveSpeedStat, playerIdentifier.PlayerSO.moveSpeed);
+        UpdateUIByNewValue(e.moveSpeedStat, playerIdentifier.CharacterSO.moveSpeed);
     }
 
 }

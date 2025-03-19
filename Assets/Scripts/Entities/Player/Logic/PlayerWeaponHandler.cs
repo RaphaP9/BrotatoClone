@@ -6,6 +6,8 @@ using UnityEngine.Rendering;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
+    public static PlayerWeaponHandler Instance { get; private set; }
+
     [Header("Lists")]
     [SerializeField] private List<PointWeaponSlot> pointWeaponSlots;
 
@@ -33,6 +35,24 @@ public class PlayerWeaponHandler : MonoBehaviour
         WeaponsInventoryManager.OnWeaponsInventoryInitialized -= WeaponsInventoryManager_OnWeaponsInventoryInitialized;
         WeaponsInventoryManager.OnWeaponAddedToInventory -= WeaponsInventoryManager_OnWeaponAddedToInventory;
         WeaponsInventoryManager.OnWeaponRemovedFromInventory -= WeaponsInventoryManager_OnWeaponRemovedFromInventory;
+    }
+
+    private void Awake()
+    {
+        SetSingleton();
+    }
+
+    private void SetSingleton()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Debug.LogWarning("There is more than one PlayerWeaponHandler instance, proceding to destroy duplicate");
+            Destroy(gameObject);
+        }
     }
 
     private void CreateWeapons(List<WeaponSO> weaponSOs)
@@ -111,6 +131,8 @@ public class PlayerWeaponHandler : MonoBehaviour
         pointWeaponSlot.weaponIdentifier = null;
         
     }
+
+    public int GetPointWeaponSlotsCount() => pointWeaponSlots.Count;
 
     #region Subscriptions
     private void WeaponsInventoryManager_OnWeaponsInventoryInitialized(object sender, WeaponsInventoryManager.OnWeaponsEventArgs e)
