@@ -79,6 +79,12 @@ public class EnemyAttack : MonoBehaviour
 
     private void NotAttackingLogic()
     {
+        if (!CanAttack())
+        {
+            ResetTimer();
+            return;
+        }
+
         if (meleeEnemyMovement.InAttackDistance())
         {
             SetAttackState(State.Charging);

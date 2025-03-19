@@ -4,14 +4,14 @@ using UnityEngine;
 
 public class TypeAWaveSpawingSystem : WaveSpawningSystemManager
 {
-    protected override void StartWave(Wave wave)
+    protected override void StartWave(WaveSO waveSO)
     {
-        StartCoroutine(TestCoroutine(wave));        
+        StartCoroutine(TestCoroutine(waveSO));        
     }
 
-    private IEnumerator TestCoroutine(Wave wave)
+    private IEnumerator TestCoroutine(WaveSO waveSO)
     {
-        yield return new WaitForSeconds(5);
-        CompleteWave(wave);
+        yield return new WaitForSeconds(waveSO.duration/10);
+        CompleteWave(waveSO);
     }
 }

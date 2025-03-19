@@ -2843,7 +2843,7 @@ MonoBehaviour:
   maxDistanceToPlayer: 9
   debug: 1
   gizmosColor: {r: 1, g: 1, b: 1, a: 1}
-  test: {fileID: 11400000, guid: a0b72d5b03b739c4cb45d52ec0cd48b6, type: 2}
+  test: {fileID: 11400000, guid: 4cfa419f2c6cb2a4d854b7375f08f5d5, type: 2}
 --- !u!1 &336248209
 GameObject:
   m_ObjectHideFlags: 0
@@ -14170,15 +14170,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1654720387}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 583412968}
   - {fileID: 1917311087}
   - {fileID: 918869287}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 640079895}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1658011798
 GameObject:
@@ -17957,7 +17957,7 @@ GameObject:
   - component: {fileID: 2146179740}
   - component: {fileID: 2146179741}
   m_Layer: 0
-  m_Name: WaveStateManager
+  m_Name: GeneralWavesManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17991,15 +17991,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waves:
-  - waveNumber: 1
-  - waveNumber: 2
+  - {fileID: 11400000, guid: 7d5533b5d37844c439f6e1129c34c10f, type: 2}
+  - {fileID: 11400000, guid: 08abb2481bb567242b00208bcc2bae12, type: 2}
+  - {fileID: 11400000, guid: 214d4be2140438f4898a283d3e3501af, type: 2}
   waveStartingTime: 1
   waveEndingTime: 1
   waveState: 0
   debug: 1
   currentWaveNumber: 0
-  currentWave:
-    waveNumber: 0
+  currentWave: {fileID: 0}
 --- !u!1001 &561197030865357850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18260,7 +18260,10 @@ PrefabInstance:
       objectReference: {fileID: 1504673631}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 242600808619016491, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1654720388}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f0a9a1decab06e34c84a20f2cb8bc8f9, type: 3}
 --- !u!114 &3544502844060980640
@@ -19059,7 +19062,6 @@ SceneRoots:
   - {fileID: 104079981}
   - {fileID: 1902296662}
   - {fileID: 743903930}
-  - {fileID: 1654720388}
   - {fileID: 3423963489527315907}
   - {fileID: 536943497}
   - {fileID: 583671959}

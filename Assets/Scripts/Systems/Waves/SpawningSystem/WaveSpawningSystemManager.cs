@@ -12,7 +12,7 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
 
     public class OnWaveEventArgs : EventArgs
     {
-        public Wave wave;
+        public WaveSO waveSO;
     }
 
     private void OnEnable()
@@ -43,18 +43,18 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
         }
     }
     
-    protected abstract void StartWave(Wave wave);
+    protected abstract void StartWave(WaveSO waveSO);
 
-    protected virtual void CompleteWave(Wave wave)
+    protected virtual void CompleteWave(WaveSO waveSO)
     {
-        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { wave = wave});
+        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO });
     }
 
     #region Subscriptions
     private void WaveStateManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
-        OnWaveStart?.Invoke(this, new OnWaveEventArgs { wave = e.wave});
-        StartWave(e.wave);
+        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
+        StartWave(e.waveSO);
     }
     #endregion
 }
