@@ -18,7 +18,30 @@ public class TypeBWaveSpawingSystem : WaveSpawningSystemManager
 
     private IEnumerator StartWaveCoroutine(WaveSO waveSO)
     {
-        yield return null;
+        float waveElapsedTimer = 0f;
+        float enemySpawnTimer = Mathf.Infinity; //To spawn an enemy inmediately after wave start
+
+        while (waveElapsedTimer < waveSO.duration)
+        {
+            waveElapsedTimer += Time.deltaTime;
+            enemySpawnTimer += Time.deltaTime;
+
+            float normalizedElapsedTime = Mathf.Clamp01(waveElapsedTimer / waveSO.duration);
+
+            if (enemySpawnTimer > waveSO.baseSpawnTime)
+            {
+                EnemySO enemyToSpawn = GetRandomDinamicEnemyByWeight(waveSO, normalizedElapsedTime);
+                EnemySpawnerManager.Instance.SpawnEnemy(enemyToSpawn);
+
+                enemySpawnTimer = 0f;
+            }
+
+            SetCurrentWaveElapsedTime(waveElapsedTimer);
+
+            yield return null;
+        }
+
+        CompleteWave(waveSO);
     }
 
     protected EnemySO GetRandomDinamicEnemyByWeight(WaveSO waveSO, float normalizedElapsedWaveTime)

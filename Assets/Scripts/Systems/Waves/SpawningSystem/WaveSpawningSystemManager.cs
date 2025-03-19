@@ -106,10 +106,10 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     #region Subscriptions
     private void WaveStateManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
-        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
-
         SetCurrentWave(e.waveSO);
         SetCurrentWaveDuration(e.waveSO.duration);
+
+        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
 
         StartWave(e.waveSO);
     }

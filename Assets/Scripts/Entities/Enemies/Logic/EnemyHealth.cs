@@ -45,12 +45,16 @@ public class EnemyHealth : EntityHealth
     {
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
+
+        GeneralWavesManager.OnWaveCompleted += GeneralWavesManager_OnWaveCompleted;
     }
 
     private void OnDisable()
     {
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
+
+        GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
     }
 
     private void Start()
@@ -154,7 +158,8 @@ public class EnemyHealth : EntityHealth
 
     public override void InstaKill()
     {
-        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO);
+        //TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO); //For damage with feedbacks
+        TakeInstaDamage(INSTA_KILL_DAMAGE); //For damage with no feedbacks
     }
 
     private void DisableCollider()
@@ -163,10 +168,6 @@ public class EnemyHealth : EntityHealth
     }
 
     #region Subscriptions
-    private void EnemyKamikaze_OnThisEnemySelfDestroy(object sender, EventArgs e)
-    {
-        InstaKill();
-    }
     private void PlayerHealth_OnPlayerTakeRegularDamage(object sender, OnEntityTakeDamageEventArgs e)
     {
         //HealFromLifeSteal(e.damageTaken);
@@ -175,6 +176,11 @@ public class EnemyHealth : EntityHealth
     private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, OnEntityTakeDamageEventArgs e)
     {
         //HealFromLifeSteal(e.damageTaken);
+    }
+
+    private void GeneralWavesManager_OnWaveCompleted(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    {
+        InstaKill();
     }
 
     #endregion

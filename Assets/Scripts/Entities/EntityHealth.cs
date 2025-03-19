@@ -191,6 +191,17 @@ public abstract class EntityHealth : MonoBehaviour
     }
     #endregion
 
+    #region InstaDamage 
+    protected void TakeInstaDamage(int damage) //Damage with no events triggered (No Feedback)
+    {
+        currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
+
+        OnCurrentHealthSet(currentHealth);
+
+        if (!IsAlive()) OnDeath();
+    }
+    #endregion
+
 
     public bool IsAlive() => currentHealth > 0;
 

@@ -31,14 +31,6 @@ public class EnemySpawnerManager : MonoBehaviour
         SetSingleton();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            SpawnEnemy(test);
-        }
-    }
-
     private void SetSingleton()
     {
         if (Instance == null)
@@ -52,7 +44,7 @@ public class EnemySpawnerManager : MonoBehaviour
         }
     }
 
-    private void SpawnEnemy(EnemySO enemySO)
+    public void SpawnEnemy(EnemySO enemySO)
     {
         Transform chosenSpawnPoint = GetRandomValidSpawnPoint(enemySpawnPoints, minDistanceToPlayer, maxDistanceToPlayer);
 

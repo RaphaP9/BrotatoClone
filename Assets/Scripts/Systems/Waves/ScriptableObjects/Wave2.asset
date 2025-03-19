@@ -19,6 +19,6 @@ MonoBehaviour:
   - enemySO: {fileID: 11400000, guid: a0b72d5b03b739c4cb45d52ec0cd48b6, type: 2}
     weight: 10
   - enemySO: {fileID: 11400000, guid: 54b2bb9dfc7c6f24dbd653d5176ad77f, type: 2}
-    weight: 6
+    weight: 8
   - enemySO: {fileID: 11400000, guid: 4cfa419f2c6cb2a4d854b7375f08f5d5, type: 2}
-    weight: 3
+    weight: 4
