@@ -4,17 +4,12 @@ using UnityEngine;
 
 public class TypeBWaveSpawingSystem : WaveSpawningSystemManager
 {
-    //Using the weight system, increase 50% of the total weight of the wave to each enemyWave.
+    //Using the weight system, increase the total weight of the wave to each enemyWave by a factor * totalWeight.
     //As every weight grows higher, chances of spawn of every enemy tend to be equal.
     //The goal to achieve is similar weights for the weakest enemy and the strongest enemy as the normalized elapsed time of the wave aproaches to 1
 
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_25 = 0.2f;
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_50 = 0.2f;
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_75 = 0.2f;
-
-    private const float PERCENT_25 = 0.25f;
-    private const float PERCENT_50 = 0.50f;
-    private const float PERCENT_75 = 0.75f;
+    [Header("TypeBWaveSpawning System Settings")]
+    [SerializeField, Range(0f, 3f)] private float weightNormalizedIncreaseFactor; //When the wave normalized elapsed time is 1, each enemy weight has increased by totalWeight * weightNormalizedIncreaseFactor
 
     protected override void StartWave(WaveSO waveSO)
     {
@@ -28,11 +23,7 @@ public class TypeBWaveSpawingSystem : WaveSpawningSystemManager
 
     protected EnemySO GetRandomDinamicEnemyByWeight(WaveSO waveSO, float normalizedElapsedWaveTime)
     {
-        float dinamicNormalizedWeightIncrease = 0;
-
-        if (normalizedElapsedWaveTime > PERCENT_25) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_25;
-        if (normalizedElapsedWaveTime > PERCENT_50) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_50;
-        if (normalizedElapsedWaveTime > PERCENT_75) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_75;
+        float dinamicNormalizedWeightIncrease = CalculateDinamicNormalizedWeightIncrease(normalizedElapsedWaveTime);
 
         int totalWeight = GetTotalWaveWeight(waveSO);
         int singularDinamicWaveEnemyWeightIncrease = Mathf.RoundToInt(totalWeight * dinamicNormalizedWeightIncrease); //Weight that every enemy will increase
@@ -52,4 +43,6 @@ public class TypeBWaveSpawingSystem : WaveSpawningSystemManager
 
         return waveSO.waveEnemies[0].enemySO;
     }
+
+    private float CalculateDinamicNormalizedWeightIncrease(float normalizedElapsedWaveTime) => weightNormalizedIncreaseFactor * normalizedElapsedWaveTime;
 }

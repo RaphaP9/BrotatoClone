@@ -14,9 +14,11 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     [Header("Runtime Filled")]
     [SerializeField] protected float currentWaveDuration;
     [SerializeField] protected float currentWaveElapsedTime;
+    [SerializeField] protected WaveSO currentWave;
 
     public float CurrentWaveDuration => currentWaveDuration;
     public float CurrentWaveElapsedTime => currentWaveElapsedTime;
+    public WaveSO CurrentWave => currentWave;
 
     public class OnWaveEventArgs : EventArgs
     {
@@ -56,6 +58,10 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     protected virtual void CompleteWave(WaveSO waveSO)
     {
         OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO });
+
+        ClearCurrentWave();
+        ResetCurrentWaveDuration();
+        ResetCurrentWaveElapsedTime();
     }
 
     protected EnemySO GetRandomEnemyByWeight(WaveSO waveSO)
@@ -87,10 +93,24 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
         return totalWeight;
     }
 
+    protected void SetCurrentWave(WaveSO waveSO) => currentWave = waveSO;
+    protected void SetCurrentWaveDuration(float duration) => currentWaveDuration = duration;
+    protected void SetCurrentWaveElapsedTime(float elapsedTime) => currentWaveElapsedTime = elapsedTime;
+
+    protected void ClearCurrentWave() => currentWave = null;
+    protected void ResetCurrentWaveDuration() => currentWaveDuration = 0;
+    protected void ResetCurrentWaveElapsedTime() => currentWaveElapsedTime = 0;
+
+    protected float GetNormalizedElapsedWaveTime() => currentWaveElapsedTime/currentWaveDuration;
+
     #region Subscriptions
     private void WaveStateManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
         OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
+
+        SetCurrentWave(e.waveSO);
+        SetCurrentWaveDuration(e.waveSO.duration);
+
         StartWave(e.waveSO);
     }
     #endregion

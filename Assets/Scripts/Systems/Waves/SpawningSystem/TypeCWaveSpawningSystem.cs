@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TypeCWaveSpawningSystem : WaveSpawningSystemManager
+public class TypeCWaveSpawingSystem : WaveSpawningSystemManager
 {
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_25 = 0.2f;
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_50 = 0.2f;
-    private const float WEIGHT_NORMALIZED_INCREASE_PERCENT_75 = 0.2f;
+    [Header("TypeCWaveSpawning System Settings")]
+    [SerializeField, Range(0f, 3f)] private float weightNormalizedIncreaseFactor; //When the wave normalized elapsed time is 1, each enemy weight has increased by totalWeight * weightNormalizedIncreaseFactor
+    [SerializeField, Range(0.2f, 0.5f)] private float spawnTimeNormalizedReductionFactor; //When the normalized elapsed time is 1, enemies spawn every baseSpawnTime * spawnTimeNormalizedReductionFactor
 
-    private const float PERCENT_25 = 0.25f;
-    private const float PERCENT_50 = 0.50f;
-    private const float PERCENT_75 = 0.75f;
+    private const float MINIMUM_SPAWN_TIME = 1f; 
+    //Safety Reasons - If the system has a spawnTimeNormalizedReductionFactor of 1 or very close to 1, enemies will spawn very very fast which will affect performance
+    //Should not happen because Range is set to a maximum of 0.5 but just in case
 
     protected override void StartWave(WaveSO waveSO)
     {
@@ -22,18 +22,9 @@ public class TypeCWaveSpawningSystem : WaveSpawningSystemManager
         yield return null;
     }
 
-    protected float GetDinamicSpawningInterval(WaveSO waveSO, float normalizedElapsedTime)
-    {
-        return 0;
-    }
-
     protected EnemySO GetRandomDinamicEnemyByWeight(WaveSO waveSO, float normalizedElapsedWaveTime)
     {
-        float dinamicNormalizedWeightIncrease = 0;
-
-        if (normalizedElapsedWaveTime > PERCENT_25) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_25;
-        if (normalizedElapsedWaveTime > PERCENT_50) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_50;
-        if (normalizedElapsedWaveTime > PERCENT_75) dinamicNormalizedWeightIncrease += WEIGHT_NORMALIZED_INCREASE_PERCENT_75;
+        float dinamicNormalizedWeightIncrease = CalculateDinamicNormalizedWeightIncrease(normalizedElapsedWaveTime);
 
         int totalWeight = GetTotalWaveWeight(waveSO);
         int singularDinamicWaveEnemyWeightIncrease = Mathf.RoundToInt(totalWeight * dinamicNormalizedWeightIncrease); //Weight that every enemy will increase
@@ -52,5 +43,18 @@ public class TypeCWaveSpawningSystem : WaveSpawningSystemManager
         }
 
         return waveSO.waveEnemies[0].enemySO;
+    }
+
+    private float CalculateDinamicNormalizedWeightIncrease(float normalizedElapsedWaveTime) => weightNormalizedIncreaseFactor * normalizedElapsedWaveTime;
+
+    protected float GetDinamicSpawnTime(WaveSO waveSO, float normalizedElapsedWaveTime)
+    {
+        float dinamicNormalizedSpawnTimeReduction = normalizedElapsedWaveTime * spawnTimeNormalizedReductionFactor;
+
+        float dinamicSpawnTime = waveSO.baseSpawTime* (1 - dinamicNormalizedSpawnTimeReduction);
+
+        dinamicSpawnTime = Mathf.Max(dinamicSpawnTime, MINIMUM_SPAWN_TIME); //Safety Reasons - Spawn time should not be less than MINIMUM_SPAWN_TIME
+
+        return dinamicSpawnTime;
     }
 }

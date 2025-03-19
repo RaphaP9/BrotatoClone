@@ -7,6 +7,6 @@ public class WaveSO : ScriptableObject
 {
     public int waveNumber;
     [Range(10,120), Tooltip("In Seconds")] public int duration;
-    [Range(1f, 10f)] public float baseSpawningInterval;
+    [Range(1f, 10f)] public float baseSpawTime;
     public List<WaveEnemy> waveEnemies;
 }
