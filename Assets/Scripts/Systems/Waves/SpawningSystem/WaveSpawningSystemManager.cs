@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static UnityEngine.EventSystems.EventTrigger;
 
 public abstract class WaveSpawningSystemManager : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
 
     public static event EventHandler<OnWaveEventArgs> OnWaveStart;
     public static event EventHandler<OnWaveEventArgs> OnWaveCompleted;
+
+    [Header("Runtime Filled")]
+    [SerializeField] protected float currentWaveDuration;
+    [SerializeField] protected float currentWaveElapsedTime;
+
+    public float CurrentWaveDuration => currentWaveDuration;
+    public float CurrentWaveElapsedTime => currentWaveElapsedTime;
 
     public class OnWaveEventArgs : EventArgs
     {
@@ -48,6 +56,35 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     protected virtual void CompleteWave(WaveSO waveSO)
     {
         OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO });
+    }
+
+    protected EnemySO GetRandomEnemyByWeight(WaveSO waveSO)
+    {
+        int totalWeight = GetTotalWaveWeight(waveSO);
+        int randomValue = UnityEngine.Random.Range(0, totalWeight);
+
+        int currentWeight = 0;
+
+        foreach (WaveEnemy waveEnemy in waveSO.waveEnemies)
+        {
+            currentWeight += waveEnemy.weight;
+
+            if (randomValue <= currentWeight) return waveEnemy.enemySO;
+        }
+
+        return waveSO.waveEnemies[0].enemySO; 
+    }
+
+    protected int GetTotalWaveWeight(WaveSO waveSO)
+    {
+        int totalWeight = 0;
+
+        foreach(WaveEnemy waveEnemy in waveSO.waveEnemies)
+        {
+            totalWeight += waveEnemy.weight;
+        }
+
+        return totalWeight;
     }
 
     #region Subscriptions
