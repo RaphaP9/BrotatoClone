@@ -2839,10 +2839,10 @@ MonoBehaviour:
   - {fileID: 1419975923}
   - {fileID: 545412318}
   - {fileID: 1702879121}
-  minDistanceToPlayer: 5
-  maxDistanceToPlayer: 15
+  minDistanceToPlayer: 3
+  maxDistanceToPlayer: 9
   debug: 1
-  gizmosColor: {r: 1, g: 0, b: 0, a: 1}
+  gizmosColor: {r: 1, g: 1, b: 1, a: 1}
   test: {fileID: 11400000, guid: a0b72d5b03b739c4cb45d52ec0cd48b6, type: 2}
 --- !u!1 &336248209
 GameObject:
@@ -6914,7 +6914,7 @@ GameObject:
   m_Component:
   - component: {fileID: 879105837}
   m_Layer: 0
-  m_Name: Game
+  m_Name: Waves
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6933,8 +6933,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1706760662}
   - {fileID: 2146179740}
+  - {fileID: 1627800455}
   - {fileID: 334775189}
   m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -13872,6 +13872,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1622046862}
   m_CullTransparentMesh: 1
+--- !u!1 &1627800454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1627800455}
+  - component: {fileID: 1627800456}
+  m_Layer: 0
+  m_Name: WaveSpawningSystemManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1627800455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627800454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 879105837}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1627800456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1627800454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5e93fcaecf4d8946bba6edcd78d6772, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1643825523
 GameObject:
   m_ObjectHideFlags: 0
@@ -14356,12 +14400,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1706760661}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 879105837}
+  m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1706760663
 MonoBehaviour:
@@ -16849,6 +16893,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1706760662}
   - {fileID: 879105837}
   - {fileID: 771802979}
   - {fileID: 278022105}
@@ -17800,7 +17845,7 @@ GameObject:
   - component: {fileID: 2146179740}
   - component: {fileID: 2146179741}
   m_Layer: 0
-  m_Name: WaveManager
+  m_Name: WaveStateManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17833,6 +17878,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 512326f08bdbffc49bd6078d54989e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waves:
+  - waveNumber: 1
+  - waveNumber: 2
+  waveStartingTime: 1
+  waveEndingTime: 1
+  waveState: 0
+  debug: 1
+  currentWaveNumber: 0
+  currentWave:
+    waveNumber: 0
 --- !u!1001 &561197030865357850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18296,7 +18351,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1396816363032638244, guid: 08638218807a81c4083bb53804187620, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5667900748043500077, guid: 08638218807a81c4083bb53804187620, type: 3}
       propertyPath: m_LocalPosition.x

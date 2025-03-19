@@ -12,7 +12,7 @@ public class EnemySpawnerManager : MonoBehaviour
 
     [Header("Settings")]
     [SerializeField,Range(3f, 10f)] private float minDistanceToPlayer;
-    [SerializeField,Range(10f, 20f)] private float maxDistanceToPlayer;
+    [SerializeField,Range(5f, 20f)] private float maxDistanceToPlayer;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
@@ -155,7 +155,7 @@ public class EnemySpawnerManager : MonoBehaviour
     {
         Gizmos.color = gizmosColor;
 
-        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, minDistanceToPlayer);
-        //Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, maxDistanceToPlayer);
+        Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, minDistanceToPlayer);
+        Gizmos.DrawWireSphere(PlayerPositionHandler.Instance.Player.position, maxDistanceToPlayer);
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class WaveStateManager : MonoBehaviour
+public class GeneralWavesManager : MonoBehaviour
 {
-    public static WaveStateManager Instance { get; private set; }
+    public static GeneralWavesManager Instance { get; private set; }
 
     [Header("Lists")]
     [SerializeField] private List<Wave> waves;
@@ -41,10 +41,16 @@ public class WaveStateManager : MonoBehaviour
         public Wave wave;
     }
 
-    [Serializable]
-    public class Wave
+    private void OnEnable()
     {
-        public int waveNumber;
+        WaveSpawningSystemManager.OnWaveStart += WaveSpawningSystemManager_OnWaveStart;
+        WaveSpawningSystemManager.OnWaveCompleted += WaveSpawningSystemManager_OnWaveCompleted;
+    }
+
+    private void OnDisable()
+    {
+        WaveSpawningSystemManager.OnWaveStart -= WaveSpawningSystemManager_OnWaveStart;
+        WaveSpawningSystemManager.OnWaveCompleted -= WaveSpawningSystemManager_OnWaveCompleted;
     }
 
     private void Awake()
@@ -61,6 +67,11 @@ public class WaveStateManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            StartNextWave();
+        }
+
         HandleWavesLogic();
     }
 
@@ -112,8 +123,6 @@ public class WaveStateManager : MonoBehaviour
 
         OnWaveStart?.Invoke(this, new OnWaveEventArgs { wave = currentWave });
         ResetTimer();
-
-        SetWaveState(State.OnWave);
     }
 
     private void OnWaveLogic()
@@ -140,6 +149,18 @@ public class WaveStateManager : MonoBehaviour
 
     public void StartNextWave()
     {
+        if(state != State.NotOnWave)
+        {
+            if (debug) Debug.Log("Another Wave is in progress. Can not start wave.");
+            return;
+        }
+
+        if (!WaveWithWaveNumberExists(currentWaveNumber+1))
+        {
+            if (debug) Debug.Log($"Wave with WaveNumber {currentWaveNumber + 1} does not exist. Can not start next wave.");
+            return;
+        }
+
         IncreaseCurrentWaveNumber();
         StartWave(currentWaveNumber);
     }
@@ -154,7 +175,11 @@ public class WaveStateManager : MonoBehaviour
             return;
         }
 
-        OnWaveStart?.Invoke(this, new OnWaveEventArgs { wave = wave });
+        SetCurrentWave(wave);
+        OnWaveStarting?.Invoke(this, new OnWaveEventArgs { wave = wave });
+        SetWaveState(State.StartingWave);
+
+        ResetTimer();
     }
 
     private Wave FindWaveByWaveNumber(int waveNumber)
@@ -164,8 +189,20 @@ public class WaveStateManager : MonoBehaviour
             if (wave.waveNumber == waveNumber) return wave; 
         }
 
-        if (debug) Debug.Log($"Wave with waveNumber {waveNumber} could not be found. Proceding to return null.");
+        if (debug) Debug.Log($"Wave with WaveNumber {waveNumber} could not be found. Proceding to return null.");
         return null;
+    }
+
+    private bool WaveWithWaveNumberExists(int waveNumber)
+    {
+        Wave wave = FindWaveByWaveNumber(waveNumber);
+        return wave != null;
+    }
+
+    private void EndCurrentWave()
+    {
+        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { wave = currentWave });
+        ClearCurrentWave();
     }
 
     private void SetCurrentWave(Wave wave) => currentWave = wave;
@@ -175,4 +212,19 @@ public class WaveStateManager : MonoBehaviour
     private void IncreaseCurrentWaveNumber() => currentWaveNumber += 1;
     private void SetWaveState(State state) => waveState = state;
     private void ResetTimer() => timer = 0f;
+
+
+    #region Subscriptions
+    private void WaveSpawningSystemManager_OnWaveStart(object sender, WaveSpawningSystemManager.OnWaveEventArgs e)
+    {
+        SetWaveState(State.OnWave);
+        ResetTimer();
+    }
+    private void WaveSpawningSystemManager_OnWaveCompleted(object sender, WaveSpawningSystemManager.OnWaveEventArgs e)
+    {
+        SetWaveState(State.EndingWave);
+        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { wave = e.wave });
+        ResetTimer();
+    }
+    #endregion
 }
