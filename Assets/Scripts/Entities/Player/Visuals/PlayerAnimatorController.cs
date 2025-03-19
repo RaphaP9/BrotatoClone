@@ -6,8 +6,10 @@ using UnityEngine;
 public class PlayerAnimatorController : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private Animator animator;
     [SerializeField] private PlayerMovement playerMovement;
+
+    [Header("Components - Filled By Character Visual Instantiator")]
+    [SerializeField] private Animator animator;
 
     private const string DASH_TRIGGER = "Dash";
     private const string DEATH_TRIGGER = "Death";
@@ -69,6 +71,9 @@ public class PlayerAnimatorController : MonoBehaviour
         yield return new WaitForSeconds(duration);
         animator.Play(finalAnimation);
     }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SetAnimator(Animator animator) => this.animator = animator;
 
     #region Subscriptions
     private void PlayerDash_OnPlayerDash(object sender, PlayerDash.OnPlayerDashEventArgs e)

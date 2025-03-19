@@ -9,7 +9,8 @@ public class PlayerSpriteFlipper : MonoBehaviour
     [SerializeField] private PlayerMovement playerMovement;
     [SerializeField] private PlayerDash playerDash;
     [SerializeField] private PlayerHealth playerHealth;
-    [Space]
+
+    [Header("Components - Filled By Character Visual Instantiator")]
     [SerializeField] private SpriteRenderer spriteRenderer;
 
     private bool facingRight = true;
@@ -84,4 +85,6 @@ public class PlayerSpriteFlipper : MonoBehaviour
         }
     }
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SetSpriteRenderer(SpriteRenderer spriteRenderer) => this.spriteRenderer = spriteRenderer;
 }

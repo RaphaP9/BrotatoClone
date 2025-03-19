@@ -6,11 +6,13 @@ using System;
 public class EntitySortingOrderRenderingHandler : MonoBehaviour
 {
     [Header("Components")]
-    [SerializeField] private Transform renderingRefference;
-    [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Canvas UICanvas;
 
-    private int previousSortingOrder;
+    [Header("Components - Filled By Character Visual Instantiator")]
+    [SerializeField] private Transform renderingRefference;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private int previousSortingOrder = 0;
 
     private const int DECIMAL_PRECISION = 2;
 
@@ -47,4 +49,7 @@ public class EntitySortingOrderRenderingHandler : MonoBehaviour
       
     private void SetUISortingGroupSortingOrder(int sortingOrder) => UICanvas.sortingOrder = sortingOrder;
 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    public void SetSpriteRenderer(SpriteRenderer spriteRenderer) => this.spriteRenderer = spriteRenderer;
+    public void SetRenderingRefference(Transform renderingRefference) => this.renderingRefference = renderingRefference;
 }
