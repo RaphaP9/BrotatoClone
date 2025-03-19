@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,6 +18,13 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField] private bool debug;
     [SerializeField] private Color gizmosColor;
     [SerializeField] private EnemySO test;
+
+    public static event EventHandler<OnEnemySpawnedEventArgs> OnEnemySpawned;
+    public class OnEnemySpawnedEventArgs : EventArgs
+    {
+        public EnemySO enemySO;
+        public Transform spawnPoint;
+    }
 
     private void Awake()
     {
@@ -55,6 +63,8 @@ public class EnemySpawnerManager : MonoBehaviour
         }
 
         SpawnEnemyAtPosition(enemySO, chosenSpawnPoint.position);
+
+        OnEnemySpawned?.Invoke(this, new OnEnemySpawnedEventArgs { enemySO = enemySO, spawnPoint = chosenSpawnPoint });
     }
 
     private void SpawnEnemyAtPosition(EnemySO enemySO, Vector3 position)
