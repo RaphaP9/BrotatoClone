@@ -51,7 +51,7 @@ public class TypeCWaveSpawingSystem : WaveSpawningSystemManager
     {
         float dinamicNormalizedSpawnTimeReduction = normalizedElapsedWaveTime * spawnTimeNormalizedReductionFactor;
 
-        float dinamicSpawnTime = waveSO.baseSpawTime* (1 - dinamicNormalizedSpawnTimeReduction);
+        float dinamicSpawnTime = waveSO.baseSpawnTime * (1 - dinamicNormalizedSpawnTimeReduction);
 
         dinamicSpawnTime = Mathf.Max(dinamicSpawnTime, MINIMUM_SPAWN_TIME); //Safety Reasons - Spawn time should not be less than MINIMUM_SPAWN_TIME
 

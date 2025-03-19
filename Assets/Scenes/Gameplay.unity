@@ -13991,11 +13991,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 1627800454}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5e93fcaecf4d8946bba6edcd78d6772, type: 3}
+  m_Script: {fileID: 11500000, guid: d69409e83fda6f542b23012d150cd888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentWaveDuration: 0
   currentWaveElapsedTime: 0
+  currentWave: {fileID: 0}
+  weightNormalizedIncreaseFactor: 0.1
+  spawnTimeNormalizedReductionFactor: 0.5
 --- !u!1 &1643825523
 GameObject:
   m_ObjectHideFlags: 0
@@ -17994,8 +17997,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - {fileID: 11400000, guid: 7d5533b5d37844c439f6e1129c34c10f, type: 2}
-  - {fileID: 11400000, guid: 08abb2481bb567242b00208bcc2bae12, type: 2}
-  - {fileID: 11400000, guid: 214d4be2140438f4898a283d3e3501af, type: 2}
+  - {fileID: 11400000, guid: 39f9637c713993f418c230e2f2a41292, type: 2}
+  - {fileID: 11400000, guid: c0d1226c33446844ab003041182e4a48, type: 2}
   waveStartingTime: 1
   waveEndingTime: 1
   waveState: 0
