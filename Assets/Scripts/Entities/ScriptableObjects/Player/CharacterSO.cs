@@ -32,6 +32,12 @@ public class CharacterSO : EntitySO
     [Header("Abilities")]
     public List<AbilitySO> startingAbilities;
 
+    [Header("Objects")]
+    public List<ObjectSO> startingObjects;
+
+    [Header("Objects")]
+    public List<ElementSO> startingElements;
+
     [Header("Visual")]
     public Transform characterVisualTransform;
 }

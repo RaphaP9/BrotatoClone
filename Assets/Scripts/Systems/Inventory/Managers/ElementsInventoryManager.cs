@@ -2,25 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static WeaponsInventoryManager;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class ElementsInventoryManager : MonoBehaviour
 {
     public static ElementsInventoryManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<ElementSO> elementsInventory;
+    [SerializeField] private List<ElementIdentified> elementsInventory;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
 
-    public List<ElementSO> ElementsInventory => elementsInventory;
+    public List<ElementIdentified> ElementsInventory => elementsInventory;
 
+    public static event EventHandler<OnElementsEventArgs> OnElementsInventoryInitialized;
     public static event EventHandler<OnElementEventArgs> OnElementAddedToInventory;
     public static event EventHandler<OnElementEventArgs> OnElementRemovedFromInventory;
 
+    public class OnElementsEventArgs : EventArgs
+    {
+        public List<ElementIdentified> elements;
+    }
+
     public class OnElementEventArgs : EventArgs
     {
-        public ElementSO elementSO;
+        public ElementIdentified element;
     }
 
     private void OnEnable()
@@ -38,6 +46,12 @@ public class ElementsInventoryManager : MonoBehaviour
         SetSingleton();
     }
 
+    private void Start()
+    {
+        SetElementsInventoryFromCharacter();
+        InitializeElementsInventory();
+    }
+
     private void SetSingleton()
     {
         if (Instance == null)
@@ -51,6 +65,11 @@ public class ElementsInventoryManager : MonoBehaviour
         }
     }
 
+    private void InitializeElementsInventory()
+    {
+        OnElementsInventoryInitialized?.Invoke(this, new OnElementsEventArgs { elements = elementsInventory });
+    }
+
     private void AddElementToInventory(ElementSO elementSO)
     {
         if (elementSO == null)
@@ -59,18 +78,16 @@ public class ElementsInventoryManager : MonoBehaviour
             return;
         }
 
-        if (elementsInventory.Contains(elementSO))
-        {
-            if (debug) Debug.Log($"ElementSO with name {elementSO.inventoryObjectName} is already on inventory, addition will be ignored");
-            return;
-        }
+        string elementGUID = GeneralDataUtilities.GenerateGUID();
 
-        elementsInventory.Add(elementSO);
+        ElementIdentified elementToAdd = new ElementIdentified { GUID = elementGUID, elementSO = elementSO };
 
-        OnElementAddedToInventory?.Invoke(this, new OnElementEventArgs { elementSO = elementSO });
+        elementsInventory.Add(elementToAdd);
+
+        OnElementAddedToInventory?.Invoke(this, new OnElementEventArgs { element = elementToAdd });
     }
 
-    private void RemoveElementFromInventory(ElementSO elementSO)
+    private void RemoveElementFromInventoryByElementSO(ElementSO elementSO)
     {
         if (elementSO == null)
         {
@@ -78,14 +95,78 @@ public class ElementsInventoryManager : MonoBehaviour
             return;
         }
 
-        if (!elementsInventory.Contains(elementSO))
+        ElementIdentified elementIdentified = FindElementByElementSO(elementSO);
+
+        if (elementIdentified == null)
         {
-            if (debug) Debug.Log($"ElementSO with name {elementSO.inventoryObjectName} is not on inventory, remotion will be ignored");
+            if (debug) Debug.Log("Could not find weapon by ElementSO");
             return;
         }
 
-        elementsInventory.Remove(elementSO);
+        elementsInventory.Remove(elementIdentified);
 
-        OnElementRemovedFromInventory?.Invoke(this, new OnElementEventArgs { elementSO = elementSO });
+        OnElementRemovedFromInventory?.Invoke(this, new OnElementEventArgs { element = elementIdentified });
     }
+
+    private void RemoveWeaponFromInventoryByGUID(string GUID)
+    {
+        ElementIdentified elementIdentified = FindElementByGUID(GUID);
+
+        if (elementIdentified == null)
+        {
+            if (debug) Debug.Log("Could not find element by GUID");
+            return;
+        }
+
+        elementsInventory.Remove(elementIdentified);
+
+        OnElementRemovedFromInventory?.Invoke(this, new OnElementEventArgs { element = elementIdentified });
+    }
+
+    private ElementIdentified FindElementByElementSO(ElementSO elementSO)
+    {
+        foreach (ElementIdentified element in elementsInventory)
+        {
+            if (element.elementSO == elementSO) return element;
+        }
+
+        if (debug) Debug.Log($"Element with ElementSO with ID {elementSO.id} could not be found. Proceding to return null");
+        return null;
+    }
+
+    private ElementIdentified FindElementByGUID(string GUID)
+    {
+        foreach (ElementIdentified element in elementsInventory)
+        {
+            if (element.GUID == GUID) return element;
+        }
+
+        if (debug) Debug.Log($"Element with GUID {GUID} could not be found. Proceding to return null");
+        return null;
+    }
+
+    private void SetElementsInventoryFromCharacter()
+    {
+        ClearElementsInventory();
+        AddElementsToInventory(PlayerIdentifier.Instance.CharacterSO.startingElements);
+    }
+
+    private void AddElementsToInventory(List<ElementSO> elementSOs)
+    {
+        foreach (ElementSO elementSO in elementSOs)
+        {
+            AddElementToInventory(elementSO);
+        }
+    }
+
+    private void ClearElementsInventory() => elementsInventory.Clear();
+
+    public bool ElementsInventoryFull() => false;
+}
+
+[System.Serializable]
+public class ElementIdentified
+{
+    public string GUID;
+    public ElementSO elementSO;
 }

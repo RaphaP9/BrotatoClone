@@ -19,15 +19,16 @@ public class WeaponsInventoryManager : MonoBehaviour
     public static event EventHandler<OnWeaponEventArgs> OnWeaponAddedToInventory;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponRemovedFromInventory;
 
+    public class OnWeaponEventArgs : EventArgs
+    {
+        public WeaponIdentified weapon;
+    }
+
     public class OnWeaponsEventArgs : EventArgs
     {
         public List<WeaponIdentified> weapons;
     }
 
-    public class OnWeaponEventArgs : EventArgs
-    {
-        public WeaponIdentified weapon;
-    }
 
     private void OnEnable()
     {
@@ -96,7 +97,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
         if(weaponIdentified == null)
         {
-            if (debug) Debug.Log("Could not find weapon by weaponSO");
+            if (debug) Debug.Log("Could not find weapon by WeaponSO");
             return;
         }
 
@@ -145,7 +146,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void SetWeaponInventoryFromCharacter()
     {
-        ClearWeaponInventory();
+        ClearWeaponsInventory();
         AddWeaponsToInventory(PlayerIdentifier.Instance.CharacterSO.startingWeapons);
     }
 
@@ -157,9 +158,9 @@ public class WeaponsInventoryManager : MonoBehaviour
         }
     }
 
-    private void ClearWeaponInventory() => weaponsInventory.Clear();
+    private void ClearWeaponsInventory() => weaponsInventory.Clear();
 
-    public bool WeaponInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
+    public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
 }
 
 [System.Serializable]

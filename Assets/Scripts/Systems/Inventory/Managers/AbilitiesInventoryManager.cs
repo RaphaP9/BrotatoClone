@@ -97,7 +97,7 @@ public class AbilitiesInventoryManager : MonoBehaviour
 
         if (abilitiesInventory == null)
         {
-            if (debug) Debug.Log("Could not find ability by GUID");
+            if (debug) Debug.Log("Could not find ability by AbilitySO");
             return;
         }
 

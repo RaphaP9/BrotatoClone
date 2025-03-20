@@ -3442,8 +3442,8 @@ Transform:
   m_Children:
   - {fileID: 648232434}
   - {fileID: 993209882}
-  - {fileID: 1458041037}
   - {fileID: 1708489756}
+  - {fileID: 1458041037}
   m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &415632999
@@ -13024,7 +13024,7 @@ GameObject:
   - component: {fileID: 1458041037}
   - component: {fileID: 1458041038}
   m_Layer: 0
-  m_Name: StatsInventoryManager
+  m_Name: ObjectsInventoryManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
