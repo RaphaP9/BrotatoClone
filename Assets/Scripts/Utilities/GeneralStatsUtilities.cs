@@ -6,16 +6,16 @@ public static class GeneralStatsUtilities
 {
     #region Durability
     public static int MIN_MAX_HEALTH = 10;
-    public static int MAX_MAX_HEALTH = 100;
+    public static int MAX_MAX_HEALTH = 1000;
 
     public static int MIN_HEALTH_REGEN = 0;
-    public static int MAX_HEALTH_REGEN = 10;
+    public static int MAX_HEALTH_REGEN = 100;
 
     public static float MIN_ARMOR_PERCENTAGE = 0f;
     public static float MAX_ARMOR_PERCENTAGE = 0.9f;
 
     public static float MIN_DODGE_CHANCE = 0f;
-    public static float MAX_DODGE_CHANCE = 0.5f;
+    public static float MAX_DODGE_CHANCE = 0.9f;
     #endregion
 
     #region Agility

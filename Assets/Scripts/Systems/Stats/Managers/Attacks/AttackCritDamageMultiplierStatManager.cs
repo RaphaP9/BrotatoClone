@@ -53,4 +53,5 @@ public class AttackCritDamageMultiplierStatManager : StatManager
     }
 
     private void SetAttackCritDamageMultiplierStat(float value) => attackCritDamageMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AttackCritDamageMultiplier;
 }

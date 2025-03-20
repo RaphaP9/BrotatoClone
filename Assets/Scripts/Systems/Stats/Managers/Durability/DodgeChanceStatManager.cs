@@ -53,4 +53,5 @@ public class DodgeChanceStatManager : StatManager
     }
 
     private void SetDodgeChanceStat(float value) => dodgeChanceStat = value;
+    protected override StatType GetStatType() => StatType.DodgeChance;
 }

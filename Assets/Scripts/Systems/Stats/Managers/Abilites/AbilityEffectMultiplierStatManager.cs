@@ -53,4 +53,5 @@ public class AbilityEffectMultiplierStatManager : StatManager
     }
 
     private void SetAbilityEffectMultiplierStat(float value) => abilityEffectMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AbilityEffectMultiplier;
 }

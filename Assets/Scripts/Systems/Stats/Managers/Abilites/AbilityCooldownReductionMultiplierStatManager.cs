@@ -53,4 +53,5 @@ public class AbilityCooldownReductionMultiplierStatManager : StatManager
     }
 
     private void SetAbilityCooldownReductionStat(float value) => abilityCooldownReductionMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AbilityCooldownReduction;
 }

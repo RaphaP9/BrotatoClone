@@ -53,5 +53,6 @@ public class AbilityCritEffectMultiplierStatManager : StatManager
     }
 
     private void SetAbilityCritEffectMultiplierStat(float value) => abilityCritEffectMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AbilityCritEffectMultiplier;
 }
 

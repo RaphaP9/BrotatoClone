@@ -53,4 +53,5 @@ public class AttackSpeedMultiplierStatManager : StatManager
     }
 
     private void SetAttackSpeedMultiplierStat(float value) => attackSpeedMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AttackSpeedMultiplier;
 }

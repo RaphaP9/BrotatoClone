@@ -18,3 +18,10 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 0}
   price: 0
+  embeddedStats:
+  - statType: 0
+    statModificationType: 0
+    value: 12
+  - statType: 5
+    statModificationType: 0
+    value: 1

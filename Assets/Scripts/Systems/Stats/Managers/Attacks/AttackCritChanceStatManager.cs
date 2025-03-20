@@ -53,4 +53,5 @@ public class AttackCritChanceStatManager : StatManager
     }
 
     private void SetAttackCritChanceMultiplierStat(float value) => attackCritChanceStat = value;
+    protected override StatType GetStatType() => StatType.AttackCritChance;
 }

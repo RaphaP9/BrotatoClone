@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using static WeaponsInventoryManager;
 
 public class ObjectsInventoryManager : MonoBehaviour
 {

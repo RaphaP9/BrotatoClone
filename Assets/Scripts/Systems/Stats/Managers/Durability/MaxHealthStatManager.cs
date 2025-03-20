@@ -53,4 +53,6 @@ public class MaxHealthStatManager : StatManager
     }
 
     private void SetMaxHealthStat(int value) => maxHealthStat = value;
+
+    protected override StatType GetStatType() => StatType.MaxHealth;
 }

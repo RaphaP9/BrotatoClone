@@ -1207,6 +1207,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   abilityCritEffectMultiplierStat: 0
 --- !u!1 &120093002
 GameObject:
@@ -1600,6 +1601,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   abilityCooldownReductionMultiplierStat: 0
 --- !u!1 &203370632
 GameObject:
@@ -2095,6 +2097,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   moveSpeedStat: 0
 --- !u!1001 &297454672
 PrefabInstance:
@@ -5635,6 +5638,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   lifestealStat: 0
 --- !u!114 &660145001 stripped
 MonoBehaviour:
@@ -5958,6 +5962,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   healthRegenStat: 0
 --- !u!1 &722713561
 GameObject:
@@ -6629,6 +6634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   attackRangeMultiplierStat: 0
 --- !u!114 &821138813 stripped
 MonoBehaviour:
@@ -6776,11 +6782,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ef091d8876ba7542918fef0fd228267, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers:
-  - originGUID: 
-    statType: 2
-    statModificationType: 0
-    value: 0.1
+  statModifiers: []
+  debug: 0
   armorPercentageStat: 0
 --- !u!1 &866452291
 GameObject:
@@ -8516,6 +8519,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   maxHealthStat: 0
 --- !u!1 &1096801594
 GameObject:
@@ -9410,6 +9414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   attackDamageMultiplierStat: 0
 --- !u!1 &1176138030
 GameObject:
@@ -9958,6 +9963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   attackCritChanceStat: 0
 --- !u!1 &1243790554
 GameObject:
@@ -11653,6 +11659,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   dodgeChanceStat: 0
 --- !u!1 &1375662693
 GameObject:
@@ -12072,6 +12079,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   attackCritDamageMultiplierStat: 0
 --- !u!1 &1419975922
 GameObject:
@@ -13057,7 +13065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08d2da98d90aba04ca6c7066b6482df1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statsInventory: []
+  objectsInventory: []
   debug: 1
 --- !u!114 &1460725784 stripped
 MonoBehaviour:
@@ -13729,6 +13737,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   areaMultiplierStat: 0
 --- !u!1 &1606969449
 GameObject:
@@ -13807,11 +13816,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d04da137519a2143bacac653d11862d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  statModifiers:
-  - originGUID: 
-    statType: 5
-    statModificationType: 0
-    value: 1
+  statModifiers: []
+  debug: 0
   dashesStat: 0
 --- !u!1 &1622046862
 GameObject:
@@ -16418,6 +16424,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   abilityCritChanceStat: 0
 --- !u!1 &1961049232
 GameObject:
@@ -16568,6 +16575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   attackSpeedMultiplierStat: 0
 --- !u!1 &1981375724
 GameObject:
@@ -17649,6 +17657,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   statModifiers: []
+  debug: 0
   abilityEffectMultiplierStat: 0
 --- !u!1 &2126667538
 GameObject:

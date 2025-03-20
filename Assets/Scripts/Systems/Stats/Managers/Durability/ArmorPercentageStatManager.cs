@@ -53,4 +53,6 @@ public class ArmorPercentageStatManager : StatManager
     }
 
     private void SetHealthRegenStat(float value) => armorPercentageStat = value;
+
+    protected override StatType GetStatType() => StatType.ArmorPercentage;
 }

@@ -2,8 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-using static WeaponsInventoryManager;
-using static UnityEditor.Rendering.FilterWindow;
 
 public class ElementsInventoryManager : MonoBehaviour
 {

@@ -52,4 +52,6 @@ public class HealthRegenStatManager : StatManager
     }
 
     private void SetHealthRegenStat(int value) => healthRegenStat = value;
+
+    protected override StatType GetStatType() => StatType.HealthRegen;
 }

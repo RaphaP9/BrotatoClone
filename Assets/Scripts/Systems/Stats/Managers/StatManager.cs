@@ -8,9 +8,25 @@ public abstract class StatManager : MonoBehaviour
     [Header("Settings")]
     [SerializeField] protected List<StatModifier> statModifiers;
 
+    [Header("Debug")]
+    [SerializeField] protected bool debug;
+
     public List<StatModifier> StatModifiers => statModifiers;
 
     protected CharacterSO BaseStats => PlayerIdentifier.Instance.CharacterSO;
+
+
+    protected virtual void OnEnable()
+    {
+        ObjectsInventoryManager.OnObjectAddedToInventory += ObjectsInventoryManager_OnObjectAddedToInventory;
+        ObjectsInventoryManager.OnObjectRemovedFromInventory += ObjectsInventoryManager_OnObjectRemovedFromInventory;
+    }
+
+    protected virtual void OnDisable()
+    {
+        ObjectsInventoryManager.OnObjectAddedToInventory -= ObjectsInventoryManager_OnObjectAddedToInventory;
+        ObjectsInventoryManager.OnObjectRemovedFromInventory -= ObjectsInventoryManager_OnObjectRemovedFromInventory;
+    }
 
     protected virtual void Awake()
     {
@@ -72,6 +88,62 @@ public abstract class StatManager : MonoBehaviour
     }
 
     public bool HasStatModifiers() => statModifiers.Count > 0;
-
     public int GetStatModifiersQuantity() => statModifiers.Count;
+
+    protected abstract StatType GetStatType();
+
+    protected void AddStatModifiers(string originGUID, List<EmbeddedStat> embeddedStats)
+    {
+        if (originGUID == "")
+        {
+            if (debug) Debug.Log("GUID is empty. StatModifiers will not be added");
+            return;
+        }
+
+        foreach (EmbeddedStat embeddedStat in embeddedStats)
+        {
+            AddStatModifier(originGUID, embeddedStat);
+        }
+    }
+
+    protected void AddStatModifier(string originGUID, EmbeddedStat embeddedStat)
+    {
+        if (embeddedStat.statType != GetStatType()) return;
+
+        if(embeddedStat == null)
+        {
+            if (debug) Debug.Log("EmbeddedStat is null. StatModifier will not be added");
+            return;
+        }
+
+        StatModifier statModifier = new StatModifier { originGUID = originGUID, statType = embeddedStat.statType, statModificationType = embeddedStat.statModificationType, value = embeddedStat.value };
+
+        statModifiers.Add(statModifier);
+
+        UpdateStat();
+    }
+
+    protected void RemoveStatModifiersByGUID(string originGUID)
+    {
+        if (originGUID == "")
+        {
+            if (debug) Debug.Log("GUID is empty. StatModifiesr will not be removed");
+            return;
+        }
+
+        statModifiers.RemoveAll(statModifier => statModifier.originGUID == originGUID);
+    }
+
+    #region Subscriptions
+    private void ObjectsInventoryManager_OnObjectAddedToInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
+    {
+        AddStatModifiers(e.@object.GUID, e.@object.objectSO.embeddedStats);
+    }
+
+    private void ObjectsInventoryManager_OnObjectRemovedFromInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
 }

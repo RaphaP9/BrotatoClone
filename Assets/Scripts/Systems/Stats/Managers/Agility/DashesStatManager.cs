@@ -53,4 +53,5 @@ public class DashesStatManager : StatManager
     }
 
     private void SetDashesStat(int value) => dashesStat = value;
+    protected override StatType GetStatType() => StatType.Dashes;
 }

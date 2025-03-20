@@ -53,4 +53,6 @@ public class MoveSpeedStatManager : StatManager
     }
 
     private void SetMoveSpeedStat(float value) => moveSpeedStat = value;
+
+    protected override StatType GetStatType() => StatType.MoveSpeed;
 }

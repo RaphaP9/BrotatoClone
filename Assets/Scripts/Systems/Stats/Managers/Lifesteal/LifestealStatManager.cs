@@ -53,5 +53,6 @@ public class LifestealStatManager : StatManager
     }
 
     private void SetLifestealStat(float value) => lifestealStat = value;
+    protected override StatType GetStatType() => StatType.Lifesteal;
 }
 

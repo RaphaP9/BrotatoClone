@@ -53,5 +53,6 @@ public class AttackRangeMultiplierStatManager : StatManager
     }
 
     private void SetAttackRangeMultiplierStat(float value) => attackRangeMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AttackRangeMultiplier;
 }
 

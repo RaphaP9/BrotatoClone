@@ -53,5 +53,6 @@ public class AreaMultiplierStatManager : StatManager
     }
 
     private void SetAreaMultiplierStat(float value) => areaMultiplierStat = value;
+    protected override StatType GetStatType() => StatType.AreaMultiplier;
 }
 
