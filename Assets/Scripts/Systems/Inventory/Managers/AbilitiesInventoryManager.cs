@@ -8,12 +8,12 @@ public class AbilitiesInventoryManager : MonoBehaviour
     public static AbilitiesInventoryManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<AbilityIdentified> abilitiesInventory;
+    [SerializeField] private List<AbilityInventoryIdentified> abilitiesInventory;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
 
-    public List<AbilityIdentified> AbilitiesInventory => abilitiesInventory;
+    public List<AbilityInventoryIdentified> AbilitiesInventory => abilitiesInventory;
 
     public static event EventHandler<OnAbilitiesEventArgs> OnAbilitiesInventoryInitialized;
     public static event EventHandler<OnAbilityEventArgs> OnAbilityAddedToInventory;
@@ -21,12 +21,12 @@ public class AbilitiesInventoryManager : MonoBehaviour
 
     public class OnAbilitiesEventArgs : EventArgs
     {
-        public List<AbilityIdentified> abilities;
+        public List<AbilityInventoryIdentified> abilities;
     }
 
     public class OnAbilityEventArgs : EventArgs
     {
-        public AbilityIdentified ability;
+        public AbilityInventoryIdentified ability;
     }
 
     private void OnEnable()
@@ -78,7 +78,7 @@ public class AbilitiesInventoryManager : MonoBehaviour
 
         string abilityGUID = GeneralDataUtilities.GenerateGUID();
 
-        AbilityIdentified abilityToAdd = new AbilityIdentified { GUID = abilityGUID, abilitySO = abilitySO };
+        AbilityInventoryIdentified abilityToAdd = new AbilityInventoryIdentified { GUID = abilityGUID, abilitySO = abilitySO };
 
         abilitiesInventory.Add(abilityToAdd);
 
@@ -93,7 +93,7 @@ public class AbilitiesInventoryManager : MonoBehaviour
             return;
         }
 
-        AbilityIdentified abilityIdentified = FindAbilityByAbilitySO(abilitySO);
+        AbilityInventoryIdentified abilityIdentified = FindAbilityByAbilitySO(abilitySO);
 
         if (abilitiesInventory == null)
         {
@@ -108,7 +108,7 @@ public class AbilitiesInventoryManager : MonoBehaviour
 
     private void RemoveAbilityFromInventoryByGUID(string GUID)
     {
-        AbilityIdentified abilityIdentified = FindAbilityByGUID(GUID);
+        AbilityInventoryIdentified abilityIdentified = FindAbilityByGUID(GUID);
 
         if (abilitiesInventory == null)
         {
@@ -121,9 +121,9 @@ public class AbilitiesInventoryManager : MonoBehaviour
         OnAbilityRemovedFromInventory?.Invoke(this, new OnAbilityEventArgs { ability = abilityIdentified });
     }
 
-    private AbilityIdentified FindAbilityByAbilitySO(AbilitySO abilitySO)
+    private AbilityInventoryIdentified FindAbilityByAbilitySO(AbilitySO abilitySO)
     {
-        foreach (AbilityIdentified ability in abilitiesInventory)
+        foreach (AbilityInventoryIdentified ability in abilitiesInventory)
         {
             if (ability.abilitySO == abilitySO) return ability;
         }
@@ -132,9 +132,9 @@ public class AbilitiesInventoryManager : MonoBehaviour
         return null;
     }
 
-    private AbilityIdentified FindAbilityByGUID(string GUID)
+    private AbilityInventoryIdentified FindAbilityByGUID(string GUID)
     {
-        foreach (AbilityIdentified ability in abilitiesInventory)
+        foreach (AbilityInventoryIdentified ability in abilitiesInventory)
         {
             if (ability.GUID == GUID) return ability;
         }
@@ -164,7 +164,7 @@ public class AbilitiesInventoryManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class AbilityIdentified
+public class AbilityInventoryIdentified
 {
     public string GUID;
     public AbilitySO abilitySO;

@@ -8,12 +8,12 @@ public class WeaponsInventoryManager : MonoBehaviour
     public static WeaponsInventoryManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<WeaponIdentified> weaponsInventory;
+    [SerializeField] private List<WeaponInventoryIdentified> weaponsInventory;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
 
-    public List<WeaponIdentified> WeaponsInventory => weaponsInventory;
+    public List<WeaponInventoryIdentified> WeaponsInventory => weaponsInventory;
 
     public static event EventHandler<OnWeaponsEventArgs> OnWeaponsInventoryInitialized;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponAddedToInventory;
@@ -21,12 +21,12 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     public class OnWeaponEventArgs : EventArgs
     {
-        public WeaponIdentified weapon;
+        public WeaponInventoryIdentified weapon;
     }
 
     public class OnWeaponsEventArgs : EventArgs
     {
-        public List<WeaponIdentified> weapons;
+        public List<WeaponInventoryIdentified> weapons;
     }
 
 
@@ -78,7 +78,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
         string weaponGUID = GeneralDataUtilities.GenerateGUID();
 
-        WeaponIdentified weaponToAdd = new WeaponIdentified { GUID = weaponGUID, weaponSO = weaponSO };
+        WeaponInventoryIdentified weaponToAdd = new WeaponInventoryIdentified { GUID = weaponGUID, weaponSO = weaponSO };
 
         weaponsInventory.Add(weaponToAdd);
 
@@ -93,7 +93,7 @@ public class WeaponsInventoryManager : MonoBehaviour
             return;
         }
 
-        WeaponIdentified weaponIdentified = FindWeaponByWeaponSO(weaponSO);
+        WeaponInventoryIdentified weaponIdentified = FindWeaponByWeaponSO(weaponSO);
 
         if(weaponIdentified == null)
         {
@@ -108,7 +108,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void RemoveWeaponFromInventoryByGUID(string GUID)
     {
-        WeaponIdentified weaponIdentified = FindWeaponByGUID(GUID);
+        WeaponInventoryIdentified weaponIdentified = FindWeaponByGUID(GUID);
 
         if (weaponIdentified == null)
         {
@@ -121,9 +121,9 @@ public class WeaponsInventoryManager : MonoBehaviour
         OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weapon = weaponIdentified });
     }
 
-    private WeaponIdentified FindWeaponByWeaponSO(WeaponSO weaponSO)
+    private WeaponInventoryIdentified FindWeaponByWeaponSO(WeaponSO weaponSO)
     {
-        foreach(WeaponIdentified weapon in weaponsInventory)
+        foreach(WeaponInventoryIdentified weapon in weaponsInventory)
         {
             if (weapon.weaponSO == weaponSO) return weapon;
         }
@@ -132,9 +132,9 @@ public class WeaponsInventoryManager : MonoBehaviour
         return null;
     }
 
-    private WeaponIdentified FindWeaponByGUID(string GUID)
+    private WeaponInventoryIdentified FindWeaponByGUID(string GUID)
     {
-        foreach (WeaponIdentified weapon in weaponsInventory)
+        foreach (WeaponInventoryIdentified weapon in weaponsInventory)
         {
             if (weapon.GUID == GUID) return weapon;
         }
@@ -164,7 +164,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class WeaponIdentified
+public class WeaponInventoryIdentified
 {
     public string GUID;
     public WeaponSO weaponSO;

@@ -70,6 +70,9 @@ public class PlayerHealth : EntityHealth
 
         EnemyHealth.OnEnemyTakeRegularDamage -= EnemyHealth_OnEnemyTakeRegularDamage;
         EnemyHealth.OnEnemyTakeBleedDamage -= EnemyHealth_OnEnemyTakeBleedDamage;
+
+        PlayerDash.OnPlayerDash -= PlayerDash_OnPlayerDash;
+        PlayerDash.OnPlayerDashStopped -= PlayerDash_OnPlayerDashStopped;
     }
 
     private void Awake()

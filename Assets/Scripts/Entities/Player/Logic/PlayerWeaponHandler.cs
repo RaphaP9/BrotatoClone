@@ -101,7 +101,8 @@ public class PlayerWeaponHandler : MonoBehaviour
         foreach(PointWeaponSlot pointWeaponSlot in pointWeaponSlots)
         {
             if (pointWeaponSlot.weaponIdentifier == null) continue;
-            if(pointWeaponSlot.weaponIdentifier.WeaponSO == weaponSO)
+
+            if (pointWeaponSlot.weaponIdentifier.WeaponSO == weaponSO)
             {
                 ClearPointWeaponSlot(pointWeaponSlot);
                 break;
@@ -147,7 +148,7 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void WeaponsInventoryManager_OnWeaponRemovedFromInventory(object sender, WeaponsInventoryManager.OnWeaponEventArgs e)
     {
-        
+        RemoveWeapon(e.weapon.weaponSO);
     }
     #endregion
 }

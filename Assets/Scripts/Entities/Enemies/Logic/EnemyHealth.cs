@@ -57,7 +57,7 @@ public class EnemyHealth : EntityHealth
         GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
     }
 
-    private void Start()
+    protected void Start()
     {
         InitializeStats();
     }
@@ -158,8 +158,8 @@ public class EnemyHealth : EntityHealth
 
     public override void InstaKill()
     {
-        //TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO); //For damage with feedbacks
-        TakeInstaDamage(INSTA_KILL_DAMAGE); //For damage with no feedbacks
+        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO); //For damage with feedbacks
+        //TakeInstaDamage(INSTA_KILL_DAMAGE); //For damage with no feedbacks
     }
 
     private void DisableCollider()

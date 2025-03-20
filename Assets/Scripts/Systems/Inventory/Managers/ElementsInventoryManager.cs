@@ -8,12 +8,12 @@ public class ElementsInventoryManager : MonoBehaviour
     public static ElementsInventoryManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<ElementIdentified> elementsInventory;
+    [SerializeField] private List<ElementInventoryIdentified> elementsInventory;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
 
-    public List<ElementIdentified> ElementsInventory => elementsInventory;
+    public List<ElementInventoryIdentified> ElementsInventory => elementsInventory;
 
     public static event EventHandler<OnElementsEventArgs> OnElementsInventoryInitialized;
     public static event EventHandler<OnElementEventArgs> OnElementAddedToInventory;
@@ -21,12 +21,12 @@ public class ElementsInventoryManager : MonoBehaviour
 
     public class OnElementsEventArgs : EventArgs
     {
-        public List<ElementIdentified> elements;
+        public List<ElementInventoryIdentified> elements;
     }
 
     public class OnElementEventArgs : EventArgs
     {
-        public ElementIdentified element;
+        public ElementInventoryIdentified element;
     }
 
     private void OnEnable()
@@ -78,7 +78,7 @@ public class ElementsInventoryManager : MonoBehaviour
 
         string elementGUID = GeneralDataUtilities.GenerateGUID();
 
-        ElementIdentified elementToAdd = new ElementIdentified { GUID = elementGUID, elementSO = elementSO };
+        ElementInventoryIdentified elementToAdd = new ElementInventoryIdentified { GUID = elementGUID, elementSO = elementSO };
 
         elementsInventory.Add(elementToAdd);
 
@@ -93,7 +93,7 @@ public class ElementsInventoryManager : MonoBehaviour
             return;
         }
 
-        ElementIdentified elementIdentified = FindElementByElementSO(elementSO);
+        ElementInventoryIdentified elementIdentified = FindElementByElementSO(elementSO);
 
         if (elementIdentified == null)
         {
@@ -108,7 +108,7 @@ public class ElementsInventoryManager : MonoBehaviour
 
     private void RemoveWeaponFromInventoryByGUID(string GUID)
     {
-        ElementIdentified elementIdentified = FindElementByGUID(GUID);
+        ElementInventoryIdentified elementIdentified = FindElementByGUID(GUID);
 
         if (elementIdentified == null)
         {
@@ -121,9 +121,9 @@ public class ElementsInventoryManager : MonoBehaviour
         OnElementRemovedFromInventory?.Invoke(this, new OnElementEventArgs { element = elementIdentified });
     }
 
-    private ElementIdentified FindElementByElementSO(ElementSO elementSO)
+    private ElementInventoryIdentified FindElementByElementSO(ElementSO elementSO)
     {
-        foreach (ElementIdentified element in elementsInventory)
+        foreach (ElementInventoryIdentified element in elementsInventory)
         {
             if (element.elementSO == elementSO) return element;
         }
@@ -132,9 +132,9 @@ public class ElementsInventoryManager : MonoBehaviour
         return null;
     }
 
-    private ElementIdentified FindElementByGUID(string GUID)
+    private ElementInventoryIdentified FindElementByGUID(string GUID)
     {
-        foreach (ElementIdentified element in elementsInventory)
+        foreach (ElementInventoryIdentified element in elementsInventory)
         {
             if (element.GUID == GUID) return element;
         }
@@ -163,7 +163,7 @@ public class ElementsInventoryManager : MonoBehaviour
 }
 
 [System.Serializable]
-public class ElementIdentified
+public class ElementInventoryIdentified
 {
     public string GUID;
     public ElementSO elementSO;

@@ -32,6 +32,8 @@ public abstract class EntityHealth : MonoBehaviour
 
     protected const int INSTA_KILL_DAMAGE = 999;
 
+    private bool hasRestoredCurrentHealthFirstUpdate = false;
+
     public class OnEntityTakeDamageEventArgs : EventArgs
     {
         public int damageTaken;
@@ -65,6 +67,20 @@ public abstract class EntityHealth : MonoBehaviour
         public int healAmount;
         public int newCurrentHealth;
         public EntityHealth entityHealth;
+    }
+
+    protected virtual void Update()
+    {
+        HandleRestoreCurrentHealthFirstUpdate();
+    }
+
+    private void HandleRestoreCurrentHealthFirstUpdate()
+    {
+        if (!hasRestoredCurrentHealthFirstUpdate)
+        {
+            RestoreAllCurrentHealth();
+            hasRestoredCurrentHealthFirstUpdate = true;
+        }
     }
 
     protected abstract bool CanTakeDamage();
@@ -244,6 +260,7 @@ public abstract class EntityHealth : MonoBehaviour
     protected void RestoreAllCurrentHealth()
     {
         currentHealth = maxHealth;
+        OnCurrentHealthSet(currentHealth);
         OnAllHealthRestored(currentHealth);
     }
 

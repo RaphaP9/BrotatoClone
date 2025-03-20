@@ -142,7 +142,7 @@ public abstract class StatManager : MonoBehaviour
 
     private void ObjectsInventoryManager_OnObjectRemovedFromInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
     {
-        throw new NotImplementedException();
+        RemoveStatModifiersByGUID(e.@object.GUID);
     }
 
     #endregion
