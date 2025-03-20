@@ -7162,7 +7162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f79f28ab99c0cdf49ad014fdd39c2485, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canCloseFromUI: 0
+  canCloseFromUI: 1
   state: 0
   pauseUIAnimator: {fileID: 909324093}
   resumeButton: {fileID: 1317822648}
