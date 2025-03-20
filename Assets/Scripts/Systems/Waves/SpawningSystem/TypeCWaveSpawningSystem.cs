@@ -6,7 +6,7 @@ public class TypeCWaveSpawingSystem : WaveSpawningSystemManager
 {
     [Header("TypeCWaveSpawning System Settings")]
     [SerializeField, Range(0f, 3f)] private float weightNormalizedIncreaseFactor; //When the wave normalized elapsed time is 1, each enemy weight has increased by totalWeight * weightNormalizedIncreaseFactor
-    [SerializeField, Range(0.2f, 0.5f)] private float spawnTimeNormalizedReductionFactor; //When the normalized elapsed time is 1, enemies spawn every baseSpawnTime * spawnTimeNormalizedReductionFactor
+    [SerializeField, Range(0.2f, 0.8f)] private float spawnTimeNormalizedReductionFactor; //When the normalized elapsed time is 1, enemies spawn every baseSpawnTime * spawnTimeNormalizedReductionFactor
 
     private const float MINIMUM_SPAWN_TIME = 1f; 
     //Safety Reasons - If the system has a spawnTimeNormalizedReductionFactor of 1 or very close to 1, enemies will spawn very very fast which will affect performance

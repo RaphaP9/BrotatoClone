@@ -32,12 +32,6 @@ public class TestScript : MonoBehaviour
     }
 
 
-    private void Update()
-    {
-        
-    }
-
-
     private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
     {
         Debug.Log($"Bleeding: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75243dc7122d8c24e941d81c3888e838, type: 3}
   m_Name: Fists
   m_EditorClassIdentifier: 
-  id: 1
+  id: 1001
   inventoryObjectName: Fists
-  type: 1
   rarityType: 0
   description: Basic Weapon
   sprite: {fileID: 0}
+  price: 0
   weaponType: 0
   fireType: 1
   regularDamage: 2

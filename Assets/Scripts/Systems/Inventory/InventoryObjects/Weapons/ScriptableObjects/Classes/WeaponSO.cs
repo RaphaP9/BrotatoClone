@@ -21,8 +21,12 @@ public abstract class WeaponSO : InventoryObjectSO, IDamageDealer
     public Transform weaponTransform;
 
 
+    public override InventoryObjectType GetInventoryObjectType() => InventoryObjectType.Weapon;
+
+
     public string GetName() => inventoryObjectName;
     public Color GetDamageColor() => damageColor;
     public string GetDescription() => description;
     public Sprite GetSprite() => sprite;
+
 }

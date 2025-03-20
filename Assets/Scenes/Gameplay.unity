@@ -3440,9 +3440,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1458041037}
   - {fileID: 648232434}
   - {fileID: 993209882}
+  - {fileID: 1458041037}
   - {fileID: 1708489756}
   m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5588,8 +5588,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2add0f4e04538d649b317c68ebfca6d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  weaponsInventory:
-  - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
+  weaponsInventory: []
   debug: 1
 --- !u!1 &654384809
 GameObject:

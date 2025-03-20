@@ -29,6 +29,9 @@ public class CharacterSO : EntitySO
     [Header("Weapons")]
     public List<WeaponSO> startingWeapons;
 
+    [Header("Abilities")]
+    public List<AbilitySO> startingAbilities;
+
     [Header("Visual")]
     public Transform characterVisualTransform;
 }

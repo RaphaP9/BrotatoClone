@@ -1,8 +1,9 @@
 
 public enum InventoryObjectType 
 {
-    Stat,
     Weapon,
+    Object,
     Ability,
-    Element
+    Element,
+    Stat
 }

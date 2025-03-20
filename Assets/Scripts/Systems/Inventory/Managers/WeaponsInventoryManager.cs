@@ -8,12 +8,12 @@ public class WeaponsInventoryManager : MonoBehaviour
     public static WeaponsInventoryManager Instance { get; private set; }
 
     [Header("Lists")]
-    [SerializeField] private List<WeaponSO> weaponsInventory;
+    [SerializeField] private List<WeaponIdentified> weaponsInventory;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
 
-    public List<WeaponSO> WeaponsInventory => weaponsInventory;
+    public List<WeaponIdentified> WeaponsInventory => weaponsInventory;
 
     public static event EventHandler<OnWeaponsEventArgs> OnWeaponsInventoryInitialized;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponAddedToInventory;
@@ -21,12 +21,12 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     public class OnWeaponsEventArgs : EventArgs
     {
-        public List<WeaponSO> weaponSOs;
+        public List<WeaponIdentified> weapons;
     }
 
     public class OnWeaponEventArgs : EventArgs
     {
-        public WeaponSO weaponSO;
+        public WeaponIdentified weapon;
     }
 
     private void OnEnable()
@@ -38,16 +38,15 @@ public class WeaponsInventoryManager : MonoBehaviour
     {
 
     }
+    private void Awake()
+    {
+        SetSingleton();
+    }
 
     private void Start()
     {
         SetWeaponInventoryFromCharacter();
         InitializeWeaponsInventory();
-    }
-
-    private void Awake()
-    {
-        SetSingleton();
     }
 
     private void SetSingleton()
@@ -65,7 +64,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void InitializeWeaponsInventory()
     {
-        OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weaponSOs = weaponsInventory });
+        OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weapons = weaponsInventory });
     }
 
     private void AddWeaponToInventory(WeaponSO weaponSO)
@@ -76,18 +75,16 @@ public class WeaponsInventoryManager : MonoBehaviour
             return;
         }
 
-        if (weaponsInventory.Contains(weaponSO))
-        {
-            if (debug) Debug.Log($"WeaponSO with name {weaponSO.inventoryObjectName} is already on inventory, addition will be ignored");
-            return;
-        }
+        string weaponGUID = GeneralDataUtilities.GenerateGUID();
 
-        weaponsInventory.Add(weaponSO);
+        WeaponIdentified weaponToAdd = new WeaponIdentified { GUID = weaponGUID, weaponSO = weaponSO };
 
-        OnWeaponAddedToInventory?.Invoke(this, new OnWeaponEventArgs { weaponSO = weaponSO });
+        weaponsInventory.Add(weaponToAdd);
+
+        OnWeaponAddedToInventory?.Invoke(this, new OnWeaponEventArgs { weapon = weaponToAdd });
     }
 
-    private void RemoveWeaponFromInventory(WeaponSO weaponSO)
+    private void RemoveWeaponFromInventoryByWeaponSO(WeaponSO weaponSO)
     {
         if (weaponSO == null)
         {
@@ -95,28 +92,79 @@ public class WeaponsInventoryManager : MonoBehaviour
             return;
         }
 
-        if (!weaponsInventory.Contains(weaponSO))
+        WeaponIdentified weaponIdentified = FindWeaponByWeaponSO(weaponSO);
+
+        if(weaponIdentified == null)
         {
-            if (debug) Debug.Log($"WeaponSO with name {weaponSO.inventoryObjectName} is not on inventory, remotion will be ignored");
+            if (debug) Debug.Log("Could not find weapon by weaponSO");
             return;
         }
 
-        weaponsInventory.Remove(weaponSO);
+        weaponsInventory.Remove(weaponIdentified);
 
-        OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weaponSO = weaponSO });
+        OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weapon = weaponIdentified });
     }
+
+    private void RemoveWeaponFromInventoryByGUID(string GUID)
+    {
+        WeaponIdentified weaponIdentified = FindWeaponByGUID(GUID);
+
+        if (weaponIdentified == null)
+        {
+            if (debug) Debug.Log("Could not find weapon by GUID");
+            return;
+        }
+
+        weaponsInventory.Remove(weaponIdentified);
+
+        OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weapon = weaponIdentified });
+    }
+
+    private WeaponIdentified FindWeaponByWeaponSO(WeaponSO weaponSO)
+    {
+        foreach(WeaponIdentified weapon in weaponsInventory)
+        {
+            if (weapon.weaponSO == weaponSO) return weapon;
+        }
+
+        if (debug) Debug.Log($"Weapon with WeaponSO with ID {weaponSO.id} could not be found. Proceding to return null");
+        return null;
+    }
+
+    private WeaponIdentified FindWeaponByGUID(string GUID)
+    {
+        foreach (WeaponIdentified weapon in weaponsInventory)
+        {
+            if (weapon.GUID == GUID) return weapon;
+        }
+
+        if (debug) Debug.Log($"Weapon with GUID {GUID} could not be found. Proceding to return null");
+        return null;
+    }
+
 
     private void SetWeaponInventoryFromCharacter()
     {
         ClearWeaponInventory();
+        AddWeaponsToInventory(PlayerIdentifier.Instance.CharacterSO.startingWeapons);
+    }
 
-        foreach(WeaponSO weaponSO in PlayerIdentifier.Instance.CharacterSO.startingWeapons)
+    private void AddWeaponsToInventory(List<WeaponSO> weaponSOs)
+    {
+        foreach (WeaponSO weaponSO in weaponSOs)
         {
-            weaponsInventory.Add(weaponSO);
+            AddWeaponToInventory(weaponSO);
         }
     }
 
     private void ClearWeaponInventory() => weaponsInventory.Clear();
 
     public bool WeaponInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
+}
+
+[System.Serializable]
+public class WeaponIdentified
+{
+    public string GUID;
+    public WeaponSO weaponSO;
 }

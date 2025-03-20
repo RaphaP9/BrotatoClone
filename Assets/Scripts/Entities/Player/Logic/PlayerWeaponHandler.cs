@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Net;
 using UnityEngine;
-using UnityEngine.Rendering;
+using System.Linq;
 
 public class PlayerWeaponHandler : MonoBehaviour
 {
@@ -137,12 +137,12 @@ public class PlayerWeaponHandler : MonoBehaviour
     #region Subscriptions
     private void WeaponsInventoryManager_OnWeaponsInventoryInitialized(object sender, WeaponsInventoryManager.OnWeaponsEventArgs e)
     {
-        CreateWeapons(e.weaponSOs);
+        
     }
 
     private void WeaponsInventoryManager_OnWeaponAddedToInventory(object sender, WeaponsInventoryManager.OnWeaponEventArgs e)
     {
-        CreateWeapon(e.weaponSO);
+        CreateWeapon(e.weapon.weaponSO);
     }
 
     private void WeaponsInventoryManager_OnWeaponRemovedFromInventory(object sender, WeaponsInventoryManager.OnWeaponEventArgs e)
