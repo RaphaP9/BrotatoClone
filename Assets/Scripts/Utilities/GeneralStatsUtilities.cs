@@ -20,7 +20,7 @@ public static class GeneralStatsUtilities
 
     #region Agility
     public static float MIN_MOVE_SPEED = 1f;
-    public static float MAX_MOVE_SPEED = 10f;
+    public static float MAX_MOVE_SPEED = 20f;
 
     public static int MIN_DASHES = 0;
     public static int MAX_DASHES = 4;

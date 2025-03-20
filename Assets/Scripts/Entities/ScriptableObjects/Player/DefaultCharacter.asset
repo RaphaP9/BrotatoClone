@@ -41,6 +41,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0e44895f5ed68354c9ae3c0d74e121a6, type: 2}
   startingObjects:
   - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
+  - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}
   startingElements:
   - {fileID: 11400000, guid: ff8250da43628f3489dd0791137660a1, type: 2}
   characterVisualTransform: {fileID: 7787992204139562473, guid: dcd287ac495cece459748f290bacf97b, type: 3}
