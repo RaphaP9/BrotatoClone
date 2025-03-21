@@ -160,6 +160,16 @@ public class ElementsInventoryManager : MonoBehaviour
     private void ClearElementsInventory() => elementsInventory.Clear();
 
     public bool ElementsInventoryFull() => false;
+
+    public bool ElementInInventoryByElementSO(ElementSO elementSO)
+    {
+        foreach (ElementInventoryIdentified element in elementsInventory)
+        {
+            if (element.elementSO == elementSO) return true;
+        }
+
+        return false;
+    }
 }
 
 [System.Serializable]

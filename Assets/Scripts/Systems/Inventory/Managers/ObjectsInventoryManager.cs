@@ -160,6 +160,16 @@ public class ObjectsInventoryManager : MonoBehaviour
     private void ClearObjectsInventory() => objectsInventory.Clear();
 
     public bool ObjectsInventoryFull() => false;
+
+    public bool ObjectInInventoryByObjectSO(ObjectSO objectSO)
+    {
+        foreach (ObjectInventoryIdentified @object in objectsInventory)
+        {
+            if (@object.objectSO == objectSO) return true;
+        }
+
+        return false;
+    }
 }
 
 [System.Serializable]

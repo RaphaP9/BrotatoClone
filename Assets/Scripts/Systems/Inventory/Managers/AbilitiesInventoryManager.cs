@@ -161,6 +161,16 @@ public class AbilitiesInventoryManager : MonoBehaviour
     private void ClearAbilitiesInventory() => abilitiesInventory.Clear();
 
     public bool AbilitiesInventoryFull() => false;
+
+    public bool AbilityInInventoryByAbilitySO(AbilitySO abilitySO)
+    {
+        foreach (AbilityInventoryIdentified ablity in abilitiesInventory)
+        {
+            if (ablity.abilitySO == abilitySO) return true;
+        }
+
+        return false;
+    }
 }
 
 [System.Serializable]

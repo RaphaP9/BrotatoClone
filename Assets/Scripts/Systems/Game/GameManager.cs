@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private State state;
     [SerializeField] private State previousState;
 
-    public enum State { OnWave, OnPause, OnShop, OnAugment, OnLose }
+    public enum State { OnWave, OnShop, OnAugment, OnLose }
 
     public State GameState => state;
 
@@ -39,7 +39,6 @@ public class GameManager : MonoBehaviour
         ShopOpeningManager.OnShopOpen -= ShopOpeningManager_OnShopOpen;
         ShopOpeningManager.OnShopClose -= ShopOpeningManager_OnShopClose;
     }
-
 
     private void Awake()
     {

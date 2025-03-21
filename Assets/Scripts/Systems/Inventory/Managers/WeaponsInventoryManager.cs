@@ -161,6 +161,16 @@ public class WeaponsInventoryManager : MonoBehaviour
     private void ClearWeaponsInventory() => weaponsInventory.Clear();
 
     public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
+
+    public bool WeaponInInventoryByWeaponSO(WeaponSO weaponSO)
+    {
+        foreach(WeaponInventoryIdentified weapon in weaponsInventory)
+        {
+            if(weapon.weaponSO == weaponSO) return true;    
+        }
+
+        return false;
+    }
 }
 
 [System.Serializable]
