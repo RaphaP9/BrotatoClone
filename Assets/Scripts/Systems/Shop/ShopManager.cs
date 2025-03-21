@@ -1,9 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Playables;
 using UnityEngine;
 
 public class ShopManager : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private ShopSettingsSO shopSettingsSO;
+
     [Header("Lists")]
     [SerializeField] private List<WeaponSO> completeWeaponsList;
     [SerializeField] private List<ObjectSO> completeObjectsList;
@@ -11,7 +15,7 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private List<ElementSO> completeElementsList;
 
 
-    private List<WeaponSO> GetValidWeaponsFromCompleteWeaponsList()
+    private List<WeaponSO> GetShopAvailableWeaponsFromCompleteWeaponsList()
     {
         List<WeaponSO> validWeapons = new List<WeaponSO>();
 
@@ -23,7 +27,7 @@ public class ShopManager : MonoBehaviour
         return validWeapons;
     }
 
-    private List<ObjectSO> GetValidObjectsFromCompleteObjectsList()
+    private List<ObjectSO> GetShopAvailableObjectsFromCompleteObjectsList()
     {
         List<ObjectSO> validObjects = new List<ObjectSO>();
 
@@ -35,24 +39,26 @@ public class ShopManager : MonoBehaviour
         return validObjects;
     }
 
-    private List<AbilitySO> GetValidAbilitiesFromCompleteAbilitiesList()
+    private List<AbilitySO> GetShopAvailableAbilitiesFromCompleteAbilitiesList()
     {
         List<AbilitySO> validAbilities = new List<AbilitySO>();
 
         foreach (AbilitySO ability in completeAbilitiesList)
         {
+            if (AbilitiesInventoryManager.Instance.AbilityInInventoryByAbilitySO(ability)) continue; //Unique Abilities
             if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(ability.requiredElements)) validAbilities.Add(ability);
         }
 
         return validAbilities;
     }
 
-    private List<ElementSO> GetValidElementsFromCompleteElementsList()
+    private List<ElementSO> GetShopAvailableElementsFromCompleteElementsList()
     {
         List<ElementSO> validElements = new List<ElementSO>();
 
         foreach (ElementSO element in completeElementsList)
         {
+            if (ElementsInventoryManager.Instance.ElementInInventoryByElementSO(element)) continue; //Unique Elements
             if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(element.requiredElements)) validElements.Add(element);
         }
 
