@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using static UnityEditor.Rendering.FilterWindow;
 
 public class ElementsInventoryManager : MonoBehaviour
 {
@@ -169,6 +170,16 @@ public class ElementsInventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    public bool ElementsInInventoryByElementSO(List<ElementSO> elementSOs)
+    {
+        foreach (ElementSO elementSO in elementSOs)
+        {
+            if (!ElementInInventoryByElementSO(elementSO)) return false;
+        }
+
+        return true;
     }
 }
 

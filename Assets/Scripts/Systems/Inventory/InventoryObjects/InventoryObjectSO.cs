@@ -12,7 +12,13 @@ public abstract class InventoryObjectSO : ScriptableObject
     public Sprite sprite;
     [Space]
     [Range(0, 1000)] public int price;
+    [Space]
 
+    [Header("Embedded Stats")]
+    public List<EmbeddedStat> embeddedStats;
+
+    [Header("Required Elements")]
+    public List<ElementSO> requiredElements;
 
     public abstract InventoryObjectType GetInventoryObjectType();
 }

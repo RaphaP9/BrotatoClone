@@ -5,8 +5,7 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "NewObjectSO", menuName = "ScriptableObjects/Inventory/Object")]
 public class ObjectSO : InventoryObjectSO
 {
-    [Header("ObjectSO Settings")]
-    public List<EmbeddedStat> embeddedStats;
+    //[Header("ObjectSO Settings")]
 
     public override InventoryObjectType GetInventoryObjectType() => InventoryObjectType.Object;
 }

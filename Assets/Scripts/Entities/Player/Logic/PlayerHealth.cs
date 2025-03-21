@@ -27,6 +27,8 @@ public class PlayerHealth : EntityHealth
 
     public int HealthRegen => healthRegen;
 
+    private const int FIRST_WAVE_NUMBER = 1;
+
     private void OnEnable()
     {
         MaxHealthStatManager.OnMaxHealthStatInitialized += MaxHealthStatManager_OnMaxHealthStatInitialized;
@@ -49,6 +51,8 @@ public class PlayerHealth : EntityHealth
 
         PlayerDash.OnPlayerDash += PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped += PlayerDash_OnPlayerDashStopped;
+
+        GeneralWavesManager.OnWaveStarting += GeneralWavesManager_OnWaveStarting;
     }
 
     private void OnDisable()
@@ -73,6 +77,8 @@ public class PlayerHealth : EntityHealth
 
         PlayerDash.OnPlayerDash -= PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped -= PlayerDash_OnPlayerDashStopped;
+
+        GeneralWavesManager.OnWaveStarting -= GeneralWavesManager_OnWaveStarting;
     }
 
     private void Awake()
@@ -243,6 +249,12 @@ public class PlayerHealth : EntityHealth
     {
         if (!e.ghostedWhileDashing) return;
         SetIsGhosted(false);
+    }
+
+    private void GeneralWavesManager_OnWaveStarting(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    {
+        if (e.waveSO.waveNumber == FIRST_WAVE_NUMBER) return;
+        HealFromHealthRegen();
     }
 
     #endregion

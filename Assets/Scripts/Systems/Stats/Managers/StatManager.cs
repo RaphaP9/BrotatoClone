@@ -20,6 +20,15 @@ public abstract class StatManager : MonoBehaviour
     {
         ObjectsInventoryManager.OnObjectAddedToInventory += ObjectsInventoryManager_OnObjectAddedToInventory;
         ObjectsInventoryManager.OnObjectRemovedFromInventory += ObjectsInventoryManager_OnObjectRemovedFromInventory;
+
+        WeaponsInventoryManager.OnWeaponAddedToInventory += WeaponsInventoryManager_OnWeaponAddedToInventory;
+        WeaponsInventoryManager.OnWeaponRemovedFromInventory += WeaponsInventoryManager_OnWeaponRemovedFromInventory;
+
+        AbilitiesInventoryManager.OnAbilityAddedToInventory += AbilitiesInventoryManager_OnAbilityAddedToInventory;
+        AbilitiesInventoryManager.OnAbilityRemovedFromInventory += AbilitiesInventoryManager_OnAbilityRemovedFromInventory;
+
+        ElementsInventoryManager.OnElementAddedToInventory += ElementsInventoryManager_OnElementAddedToInventory;
+        ElementsInventoryManager.OnElementRemovedFromInventory += ElementsInventoryManager_OnElementRemovedFromInventory;
     }
 
     protected virtual void OnDisable()
@@ -143,6 +152,39 @@ public abstract class StatManager : MonoBehaviour
     private void ObjectsInventoryManager_OnObjectRemovedFromInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
     {
         RemoveStatModifiersByGUID(e.@object.GUID);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void WeaponsInventoryManager_OnWeaponAddedToInventory(object sender, WeaponsInventoryManager.OnWeaponEventArgs e)
+    {
+        AddStatModifiers(e.weapon.GUID, e.weapon.weaponSO.embeddedStats);
+    }
+
+    private void WeaponsInventoryManager_OnWeaponRemovedFromInventory(object sender, WeaponsInventoryManager.OnWeaponEventArgs e)
+    {
+        RemoveStatModifiersByGUID(e.weapon.GUID);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void AbilitiesInventoryManager_OnAbilityAddedToInventory(object sender, AbilitiesInventoryManager.OnAbilityEventArgs e)
+    {
+        AddStatModifiers(e.ability.GUID, e.ability.abilitySO.embeddedStats);
+    }
+
+    private void AbilitiesInventoryManager_OnAbilityRemovedFromInventory(object sender, AbilitiesInventoryManager.OnAbilityEventArgs e)
+    {
+        RemoveStatModifiersByGUID(e.ability.GUID);
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    private void ElementsInventoryManager_OnElementAddedToInventory(object sender, ElementsInventoryManager.OnElementEventArgs e)
+    {
+        AddStatModifiers(e.element.GUID, e.element.elementSO.embeddedStats);
+    }
+
+    private void ElementsInventoryManager_OnElementRemovedFromInventory(object sender, ElementsInventoryManager.OnElementEventArgs e)
+    {
+        RemoveStatModifiersByGUID(e.element.GUID);
     }
 
     #endregion
