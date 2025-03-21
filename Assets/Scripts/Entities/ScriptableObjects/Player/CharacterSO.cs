@@ -27,6 +27,7 @@ public class CharacterSO : EntitySO
     [Range(0.5f, 2f)] public float abilityCritEffectMultiplier;
 
     [Header("Weapons")]
+    [Range(2, 12)] public int weaponSlots;
     public List<WeaponSO> startingWeapons;
 
     [Header("Abilities")]

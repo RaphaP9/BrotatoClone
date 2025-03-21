@@ -27,7 +27,7 @@ public class CharacterLoadHandler : MonoBehaviour
 
         if(characterSO == null)
         {
-            if (debug) Debug.Log("SelectedCharacter from CharacterSelectionHandler is null. Proceding to load default character");
+            if (debug) Debug.Log("SelectedCharacter from CharacterSelectionHandler is null. Proceding to load default character.");
             characterSO = defaultCharacter;
         }
 

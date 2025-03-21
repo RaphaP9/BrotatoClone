@@ -15,9 +15,16 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     public List<WeaponInventoryIdentified> WeaponsInventory => weaponsInventory;
 
+    public static event EventHandler<OnWeaponSlotsEventArgs> OnWeaponSlotsInitialized;
+
     public static event EventHandler<OnWeaponsEventArgs> OnWeaponsInventoryInitialized;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponAddedToInventory;
     public static event EventHandler<OnWeaponEventArgs> OnWeaponRemovedFromInventory;
+
+    public class OnWeaponSlotsEventArgs : EventArgs
+    {
+        public int weaponSlots;
+    }
 
     public class OnWeaponEventArgs : EventArgs
     {
@@ -46,7 +53,8 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void Start()
     {
-        SetWeaponInventoryFromCharacter();
+        SetWeaponSlotsFromCharacter();
+        SetWeaponsInventoryFromCharacter();
         InitializeWeaponsInventory();
     }
 
@@ -70,6 +78,12 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void AddWeaponToInventory(WeaponSO weaponSO)
     {
+        if (WeaponsInventoryFull())
+        {
+            if(debug) Debug.Log("Weapon Inventory is full, addition will be ignored");
+            return;
+        }
+
         if (weaponSO == null)
         {
             if (debug) Debug.Log("WeaponSO is null, addition will be ignored");
@@ -144,7 +158,7 @@ public class WeaponsInventoryManager : MonoBehaviour
     }
 
 
-    private void SetWeaponInventoryFromCharacter()
+    private void SetWeaponsInventoryFromCharacter()
     {
         ClearWeaponsInventory();
         AddWeaponsToInventory(PlayerIdentifier.Instance.CharacterSO.startingWeapons);
@@ -160,7 +174,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void ClearWeaponsInventory() => weaponsInventory.Clear();
 
-    public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerWeaponHandler.Instance.GetPointWeaponSlotsCount();
+    public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.weaponSlots;
 
     public bool WeaponInInventoryByWeaponSO(WeaponSO weaponSO)
     {
@@ -170,6 +184,11 @@ public class WeaponsInventoryManager : MonoBehaviour
         }
 
         return false;
+    }
+
+    private void SetWeaponSlotsFromCharacter()
+    {
+        OnWeaponSlotsInitialized?.Invoke(this, new OnWeaponSlotsEventArgs { weaponSlots = PlayerIdentifier.Instance.CharacterSO.weaponSlots });
     }
 }
 

@@ -34,8 +34,10 @@ MonoBehaviour:
   abilityEffectMultiplier: 1
   abilityCritChance: 0
   abilityCritEffectMultiplier: 1.5
+  weaponSlots: 6
   startingWeapons:
   - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
+  - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
   - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
   startingAbilities:
   - {fileID: 11400000, guid: 0e44895f5ed68354c9ae3c0d74e121a6, type: 2}

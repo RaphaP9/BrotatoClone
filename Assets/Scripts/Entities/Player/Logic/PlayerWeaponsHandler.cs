@@ -4,12 +4,18 @@ using System.Net;
 using UnityEngine;
 using System.Linq;
 
-public class PlayerWeaponHandler : MonoBehaviour
+public class PlayerWeaponsHandler : MonoBehaviour
 {
-    public static PlayerWeaponHandler Instance { get; private set; }
+    public static PlayerWeaponsHandler Instance { get; private set; }
 
-    [Header("Lists")]
+    [Header("Lists - RuntimeFilled")]
     [SerializeField] private List<PointWeaponSlot> pointWeaponSlots;
+
+    [Header("Components")]
+    [SerializeField] private Transform weaponSlotTransformPrefab;
+
+    [Header("Settings")]
+    [SerializeField, Range(0.75f,1.5f)] private float weaponSlotsDistanceToPlayer = 1f;
 
     [Header("Debug")]
     [SerializeField] private bool debug;
@@ -25,6 +31,8 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void OnEnable()
     {
+        WeaponsInventoryManager.OnWeaponSlotsInitialized += WeaponsInventoryManager_OnWeaponSlotsInitialized;
+
         WeaponsInventoryManager.OnWeaponsInventoryInitialized += WeaponsInventoryManager_OnWeaponsInventoryInitialized;
         WeaponsInventoryManager.OnWeaponAddedToInventory += WeaponsInventoryManager_OnWeaponAddedToInventory;
         WeaponsInventoryManager.OnWeaponRemovedFromInventory += WeaponsInventoryManager_OnWeaponRemovedFromInventory;
@@ -32,6 +40,8 @@ public class PlayerWeaponHandler : MonoBehaviour
 
     private void OnDisable()
     {
+        WeaponsInventoryManager.OnWeaponSlotsInitialized -= WeaponsInventoryManager_OnWeaponSlotsInitialized;
+
         WeaponsInventoryManager.OnWeaponsInventoryInitialized -= WeaponsInventoryManager_OnWeaponsInventoryInitialized;
         WeaponsInventoryManager.OnWeaponAddedToInventory -= WeaponsInventoryManager_OnWeaponAddedToInventory;
         WeaponsInventoryManager.OnWeaponRemovedFromInventory -= WeaponsInventoryManager_OnWeaponRemovedFromInventory;
@@ -133,9 +143,38 @@ public class PlayerWeaponHandler : MonoBehaviour
         
     }
 
+    private void CreateWeaponSlots(int slots)
+    {
+        float angleDifference = 360f / slots;
+
+        for(int i = 0; i < slots; i++)
+        {
+            float slotAngle = i* angleDifference;
+            CreateWeaponSlot(slotAngle);    
+        }
+    }
+
+    private void CreateWeaponSlot(float angle)
+    {
+        Vector2 normalizedVectorPosition = GeneralUtilities.GetAngleDegreesVector2(angle);
+        Vector2 localPosition = normalizedVectorPosition * weaponSlotsDistanceToPlayer;
+
+        Transform weaponSlotTransform = Instantiate(weaponSlotTransformPrefab, transform);
+        weaponSlotTransform.localPosition = localPosition;
+
+        PointWeaponSlot pointWeaponSlot = new PointWeaponSlot { point = weaponSlotTransform, weaponIdentifier = null };
+        pointWeaponSlots.Add(pointWeaponSlot);
+    }
+
+
     public int GetPointWeaponSlotsCount() => pointWeaponSlots.Count;
 
     #region Subscriptions
+
+    private void WeaponsInventoryManager_OnWeaponSlotsInitialized(object sender, WeaponsInventoryManager.OnWeaponSlotsEventArgs e)
+    {
+        CreateWeaponSlots(e.weaponSlots);
+    }
     private void WeaponsInventoryManager_OnWeaponsInventoryInitialized(object sender, WeaponsInventoryManager.OnWeaponsEventArgs e)
     {
         
