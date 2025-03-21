@@ -74,7 +74,9 @@ public abstract class EntityHealth : MonoBehaviour
         HandleRestoreCurrentHealthFirstUpdate();
     }
 
-    private void HandleRestoreCurrentHealthFirstUpdate()
+    //Processed in first Update, to avoid RestoringHealth(Initialization of health) before updating it due to objects altering health stats
+    //(initial object addition happens on Start())
+    private void HandleRestoreCurrentHealthFirstUpdate() 
     {
         if (!hasRestoredCurrentHealthFirstUpdate)
         {

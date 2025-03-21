@@ -17,7 +17,6 @@ public class EnemySpawnerManager : MonoBehaviour
     [Header("Debug")]
     [SerializeField] private bool debug;
     [SerializeField] private Color gizmosColor;
-    [SerializeField] private EnemySO test;
 
     public static event EventHandler<OnEnemySpawnedEventArgs> OnEnemySpawned;
     public class OnEnemySpawnedEventArgs : EventArgs

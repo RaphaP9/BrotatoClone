@@ -31,6 +31,8 @@ public class GeneralWavesManager : MonoBehaviour
     public static event EventHandler<OnWaveEventArgs> OnWaveCompleted;
     public static event EventHandler<OnWaveEventArgs> OnWaveEnd;
 
+    public static event EventHandler<OnWaveEventArgs> OnSuddenCompleteWave;
+
     public List<WaveSO> Waves => waves;
     public State state => waveState;
 
@@ -43,12 +45,16 @@ public class GeneralWavesManager : MonoBehaviour
 
     private void OnEnable()
     {
+        GameManager.OnStateChanged += GameManager_OnStateChanged;
+
         WaveSpawningSystemManager.OnWaveStart += WaveSpawningSystemManager_OnWaveStart;
         WaveSpawningSystemManager.OnWaveCompleted += WaveSpawningSystemManager_OnWaveCompleted;
     }
 
     private void OnDisable()
     {
+        GameManager.OnStateChanged -= GameManager_OnStateChanged;
+
         WaveSpawningSystemManager.OnWaveStart -= WaveSpawningSystemManager_OnWaveStart;
         WaveSpawningSystemManager.OnWaveCompleted -= WaveSpawningSystemManager_OnWaveCompleted;
     }
@@ -56,10 +62,7 @@ public class GeneralWavesManager : MonoBehaviour
     private void Awake()
     {
         SetSingleton();
-    }
 
-    private void Start()
-    {
         SetWaveState(State.NotOnWave);
         ResetCurrentWaveNumber();
         ClearCurrentWave();
@@ -67,9 +70,9 @@ public class GeneralWavesManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.K))
+        if (Input.GetKeyDown(KeyCode.L))
         {
-            StartNextWave();
+            SuddenCompleteWave();
         }
 
         HandleWavesLogic();
@@ -212,8 +215,22 @@ public class GeneralWavesManager : MonoBehaviour
     private void SetWaveState(State state) => waveState = state;
     private void ResetTimer() => timer = 0f;
 
+    public void SuddenCompleteWave()
+    {
+        if(currentWave == null) return;
+        if (state != State.OnWave) return;
+
+        OnSuddenCompleteWave?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave });
+    }
 
     #region Subscriptions
+
+    private void GameManager_OnStateChanged(object sender, GameManager.OnStateEventArgs e)
+    {
+        if (e.newState != GameManager.State.OnWave) return;
+        StartNextWave();
+    }
+
     private void WaveSpawningSystemManager_OnWaveStart(object sender, WaveSpawningSystemManager.OnWaveEventArgs e)
     {
         SetWaveState(State.OnWave);

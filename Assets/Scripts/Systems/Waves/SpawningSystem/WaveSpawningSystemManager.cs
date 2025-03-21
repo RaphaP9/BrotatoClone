@@ -28,11 +28,13 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     private void OnEnable()
     {
         GeneralWavesManager.OnWaveStart += WaveStateManager_OnWaveStart;
+        GeneralWavesManager.OnSuddenCompleteWave += GeneralWavesManager_OnSuddenCompleteWave;
     }
 
     private void OnDisable()
     {
         GeneralWavesManager.OnWaveStart -= WaveStateManager_OnWaveStart;
+        GeneralWavesManager.OnSuddenCompleteWave -= GeneralWavesManager_OnSuddenCompleteWave;
     }
 
     private void Awake()
@@ -112,6 +114,12 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
         OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
 
         StartWave(e.waveSO);
+    }
+
+    private void GeneralWavesManager_OnSuddenCompleteWave(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    {
+        StopAllCoroutines();
+        CompleteWave(e.waveSO);
     }
     #endregion
 }

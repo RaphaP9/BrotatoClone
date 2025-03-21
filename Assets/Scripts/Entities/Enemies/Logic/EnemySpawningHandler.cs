@@ -7,6 +7,7 @@ public class EnemySpawningHandler : MonoBehaviour
 {
     [Header("Components")]
     [SerializeField] private EnemyIdentifier enemyIdentifier;
+    [SerializeField] private EnemyHealth enemyHealth;
 
     [Header("Settings")]
     [SerializeField] private bool isSpawning;
@@ -36,7 +37,19 @@ public class EnemySpawningHandler : MonoBehaviour
         OnEnemySpawnStart?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });
         OnThisEnemySpawnStart?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });
 
-        yield return new WaitForSeconds(enemyIdentifier.EnemySO.spawnDuration);
+        float spawningTimer = 0f;
+
+        while (spawningTimer < enemyIdentifier.EnemySO.spawnDuration)
+        {
+            if (!enemyHealth.IsAlive())
+            {
+                isSpawning = false;
+                yield break;
+            }
+
+            spawningTimer += Time.deltaTime;
+            yield return null;
+        }
 
         OnEnemySpawnComplete?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });
         OnThisEnemySpawnComplete?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });

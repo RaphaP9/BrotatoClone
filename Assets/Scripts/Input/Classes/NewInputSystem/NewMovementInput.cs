@@ -25,8 +25,8 @@ public class NewMovementInput : MovementInput
 
     public override bool CanProcessInput()
     {
-        //if (GameManager.Instance.GameState != GameManager.State.OnGameplay) return false;
-        return true;
+        if (GameManager.Instance.GameState == GameManager.State.OnWave) return true;
+        return false;
     }
 
     public override Vector2 GetMovementInputNormalized()

@@ -294,6 +294,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyIdentifier: {fileID: 7288238993718476968}
+  enemyHealth: {fileID: 1715791615252644950}
   isSpawning: 0
 --- !u!114 &5719129700666416927
 MonoBehaviour:
@@ -475,9 +476,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd44a164707c4d546828fff2d37e869b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UICanvas: {fileID: 624265801402924404}
   renderingRefference: {fileID: 7472753827927718393}
   spriteRenderer: {fileID: 3684491520837824643}
-  UICanvas: {fileID: 624265801402924404}
 --- !u!1 &8075286681810244390
 GameObject:
   m_ObjectHideFlags: 0
