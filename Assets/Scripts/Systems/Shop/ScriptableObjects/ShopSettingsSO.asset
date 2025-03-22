@@ -20,5 +20,10 @@ MonoBehaviour:
   weaponsWeight: 20
   abilitiesWeight: 0
   elementsWeight: 0
+  commonWeight: 100
+  uncommonWeight: 40
+  rareWeight: 20
+  epicWeight: 10
+  legendaryWeight: 5
   rerollBaseCost: 5
   rerollCostIncreasePerReroll: 1

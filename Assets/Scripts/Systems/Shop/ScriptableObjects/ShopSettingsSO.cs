@@ -9,19 +9,41 @@ public class ShopSettingsSO : ScriptableObject
     [Header("Shop Size")]
     [Range(3, 7)]public int shopSize;
 
-    [Header("Inventory Object Limits & Odds")]
-    //Objects are not capped, they are treated as the default Inventory Object
-    [Range(0, 3)] public int weaponsCap;
-    [Range(0, 3)] public int abilitiesCap;
-    [Range(0, 3)] public int elementsCap;
-    [Space]
-    [Range(1, 100)] public int objectsWeight;
-    [Range(0, 100)] public int weaponsWeight;
-    [Range(0, 100)] public int abilitiesWeight;
-    [Range(0, 100)] public int elementsWeight;
+    [Header("Type Settings")]
+    public List<InventoryObjectTypeSetting> inventoryObjectTypeSettings;
+
+    [Header("Rarity Settings")]
+    public List<InventoryObjectRaritySetting> inventoryObjectRaritySettings;
 
     [Header("Rerolls")]
     [Range(1, 100)] public int rerollBaseCost;
     [Range(1, 10)] public int rerollCostIncreasePerReroll;
 
+    [Header("Pools")]
+    public List<WeaponSO> weaponsPool;
+    public List<ObjectSO> objectsPool;
+    public List<AbilitySO> abilitiesPool;
+    public List<ElementSO> elementsPool;
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+public class InventoryObjectTypeSetting
+{
+    public InventoryObjectType objectType;
+    [Range(0, 100)] public int weight;
+    [Range(0, 3)] public int cap;
+}
+
+public class InventoryObjectRaritySetting
+{
+    public InventoryObjectRarity objectRarity;
+    [Range(0, 100)] public int weight;
+    [Range(0, 3)] public int cap;
+}
+
+
+
+

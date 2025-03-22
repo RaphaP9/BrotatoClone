@@ -1,4 +1,4 @@
-public enum InventoryObjectRarityType 
+public enum InventoryObjectRarity 
 {
     Common,
     Uncommon,

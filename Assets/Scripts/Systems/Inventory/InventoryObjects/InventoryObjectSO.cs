@@ -7,7 +7,7 @@ public abstract class InventoryObjectSO : ScriptableObject
     [Header("InventoryObjectSO Settings")]
     public int id;
     public string inventoryObjectName;
-    public InventoryObjectRarityType rarityType;
+    public InventoryObjectRarity objectRarity;
     [TextArea(3,10)] public string description;
     public Sprite sprite;
     [Space]

@@ -14216,6 +14216,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82c39d1995226b478ffaeeae85ef936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shopSettingsSO: {fileID: 0}
   completeWeaponsList: []
   completeObjectsList: []
   completeAbilitiesList: []
