@@ -18,6 +18,22 @@ public class ShopManager : MonoBehaviour
 
     private const int MAX_OBJECT_GENERATION_ITERATIONS = 20;
 
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.G))
+        {
+            List<InventoryObjectSO> inv = GenerateShopObjectsList(shopSettingsSO);
+        
+            foreach(InventoryObjectSO i in inv)
+            {
+                //Debug.Log(i.inventoryObjectName);
+            }
+            
+            Debug.Log(inv.Count);
+        }
+    }
+
+
     #region GetAvailableInventoryObjects
     private List<WeaponSO> GetShopAvailableWeaponsFromCompleteWeaponsList(ShopSettingsSO shopSettingsSO)
     {
@@ -86,7 +102,7 @@ public class ShopManager : MonoBehaviour
     #region GenerateObjectsList
     private List<InventoryObjectSO> GenerateShopObjectsList(ShopSettingsSO shopSettingsSO)
     {
-        List<InventoryObjectSO> availableInventoryObjectsList = new List<InventoryObjectSO>();
+        List<InventoryObjectSO> availableInventoryObjectsList = GetShopAvailableInventoryObjectsList(shopSettingsSO);
 
         List<InventoryObjectSO> generatedList = new List<InventoryObjectSO>();
 
@@ -249,7 +265,7 @@ public class ShopManager : MonoBehaviour
             return inventoryObject;
         }
 
-        if (debug) Debug.Log($"No object in inventoryObjectList matches Type: {targetObjectType} & Rarity: {targetObjectRarity}. Proceding to return null.");
+        //if (debug) Debug.Log($"No object in inventoryObjectList matches Type: {targetObjectType} & Rarity: {targetObjectRarity}. Proceding to return null.");
         return null;
     }
 

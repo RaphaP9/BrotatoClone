@@ -29,19 +29,20 @@ public class ShopSettingsSO : ScriptableObject
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+[System.Serializable]
 public class InventoryObjectTypeSetting
 {
     public InventoryObjectType objectType;
     [Range(0, 100)] public int weight;
-    [Range(0, 3)] public int cap;
+    [Range(0, 5)] public int cap;
 }
 
+[System.Serializable]
 public class InventoryObjectRaritySetting
 {
     public InventoryObjectRarity objectRarity;
     [Range(0, 100)] public int weight;
-    [Range(0, 3)] public int cap;
+    [Range(0, 5)] public int cap;
 }
 
 

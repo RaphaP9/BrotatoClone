@@ -14216,11 +14216,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e82c39d1995226b478ffaeeae85ef936, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopSettingsSO: {fileID: 0}
-  completeWeaponsList: []
-  completeObjectsList: []
-  completeAbilitiesList: []
-  completeElementsList: []
+  shopSettingsSO: {fileID: 11400000, guid: ce32c8788cb47c5459610900b8547863, type: 2}
+  debug: 1
 --- !u!1 &1622046862
 GameObject:
   m_ObjectHideFlags: 0
