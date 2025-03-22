@@ -18,22 +18,6 @@ public class ShopManager : MonoBehaviour
 
     private const int MAX_OBJECT_GENERATION_ITERATIONS = 20;
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.G))
-        {
-            List<InventoryObjectSO> inv = GenerateShopObjectsList(shopSettingsSO);
-        
-            foreach(InventoryObjectSO i in inv)
-            {
-                //Debug.Log(i.inventoryObjectName);
-            }
-            
-            Debug.Log(inv.Count);
-        }
-    }
-
-
     #region GetAvailableInventoryObjects
     private List<WeaponSO> GetShopAvailableWeaponsFromCompleteWeaponsList(ShopSettingsSO shopSettingsSO)
     {
@@ -150,7 +134,7 @@ public class ShopManager : MonoBehaviour
 
         if(selectedInventoryObject == null) //In case all iterations failed to find a valid inventory object (respecting the caps limit), find a random unrestricted object
         {
-            selectedInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList);
+            selectedInventoryObject = GetRandomInventoryObjectFromList(shopSettingsSO.randomBreakerInventoryObjectList);
         }
 
         if(selectedInventoryObject == null)

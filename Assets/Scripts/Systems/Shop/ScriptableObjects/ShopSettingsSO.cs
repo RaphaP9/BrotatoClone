@@ -24,6 +24,9 @@ public class ShopSettingsSO : ScriptableObject
     public List<ObjectSO> objectsPool;
     public List<AbilitySO> abilitiesPool;
     public List<ElementSO> elementsPool;
+
+    [Header("Other")]
+    public List<InventoryObjectSO> randomBreakerInventoryObjectList;
 }
 
 
