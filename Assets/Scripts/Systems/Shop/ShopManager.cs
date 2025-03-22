@@ -16,8 +16,9 @@ public class ShopManager : MonoBehaviour
     private const InventoryObjectRarity DEFAULT_OBJECT_RARITY = InventoryObjectRarity.Common;
     private const InventoryObjectType DEFAULT_OBJECT_TYPE = InventoryObjectType.Object;
 
-    private const int MAX_OBJECT_GENERATION_ITERATIONS = 100;
+    private const int MAX_OBJECT_GENERATION_ITERATIONS = 20;
 
+    #region GetAvailableInventoryObjects
     private List<WeaponSO> GetShopAvailableWeaponsFromCompleteWeaponsList(ShopSettingsSO shopSettingsSO)
     {
         List<WeaponSO> validWeapons = new List<WeaponSO>();
@@ -68,6 +69,21 @@ public class ShopManager : MonoBehaviour
         return validElements;
     }
 
+    private List<InventoryObjectSO> GetShopAvailableInventoryObjectsList(ShopSettingsSO shopSettingsSO)
+    {
+        List<InventoryObjectSO> validObjectsAsInventoryObjects = GetShopAvailableObjectsFromCompleteObjectsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
+        List<InventoryObjectSO> validWeaponsAsInventoryObjects = GetShopAvailableWeaponsFromCompleteWeaponsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
+        List<InventoryObjectSO> validAbilitiesAsInventoryObjects = GetShopAvailableAbilitiesFromCompleteAbilitiesList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
+        List<InventoryObjectSO> validElementsAsInventoryObjects = GetShopAvailableElementsFromCompleteElementsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
+
+        List<List<InventoryObjectSO>> unnappendedAvailableInventoryObjectsList = new List<List<InventoryObjectSO>> { validObjectsAsInventoryObjects, validWeaponsAsInventoryObjects, validAbilitiesAsInventoryObjects, validElementsAsInventoryObjects};
+        List<InventoryObjectSO> availableInventoryObjects = GeneralUtilities.AppendListsOfLists(unnappendedAvailableInventoryObjectsList);
+
+        return availableInventoryObjects;
+    }
+    #endregion
+
+    #region GenerateObjectsList
     private List<InventoryObjectSO> GenerateShopObjectsList(ShopSettingsSO shopSettingsSO)
     {
         List<InventoryObjectSO> availableInventoryObjectsList = new List<InventoryObjectSO>();
@@ -77,6 +93,13 @@ public class ShopManager : MonoBehaviour
         for (int i = 0; i < shopSettingsSO.shopSize; i++)
         {
             InventoryObjectSO shopObject = GenerateShopObject(shopSettingsSO, availableInventoryObjectsList, generatedList);
+
+            if(shopObject == null)
+            {
+                if (debug) Debug.Log("Shop object is null and will not be added to generated list. List will be short sized.");
+                continue;
+            }
+
             generatedList.Add(shopObject);
         }
 
@@ -90,7 +113,7 @@ public class ShopManager : MonoBehaviour
 
         InventoryObjectSO selectedInventoryObject = null;
 
-        while(!validObject || iterations< MAX_OBJECT_GENERATION_ITERATIONS)
+        while(!validObject && iterations< MAX_OBJECT_GENERATION_ITERATIONS)
         {
             iterations++;
 
@@ -111,10 +134,7 @@ public class ShopManager : MonoBehaviour
 
         if(selectedInventoryObject == null) //In case all iterations failed to find a valid inventory object (respecting the caps limit), find a random unrestricted object
         {
-            InventoryObjectType targetObjectType = GenerateInventoryObjectType(shopSettingsSO);
-            InventoryObjectRarity targetObjectRarity = GenerateInventoryObjectRarity(shopSettingsSO);
-
-            selectedInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList, targetObjectType, targetObjectRarity);
+            selectedInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList);
         }
 
         if(selectedInventoryObject == null)
@@ -124,6 +144,7 @@ public class ShopManager : MonoBehaviour
 
         return selectedInventoryObject;
     }
+    #endregion
 
     #region Generate Rarity&Type
 
@@ -133,7 +154,8 @@ public class ShopManager : MonoBehaviour
 
         if (totalWeight <= 0) return DEFAULT_OBJECT_RARITY;
 
-        int randomValue = Random.Range(0, totalWeight);
+        System.Random random = new System.Random();
+        int randomValue = random.Next(0, totalWeight);
 
         int currentWeight = 0;
 
@@ -153,7 +175,8 @@ public class ShopManager : MonoBehaviour
 
         if(totalWeight <= 0) return DEFAULT_OBJECT_TYPE;
 
-        int randomValue = Random.Range(0, totalWeight);
+        System.Random random = new System.Random();
+        int randomValue = random.Next(0, totalWeight);
 
         int currentWeight = 0;
 
@@ -213,6 +236,7 @@ public class ShopManager : MonoBehaviour
 
     #endregion
 
+    #region GetInventoryObject From List with Type&Rarity
     private InventoryObjectSO GetRandomInventoryObjectFromList(List<InventoryObjectSO> inventoryObjectList, InventoryObjectType targetObjectType, InventoryObjectRarity targetObjectRarity)
     {
         List<InventoryObjectSO> shuffledInventoryObjectList = GeneralUtilities.FisherYatesShuffle(inventoryObjectList);
@@ -229,6 +253,22 @@ public class ShopManager : MonoBehaviour
         return null;
     }
 
+    private InventoryObjectSO GetRandomInventoryObjectFromList(List<InventoryObjectSO> inventoryObjectList)
+    {
+        if(inventoryObjectList.Count <= 0)
+        {
+            if (debug) Debug.Log("List does not contain any elements. Proceding to return null");
+            return null;    
+        }
+
+        System.Random random = new System.Random();
+
+        InventoryObjectSO randomInventoryObject = inventoryObjectList[random.Next(inventoryObjectList.Count)];
+        return randomInventoryObject;
+    }
+    #endregion
+
+    #region Get Setting By Type&Rarity
     private InventoryObjectTypeSetting GetInventoryObjectTypeSettingByObjectType(ShopSettingsSO shopSettingsSO, InventoryObjectType inventoryObjectType)
     {
         foreach(InventoryObjectTypeSetting typeSetting in shopSettingsSO.inventoryObjectTypeSettings)
@@ -250,7 +290,9 @@ public class ShopManager : MonoBehaviour
         if (debug) Debug.Log($"InventoryObjectRaritySetting with InventoryObjectRarity {inventoryObjectRarity} was not found. Proceding to return null.");
         return null;
     }
+    #endregion
 
+    #region Check Type&Rarity
     private bool IsInventoryObjectOfType(InventoryObjectSO inventoryObjectSO, InventoryObjectType inventoryObjectType)
     {
         if(inventoryObjectSO.GetInventoryObjectType() == inventoryObjectType) return true;
@@ -262,4 +304,5 @@ public class ShopManager : MonoBehaviour
         if (inventoryObjectSO.objectRarity == inventoryObjectRarity) return true;
         return false;
     }
+    #endregion
 }

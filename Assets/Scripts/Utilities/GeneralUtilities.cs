@@ -115,5 +115,17 @@ public static class GeneralUtilities
         return shuffledList;
     }
 
+    public static List<T> AppendListsOfLists<T>(List<List<T>> listOfLists)
+    {
+        List<T> appendedList = new List<T>();
+
+        foreach (List<T> list in listOfLists)
+        {
+            appendedList.AddRange(list);
+        }
+
+        return appendedList;
+    }
+
     #endregion
 }
