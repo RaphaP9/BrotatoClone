@@ -97,5 +97,23 @@ public static class GeneralUtilities
         return elementsList[randomIndex];
     }
 
+    public static List<T> FisherYatesShuffle<T>(List<T> list)
+    {
+        List<T> shuffledList = list;
+
+        System.Random random = new System.Random();
+
+        int n = shuffledList.Count;
+
+        while (n > 1)
+        {
+            n--;
+            int k = random.Next(n + 1);
+            (shuffledList[n], shuffledList[k]) = (shuffledList[k], shuffledList[n]);
+        }
+
+        return shuffledList;
+    }
+
     #endregion
 }

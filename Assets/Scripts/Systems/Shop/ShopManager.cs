@@ -16,6 +16,8 @@ public class ShopManager : MonoBehaviour
     private const InventoryObjectRarity DEFAULT_OBJECT_RARITY = InventoryObjectRarity.Common;
     private const InventoryObjectType DEFAULT_OBJECT_TYPE = InventoryObjectType.Object;
 
+    private const int MAX_OBJECT_GENERATION_ITERATIONS = 100;
+
     private List<WeaponSO> GetShopAvailableWeaponsFromCompleteWeaponsList(ShopSettingsSO shopSettingsSO)
     {
         List<WeaponSO> validWeapons = new List<WeaponSO>();
@@ -68,21 +70,62 @@ public class ShopManager : MonoBehaviour
 
     private List<InventoryObjectSO> GenerateShopObjectsList(ShopSettingsSO shopSettingsSO)
     {
+        List<InventoryObjectSO> availableInventoryObjectsList = new List<InventoryObjectSO>();
+
         List<InventoryObjectSO> generatedList = new List<InventoryObjectSO>();
 
         for (int i = 0; i < shopSettingsSO.shopSize; i++)
         {
-            InventoryObjectSO shopObject = GenerateShopObject(shopSettingsSO, generatedList);
+            InventoryObjectSO shopObject = GenerateShopObject(shopSettingsSO, availableInventoryObjectsList, generatedList);
             generatedList.Add(shopObject);
         }
 
         return generatedList;
     }
 
-    private InventoryObjectSO GenerateShopObject(ShopSettingsSO shopSettingsSO, List<InventoryObjectSO> currentGeneratedList)
+    private InventoryObjectSO GenerateShopObject(ShopSettingsSO shopSettingsSO, List<InventoryObjectSO> availableInventoryObjectsList, List<InventoryObjectSO> currentGeneratedList)
     {
-        return null;
+        bool validObject = false;
+        int iterations = 0;
+
+        InventoryObjectSO selectedInventoryObject = null;
+
+        while(!validObject || iterations< MAX_OBJECT_GENERATION_ITERATIONS)
+        {
+            iterations++;
+
+            InventoryObjectType targetObjectType = GenerateInventoryObjectType(shopSettingsSO);
+            InventoryObjectRarity targetObjectRarity = GenerateInventoryObjectRarity(shopSettingsSO);
+
+            if (HasReachedTypeCap(shopSettingsSO, targetObjectType, currentGeneratedList)) continue;
+            if (HasReachedRarityCap(shopSettingsSO, targetObjectRarity, currentGeneratedList)) continue;
+
+            InventoryObjectSO foundInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList, targetObjectType, targetObjectRarity);
+
+            if(foundInventoryObject != null)
+            {
+                selectedInventoryObject = foundInventoryObject;
+                validObject = true;
+            }
+        }
+
+        if(selectedInventoryObject == null) //In case all iterations failed to find a valid inventory object (respecting the caps limit), find a random unrestricted object
+        {
+            InventoryObjectType targetObjectType = GenerateInventoryObjectType(shopSettingsSO);
+            InventoryObjectRarity targetObjectRarity = GenerateInventoryObjectRarity(shopSettingsSO);
+
+            selectedInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList, targetObjectType, targetObjectRarity);
+        }
+
+        if(selectedInventoryObject == null)
+        {
+            if (debug) Debug.Log("Could not find an inventory object.");
+        }
+
+        return selectedInventoryObject;
     }
+
+    #region Generate Rarity&Type
 
     private InventoryObjectRarity GenerateInventoryObjectRarity(ShopSettingsSO shopSettingsSO)
     {
@@ -123,9 +166,9 @@ public class ShopManager : MonoBehaviour
 
         return shopSettingsSO.inventoryObjectTypeSettings[0].objectType;
     }
+    #endregion
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+    #region CapReached
     private bool HasReachedTypeCap(ShopSettingsSO shopSettingsSO, InventoryObjectType inventoryObjectType, List<InventoryObjectSO> inventoryObjectList)
     {
         InventoryObjectTypeSetting inventoryObjectTypeSetting = GetInventoryObjectTypeSettingByObjectType(shopSettingsSO, inventoryObjectType);
@@ -166,6 +209,24 @@ public class ShopManager : MonoBehaviour
 
         if (accumulator >= inventoryObjectRaritySetting.cap) return true;
         return false;
+    }
+
+    #endregion
+
+    private InventoryObjectSO GetRandomInventoryObjectFromList(List<InventoryObjectSO> inventoryObjectList, InventoryObjectType targetObjectType, InventoryObjectRarity targetObjectRarity)
+    {
+        List<InventoryObjectSO> shuffledInventoryObjectList = GeneralUtilities.FisherYatesShuffle(inventoryObjectList);
+
+        foreach(InventoryObjectSO inventoryObject in shuffledInventoryObjectList)
+        {
+            if (!IsInventoryObjectOfRarity(inventoryObject, targetObjectRarity)) continue;
+            if (!IsInventoryObjectOfType(inventoryObject, targetObjectType)) continue;
+
+            return inventoryObject;
+        }
+
+        if (debug) Debug.Log($"No object in inventoryObjectList matches Type: {targetObjectType} & Rarity: {targetObjectRarity}. Proceding to return null.");
+        return null;
     }
 
     private InventoryObjectTypeSetting GetInventoryObjectTypeSettingByObjectType(ShopSettingsSO shopSettingsSO, InventoryObjectType inventoryObjectType)
