@@ -20,7 +20,7 @@ public class ShopManager : MonoBehaviour
 
     public bool IsShopLocked => isShopLocked;
 
-    public static event EventHandler<OnShopItemsEventArgs> OnNewShopItemsGenerated;
+    public static event EventHandler<OnShopItemsEventArgs> OnShopItemsGenerated;
     public static event EventHandler<OnRerollCostEventArgs> OnRerollCostSet;
 
     public class OnShopItemsEventArgs : EventArgs
@@ -57,6 +57,7 @@ public class ShopManager : MonoBehaviour
     private void Start()
     {
         InitializeVariables();
+        ResetRerollCost();
     }
 
     private void SetSingleton()
@@ -113,7 +114,7 @@ public class ShopManager : MonoBehaviour
     private void GenerateNewShopItems()
     {
         List<InventoryObjectSO> newGeneratedItems = ShopGenerator.Instance.GenerateShopObjectsList();
-        OnNewShopItemsGenerated?.Invoke(this, new OnShopItemsEventArgs { inventoryObjectSOs = newGeneratedItems });
+        OnShopItemsGenerated?.Invoke(this, new OnShopItemsEventArgs { inventoryObjectSOs = newGeneratedItems });
     }
 
     private void SetIsShopLocked(bool isShopLocked) => this.isShopLocked = isShopLocked;
@@ -127,7 +128,6 @@ public class ShopManager : MonoBehaviour
         {
             ResetRerollCost();
         }
-
 
         if (!IsShopLocked)
         {
