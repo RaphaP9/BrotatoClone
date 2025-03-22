@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class StatsUIOpeningManager : MonoBehaviour
+public class InWaveStatsUIOpeningManager : MonoBehaviour
 {
-    public static StatsUIOpeningManager Instance {  get; private set; }
+    public static InWaveStatsUIOpeningManager Instance {  get; private set; }
 
     [Header("Settings")]
     [SerializeField] private UIInput UIInput;

@@ -2,27 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AllStatsUI : MonoBehaviour
+public class InWaveAllStatsUI : MonoBehaviour
 {
     [Header("UI Components")]
     [SerializeField] private CanvasGroup canvasGroup;
 
     private void OnEnable()
     {
-        StatsUIOpeningManager.OnStatsUIOpen += StatsUIOpeningManager_OnStatsUIOpen;
-        StatsUIOpeningManager.OnStatsUIClose += StatsUIOpeningManager_OnStatsUIClose;
+        InWaveStatsUIOpeningManager.OnStatsUIOpen += StatsUIOpeningManager_OnStatsUIOpen;
+        InWaveStatsUIOpeningManager.OnStatsUIClose += StatsUIOpeningManager_OnStatsUIClose;
 
-        StatsUIOpeningManager.OnStatsUIOpenInmediately += StatsUIOpeningManager_OnStatsUIOpenInmediately;
-        StatsUIOpeningManager.OnStatsUICloseInmediately += StatsUIOpeningManager_OnStatsUICloseInmediately;
+        InWaveStatsUIOpeningManager.OnStatsUIOpenInmediately += StatsUIOpeningManager_OnStatsUIOpenInmediately;
+        InWaveStatsUIOpeningManager.OnStatsUICloseInmediately += StatsUIOpeningManager_OnStatsUICloseInmediately;
     }
 
     private void OnDisable()
     {
-        StatsUIOpeningManager.OnStatsUIOpen -= StatsUIOpeningManager_OnStatsUIOpen;
-        StatsUIOpeningManager.OnStatsUIClose -= StatsUIOpeningManager_OnStatsUIClose;
+        InWaveStatsUIOpeningManager.OnStatsUIOpen -= StatsUIOpeningManager_OnStatsUIOpen;
+        InWaveStatsUIOpeningManager.OnStatsUIClose -= StatsUIOpeningManager_OnStatsUIClose;
 
-        StatsUIOpeningManager.OnStatsUIOpenInmediately -= StatsUIOpeningManager_OnStatsUIOpenInmediately;
-        StatsUIOpeningManager.OnStatsUICloseInmediately -= StatsUIOpeningManager_OnStatsUICloseInmediately;
+        InWaveStatsUIOpeningManager.OnStatsUIOpenInmediately -= StatsUIOpeningManager_OnStatsUIOpenInmediately;
+        InWaveStatsUIOpeningManager.OnStatsUICloseInmediately -= StatsUIOpeningManager_OnStatsUICloseInmediately;
     }
 
 
