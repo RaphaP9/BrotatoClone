@@ -81,7 +81,7 @@ public class ShopManager : MonoBehaviour
 
     private void Reroll()
     {
-        //DiscountCoins
+        //DiscountCoins or deny reroll if insuficient coins
         IncreaseRerollCost();
         GenerateNewShopItems();
     }
