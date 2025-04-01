@@ -30,26 +30,14 @@ public class MusicVolumeManager : VolumeManager
             Destroy(gameObject);
         }
     }
-    protected override void InitializeVolume()
+    protected override string GetVolumePropertyName() => MUSIC_VOLUME;
+    protected override void OnVolumeManagerInitialized(float volume)
     {
-        base.InitializeVolume();
         OnMusicVolumeManagerInitialized?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ChangeVolume(float volume)
+    protected override void OnVolumeChanged(float volume)
     {
-        volume = volume < GetMinVolume() ? GetMinVolume() : volume;
-        volume = volume > GetMaxVolume() ? GetMaxVolume() : volume;
-
-        masterAudioMixer.SetFloat(MUSIC_VOLUME, Mathf.Log10(volume) * 20);
-        SaveVolumePlayerPrefs(volume);
-
         OnMusicVolumeChanged?.Invoke(this, new OnVolumeChangedEventArgs { newVolume = volume });
-    }
-
-    public override float GetLogarithmicVolume()
-    {
-        masterAudioMixer.GetFloat(MUSIC_VOLUME, out float logarithmicVolume);
-        return logarithmicVolume;
     }
 }

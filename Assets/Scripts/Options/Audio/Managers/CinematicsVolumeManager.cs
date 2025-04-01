@@ -29,26 +29,15 @@ public class CinematicsVolumeManager : VolumeManager
             Destroy(gameObject);
         }
     }
-    protected override void InitializeVolume()
+
+    protected override string GetVolumePropertyName() => CINEMATICS_VOLUME;
+    protected override void OnVolumeManagerInitialized(float volume)
     {
-        base.InitializeVolume();
         OnCinematicsVolumeManagerInitialized?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ChangeVolume(float volume)
+    protected override void OnVolumeChanged(float volume)
     {
-        volume = volume < GetMinVolume() ? GetMinVolume() : volume;
-        volume = volume > GetMaxVolume() ? GetMaxVolume() : volume;
-
-        masterAudioMixer.SetFloat(CINEMATICS_VOLUME, Mathf.Log10(volume) * 20);
-        SaveVolumePlayerPrefs(volume);
-
         OnCinematicsVolumeChanged?.Invoke(this, new OnVolumeChangedEventArgs { newVolume = volume });
-    }
-
-    public override float GetLogarithmicVolume()
-    {
-        masterAudioMixer.GetFloat(CINEMATICS_VOLUME, out float logarithmicVolume);
-        return logarithmicVolume;
     }
 }

@@ -31,26 +31,14 @@ public class SFXVolumeManager : VolumeManager
         }
     }
 
-    protected override void InitializeVolume()
+    protected override string GetVolumePropertyName() => SFX_VOLUME;
+    protected override void OnVolumeManagerInitialized(float volume)
     {
-        base.InitializeVolume();
         OnSFXVolumeManagerInitialized?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ChangeVolume(float volume)
+    protected override void OnVolumeChanged(float volume)
     {
-        volume = volume < GetMinVolume() ? GetMinVolume() : volume;
-        volume = volume > GetMaxVolume() ? GetMaxVolume() : volume;
-
-        masterAudioMixer.SetFloat(SFX_VOLUME, Mathf.Log10(volume) * 20);
-        SaveVolumePlayerPrefs(volume);
-
         OnSFXVolumeChanged?.Invoke(this, new OnVolumeChangedEventArgs { newVolume = volume });
-    }
-
-    public override float GetLogarithmicVolume()
-    {
-        masterAudioMixer.GetFloat(SFX_VOLUME, out float logarithmicVolume);
-        return logarithmicVolume;
     }
 }

@@ -42,9 +42,33 @@ public abstract class VolumeManager : MonoBehaviour
         PlayerPrefs.SetFloat(playerPrefsKey, volume);
     }
 
-    protected virtual void InitializeVolume() => ChangeVolume(initialVolume);
-    public abstract void ChangeVolume(float volume);
-    public abstract float GetLogarithmicVolume();
+    protected abstract string GetVolumePropertyName();
+    protected abstract void OnVolumeManagerInitialized(float volume);
+    protected abstract void OnVolumeChanged(float volume);
+
+    protected virtual void InitializeVolume()
+    {
+        ChangeVolume(initialVolume);
+        OnVolumeManagerInitialized(initialVolume);
+    }
+
+    public virtual void ChangeVolume(float volume)
+    {
+        volume = volume < GetMinVolume() ? GetMinVolume() : volume;
+        volume = volume > GetMaxVolume() ? GetMaxVolume() : volume;
+
+        masterAudioMixer.SetFloat(GetVolumePropertyName(), Mathf.Log10(volume) * 20);
+        SaveVolumePlayerPrefs(volume);
+
+        OnVolumeChanged(volume);
+    }
+
+    protected virtual float GetLogarithmicVolume()
+    {
+        masterAudioMixer.GetFloat(GetVolumePropertyName(), out float logarithmicVolume);
+        return logarithmicVolume;
+    }
+
     public float GetLinearVolume()
     {
         float logarithmicVolume = GetLogarithmicVolume();
