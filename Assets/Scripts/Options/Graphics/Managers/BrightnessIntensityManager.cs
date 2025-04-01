@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using System;
 
-public class BrightnessIntensityManager : PostProcessingManager
+public class BrightnessIntensityManager : PostProcessingLinearValueManager
 {
     public static BrightnessIntensityManager Instance { get; private set; }
 
@@ -48,19 +48,18 @@ public class BrightnessIntensityManager : PostProcessingManager
         }
     }
 
-    protected override void InitializeIntensity()
+    protected override void OnPostProcesingManagerInitialized(float intensity)
     {
-        base.InitializeIntensity();
         OnBrightnessIntensityManagerInitialized?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ChangeIntensity(float normalizedIntensity)
+    protected override void OnIntensityChanged(float intensity)
     {
-        base.ChangeIntensity(normalizedIntensity);
-        OnBrightnessIntensityChanged?.Invoke(this, new OnIntensityChangedEventArgs { newIntensity = normalizedIntensity });
+        OnBrightnessIntensityChanged?.Invoke(this, new OnIntensityChangedEventArgs { newIntensity = intensity });
     }
 
     protected override void SetIntensity(float intensity) => colorAdjustments.postExposure.value = intensity;
+
     protected override float GetIntensity() => colorAdjustments.postExposure.value;
     public override float GetMaxIntensity() => MAX_INTENSITY;
     public override float GetMinIntensity() => MIN_INTENSITY;

@@ -12,7 +12,7 @@ public abstract class PostProcessingUIHandler : MonoBehaviour
     [Header("Components")]
     [SerializeField] List<OptionBarUI> optionBarUIs;
 
-    protected PostProcessingManager postProcessingManager;
+    protected PostProcessingLinearValueManager postProcessingManager;
 
     protected const float INTENSITY_BUTTON_CHANGE = 0.1f;
 

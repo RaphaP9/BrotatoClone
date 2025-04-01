@@ -5,7 +5,7 @@ using UnityEngine.Rendering.Universal;
 using UnityEngine.Rendering;
 using System;
 
-public class BloomIntensityManager : PostProcessingManager
+public class BloomIntensityManager : PostProcessingLinearValueManager
 {
     public static BloomIntensityManager Instance { get; private set; }
 
@@ -48,16 +48,14 @@ public class BloomIntensityManager : PostProcessingManager
         }
     }
 
-    protected override void InitializeIntensity()
+    protected override void OnPostProcesingManagerInitialized(float intensity)
     {
-        base.InitializeIntensity();
         OnBloomIntensityManagerInitialized?.Invoke(this, EventArgs.Empty);
     }
 
-    public override void ChangeIntensity(float normalizedIntensity)
+    protected override void OnIntensityChanged(float intensity)
     {
-        base.ChangeIntensity(normalizedIntensity);
-        OnBloomIntensityChanged?.Invoke(this, new OnIntensityChangedEventArgs { newIntensity = normalizedIntensity });
+        OnBloomIntensityChanged?.Invoke(this, new OnIntensityChangedEventArgs { newIntensity = intensity });
     }
 
     protected override void SetIntensity(float intensity) => bloom.intensity.value = intensity;
