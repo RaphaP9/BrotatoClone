@@ -35,6 +35,15 @@ public abstract class StatManager : MonoBehaviour
     {
         ObjectsInventoryManager.OnObjectAddedToInventory -= ObjectsInventoryManager_OnObjectAddedToInventory;
         ObjectsInventoryManager.OnObjectRemovedFromInventory -= ObjectsInventoryManager_OnObjectRemovedFromInventory;
+
+        WeaponsInventoryManager.OnWeaponAddedToInventory -= WeaponsInventoryManager_OnWeaponAddedToInventory;
+        WeaponsInventoryManager.OnWeaponRemovedFromInventory -= WeaponsInventoryManager_OnWeaponRemovedFromInventory;
+
+        AbilitiesInventoryManager.OnAbilityAddedToInventory -= AbilitiesInventoryManager_OnAbilityAddedToInventory;
+        AbilitiesInventoryManager.OnAbilityRemovedFromInventory -= AbilitiesInventoryManager_OnAbilityRemovedFromInventory;
+
+        ElementsInventoryManager.OnElementAddedToInventory -= ElementsInventoryManager_OnElementAddedToInventory;
+        ElementsInventoryManager.OnElementRemovedFromInventory -= ElementsInventoryManager_OnElementRemovedFromInventory;
     }
 
     protected virtual void Awake()
@@ -141,6 +150,8 @@ public abstract class StatManager : MonoBehaviour
         }
 
         statModifiers.RemoveAll(statModifier => statModifier.originGUID == originGUID);
+
+        UpdateStat();
     }
 
     #region Subscriptions
