@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   inventoryObjectName: Object1
-  rarityType: 0
+  objectRarity: 2
   description: 
   sprite: {fileID: 0}
   price: 0
@@ -25,3 +25,4 @@ MonoBehaviour:
   - statType: 5
     statModificationType: 0
     value: 1
+  cost: 0

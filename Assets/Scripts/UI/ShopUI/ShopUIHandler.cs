@@ -7,10 +7,14 @@ using UnityEngine.UI;
 public class ShopUIHandler : MonoBehaviour
 {
     [Header("UI Components")]
-    [SerializeField] private Transform shopInventoryObjectPrefab;
+    [SerializeField] private Transform shopInventoryObjectCardsContainer;
+    [SerializeField] private Transform shopInventoryObjectCardPrefab;
     [Space]
     [SerializeField] private Button rerollButton;
     [SerializeField] private Toggle lockShopToggle;
+
+    [Header("Debug")]
+    [SerializeField] private bool debug;
 
     public static event EventHandler OnRerollClick;
     public static event EventHandler<OnLockShopToggledEventArgs> OnLockShopToggled;
@@ -59,8 +63,41 @@ public class ShopUIHandler : MonoBehaviour
         OnLockShopToggled?.Invoke(this, new OnLockShopToggledEventArgs{isOn = isOn});
     }
 
-    #region Subscriptions
+    private void GenerateNewShopItems(List<InventoryObjectSO> inventoryObjectSOs)
+    {
+        ClearShopInventoryObjectsContainer();
 
+        foreach (InventoryObjectSO inventoryObjectSO in inventoryObjectSOs)
+        {
+            CreateInventoryObjectShopItem(inventoryObjectSO);
+            Debug.Log(inventoryObjectSO.inventoryObjectName);
+        }
+    }
+
+    private void ClearShopInventoryObjectsContainer()
+    {
+        foreach (Transform child in shopInventoryObjectCardsContainer)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    private void CreateInventoryObjectShopItem(InventoryObjectSO inventoryObjectSO)
+    {
+        Transform shopInventoryObjectCard = Instantiate(shopInventoryObjectCardPrefab, shopInventoryObjectCardsContainer);
+
+        ShopInventoryObjectCardUI shopInventoryObjectCardUI = shopInventoryObjectCard.GetComponent<ShopInventoryObjectCardUI>();
+
+        if(shopInventoryObjectCardUI == null)
+        {
+            if (debug) Debug.Log("Instantiated Shop Object Card does not contain a ShopInventoryObjectCardUI component. Set will be ignored.");
+            return;
+        }
+
+        shopInventoryObjectCardUI.CompleteSetUI(inventoryObjectSO);
+    }
+
+    #region Subscriptions
     private void ShopManager_OnRerollCostSet(object sender, ShopManager.OnRerollCostEventArgs e)
     {
         Debug.Log($"Reroll cost: {e.rerollCost}");
@@ -68,11 +105,7 @@ public class ShopUIHandler : MonoBehaviour
 
     private void ShopManager_OnNewShopItemsGenerated(object sender, ShopManager.OnShopItemsEventArgs e)
     {
-        foreach(InventoryObjectSO i in e.inventoryObjectSOs)
-        {
-            Debug.Log(i.inventoryObjectName);
-        }
+        GenerateNewShopItems(e.inventoryObjectSOs);
     }
-
     #endregion
 }

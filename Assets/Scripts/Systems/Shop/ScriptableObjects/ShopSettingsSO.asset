@@ -22,20 +22,20 @@ MonoBehaviour:
     cap: 1
   inventoryObjectRaritySettings:
   - objectRarity: 0
-    weight: 100
-    cap: 3
+    weight: 1
+    cap: 2
   - objectRarity: 1
-    weight: 50
-    cap: 3
+    weight: 1
+    cap: 2
   - objectRarity: 2
-    weight: 20
-    cap: 1
+    weight: 1
+    cap: 2
   - objectRarity: 3
-    weight: 10
-    cap: 1
+    weight: 1
+    cap: 2
   - objectRarity: 4
-    weight: 5
-    cap: 1
+    weight: 100
+    cap: 2
   rerollBaseCost: 5
   rerollCostIncreasePerReroll: 1
   weaponsPool:
@@ -44,6 +44,7 @@ MonoBehaviour:
   objectsPool:
   - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
   - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}
+  - {fileID: 11400000, guid: 79c0384ac9a551e4fa7001f7867aa773, type: 2}
   randomBreakerInventoryObjectList:
   - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
   - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}

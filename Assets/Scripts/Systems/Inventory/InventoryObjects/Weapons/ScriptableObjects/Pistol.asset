@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1002
   inventoryObjectName: Pistol
-  rarityType: 0
+  objectRarity: 0
   description: Common Pistol
   sprite: {fileID: 0}
   price: 0
@@ -22,6 +22,7 @@ MonoBehaviour:
   - statType: 0
     statModificationType: 0
     value: 50
+  cost: 0
   weaponType: 1
   fireType: 1
   regularDamage: 2

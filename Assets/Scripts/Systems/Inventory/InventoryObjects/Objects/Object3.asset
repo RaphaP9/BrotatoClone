@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c3fe289dfdf1a14bbe5289d28f81b12, type: 3}
-  m_Name: Object2
+  m_Name: Object3
   m_EditorClassIdentifier: 
-  id: 2
-  inventoryObjectName: Object2
-  objectRarity: 3
+  id: 3
+  inventoryObjectName: Object3
+  objectRarity: 4
   description: 
   sprite: {fileID: 0}
   price: 0
