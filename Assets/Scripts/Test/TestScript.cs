@@ -17,6 +17,8 @@ public class TestScript : MonoBehaviour
 
         EnemyHealth.OnEnemyDodge += EnemyHealth_OnEnemyDodge;
         EnemyKamikaze.OnEnemySelfDestroyCompleted += EnemyKamikaze_OnEnemySelfDestroy;
+
+        EnemyHealth.OnEnemyDeath += EnemyHealth_OnEnemyDeath;
     }
 
     private void OnDisable()
@@ -26,6 +28,8 @@ public class TestScript : MonoBehaviour
 
         EnemyHealth.OnEnemyDodge -= EnemyHealth_OnEnemyDodge;
         EnemyKamikaze.OnEnemySelfDestroyCompleted -= EnemyKamikaze_OnEnemySelfDestroy;
+
+        EnemyHealth.OnEnemyDeath -= EnemyHealth_OnEnemyDeath;
     }
 
     private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
@@ -46,5 +50,12 @@ public class TestScript : MonoBehaviour
     private void EnemyKamikaze_OnEnemySelfDestroy(object sender, System.EventArgs e)
     {
         //Debug.Log("Kaboom");
+    }
+
+    private void EnemyHealth_OnEnemyDeath(object sender, EnemyHealth.OnEnemyDeathEventArgs e)
+    {
+        if (e.damageSource.GetDamageDealerClassification() != DamageDealerClassification.Weapon) return;
+
+        Debug.Log(e.enemySO.goldDrop);
     }
 }

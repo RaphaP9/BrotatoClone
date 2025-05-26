@@ -8,4 +8,6 @@ public interface IDamageDealer
     public string GetName();
     public string GetDescription();
     public Sprite GetSprite();
+
+    public DamageDealerClassification GetDamageDealerClassification();
 }

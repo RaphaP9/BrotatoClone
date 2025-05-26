@@ -11,7 +11,7 @@ public class EnemyHealth : EntityHealth
     [SerializeField] private CircleCollider2D circleCollider2D;
 
     public static event EventHandler OnEnemyDodge;
-    public static event EventHandler OnEnemyDeath;
+    public static event EventHandler<OnEnemyDeathEventArgs> OnEnemyDeath;
     public static event EventHandler<OnEnemyTakeDamageEventArgs> OnEnemyTakeBleedDamage;
     public static event EventHandler<OnEnemyTakeDamageEventArgs> OnEnemyTakeRegularDamage;
 
@@ -24,7 +24,7 @@ public class EnemyHealth : EntityHealth
     public static event EventHandler<OnEntityHealEventArgs> OnEnemyHeal;
 
     public event EventHandler OnThisEnemyDodge;
-    public event EventHandler OnThisEnemyDeath;
+    public event EventHandler<OnEnemyDeathEventArgs> OnThisEnemyDeath;
     public event EventHandler<OnEnemyTakeDamageEventArgs> OnThisEnemyTakeBleedDamage;
     public event EventHandler<OnEnemyTakeDamageEventArgs> OnThisEnemyTakeRegularDamage;
 
@@ -39,6 +39,11 @@ public class EnemyHealth : EntityHealth
     public class OnEnemyTakeDamageEventArgs : OnEntityTakeDamageEventArgs
     {
         public int id;
+    }
+
+    public class OnEnemyDeathEventArgs : OnEntityDeathEventArgs
+    {
+        public EnemySO enemySO;
     }
 
     private void OnEnable()
@@ -96,12 +101,12 @@ public class EnemyHealth : EntityHealth
     #endregion
 
     #region Damage
-    protected override void OnDeath(IDamageDealer damageDealer)
+    protected override void OnDeath(IDamageDealer damageSource)
     {
         DisableCollider();
 
-        OnEnemyDeath?.Invoke(this, EventArgs.Empty);
-        OnThisEnemyDeath?.Invoke(this, EventArgs.Empty);
+        OnEnemyDeath?.Invoke(this, new OnEnemyDeathEventArgs { damageSource = damageSource, enemySO = enemyIdentifier.EnemySO });
+        OnThisEnemyDeath?.Invoke(this, new OnEnemyDeathEventArgs { damageSource = damageSource, enemySO = enemyIdentifier.EnemySO });
     }
 
     protected override void OnDodge()

@@ -13,7 +13,7 @@ public class PlayerHealth : EntityHealth
     [SerializeField] private int healthRegen;
 
     public static event EventHandler OnPlayerDodge;
-    public static event EventHandler OnPlayerDeath;
+    public static event EventHandler<OnEntityDeathEventArgs> OnPlayerDeath;
     public static event EventHandler<OnEntityTakeDamageEventArgs> OnPlayerTakeBleedDamage;
     public static event EventHandler<OnEntityTakeDamageEventArgs> OnPlayerTakeRegularDamage;
 

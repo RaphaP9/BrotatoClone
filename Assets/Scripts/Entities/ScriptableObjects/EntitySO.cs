@@ -25,4 +25,5 @@ public abstract class EntitySO : ScriptableObject, IDamageDealer
     public Sprite GetSprite() => sprite;
     public Color GetDamageColor() => damageColor;
 
+    public DamageDealerClassification GetDamageDealerClassification() => DamageDealerClassification.Enemy;
 }

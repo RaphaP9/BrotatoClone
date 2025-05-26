@@ -28,5 +28,5 @@ public abstract class WeaponSO : InventoryObjectSO, IDamageDealer
     public Color GetDamageColor() => damageColor;
     public string GetDescription() => description;
     public Sprite GetSprite() => sprite;
-
+    public DamageDealerClassification GetDamageDealerClassification() => DamageDealerClassification.Weapon;
 }
