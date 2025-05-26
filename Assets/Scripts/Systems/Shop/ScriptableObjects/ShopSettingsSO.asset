@@ -34,7 +34,7 @@ MonoBehaviour:
     weight: 1
     cap: 2
   - objectRarity: 4
-    weight: 100
+    weight: 1
     cap: 2
   rerollBaseCost: 5
   rerollCostIncreasePerReroll: 1

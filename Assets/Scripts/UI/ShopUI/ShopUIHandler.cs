@@ -70,7 +70,6 @@ public class ShopUIHandler : MonoBehaviour
         foreach (InventoryObjectSO inventoryObjectSO in inventoryObjectSOs)
         {
             CreateInventoryObjectShopItem(inventoryObjectSO);
-            Debug.Log(inventoryObjectSO.inventoryObjectName);
         }
     }
 
