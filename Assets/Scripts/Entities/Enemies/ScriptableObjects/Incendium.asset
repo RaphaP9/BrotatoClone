@@ -17,12 +17,12 @@ MonoBehaviour:
   description: 
   sprite: {fileID: 629127556, guid: 56f7fc5433420f84c91b988f519aeddd, type: 3}
   damageColor: {r: 1, g: 0.64411765, b: 0.25, a: 1}
-  maxHealth: 100
+  maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 3
   lifeSteal: 0
-  oreDrop: 0
+  goldDrop: 2
   spawnDuration: 3
   cleanupTime: 3
   critChance: 0

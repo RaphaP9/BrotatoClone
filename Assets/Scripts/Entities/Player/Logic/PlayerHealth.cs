@@ -253,7 +253,7 @@ public class PlayerHealth : EntityHealth
 
     private void GeneralWavesManager_OnWaveStarting(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
-        if (e.waveSO.waveNumber == FIRST_WAVE_NUMBER) return;
+        if (e.waveNumber == FIRST_WAVE_NUMBER) return;
         HealFromHealthRegen();
     }
 

@@ -18240,6 +18240,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7d5533b5d37844c439f6e1129c34c10f, type: 2}
   - {fileID: 11400000, guid: 39f9637c713993f418c230e2f2a41292, type: 2}
   - {fileID: 11400000, guid: c0d1226c33446844ab003041182e4a48, type: 2}
+  randomEndgameWaves:
+  - {fileID: 11400000, guid: 7d5533b5d37844c439f6e1129c34c10f, type: 2}
+  - {fileID: 11400000, guid: 39f9637c713993f418c230e2f2a41292, type: 2}
+  - {fileID: 11400000, guid: c0d1226c33446844ab003041182e4a48, type: 2}
   waveStartingTime: 4
   waveEndingTime: 4
   waveState: 0

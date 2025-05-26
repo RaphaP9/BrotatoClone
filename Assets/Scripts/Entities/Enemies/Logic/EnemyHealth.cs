@@ -51,6 +51,9 @@ public class EnemyHealth : EntityHealth
         PlayerHealth.OnPlayerTakeRegularDamage += PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
 
+        enemySpawningHandler.OnThisEnemySpawnStart += EnemySpawningHandler_OnThisEnemySpawnStart;
+        enemySpawningHandler.OnThisEnemySpawnComplete += EnemySpawningHandler_OnThisEnemySpawnComplete;
+
         GeneralWavesManager.OnWaveCompleted += GeneralWavesManager_OnWaveCompleted;
     }
 
@@ -58,6 +61,9 @@ public class EnemyHealth : EntityHealth
     {
         PlayerHealth.OnPlayerTakeRegularDamage -= PlayerHealth_OnPlayerTakeRegularDamage;
         PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
+
+        enemySpawningHandler.OnThisEnemySpawnStart += EnemySpawningHandler_OnThisEnemySpawnStart;
+        enemySpawningHandler.OnThisEnemySpawnComplete += EnemySpawningHandler_OnThisEnemySpawnComplete;
 
         GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
     }
@@ -187,6 +193,14 @@ public class EnemyHealth : EntityHealth
     {
         InstaKill(enemyIdentifier.EnemySO);
     }
+    private void EnemySpawningHandler_OnThisEnemySpawnStart(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
+    {
+        SetIsGhosted(true);
+    }
 
+    private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
+    {
+        SetIsGhosted(false);
+    }
     #endregion
 }

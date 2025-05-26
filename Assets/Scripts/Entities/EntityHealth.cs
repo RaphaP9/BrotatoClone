@@ -129,7 +129,6 @@ public abstract class EntityHealth : MonoBehaviour
 
 
     #region Bleed
-
     public void Bleed(int baseDamage, float bleedDuration, float tickTime, bool isCrit, IDamageDealer damageSource)
     {
         if (!CanTakeDamage()) return;

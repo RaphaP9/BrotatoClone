@@ -9,6 +9,8 @@ public class GeneralWavesManager : MonoBehaviour
 
     [Header("Lists")]
     [SerializeField] private List<WaveSO> waves;
+    [Space]
+    [SerializeField] private List<WaveSO> randomEndgameWaves;
 
     [Header("Settings")]
     [SerializeField, Range(0f, 5f)] private float waveStartingTime;
@@ -41,6 +43,7 @@ public class GeneralWavesManager : MonoBehaviour
     public class OnWaveEventArgs : EventArgs
     {
         public WaveSO waveSO;
+        public int waveNumber;
     }
 
     private void OnEnable()
@@ -124,7 +127,7 @@ public class GeneralWavesManager : MonoBehaviour
             return;
         }
 
-        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave });
+        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave, waveNumber = currentWaveNumber });
         ResetTimer();
     }
 
@@ -157,28 +160,33 @@ public class GeneralWavesManager : MonoBehaviour
             return;
         }
 
-        if (!WaveWithWaveNumberExists(currentWaveNumber+1))
+        IncreaseCurrentWaveNumber();
+
+        WaveSO nextWave;
+
+        if (WaveWithWaveNumberExists(currentWaveNumber))
         {
-            if (debug) Debug.Log($"Wave with WaveNumber {currentWaveNumber + 1} does not exist. Can not start next wave.");
-            return;
+            nextWave = FindWaveByWaveNumber(currentWaveNumber);
+        }
+        else
+        {
+            if (debug) Debug.Log($"Wave with WaveNumber {currentWaveNumber} does not exist. Choosing random wave from endgame list.");
+            nextWave = GetRamdomWaveFromList(randomEndgameWaves);
         }
 
-        IncreaseCurrentWaveNumber();
-        StartWave(currentWaveNumber);
+        StartWave(nextWave);
     }
 
-    private void StartWave(int waveNumber)
+    private void StartWave(WaveSO waveSO)
     {
-        WaveSO waveSO = FindWaveByWaveNumber(waveNumber);
-
-        if(waveSO == null)
+        if (waveSO == null)
         {
             if (debug) Debug.Log("WaveSO is null. Start will be ignored");
             return;
         }
 
         SetCurrentWave(waveSO);
-        OnWaveStarting?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO });
+        OnWaveStarting?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO, waveNumber = currentWaveNumber });
         SetWaveState(State.StartingWave);
 
         ResetTimer();
@@ -186,24 +194,36 @@ public class GeneralWavesManager : MonoBehaviour
 
     private WaveSO FindWaveByWaveNumber(int waveNumber)
     {
-        foreach(WaveSO waveSO in waves)
+        if (waves.Count < waveNumber)
         {
-            if (waveSO.waveNumber == waveNumber) return waveSO; 
+            if (debug) Debug.Log($"WaveSO with WaveNumber {waveNumber} could not be found on list. Proceding to return null.");
+            return null;
         }
 
-        if (debug) Debug.Log($"WaveSO with WaveNumber {waveNumber} could not be found. Proceding to return null.");
-        return null;
+        return waves[waveNumber-1];
     }
 
     private bool WaveWithWaveNumberExists(int waveNumber)
     {
-        WaveSO waveSO = FindWaveByWaveNumber(waveNumber);
-        return waveSO != null;
+        if(waves.Count < waveNumber) return false;
+        return true;
+    }
+
+    private WaveSO GetRamdomWaveFromList(List<WaveSO> wavesList)
+    {
+        if (wavesList.Count <= 0)
+        {
+            if (debug) Debug.Log("List does not contain any elements. Proceding to return null");
+            return null;
+        }
+
+        WaveSO waveSO = GeneralUtilities.ChooseRandomElementFromList(wavesList);
+        return waveSO;
     }
 
     private void EndCurrentWave()
     {
-        OnWaveEnd?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave });
+        OnWaveEnd?.Invoke(this, new OnWaveEventArgs{ waveSO = currentWave, waveNumber = currentWaveNumber });
         ClearCurrentWave();
     }
 
@@ -220,7 +240,7 @@ public class GeneralWavesManager : MonoBehaviour
         if(currentWave == null) return;
         if (state != State.OnWave) return;
 
-        OnSuddenCompleteWave?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave });
+        OnSuddenCompleteWave?.Invoke(this, new OnWaveEventArgs { waveSO = currentWave, waveNumber = currentWaveNumber });
     }
 
     #region Subscriptions
@@ -240,7 +260,7 @@ public class GeneralWavesManager : MonoBehaviour
     private void WaveSpawningSystemManager_OnWaveCompleted(object sender, WaveSpawningSystemManager.OnWaveEventArgs e)
     {
         SetWaveState(State.EndingWave);
-        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
+        OnWaveCompleted?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO, waveNumber = currentWaveNumber });
         ResetTimer();
     }
     #endregion
