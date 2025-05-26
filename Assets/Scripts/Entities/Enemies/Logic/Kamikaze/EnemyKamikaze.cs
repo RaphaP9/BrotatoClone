@@ -75,7 +75,7 @@ public class EnemyKamikaze : MonoBehaviour
         OnEnemySelfDestroyCompleted?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
         OnThisEnemySelfDestroyCompleted?.Invoke(this, new OnEnemyExplosionEventArgs { enemySO = enemyIdentifier.EnemySO, damage = KamikazeEnemySO.kamikazeRegularDamage });
 
-        enemyHealth.InstaKill();
+        enemyHealth.InstaKill(enemyIdentifier.EnemySO);
     }
 
     private void DealExplosionDamage()

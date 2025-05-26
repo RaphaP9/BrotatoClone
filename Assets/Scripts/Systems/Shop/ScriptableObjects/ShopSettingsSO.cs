@@ -22,8 +22,6 @@ public class ShopSettingsSO : ScriptableObject
     [Header("Pools")]
     public List<WeaponSO> weaponsPool;
     public List<ObjectSO> objectsPool;
-    public List<AbilitySO> abilitiesPool;
-    public List<ElementSO> elementsPool;
 
     [Header("Other")]
     public List<InventoryObjectSO> randomBreakerInventoryObjectList;

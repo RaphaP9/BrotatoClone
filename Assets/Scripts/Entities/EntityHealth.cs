@@ -69,6 +69,11 @@ public abstract class EntityHealth : MonoBehaviour
         public EntityHealth entityHealth;
     }
 
+    public class OnEntityDeathEventArgs : EventArgs
+    {
+        public IDamageDealer damageSource;
+    }
+
     protected virtual void Update()
     {
         HandleRestoreCurrentHealthFirstUpdate();
@@ -118,7 +123,7 @@ public abstract class EntityHealth : MonoBehaviour
         OnCurrentHealthSet(currentHealth);
         OnTakeRegularDamage(damage, currentHealth, isCrit, damageSource);
 
-        if (!IsAlive()) OnDeath();
+        if (!IsAlive()) OnDeath(damageSource);
     }
     #endregion
 
@@ -205,18 +210,18 @@ public abstract class EntityHealth : MonoBehaviour
         OnCurrentHealthSet(currentHealth);
         OnTakeBleedDamage(damage, currentHealth, isCrit, damageSource);
 
-        if (!IsAlive()) OnDeath();
+        if (!IsAlive()) OnDeath(damageSource);
     }
     #endregion
 
     #region InstaDamage 
-    protected void TakeInstaDamage(int damage) //Damage with no events triggered (No Feedback)
+    protected void TakeInstaDamage(IDamageDealer damageDealer, int damage) //Damage with no events triggered (No Feedback)
     {
         currentHealth = currentHealth < damage ? 0 : currentHealth - damage;
 
         OnCurrentHealthSet(currentHealth);
 
-        if (!IsAlive()) OnDeath();
+        if (!IsAlive()) OnDeath(damageDealer);
     }
     #endregion
 
@@ -294,13 +299,13 @@ public abstract class EntityHealth : MonoBehaviour
     protected void SetIsGhosted(bool value) => isGhosted = value; //When Ghosted, entity does not take damage and proyectiles do not collide;
     protected bool IsFullHealth() => currentHealth == maxHealth;
 
-    public abstract void InstaKill();
+    public abstract void InstaKill(IDamageDealer damageSource);
 
     #region Abstracts For Events
     protected abstract void OnDodge();
     protected abstract void OnTakeRegularDamage(int damage, int currentHealth, bool isCrit, IDamageDealer damageSource);
     protected abstract void OnTakeBleedDamage(int bleedDamage, int currentHealth, bool isCrit, IDamageDealer damageSource);
-    protected abstract void OnDeath();
+    protected abstract void OnDeath(IDamageDealer damageDealer);
     //
     protected abstract void OnDodgeChanceSet(float dodgeChance);
     protected abstract void OnArmorPercentageSet(float armorPercentage);

@@ -121,9 +121,9 @@ public class PlayerHealth : EntityHealth
     #endregion
 
     #region Damage
-    protected override void OnDeath()
+    protected override void OnDeath(IDamageDealer damageSource)
     {
-        OnPlayerDeath?.Invoke(this, EventArgs.Empty);
+        OnPlayerDeath?.Invoke(this, new OnEntityDeathEventArgs { damageSource = damageSource});
     }
 
     protected override void OnDodge()
@@ -172,9 +172,9 @@ public class PlayerHealth : EntityHealth
         return true;
     }
 
-    public override void InstaKill()
+    public override void InstaKill(IDamageDealer damageSource)
     {
-        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, playerIdentifier.CharacterSO);
+        TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, damageSource);
     }
 
     protected void HealFromHealthRegen()

@@ -19,8 +19,6 @@ public class TestScript : MonoBehaviour
         EnemyKamikaze.OnEnemySelfDestroyCompleted += EnemyKamikaze_OnEnemySelfDestroy;
     }
 
-
-
     private void OnDisable()
     {
         PlayerHealth.OnPlayerTakeBleedDamage -= PlayerHealth_OnPlayerTakeBleedDamage;
@@ -28,25 +26,25 @@ public class TestScript : MonoBehaviour
 
         EnemyHealth.OnEnemyDodge -= EnemyHealth_OnEnemyDodge;
         EnemyKamikaze.OnEnemySelfDestroyCompleted -= EnemyKamikaze_OnEnemySelfDestroy;
-
     }
-
 
     private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
     {
-        Debug.Log($"Bleeding: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");
+        //Debug.Log($"Bleeding: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");
     }
+
     private void PlayerHealth_OnPlayerTakeRegularDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e)
     {
-        Debug.Log($"Damage: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");
-
+        //Debug.Log($"Damage: {e.damageTaken}, IsCrit {e.isCrit}, From: {e.damageSource.GetName()}");
     }
+
     private void EnemyHealth_OnEnemyDodge(object sender, System.EventArgs e)
     {
-        Debug.Log("EnemyDodged!");
+        //Debug.Log("EnemyDodged!");
     }
+
     private void EnemyKamikaze_OnEnemySelfDestroy(object sender, System.EventArgs e)
     {
-        Debug.Log("Kaboom");
+        //Debug.Log("Kaboom");
     }
 }

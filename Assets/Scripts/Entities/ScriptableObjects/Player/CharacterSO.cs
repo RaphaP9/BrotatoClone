@@ -18,26 +18,14 @@ public class CharacterSO : EntitySO
     [Space]
     [Range(1f, 2f)] public float attackDamageMultiplier;
     [Range(0f, 1f)] public float attackCritChance;
-    [Range(0.5f, 2f)] public float attackCritDamageMultiplier;
-    [Space]
-    [Range(0f, 0.5f)] public float abilityCooldownReductionMultiplier;
-    [Space]
-    [Range(1f, 2f)] public float abilityEffectMultiplier;
-    [Range(0f, 1f)] public float abilityCritChance;
-    [Range(0.5f, 2f)] public float abilityCritEffectMultiplier;
+    [Range(0.5f, 3f)] public float attackCritDamageMultiplier;
 
     [Header("Weapons")]
     [Range(2, 12)] public int weaponSlots;
     public List<WeaponSO> startingWeapons;
 
-    [Header("Abilities")]
-    public List<AbilitySO> startingAbilities;
-
     [Header("Objects")]
     public List<ObjectSO> startingObjects;
-
-    [Header("Objects")]
-    public List<ElementSO> startingElements;
 
     [Header("Visual")]
     public Transform characterVisualTransform;

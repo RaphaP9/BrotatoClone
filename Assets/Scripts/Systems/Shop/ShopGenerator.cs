@@ -42,7 +42,7 @@ public class ShopGenerator : MonoBehaviour
 
         foreach (WeaponSO weapon in shopSettingsSO.weaponsPool)
         {
-            if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(weapon.requiredElements)) validWeapons.Add(weapon);
+            validWeapons.Add(weapon);
         }
 
         return validWeapons;
@@ -54,46 +54,18 @@ public class ShopGenerator : MonoBehaviour
 
         foreach (ObjectSO @object in shopSettingsSO.objectsPool)
         {
-            if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(@object.requiredElements)) validObjects.Add(@object);
+            validObjects.Add(@object);
         }
 
         return validObjects;
-    }
-
-    private List<AbilitySO> GetShopAvailableAbilitiesFromCompleteAbilitiesList(ShopSettingsSO shopSettingsSO)
-    {
-        List<AbilitySO> validAbilities = new List<AbilitySO>();
-
-        foreach (AbilitySO ability in shopSettingsSO.abilitiesPool)
-        {
-            if (AbilitiesInventoryManager.Instance.AbilityInInventoryByAbilitySO(ability)) continue; //Unique Abilities
-            if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(ability.requiredElements)) validAbilities.Add(ability);
-        }
-
-        return validAbilities;
-    }
-
-    private List<ElementSO> GetShopAvailableElementsFromCompleteElementsList(ShopSettingsSO shopSettingsSO)
-    {
-        List<ElementSO> validElements = new List<ElementSO>();
-
-        foreach (ElementSO element in shopSettingsSO.elementsPool)
-        {
-            if (ElementsInventoryManager.Instance.ElementInInventoryByElementSO(element)) continue; //Unique Elements
-            if (ElementsInventoryManager.Instance.ElementsInInventoryByElementSO(element.requiredElements)) validElements.Add(element);
-        }
-
-        return validElements;
     }
 
     private List<InventoryObjectSO> GetShopAvailableInventoryObjectsList(ShopSettingsSO shopSettingsSO)
     {
         List<InventoryObjectSO> validObjectsAsInventoryObjects = GetShopAvailableObjectsFromCompleteObjectsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
         List<InventoryObjectSO> validWeaponsAsInventoryObjects = GetShopAvailableWeaponsFromCompleteWeaponsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
-        List<InventoryObjectSO> validAbilitiesAsInventoryObjects = GetShopAvailableAbilitiesFromCompleteAbilitiesList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
-        List<InventoryObjectSO> validElementsAsInventoryObjects = GetShopAvailableElementsFromCompleteElementsList(shopSettingsSO).Select(x => x as InventoryObjectSO).ToList();
 
-        List<List<InventoryObjectSO>> unnappendedAvailableInventoryObjectsList = new List<List<InventoryObjectSO>> { validObjectsAsInventoryObjects, validWeaponsAsInventoryObjects, validAbilitiesAsInventoryObjects, validElementsAsInventoryObjects};
+        List<List<InventoryObjectSO>> unnappendedAvailableInventoryObjectsList = new List<List<InventoryObjectSO>> { validObjectsAsInventoryObjects, validWeaponsAsInventoryObjects};
         List<InventoryObjectSO> availableInventoryObjects = GeneralUtilities.AppendListsOfLists(unnappendedAvailableInventoryObjectsList);
 
         return availableInventoryObjects;
@@ -140,7 +112,7 @@ public class ShopGenerator : MonoBehaviour
             if (HasReachedTypeCap(shopSettingsSO, targetObjectType, currentGeneratedList)) continue;
             if (HasReachedRarityCap(shopSettingsSO, targetObjectRarity, currentGeneratedList)) continue;
 
-            InventoryObjectSO foundInventoryObject = GetRandomInventoryObjectFromList(availableInventoryObjectsList, targetObjectType, targetObjectRarity);
+            InventoryObjectSO foundInventoryObject = GetRandomInventoryObjectFromListByTypeAndRarity(availableInventoryObjectsList, targetObjectType, targetObjectRarity);
 
             if(foundInventoryObject != null)
             {
@@ -254,20 +226,25 @@ public class ShopGenerator : MonoBehaviour
     #endregion
 
     #region GetInventoryObject From List with Type&Rarity
-    private InventoryObjectSO GetRandomInventoryObjectFromList(List<InventoryObjectSO> inventoryObjectList, InventoryObjectType targetObjectType, InventoryObjectRarity targetObjectRarity)
+    private InventoryObjectSO GetRandomInventoryObjectFromListByTypeAndRarity(List<InventoryObjectSO> inventoryObjectList, InventoryObjectType targetObjectType, InventoryObjectRarity targetObjectRarity)
     {
-        List<InventoryObjectSO> shuffledInventoryObjectList = GeneralUtilities.FisherYatesShuffle(inventoryObjectList);
+        List<InventoryObjectSO> filteredInventoryObjectList = new List<InventoryObjectSO>();
 
-        foreach(InventoryObjectSO inventoryObject in shuffledInventoryObjectList)
+        foreach (InventoryObjectSO inventoryObject in inventoryObjectList) //First on list that matches conditions(Rarity,Type) is returned
         {
             if (!IsInventoryObjectOfRarity(inventoryObject, targetObjectRarity)) continue;
             if (!IsInventoryObjectOfType(inventoryObject, targetObjectType)) continue;
 
-            return inventoryObject;
+            filteredInventoryObjectList.Add(inventoryObject);
         }
 
-        //if (debug) Debug.Log($"No object in inventoryObjectList matches Type: {targetObjectType} & Rarity: {targetObjectRarity}. Proceding to return null.");
-        return null;
+        if (filteredInventoryObjectList.Count <= 0)
+        {
+            //if (debug) Debug.Log($"No matching inventory objects found for the given Type: {targetObjectType} and Rarity: {targetObjectRarity}. Proceding to return null.");
+            return null;
+        }
+
+        return GetRandomInventoryObjectFromList(filteredInventoryObjectList);
     }
 
     private InventoryObjectSO GetRandomInventoryObjectFromList(List<InventoryObjectSO> inventoryObjectList)

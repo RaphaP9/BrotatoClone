@@ -96,7 +96,7 @@ public class EnemyHealth : EntityHealth
     #endregion
 
     #region Damage
-    protected override void OnDeath()
+    protected override void OnDeath(IDamageDealer damageDealer)
     {
         DisableCollider();
 
@@ -156,10 +156,10 @@ public class EnemyHealth : EntityHealth
         return true;
     }
 
-    public override void InstaKill()
+    public override void InstaKill(IDamageDealer damageSource)
     {
         //TakeFinalRegularDamage(INSTA_KILL_DAMAGE, true, enemyIdentifier.EnemySO); //For damage with feedbacks
-        TakeInstaDamage(INSTA_KILL_DAMAGE); //For damage with no feedbacks
+        TakeInstaDamage(damageSource, INSTA_KILL_DAMAGE); //For damage with no feedbacks
     }
 
     private void DisableCollider()
@@ -180,7 +180,7 @@ public class EnemyHealth : EntityHealth
 
     private void GeneralWavesManager_OnWaveCompleted(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
-        InstaKill();
+        InstaKill(enemyIdentifier.EnemySO);
     }
 
     #endregion
