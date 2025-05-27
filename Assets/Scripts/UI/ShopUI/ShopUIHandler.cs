@@ -85,7 +85,7 @@ public class ShopUIHandler : MonoBehaviour
     {
         Transform shopInventoryObjectCard = Instantiate(shopInventoryObjectCardPrefab, shopInventoryObjectCardsContainer);
 
-        ShopInventoryObjectCardUI shopInventoryObjectCardUI = shopInventoryObjectCard.GetComponent<ShopInventoryObjectCardUI>();
+        ShopObjectCardUI shopInventoryObjectCardUI = shopInventoryObjectCard.GetComponent<ShopObjectCardUI>();
 
         if(shopInventoryObjectCardUI == null)
         {
@@ -93,7 +93,7 @@ public class ShopUIHandler : MonoBehaviour
             return;
         }
 
-        shopInventoryObjectCardUI.CompleteSetUI(inventoryObjectSO);
+        shopInventoryObjectCardUI.SetInventoryObject(inventoryObjectSO);
     }
 
     #region Subscriptions

@@ -1,12 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopInventoryObjectCardUI : MonoBehaviour
+public class ShopObjectCardContentsHandler : MonoBehaviour
 {
+    [Header("Components")]
+    [SerializeField] private ShopObjectCardUI shopObjectCardUI;
+
     [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI objectNameText;
     [SerializeField] private Image objectImage;
@@ -21,12 +23,21 @@ public class ShopInventoryObjectCardUI : MonoBehaviour
     [SerializeField] private Color epicColor;
     [SerializeField] private Color legendaryColor;
 
+    private void OnEnable()
+    {
+        shopObjectCardUI.OnInventoryObjectSet += ShopObjectCardUI_OnInventoryObjectSet;
+    }
+    private void OnDisable()
+    {
+        shopObjectCardUI.OnInventoryObjectSet -= ShopObjectCardUI_OnInventoryObjectSet;
+    }
+
     public void CompleteSetUI(InventoryObjectSO inventoryObjectSO)
     {
         SetObjectNameText(inventoryObjectSO);
-        SetObjectImage(inventoryObjectSO);  
+        SetObjectImage(inventoryObjectSO);
         SetObjectClassificationText(inventoryObjectSO);
-        SetBordersColor(inventoryObjectSO); 
+        SetBordersColor(inventoryObjectSO);
     }
 
     private void SetObjectNameText(InventoryObjectSO inventoryObjectSO) => objectNameText.text = inventoryObjectSO.inventoryObjectName;
@@ -57,6 +68,12 @@ public class ShopInventoryObjectCardUI : MonoBehaviour
         }
 
         GeneralUIUtilities.SetImagesColor(borders, color);
+    }
+
+
+    private void ShopObjectCardUI_OnInventoryObjectSet(object sender, ShopObjectCardUI.OnInventoryObjectEventArgs e)
+    {
+        CompleteSetUI(e.inventoryObjectSO);
     }
 
 }
