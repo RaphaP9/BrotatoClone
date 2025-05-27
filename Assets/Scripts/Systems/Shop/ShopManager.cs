@@ -19,9 +19,14 @@ public class ShopManager : MonoBehaviour
     [SerializeField] private int rerollTimes;
 
     public bool IsShopLocked => isShopLocked;
+    public int CurrentRerollCost => currentRerollCost;
+    public int RerollTimes => rerollTimes;
 
     public static event EventHandler<OnShopItemsEventArgs> OnShopItemsGenerated;
     public static event EventHandler<OnRerollCostEventArgs> OnRerollCostSet;
+
+    public static event EventHandler<OnRerollCostEventArgs> OnReroll;
+    public static event EventHandler<OnRerollCostEventArgs> OnRerollDenied;
 
     public class OnShopItemsEventArgs : EventArgs
     {
@@ -78,18 +83,39 @@ public class ShopManager : MonoBehaviour
         isShopLocked = false;
     }
 
+    private void GenerateNewShopItems()
+    {
+        List<InventoryObjectSO> newGeneratedItems = ShopGenerator.Instance.GenerateShopObjectsList();
+        OnShopItemsGenerated?.Invoke(this, new OnShopItemsEventArgs { inventoryObjectSOs = newGeneratedItems });
+    }
+
+    private void HandleReroll()
+    {
+        if (!GoldManager.Instance.CanSpendGold(currentRerollCost))
+        {
+            DenyReroll();
+            return;
+        }
+
+        Reroll();
+    }
 
     private void Reroll()
     {
-        //DiscountCoins or deny reroll if insuficient coins
-        IncreaseRerollCost();
+        GoldManager.Instance.SpendGold(currentRerollCost);
+
+        OnReroll?.Invoke(this, new OnRerollCostEventArgs { rerollCost = currentRerollCost });
+
+        IncreaseRerollTimes(1);
+        SetRerollCostDueToRerollTimes();
+
         GenerateNewShopItems();
     }
 
-    private void IncreaseRerollCost()
+    private void DenyReroll()
     {
-        IncreaseRerollTimes(1);
-        SetRerollCostDueToRerollTimes();
+        OnRerollDenied?.Invoke(this, new OnRerollCostEventArgs { rerollCost = currentRerollCost });
+        return;
     }
 
     private void ResetRerollCost()
@@ -111,12 +137,6 @@ public class ShopManager : MonoBehaviour
     private int CalculateRerollCost(int rerollTimes) => shopSettingsSO.rerollBaseCost + rerollTimes* shopSettingsSO.rerollCostIncreasePerReroll;  
     private void SetRerollCost(int cost) => currentRerollCost = cost;
 
-    private void GenerateNewShopItems()
-    {
-        List<InventoryObjectSO> newGeneratedItems = ShopGenerator.Instance.GenerateShopObjectsList();
-        OnShopItemsGenerated?.Invoke(this, new OnShopItemsEventArgs { inventoryObjectSOs = newGeneratedItems });
-    }
-
     private void SetIsShopLocked(bool isShopLocked) => this.isShopLocked = isShopLocked;
 
 
@@ -124,15 +144,8 @@ public class ShopManager : MonoBehaviour
 
     private void ShopOpeningManager_OnShopOpen(object sender, System.EventArgs e)
     {
-        if (resetRerollCostEachShopOpen)
-        {
-            ResetRerollCost();
-        }
-
-        if (!IsShopLocked)
-        {
-            GenerateNewShopItems();
-        }
+        if (resetRerollCostEachShopOpen) ResetRerollCost();
+        if (!isShopLocked) GenerateNewShopItems();
     }
 
     private void ShopUIHandler_OnLockShopToggled(object sender, ShopUIHandler.OnLockShopToggledEventArgs e)
@@ -142,7 +155,7 @@ public class ShopManager : MonoBehaviour
 
     private void ShopUIHandler_OnRerollClick(object sender, System.EventArgs e)
     {
-        Reroll();        
+        HandleReroll();        
     }
     #endregion
 }

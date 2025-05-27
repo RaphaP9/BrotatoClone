@@ -99,7 +99,7 @@ public class ShopUIHandler : MonoBehaviour
     #region Subscriptions
     private void ShopManager_OnRerollCostSet(object sender, ShopManager.OnRerollCostEventArgs e)
     {
-        Debug.Log($"Reroll cost: {e.rerollCost}");
+        //Debug.Log($"Reroll cost: {e.rerollCost}");
     }
 
     private void ShopManager_OnNewShopItemsGenerated(object sender, ShopManager.OnShopItemsEventArgs e)
