@@ -16,7 +16,7 @@ public class AttackCritDamageMultiplierStatUI : StatUI
         AttackCritDamageMultiplierStatManager.OnAttackCritDamageMultiplierStatUpdated -= AttackCritDamageMultiplierStatManager_OnAttackCritDamageMultiplierStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.AttackCritDamageMultiplier;
 
     private void AttackCritDamageMultiplierStatManager_OnAttackCritDamageMultiplierStatInitialized(object sender, AttackCritDamageMultiplierStatManager.OnAttackCritDamageMultiplierStatEventArgs e)
     {

@@ -15,7 +15,8 @@ public class MoveSpeedStatUI : StatUI
         MoveSpeedStatManager.OnMoveSpeedStatUpdated -= MoveSpeedStatManager_OnMoveSpeedStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleFloat(currentValue, 2);
+    protected override StatType GetStatType() => StatType.MoveSpeed;
+
 
     private void MoveSpeedStatManager_OnMoveSpeedStatInitialized(object sender, MoveSpeedStatManager.OnMoveSpeedStatEventArgs e)
     {

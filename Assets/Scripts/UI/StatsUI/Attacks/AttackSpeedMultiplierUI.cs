@@ -16,7 +16,7 @@ public class AttackSpeedMultiplierUI : StatUI
         AttackSpeedMultiplierStatManager.OnAttackSpeedMultiplierStatUpdated -= AttackSpeedMultiplierStatManager_OnAttackSpeedMultiplierStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToExcessPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.AttackSpeedMultiplier;
 
     private void AttackSpeedMultiplierStatManager_OnAttackSpeedMultiplierStatInitialized(object sender, AttackSpeedMultiplierStatManager.OnAttackSpeedMultiplierStatEventArgs e)
     {

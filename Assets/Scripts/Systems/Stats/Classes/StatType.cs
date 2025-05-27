@@ -12,10 +12,6 @@ public enum StatType
     AttackDamageMultiplier,
     AttackCritChance,
     AttackCritDamageMultiplier,
-    AbilityCooldownReduction,
-    AbilityEffectMultiplier,
-    AbilityCritChance,
-    AbilityCritEffectMultiplier,
     Lifesteal
 }
 

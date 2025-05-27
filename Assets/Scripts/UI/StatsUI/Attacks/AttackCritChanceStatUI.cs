@@ -16,7 +16,8 @@ public class AttackCritChanceStatUI : StatUI
         AttackCritChanceStatManager.OnAttackCritChanceStatUpdated -= AttackCritChanceStatManager_OnAttackCritChanceStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.AttackCritChance;
+
 
 
     private void AttackCritChanceStatManager_OnAttackCritChanceStatUpdated(object sender, AttackCritChanceStatManager.OnAttackCritChanceStatEventArgs e)

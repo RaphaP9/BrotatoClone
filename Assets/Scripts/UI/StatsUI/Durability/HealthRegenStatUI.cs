@@ -15,7 +15,7 @@ public class HealthRegenStatUI : StatUI
         HealthRegenStatManager.OnHealthRegenStatUpdated -= HealthRegenStatManager_OnHealthRegenStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleString(currentValue);
+    protected override StatType GetStatType() => StatType.HealthRegen;
 
     private void HealthRegenStatManager_OnHealthRegenStatInitialized(object sender, HealthRegenStatManager.OnHealthRegenStatEventArgs e)
     {

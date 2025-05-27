@@ -16,7 +16,7 @@ public class MaxHealthStatUI : StatUI
         MaxHealthStatManager.OnMaxHealthStatUpdated -= MaxHealthStatManager_OnMaxHealthStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleString(currentValue);
+    protected override StatType GetStatType() => StatType.MaxHealth;
 
     private void MaxHealthStatManager_OnMaxHealthStatInitialized(object sender, MaxHealthStatManager.OnMaxHealthStatEventArgs e)
     {

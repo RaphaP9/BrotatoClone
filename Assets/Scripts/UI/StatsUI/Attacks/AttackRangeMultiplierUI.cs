@@ -16,7 +16,8 @@ public class AttackRangeMultiplierUI : StatUI
         AttackRangeMultiplierStatManager.OnAttackRangeMultiplierStatUpdated -= AttackRangeMultiplierStatManager_OnAttackRangeMultiplierStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToExcessPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.AttackRangeMultiplier;
+
 
 
     private void AttackRangeMultiplierStatManager_OnAttackRangeMultiplierStatInitialized(object sender, AttackRangeMultiplierStatManager.OnAttackRangeMultiplierStatEventArgs e)

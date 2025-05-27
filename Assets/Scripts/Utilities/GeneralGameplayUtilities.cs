@@ -319,7 +319,7 @@ public static class GeneralGameplayUtilities
     #endregion
 
     #region StatUIProcessing
-    public static string ProcessCurrentValueToSimpleString(float currentValue)
+    public static string ProcessCurrentValueToSimpleInt(float currentValue)
     {
         int intValue = Mathf.RoundToInt(currentValue);
         string stringValue = intValue.ToString();
@@ -353,6 +353,31 @@ public static class GeneralGameplayUtilities
         float percentageValue = value * 100;
         string stringValue = percentageValue.ToString() + PERCENTAGE_CHARACTER;
         return stringValue;
+    }
+
+    public static string ProcessNumericStatValueToString(StatType statType, float value)
+    {
+        switch (statType)
+        {
+            case StatType.MaxHealth:
+            case StatType.HealthRegen:
+            case StatType.Dashes:
+                return ProcessCurrentValueToSimpleInt(value);
+            case StatType.MoveSpeed:
+            default:
+                return ProcessCurrentValueToSimpleFloat(value, 2);
+            case StatType.ArmorPercentage:
+            case StatType.DodgeChance:
+            case StatType.Lifesteal:
+            case StatType.AttackCritChance:
+            case StatType.AttackCritDamageMultiplier:
+                return ProcessCurrentValueToPercentage(value, 2);
+            case StatType.AreaMultiplier:
+            case StatType.AttackSpeedMultiplier:
+            case StatType.AttackRangeMultiplier:
+            case StatType.AttackDamageMultiplier:
+                return ProcessCurrentValueToExcessPercentage(value, 2);
+        }
     }
     #endregion
 }

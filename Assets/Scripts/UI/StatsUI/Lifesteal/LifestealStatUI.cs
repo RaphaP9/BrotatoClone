@@ -15,7 +15,7 @@ public class LifestealStatUI : StatUI
         LifestealStatManager.OnLifestealStatUpdated -= LifestealStatManager_OnLifestealStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.Lifesteal;
 
 
     private void LifestealStatManager_OnLifestealStatInitialized(object sender, LifestealStatManager.OnLifestealStatEventArgs e)

@@ -15,7 +15,7 @@ public class DodgeChanceStatUI : StatUI
         DodgeChanceStatManager.OnDodgeChanceStatUpdated -= DodgeChanceStatManager_OnDodgeChanceStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToPercentage(currentValue, 2);
+    protected override StatType GetStatType() => StatType.DodgeChance;
 
     private void DodgeChanceStatManager_OnDodgeChanceStatInitialized(object sender, DodgeChanceStatManager.OnDodgeChanceStatEventArgs e)
     {

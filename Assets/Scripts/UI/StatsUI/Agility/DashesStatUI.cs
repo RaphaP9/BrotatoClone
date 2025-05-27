@@ -16,7 +16,8 @@ public class DashesStatUI : StatUI
         DashesStatManager.OnDashesStatUpdated -= DashesStatManager_OnDashesStatUpdated;
     }
 
-    protected override string ProcessCurrentValue(float currentValue) => GeneralGameplayUtilities.ProcessCurrentValueToSimpleString(currentValue);
+    protected override StatType GetStatType() => StatType.Dashes;
+
 
     private void DashesStatManager_OnDashesStatInitialized(object sender, DashesStatManager.OnDashesStatEventArgs e)
     {

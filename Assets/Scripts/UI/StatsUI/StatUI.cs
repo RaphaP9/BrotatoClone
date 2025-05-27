@@ -14,9 +14,6 @@ public abstract class StatUI : MonoBehaviour
     [SerializeField] protected Color neutralColor;
     [SerializeField] protected Color negativeColor;
 
-    protected enum StatState { Positive, Neutral, Negative}
-
-
     protected void UpdateUIByNewValue(float currentValue, float baseValue)
     {
         StatState statState = GetStatState(currentValue, baseValue);
@@ -34,20 +31,19 @@ public abstract class StatUI : MonoBehaviour
                 break;
         }
 
-        string processedValueText = ProcessCurrentValue(currentValue);
+        string processedValueText = GeneralGameplayUtilities.ProcessNumericStatValueToString(GetStatType(), currentValue);
         SetValueText(processedValueText);
     }
 
+    protected abstract StatType GetStatType();
     protected void SetValueText(string text) => valueText.text = text;
     protected void SetValueTextColor(Color color) => valueText.color = color;
 
     protected StatState GetStatState(float currentValue, float baseValue)
     {
         if(currentValue > baseValue) return StatState.Positive;
-        if(currentValue<baseValue) return StatState.Negative;
+        if(currentValue < baseValue) return StatState.Negative;
 
         return StatState.Neutral;
     }
-
-    protected abstract string ProcessCurrentValue(float currentValue);
 }
