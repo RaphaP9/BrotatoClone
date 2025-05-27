@@ -12,6 +12,9 @@ public abstract class PriceTextHandler : MonoBehaviour
     [SerializeField] private Color affordableColor;
     [SerializeField] private Color cantPurchaseColor;
 
+    [Header("Runtime Filled")]
+    [SerializeField] private int currentPriceTag;
+
     protected virtual void OnEnable()
     {
         GoldManager.OnGoldAdded += GoldManager_OnGoldAdded;
@@ -23,17 +26,15 @@ public abstract class PriceTextHandler : MonoBehaviour
         GoldManager.OnGoldSpent -= GoldManager_OnGoldSpent;
     }
 
-    protected void Start()
+    protected void UpdatePriceTag(int price)
     {
-        UpdatePriceTag();
-        UpdatePriceColor();
+        currentPriceTag = price;
+        priceText.text = price.ToString();
     }
 
-    protected abstract int GetPrice();
-    protected void UpdatePriceTag() => priceText.text = GetPrice().ToString();
     protected void UpdatePriceColor()
     {
-        if (GoldManager.Instance.CanSpendGold(GetPrice()))
+        if (GoldManager.Instance.CanSpendGold(currentPriceTag))
         {
             priceText.color = affordableColor;
         }

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class ShopObjectCardUI : MonoBehaviour
 {
-    [Header("Inventory Object")]
+    [Header("Inventory Object - Runtime Filled")]
     [SerializeField] private InventoryObjectSO inventoryObjectSO;
 
     [Header("Components")]

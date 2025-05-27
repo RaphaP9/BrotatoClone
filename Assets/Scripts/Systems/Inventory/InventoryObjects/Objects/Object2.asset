@@ -17,7 +17,7 @@ MonoBehaviour:
   objectRarity: 3
   description: 
   sprite: {fileID: 0}
-  price: 0
+  price: 6
   embeddedStats:
   - statType: 4
     statModificationType: 0

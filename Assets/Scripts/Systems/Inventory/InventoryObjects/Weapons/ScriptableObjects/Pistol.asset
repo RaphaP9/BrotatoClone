@@ -17,7 +17,7 @@ MonoBehaviour:
   objectRarity: 0
   description: Common Pistol
   sprite: {fileID: 0}
-  price: 0
+  price: 15
   embeddedStats:
   - statType: 0
     statModificationType: 0

@@ -16,12 +16,16 @@ public class RerollPriceTextHandler : PriceTextHandler
         ShopManager.OnRerollCostSet -= ShopManager_OnRerollCostSet;
     }
 
-    protected override int GetPrice() => ShopManager.Instance.CurrentRerollCost;
+    private void Start()
+    {
+        UpdatePriceTag(ShopManager.Instance.CurrentRerollCost);
+        UpdatePriceColor();
+    }
 
     #region Subscriptions
     private void ShopManager_OnRerollCostSet(object sender, ShopManager.OnRerollCostEventArgs e)
     {
-        UpdatePriceTag();
+        UpdatePriceTag(e.rerollCost);
         UpdatePriceColor();
     }
     #endregion
