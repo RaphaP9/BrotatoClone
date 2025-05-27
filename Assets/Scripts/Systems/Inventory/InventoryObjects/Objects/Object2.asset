@@ -22,7 +22,7 @@ MonoBehaviour:
   - statType: 4
     statModificationType: 0
     value: 5
-  - statType: 16
+  - statType: 12
     statModificationType: 0
     value: 0.5
   cost: 0
