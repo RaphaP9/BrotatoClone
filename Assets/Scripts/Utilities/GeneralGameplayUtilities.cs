@@ -9,6 +9,7 @@ public static class GeneralGameplayUtilities
     public const float PERSPECTIVE_SCALE_Y = 1f;
 
     private const string PERCENTAGE_CHARACTER = "%";
+    private const string PLUS_CHARACTER = "+";
 
     private const bool DEBUG = true;
 
@@ -378,6 +379,78 @@ public static class GeneralGameplayUtilities
             case StatType.AttackDamageMultiplier:
                 return ProcessCurrentValueToExcessPercentage(value, 2);
         }
+    }
+
+
+
+    public static string ProcessObjectStatValueToString(StatType statType, StatModificationType statModificationType, float value)
+    {
+        string processedString = "";
+
+        switch (statModificationType)
+        {
+            case StatModificationType.RawValue:
+            default:
+                processedString = ProcessObjectRawStatValueToString(statType, value);
+                break;
+            case StatModificationType.Percentage:
+                processedString = ProcessObjectPercentageStatValueToString(statType, value);
+                break;
+        }
+
+        if (value > 0f) processedString = PLUS_CHARACTER + processedString; //Add plus character to values over 0
+
+        return processedString;
+    }
+
+    public static string ProcessObjectRawStatValueToString(StatType statType, float value)
+    {
+        switch (statType)
+        {
+            case StatType.MaxHealth:
+            case StatType.HealthRegen:
+            case StatType.Dashes:
+                return ProcessCurrentValueToSimpleInt(value);
+            case StatType.MoveSpeed:
+            default:
+                return ProcessCurrentValueToSimpleFloat(value, 2);
+            case StatType.ArmorPercentage:
+            case StatType.DodgeChance:
+            case StatType.Lifesteal:
+            case StatType.AttackCritChance:
+            case StatType.AttackCritDamageMultiplier:
+            case StatType.AreaMultiplier:
+            case StatType.AttackSpeedMultiplier:
+            case StatType.AttackRangeMultiplier:
+            case StatType.AttackDamageMultiplier:
+                return ProcessCurrentValueToPercentage(value, 2);
+
+        }
+        
+    }
+
+    public static string ProcessObjectPercentageStatValueToString(StatType statType, float value)
+    {
+        switch (statType)
+        {
+            case StatType.MaxHealth:
+            case StatType.HealthRegen:
+            case StatType.Dashes:
+            case StatType.MoveSpeed:
+            case StatType.ArmorPercentage:
+            case StatType.DodgeChance:
+            case StatType.Lifesteal:
+            case StatType.AttackCritChance:
+            case StatType.AttackCritDamageMultiplier:
+            case StatType.AreaMultiplier:
+            case StatType.AttackSpeedMultiplier:
+            case StatType.AttackRangeMultiplier:
+            case StatType.AttackDamageMultiplier:
+            default:
+                return ProcessCurrentValueToPercentage(value, 2);
+
+        }
+
     }
     #endregion
 }

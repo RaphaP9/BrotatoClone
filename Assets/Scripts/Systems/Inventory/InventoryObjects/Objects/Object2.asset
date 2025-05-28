@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   inventoryObjectName: Object2
   objectRarity: 3
-  description: 
+  description: Description1111
   sprite: {fileID: 0}
   price: 6
   embeddedStats:
