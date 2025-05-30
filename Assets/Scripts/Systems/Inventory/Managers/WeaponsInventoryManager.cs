@@ -76,7 +76,7 @@ public class WeaponsInventoryManager : MonoBehaviour
         OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weapons = weaponsInventory });
     }
 
-    private void AddWeaponToInventory(WeaponSO weaponSO)
+    public void AddWeaponToInventory(WeaponSO weaponSO)
     {
         if (WeaponsInventoryFull())
         {

@@ -10,9 +10,6 @@ public class ShopObjectCardUI : MonoBehaviour
     [Header("Inventory Object - Runtime Filled")]
     [SerializeField] private InventoryObjectSO inventoryObjectSO;
 
-    [Header("Components")]
-    [SerializeField] private Button purchaseButton;
-
     public event EventHandler<OnInventoryObjectEventArgs> OnInventoryObjectSet;
 
     public class OnInventoryObjectEventArgs: EventArgs

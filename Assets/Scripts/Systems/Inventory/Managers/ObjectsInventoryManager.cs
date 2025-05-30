@@ -67,7 +67,7 @@ public class ObjectsInventoryManager : MonoBehaviour
         OnObjectsInventoryInitialized?.Invoke(this, new OnObjectsEventArgs { objects = objectsInventory });
     }
 
-    private void AddObjectToInventory(ObjectSO objectSO)
+    public void AddObjectToInventory(ObjectSO objectSO)
     {
         if (objectSO == null)
         {
