@@ -32,6 +32,8 @@ public class GeneralWavesManager : MonoBehaviour
 
     private bool waveCompleted = false;
 
+    private const int FIRST_WAVE_NUMBER = 1;
+
     public class OnWaveEventArgs : EventArgs
     {
         public WaveSO waveSO;
@@ -71,8 +73,6 @@ public class GeneralWavesManager : MonoBehaviour
 
     public void StartNextWave()
     {
-        IncreaseCurrentWaveNumber();
-
         WaveSO nextWave;
 
         if (WaveWithWaveNumberExists(currentWaveNumber))
@@ -132,10 +132,10 @@ public class GeneralWavesManager : MonoBehaviour
         return waveSO;
     }
 
+    public void IncreaseCurrentWaveNumber() => currentWaveNumber += 1;
     private void SetCurrentWave(WaveSO waveSO) => currentWave = waveSO;
     private void ClearCurrentWave() => currentWave = null;
-    private void ResetCurrentWaveNumber() => currentWaveNumber = 0;
-    private void IncreaseCurrentWaveNumber() => currentWaveNumber += 1;
+    private void ResetCurrentWaveNumber() => currentWaveNumber = FIRST_WAVE_NUMBER;
 
     public void SuddenCompleteWave()
     {

@@ -117,6 +117,8 @@ public class GameManager : MonoBehaviour
             ChangeState(State.EndingWave);
             yield return new WaitForSeconds(endingWaveTimer);
 
+            GeneralWavesManager.Instance.IncreaseCurrentWaveNumber();
+
             ChangeState(State.Shop);
             shopClosed = false;
             ShopOpeningManager.Instance.OpenShop();
