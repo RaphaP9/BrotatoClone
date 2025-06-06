@@ -11,8 +11,9 @@ public class TypeBWaveSpawingSystem : WaveSpawningSystemManager
     [Header("TypeBWaveSpawning System Settings")]
     [SerializeField, Range(0f, 3f)] private float weightNormalizedIncreaseFactor; //When the wave normalized elapsed time is 1, each enemy weight has increased by totalWeight * weightNormalizedIncreaseFactor
 
-    protected override void StartWave(WaveSO waveSO)
+    public override void StartWave(WaveSO waveSO)
     {
+        base.StartWave(waveSO);
         StartCoroutine(StartWaveCoroutine(waveSO));        
     }
 

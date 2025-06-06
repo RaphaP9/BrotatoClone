@@ -16255,6 +16255,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   previousState: 0
+  startingGameTimer: 3
+  startingWaveTimer: 2
+  endingWaveTimer: 2
 --- !u!1 &1708316198
 GameObject:
   m_ObjectHideFlags: 0
@@ -19816,7 +19819,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c0d1226c33446844ab003041182e4a48, type: 2}
   waveStartingTime: 4
   waveEndingTime: 4
-  waveState: 0
   debug: 1
   currentWaveNumber: 0
   currentWave: {fileID: 0}

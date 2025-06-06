@@ -11,11 +11,22 @@ public class GameManager : MonoBehaviour
     [SerializeField] private State state;
     [SerializeField] private State previousState;
 
-    public enum State { OnWave, OnShop, OnAugment, OnLose }
+    [Header("Settings")]
+    [SerializeField, Range (2f,5f)] private float startingGameTimer;
+    [SerializeField, Range(2f, 5f)] private float startingWaveTimer;
+    [SerializeField, Range(2f, 5f)] private float endingWaveTimer;
+
+    public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose}
 
     public State GameState => state;
 
     public static event EventHandler<OnStateEventArgs> OnStateChanged;
+
+    #region Flags
+    private bool firstUpdateLogicCompleted = false;
+    private bool waveCompleted = false;
+    private bool shopClosed = false;
+    #endregion
 
     public class OnStateEventArgs : EventArgs
     {
@@ -24,19 +35,13 @@ public class GameManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GeneralWavesManager.OnWaveStart += GeneralWavesManager_OnWaveStart;
-        GeneralWavesManager.OnWaveEnd += GeneralWavesManager_OnWaveEnd;
-
-        ShopOpeningManager.OnShopOpen += ShopOpeningManager_OnShopOpen;
+        GeneralWavesManager.OnWaveCompleted += GeneralWavesManager_OnWaveCompleted;
         ShopOpeningManager.OnShopClose += ShopOpeningManager_OnShopClose;
     }
 
     private void OnDisable()
     {
-        GeneralWavesManager.OnWaveStart -= GeneralWavesManager_OnWaveStart;
-        GeneralWavesManager.OnWaveEnd -= GeneralWavesManager_OnWaveEnd;
-
-        ShopOpeningManager.OnShopOpen -= ShopOpeningManager_OnShopOpen;
+        GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
         ShopOpeningManager.OnShopClose -= ShopOpeningManager_OnShopClose;
     }
 
@@ -45,9 +50,17 @@ public class GameManager : MonoBehaviour
         SetSingleton();
     }
 
-    private void Start()
+    private void Update()
     {
-        ChangeState(State.OnWave);
+        FirstUpdateLogic();
+    }
+
+    private void FirstUpdateLogic()
+    {
+        if (firstUpdateLogicCompleted) return;
+
+        StartCoroutine(GameCoroutine());
+        firstUpdateLogicCompleted = true;
     }
 
     private void SetSingleton()
@@ -63,6 +76,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    #region States
     private void SetGameState(State state)
     {
         SetPreviousState(this.state);
@@ -79,29 +93,51 @@ public class GameManager : MonoBehaviour
         SetGameState(state);
         OnStateChanged?.Invoke(this, new OnStateEventArgs { newState = state });
     }
+    #endregion
 
-    #region GeneralWavesManager Subscriptions
-    private void GeneralWavesManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    #region Logic
+    private IEnumerator GameCoroutine()
     {
-        //ChangeState(State.OnWave);
+        ChangeState(State.StartingGame);
+        yield return new WaitForSeconds(startingGameTimer);
+
+        bool gameEnded = false;
+
+        while (!gameEnded)
+        {
+            ChangeState(State.StartingWave);
+            yield return new WaitForSeconds(startingWaveTimer);
+
+            ChangeState(State.Wave);
+            waveCompleted = false;
+            GeneralWavesManager.Instance.StartNextWave();
+            yield return new WaitUntil(() => waveCompleted);
+            waveCompleted = false;
+
+            ChangeState(State.EndingWave);
+            yield return new WaitForSeconds(endingWaveTimer);
+
+            ChangeState(State.Shop);
+            shopClosed = false;
+            ShopOpeningManager.Instance.OpenShop();
+            yield return new WaitUntil(() => shopClosed);
+            shopClosed = false;
+        }
     }
 
-    private void GeneralWavesManager_OnWaveEnd(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    #endregion
+
+    #region GeneralWavesManager Subscriptions
+    private void GeneralWavesManager_OnWaveCompleted(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
-        //HandleLogicFor ElementAugmentAppeareance or Shop
-        ChangeState(State.OnShop);
+        waveCompleted = true;
     }
     #endregion
 
     #region ShopOpeningManager Subscriptions
-    private void ShopOpeningManager_OnShopOpen(object sender, EventArgs e)
-    {
-        //ChangeState(State.OnShop);
-    }
-
     private void ShopOpeningManager_OnShopClose(object sender, EventArgs e)
     {
-        ChangeState(State.OnWave);
+        shopClosed = true;
     }
     #endregion
 }

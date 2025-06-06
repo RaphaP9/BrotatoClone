@@ -52,7 +52,7 @@ public class PlayerHealth : EntityHealth
         PlayerDash.OnPlayerDash += PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped += PlayerDash_OnPlayerDashStopped;
 
-        GeneralWavesManager.OnWaveStarting += GeneralWavesManager_OnWaveStarting;
+        //GeneralWavesManager.OnWaveStarting += GeneralWavesManager_OnWaveStarting;
     }
 
     private void OnDisable()
@@ -78,7 +78,7 @@ public class PlayerHealth : EntityHealth
         PlayerDash.OnPlayerDash -= PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped -= PlayerDash_OnPlayerDashStopped;
 
-        GeneralWavesManager.OnWaveStarting -= GeneralWavesManager_OnWaveStarting;
+        //GeneralWavesManager.OnWaveStarting -= GeneralWavesManager_OnWaveStarting;
     }
 
     private void Awake()

@@ -26,13 +26,11 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GeneralWavesManager.OnWaveStart += WaveStateManager_OnWaveStart;
         GeneralWavesManager.OnSuddenCompleteWave += GeneralWavesManager_OnSuddenCompleteWave;
     }
 
     private void OnDisable()
     {
-        GeneralWavesManager.OnWaveStart -= WaveStateManager_OnWaveStart;
         GeneralWavesManager.OnSuddenCompleteWave -= GeneralWavesManager_OnSuddenCompleteWave;
     }
 
@@ -54,7 +52,13 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
         }
     }
     
-    protected abstract void StartWave(WaveSO waveSO);
+    public virtual void StartWave(WaveSO waveSO)
+    {
+        SetCurrentWave(waveSO);
+        SetCurrentWaveDuration(waveSO.duration);
+
+        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = waveSO });
+    }
 
     protected virtual void CompleteWave(WaveSO waveSO)
     {
@@ -105,16 +109,6 @@ public abstract class WaveSpawningSystemManager : MonoBehaviour
     protected float GetNormalizedElapsedWaveTime() => currentWaveElapsedTime/currentWaveDuration;
 
     #region Subscriptions
-    private void WaveStateManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
-    {
-        SetCurrentWave(e.waveSO);
-        SetCurrentWaveDuration(e.waveSO.duration);
-
-        OnWaveStart?.Invoke(this, new OnWaveEventArgs { waveSO = e.waveSO });
-
-        StartWave(e.waveSO);
-    }
-
     private void GeneralWavesManager_OnSuddenCompleteWave(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
         StopAllCoroutines();

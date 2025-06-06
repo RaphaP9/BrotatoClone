@@ -12,8 +12,9 @@ public class TypeCWaveSpawingSystem : WaveSpawningSystemManager
     //Safety Reasons - If the system has a spawnTimeNormalizedReductionFactor of 1 or very close to 1, enemies will spawn very very fast which will affect performance
     //Should not happen because Range is set to a maximum of 0.5 but just in case
 
-    protected override void StartWave(WaveSO waveSO)
+    public override void StartWave(WaveSO waveSO)
     {
+        base.StartWave(waveSO);
         StartCoroutine(StartWaveCoroutine(waveSO));
     }
 

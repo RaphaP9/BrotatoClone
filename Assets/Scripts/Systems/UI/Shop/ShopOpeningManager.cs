@@ -23,15 +23,11 @@ public class ShopOpeningManager : MonoBehaviour
 
     private void OnEnable()
     {
-        GameManager.OnStateChanged += GameManager_OnStateChanged;
-
         ShopUI.OnShopClosedFromUI += ShopUI_OnShopClosedFromUI;
     }
 
     private void OnDisable()
     {
-        GameManager.OnStateChanged -= GameManager_OnStateChanged;
-
         ShopUI.OnShopClosedFromUI -= ShopUI_OnShopClosedFromUI;
     }
 
@@ -64,7 +60,7 @@ public class ShopOpeningManager : MonoBehaviour
         SetIsOpen(false);
     }
 
-    private void OpenShop()
+    public void OpenShop()
     {
         OnShopOpen?.Invoke(this, EventArgs.Empty);
         SetIsOpen(true);
@@ -86,13 +82,6 @@ public class ShopOpeningManager : MonoBehaviour
 
 
     #region Subscriptions
-
-    private void GameManager_OnStateChanged(object sender, GameManager.OnStateEventArgs e)
-    {
-        if (e.newState != GameManager.State.OnShop) return;
-        OpenShop();
-    }
-
     private void ShopUI_OnShopClosedFromUI(object sender, EventArgs e)
     {
         CloseShopFromUI();

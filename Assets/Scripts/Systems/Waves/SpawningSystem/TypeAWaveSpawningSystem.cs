@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class TypeAWaveSpawningSystem : WaveSpawningSystemManager
 {
-    protected override void StartWave(WaveSO waveSO)
+    public override void StartWave(WaveSO waveSO)
     {
+        base.StartWave(waveSO);
         StartCoroutine(StartWaveCoroutine(waveSO));
     }
 
