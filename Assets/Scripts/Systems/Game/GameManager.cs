@@ -15,8 +15,10 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range (2f,5f)] private float startingGameTimer;
     [SerializeField, Range(2f, 5f)] private float startingWaveTimer;
     [SerializeField, Range(2f, 5f)] private float endingWaveTimer;
+    [SerializeField, Range(1f, 5f)] private float dialogueInterval;
 
-    public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose}
+
+    public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose, Dialogue}
 
     public State GameState => state;
 
@@ -26,6 +28,7 @@ public class GameManager : MonoBehaviour
     private bool firstUpdateLogicCompleted = false;
     private bool waveCompleted = false;
     private bool shopClosed = false;
+    private bool dialogueConcluded = false;
     #endregion
 
     public class OnStateEventArgs : EventArgs
@@ -37,12 +40,16 @@ public class GameManager : MonoBehaviour
     {
         GeneralWavesManager.OnWaveCompleted += GeneralWavesManager_OnWaveCompleted;
         ShopOpeningManager.OnShopClose += ShopOpeningManager_OnShopClose;
+
+        DialogueManager.OnGeneralDialogueConcluded += DialogueManager_OnGeneralDialogueConcluded;
     }
 
     private void OnDisable()
     {
         GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
         ShopOpeningManager.OnShopClose -= ShopOpeningManager_OnShopClose;
+
+        DialogueManager.OnGeneralDialogueConcluded -= DialogueManager_OnGeneralDialogueConcluded;
     }
 
     private void Awake()
@@ -103,8 +110,26 @@ public class GameManager : MonoBehaviour
 
         bool gameEnded = false;
 
+        CharacterSO characterSO = PlayerIdentifier.Instance.CharacterSO;
+        int waveNumber = GeneralWavesManager.Instance.CurrentWaveNumber;
+
         while (!gameEnded)
         {
+            #region PreCombat Dialogue Logic
+            if (DialogueTriggerHandler.Instance.ExistDialogueWithConditions(characterSO, waveNumber, DialogueChronology.PreCombat))
+            {
+                ChangeState(State.Dialogue);
+
+                yield return new WaitForSeconds(dialogueInterval);
+                dialogueConcluded = false;
+                DialogueTriggerHandler.Instance.PlayDialogueWithConditions(characterSO, waveNumber, DialogueChronology.PreCombat);
+                yield return new WaitUntil(() => dialogueConcluded);
+                dialogueConcluded = false;
+                yield return new WaitForSeconds(dialogueInterval);
+            }
+            #endregion
+
+            #region Wave Logic
             ChangeState(State.StartingWave);
             yield return new WaitForSeconds(startingWaveTimer);
 
@@ -116,14 +141,33 @@ public class GameManager : MonoBehaviour
 
             ChangeState(State.EndingWave);
             yield return new WaitForSeconds(endingWaveTimer);
+            #endregion
+
+
+            #region PostCombat Dialogue Logic
+            if (DialogueTriggerHandler.Instance.ExistDialogueWithConditions(characterSO, waveNumber, DialogueChronology.PostCombat))
+            {
+                ChangeState(State.Dialogue);
+
+                yield return new WaitForSeconds(dialogueInterval);
+                dialogueConcluded = false;
+                DialogueTriggerHandler.Instance.PlayDialogueWithConditions(characterSO, waveNumber, DialogueChronology.PostCombat);
+                yield return new WaitUntil(() => dialogueConcluded);
+                dialogueConcluded = false;
+                yield return new WaitForSeconds(dialogueInterval);
+            }
+            #endregion
 
             GeneralWavesManager.Instance.IncreaseCurrentWaveNumber();
+            waveNumber = GeneralWavesManager.Instance.CurrentWaveNumber;
 
+            #region Shop Logic
             ChangeState(State.Shop);
             shopClosed = false;
             ShopOpeningManager.Instance.OpenShop();
             yield return new WaitUntil(() => shopClosed);
             shopClosed = false;
+            #endregion
         }
     }
 
@@ -140,6 +184,13 @@ public class GameManager : MonoBehaviour
     private void ShopOpeningManager_OnShopClose(object sender, EventArgs e)
     {
         shopClosed = true;
+    }
+    #endregion
+
+    #region Dialogue Subscriptions
+    private void DialogueManager_OnGeneralDialogueConcluded(object sender, EventArgs e)
+    {
+        dialogueConcluded = true;
     }
     #endregion
 }

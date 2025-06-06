@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 100
   armorPercentage: 0
   dodgeChance: 0
-  moveSpeed: 5
+  moveSpeed: 10
   lifeSteal: 0
   healthRegen: 5
   dashes: 1
@@ -34,7 +34,5 @@ MonoBehaviour:
   startingWeapons:
   - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
   - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
-  startingObjects:
-  - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
-  - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}
+  startingObjects: []
   characterVisualTransform: {fileID: 7787992204139562473, guid: dcd287ac495cece459748f290bacf97b, type: 3}

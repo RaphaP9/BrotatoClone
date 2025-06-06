@@ -29,6 +29,7 @@ public class GeneralWavesManager : MonoBehaviour
     public static event EventHandler<OnWaveEventArgs> OnSuddenCompleteWave;
 
     public List<WaveSO> Waves => waves;
+    public int CurrentWaveNumber => currentWaveNumber;
 
     private bool waveCompleted = false;
 
