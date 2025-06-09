@@ -18,6 +18,8 @@ public class KamikazeEnemyAnimationController : MonoBehaviour
     private const string DEATH_ANIMATION_NAME = "Death";
     private const string KAMIKAZE_ANIMATION_NAME = "Kamikaze";
 
+    private bool hasDied = false;
+
     private void OnEnable()
     {
         enemySpawningHandler.OnThisEnemySpawnStart += EnemySpawningHandler_OnThisEnemySpawnStart;
@@ -54,17 +56,20 @@ public class KamikazeEnemyAnimationController : MonoBehaviour
 
     private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
     {
+        if (hasDied) return;
         animator.Play(MOVEMENT_BLEND_TREE_NAME);
     }
 
     private void EnemyKamikaze_OnThisEnemySelfDestroyBegin(object sender, EnemyKamikaze.OnEnemyExplosionEventArgs e)
     {
+        if (hasDied) return;
         animator.Play(KAMIKAZE_ANIMATION_NAME);
     }
 
     private void EnemyHealth_OnThisEnemyDeath(object sender, System.EventArgs e)
     {
         if (enemyKamikaze.HasExplodedKamikaze) return;
+        hasDied = true;
         animator.Play(DEATH_ANIMATION_NAME);
     }
 

@@ -68,6 +68,7 @@ public class RangedEnemyAnimationController : MonoBehaviour
 
     private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
     {
+        if (hasDied) return;
         animator.Play(MOVEMENT_BLEND_TREE_NAME);
     }
 
