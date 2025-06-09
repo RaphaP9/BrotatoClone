@@ -41,12 +41,6 @@ public class EnemySpawningHandler : MonoBehaviour
 
         while (spawningTimer < enemyIdentifier.EnemySO.spawnDuration)
         {
-            if (!enemyHealth.IsAlive())
-            {
-                isSpawning = false;
-                yield break;
-            }
-
             spawningTimer += Time.deltaTime;
             yield return null;
         }
@@ -55,6 +49,6 @@ public class EnemySpawningHandler : MonoBehaviour
         OnThisEnemySpawnComplete?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });
 
         isSpawning = false;
-    } 
+    }
 }
 

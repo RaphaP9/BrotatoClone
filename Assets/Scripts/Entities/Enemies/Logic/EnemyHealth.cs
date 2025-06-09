@@ -178,6 +178,11 @@ public class EnemyHealth : EntityHealth
         circleCollider2D.enabled = false;
     }
 
+    private void EnableCollider()
+    {
+        circleCollider2D.enabled = true;
+    }
+
     #region Subscriptions
     private void PlayerHealth_OnPlayerTakeRegularDamage(object sender, OnEntityTakeDamageEventArgs e)
     {
@@ -195,12 +200,12 @@ public class EnemyHealth : EntityHealth
     }
     private void EnemySpawningHandler_OnThisEnemySpawnStart(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
     {
-        SetIsGhosted(true);
+        DisableCollider();
     }
 
     private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
     {
-        SetIsGhosted(false);
+        EnableCollider();
     }
     #endregion
 }
