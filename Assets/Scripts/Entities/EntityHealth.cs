@@ -270,7 +270,7 @@ public abstract class EntityHealth : MonoBehaviour
         OnAllHealthRestored(currentHealth);
     }
 
-    protected void Heal(int healAmount)
+    public void Heal(int healAmount)
     {
         if (IsFullHealth()) return;
 
