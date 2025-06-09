@@ -105,8 +105,8 @@ public class GameManager : MonoBehaviour
     #region Logic
     private IEnumerator GameCoroutine()
     {
-        ChangeState(State.Wave);
-        yield break;
+        //ChangeState(State.Wave); //Testing Enemies Only
+        //yield break;
 
         ChangeState(State.StartingGame);
         yield return new WaitForSeconds(startingGameTimer);

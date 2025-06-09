@@ -20992,6 +20992,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ghos
       objectReference: {fileID: 0}
+    - target: {fileID: 650243211589222648, guid: b01f441c39996804cbf04fc4f88ba70e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3877430779044931455, guid: b01f441c39996804cbf04fc4f88ba70e, type: 3}
       propertyPath: m_LocalPosition.x
       value: 5
