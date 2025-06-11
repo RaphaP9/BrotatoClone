@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class MainMenuUIButtonsHandler : MonoBehaviour
+{
+    [Header("Play")]
+    [SerializeField] private Button playButton;
+    [SerializeField] private string playScene;
+
+    [Header("Credits")]
+    [SerializeField] private Button creditsButton;
+    [SerializeField] private string creditsScene;
+
+    [Header("Quit")]
+    [SerializeField] private Button quitButton;
+
+    private void Awake()
+    {
+        InitializeButtonsListeners();
+    }
+    
+    private void InitializeButtonsListeners()
+    {
+        playButton.onClick.AddListener(LoadPlayScene);
+        creditsButton.onClick.AddListener(LoadCreditsScene);
+        quitButton.onClick.AddListener(QuitGame);
+    }
+
+
+    private void LoadPlayScene() => ScenesManager.Instance.FadeLoadTargetScene(playScene);
+    private void LoadCreditsScene() => ScenesManager.Instance.FadeLoadTargetScene(creditsScene);
+    private void QuitGame() => ScenesManager.Instance.QuitGame();
+}
