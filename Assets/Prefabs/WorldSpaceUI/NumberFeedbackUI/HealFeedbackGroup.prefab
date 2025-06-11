@@ -321,13 +321,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 2685551385973015938}
-  damageText: {fileID: 8830431119094152469}
   spawnTime: 0
   showingTime: 0.5
   hidingTime: 0.5
   displacementSpeed: 1
   minAngle: 89
   maxAngle: 91
+  numberText: {fileID: 8830431119094152469}
   chosenDirection: {x: 0, y: 0}
   healColor: {r: 0, g: 4, b: 0.6043892, a: 1}
 --- !u!1 &5332708980485238590

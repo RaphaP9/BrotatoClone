@@ -9,8 +9,6 @@ public abstract class NumberFeedbackUI : MonoBehaviour
     [SerializeField] protected Animator animator;
 
     [Header("Settings")]
-    [SerializeField] protected TextMeshProUGUI damageText;
-    [Space]
     [SerializeField, Range(0.1f, 1f)] protected float spawnTime;
     [SerializeField, Range(0.1f, 1f)] protected float showingTime;
     [SerializeField, Range(0.1f, 1f)] protected float hidingTime;
@@ -20,6 +18,7 @@ public abstract class NumberFeedbackUI : MonoBehaviour
     [SerializeField, Range(0, 360f)] protected float maxAngle;
 
     [Header("Runtime Filled")]
+    [SerializeField] protected TextMeshProUGUI numberText;
     [SerializeField] private Vector2 chosenDirection;
 
     protected const string SPAWN_ANIMATION_NAME = "Spawn";
@@ -68,9 +67,9 @@ public abstract class NumberFeedbackUI : MonoBehaviour
         animator.Play(animationName);
     }
 
-    protected void SetTextColor(Color color) => damageText.color = color;
-    protected void SetText(string text) => damageText.text = text;
-    protected void AugmentTextScale(float scale) => damageText.transform.localScale = damageText.transform.localScale * scale;
+    protected void SetTextColor(Color color) => numberText.color = color;
+    protected void SetText(string text) => numberText.text = text;
+    protected void AugmentTextScale(float scale) => numberText.transform.localScale = numberText.transform.localScale * scale;
 
     protected void ChooseRandomDirection()
     {

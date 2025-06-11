@@ -55,6 +55,8 @@ public class GhostMeleeEnemyAnimationController : MonoBehaviour
         enemyAttack.OnThisEnemyStopAttacking -= EnemyShoot_OnThisEnemyStopAttacking;
 
         enemyHealth.OnThisEnemyDeath -= EnemyHealth_OnThisEnemyDeath;
+
+        meleeEnemyGhosting.OnThisEnemyGhosting -= MeleeEnemyGhosting_OnThisEnemyGhosting;
     }
 
     private void Update()
