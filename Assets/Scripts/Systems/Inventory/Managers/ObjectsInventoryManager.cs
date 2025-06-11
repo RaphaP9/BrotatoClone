@@ -159,7 +159,9 @@ public class ObjectsInventoryManager : MonoBehaviour
 
     private void ClearObjectsInventory() => objectsInventory.Clear();
 
-    public bool ObjectsInventoryFull() => false;
+    public bool ObjectsInventoryFull() => objectsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.objectSlots;
+    public int GetObjectsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.objectSlots;
+
 
     public bool ObjectInInventoryByObjectSO(ObjectSO objectSO)
     {

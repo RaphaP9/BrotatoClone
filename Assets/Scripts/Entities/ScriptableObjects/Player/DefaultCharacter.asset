@@ -34,5 +34,6 @@ MonoBehaviour:
   startingWeapons:
   - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
   - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
+  objectSlots: 12
   startingObjects: []
   characterVisualTransform: {fileID: 7787992204139562473, guid: dcd287ac495cece459748f290bacf97b, type: 3}

@@ -22,13 +22,13 @@ public class ShopInventoriesAdderRemover : MonoBehaviour
                 AddObjectToInventory(inventoryObjectSO as ObjectSO);
                 break;
             case InventoryObjectType.Weapon:
-                AddTreatToInventory(inventoryObjectSO as WeaponSO);
+                AddWeaponToInventory(inventoryObjectSO as WeaponSO);
                 break;
         }
     }
 
     private void AddObjectToInventory(ObjectSO objectSO) => ObjectsInventoryManager.Instance.AddObjectToInventory(objectSO);
-    private void AddTreatToInventory(WeaponSO weaponSO) => WeaponsInventoryManager.Instance.AddWeaponToInventory(weaponSO);
+    private void AddWeaponToInventory(WeaponSO weaponSO) => WeaponsInventoryManager.Instance.AddWeaponToInventory(weaponSO);
 
     private void ShopObjectCardPurchaseHandler_OnAnyShopObjectPurchase(object sender, ShopObjectCardPurchaseHandler.OnShopObjectPurchaseEventArgs e)
     {

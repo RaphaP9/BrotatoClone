@@ -25,6 +25,7 @@ public class CharacterSO : EntitySO
     public List<WeaponSO> startingWeapons;
 
     [Header("Objects")]
+    [Range(5, 20)] public int objectSlots;
     public List<ObjectSO> startingObjects;
 
     [Header("Visual")]

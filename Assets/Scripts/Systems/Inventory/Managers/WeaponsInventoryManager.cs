@@ -175,6 +175,7 @@ public class WeaponsInventoryManager : MonoBehaviour
     private void ClearWeaponsInventory() => weaponsInventory.Clear();
 
     public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.weaponSlots;
+    public int GetWeaponsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.weaponSlots;    
 
     public bool WeaponInInventoryByWeaponSO(WeaponSO weaponSO)
     {

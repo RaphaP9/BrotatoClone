@@ -11,10 +11,14 @@ public class ShopObjectCardPurchaseHandler : MonoBehaviour
     [SerializeField] private Button purchaseButton;
 
     public static event EventHandler<OnShopObjectPurchaseEventArgs> OnAnyShopObjectPurchase;
-    public static event EventHandler<OnShopObjectPurchaseEventArgs> OnAnyShopObjectPurchaseDenied;
+    public static event EventHandler<OnShopObjectPurchaseEventArgs> OnAnyShopObjectPurchaseDeniedByGold;
+    public static event EventHandler<OnShopObjectPurchaseEventArgs> OnAnyShopObjectPurchaseDeniedByObjectsInventory;
+    public static event EventHandler<OnShopObjectPurchaseEventArgs> OnAnyShopObjectPurchaseDeniedByWeaponsInventory;
 
     public event EventHandler<OnShopObjectPurchaseEventArgs> OnShopObjectPurchase;
-    public event EventHandler<OnShopObjectPurchaseEventArgs> OnShopObjectPurchaseDenied;
+    public event EventHandler<OnShopObjectPurchaseEventArgs> OnShopObjectPurchaseDeniedByGold;
+    public event EventHandler<OnShopObjectPurchaseEventArgs> OnShopObjectPurchaseDeniedByObjectsInventory;
+    public event EventHandler<OnShopObjectPurchaseEventArgs> OnShopObjectPurchaseDeniedByWeaponsInventory;
 
     public class OnShopObjectPurchaseEventArgs : EventArgs
     {
@@ -35,8 +39,26 @@ public class ShopObjectCardPurchaseHandler : MonoBehaviour
     {
         if (!GoldManager.Instance.CanSpendGold(inventoryObjectSO.price))
         {
-            DenyPurchase(inventoryObjectSO);
+            DenyPurchaseByGold(inventoryObjectSO);
             return;
+        }
+
+        if(inventoryObjectSO.GetInventoryObjectType() == InventoryObjectType.Object)
+        {
+            if (ObjectsInventoryManager.Instance.ObjectsInventoryFull())
+            {
+                DenyPurchaseByObjectsInventory(inventoryObjectSO);
+                return;
+            }
+        }
+
+        if (inventoryObjectSO.GetInventoryObjectType() == InventoryObjectType.Weapon)
+        {
+            if (WeaponsInventoryManager.Instance.WeaponsInventoryFull())
+            {
+                DenyPurchaseByWeaponsInventory(inventoryObjectSO);
+                return;
+            }
         }
 
         Purchase(inventoryObjectSO);
@@ -50,10 +72,22 @@ public class ShopObjectCardPurchaseHandler : MonoBehaviour
         OnShopObjectPurchase?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
     }
 
-    private void DenyPurchase(InventoryObjectSO inventoryObjectSO)
+    private void DenyPurchaseByGold(InventoryObjectSO inventoryObjectSO)
     {
-        OnAnyShopObjectPurchaseDenied?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
-        OnShopObjectPurchaseDenied?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+        OnAnyShopObjectPurchaseDeniedByGold?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+        OnShopObjectPurchaseDeniedByGold?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+    }
+
+    private void DenyPurchaseByObjectsInventory(InventoryObjectSO inventoryObjectSO)
+    {
+        OnAnyShopObjectPurchaseDeniedByObjectsInventory?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+        OnShopObjectPurchaseDeniedByObjectsInventory?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+    }
+
+    private void DenyPurchaseByWeaponsInventory(InventoryObjectSO inventoryObjectSO)
+    {
+        OnAnyShopObjectPurchaseDeniedByWeaponsInventory?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
+        OnShopObjectPurchaseDeniedByWeaponsInventory?.Invoke(this, new OnShopObjectPurchaseEventArgs { inventoryObjectSO = inventoryObjectSO });
     }
 
     private void UpdateButtonListener(InventoryObjectSO inventoryObjectSO)
