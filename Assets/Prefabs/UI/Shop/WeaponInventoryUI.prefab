@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3334240991787189888}
-  - component: {fileID: 6392466130295947684}
-  - component: {fileID: 4832138516532741898}
+  - component: {fileID: 7614453943386985138}
+  - component: {fileID: 1299020335238542068}
   m_Layer: 5
-  m_Name: ObjectInventoryUI
+  m_Name: WeaponInventoryUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36,9 +36,9 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6392466130295947684
+--- !u!114 &7614453943386985138
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,13 +47,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 3776400872061697604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b6b5ff35eda877d4897831dfadc4d26a, type: 3}
+  m_Script: {fileID: 11500000, guid: dc26be0381c8d9b489ea86c3119f5fe3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectInventoryIdentified:
+  weaponInventoryIdentified:
     GUID: 
-    objectSO: {fileID: 0}
---- !u!114 &4832138516532741898
+    weaponSO: {fileID: 0}
+--- !u!114 &1299020335238542068
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -62,10 +62,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 3776400872061697604}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 129783a157c711f4e8b26beda8cf7ff2, type: 3}
+  m_Script: {fileID: 11500000, guid: c3bd56236663e774d8b7e099fca39298, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  objectInventoryUI: {fileID: 6392466130295947684}
+  weaponInventoryUI: {fileID: 7614453943386985138}
   borders:
   - {fileID: 4586802127590920849}
   commonColor: {r: 0.25882354, g: 0.6313726, b: 1, a: 1}
@@ -73,7 +73,7 @@ MonoBehaviour:
   rareColor: {r: 0.74509805, g: 0.15686275, b: 0.15686275, a: 1}
   epicColor: {r: 0.85882354, g: 0.11764706, b: 0.53333336, a: 1}
   legendaryColor: {r: 1, g: 0.5882353, b: 0, a: 1}
-  objectImage: {fileID: 2744824729133738658}
+  weaponImage: {fileID: 2744824729133738658}
 --- !u!1 &6548345467594582593
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2735849, g: 0.2735849, b: 0.2735849, a: 1}
+  m_Color: {r: 0.3962264, g: 0.3962264, b: 0.3962264, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -163,7 +163,7 @@ GameObject:
   - component: {fileID: 2744824729133738658}
   - component: {fileID: 1473190324765973470}
   m_Layer: 5
-  m_Name: ObjectImage
+  m_Name: WeaponImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

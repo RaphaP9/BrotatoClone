@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Pistol
   objectRarity: 0
   description: Common Pistol
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 505e75357c9b1da49a3780d796101b86, type: 3}
   price: 15
   embeddedStats:
   - statType: 0

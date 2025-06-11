@@ -74,8 +74,7 @@ public class ShopObjectsInventoryHandler : MonoBehaviour
         Transform emptySlotUI = Instantiate(emptySlotPrefab, inventoryObjectsContainer);
     }
 
-
-    private void ObjectsInventoryManager_OnObjectRemovedFromInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
+    private void ObjectsInventoryManager_OnObjectsInventoryInitialized(object sender, ObjectsInventoryManager.OnObjectsEventArgs e)
     {
         UpdateUI();
     }
@@ -85,7 +84,7 @@ public class ShopObjectsInventoryHandler : MonoBehaviour
         UpdateUI();
     }
 
-    private void ObjectsInventoryManager_OnObjectsInventoryInitialized(object sender, ObjectsInventoryManager.OnObjectsEventArgs e)
+    private void ObjectsInventoryManager_OnObjectRemovedFromInventory(object sender, ObjectsInventoryManager.OnObjectEventArgs e)
     {
         UpdateUI();
     }
