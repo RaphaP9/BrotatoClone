@@ -83,7 +83,8 @@ public class MusicManager : MonoBehaviour
         switch (sceneName)
         {
             case GAMEPLAY_SCENE_NAME:
-                //Handled By GameplayMusicManager;
+                PlayMusic(musicPoolSO.gameplayMusic);
+                Debug.Log("GameplayMusicPlay");
                 break;
             case MENU_SCENE_NAME:
                 PlayMusic(musicPoolSO.menuMusic);
@@ -95,12 +96,11 @@ public class MusicManager : MonoBehaviour
                 break;
             case CREDITS_SCENE_NAME:
                 PlayMusic(musicPoolSO.creditsMusic);
-                Debug.Log("CredistMusicPlay");
+                Debug.Log("CreditsMusicPlay");
                 break;
-            case START_CINEMATIC_SCENE_NAME:
-            case END_CINEMATIC_SCENE_NAME:
+            default:
                 StopMusic();
-                Debug.Log("Music Stopped CinematicScene");
+                Debug.Log("Music Stopped");
             break;
         }
     }

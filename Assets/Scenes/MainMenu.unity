@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 2087595554}
-  playScene: CinematicScene
+  playScene: StartCinematic
   creditsButton: {fileID: 1844403886}
   creditsScene: Credits
   quitButton: {fileID: 1678260301}

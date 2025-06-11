@@ -16,14 +16,12 @@ public class WaveUI : MonoBehaviour
 
     private void OnEnable()
     {
-        GeneralWavesManager.OnWaveStart += GeneralWavesManager_OnWaveStart;
-        GeneralWavesManager.OnWaveCompleted += GeneralWavesManager_OnWaveCompleted;
+        GameManager.OnStateChanged += GameManager_OnStateChanged;
     }
 
     private void OnDisable()
     {
-        GeneralWavesManager.OnWaveStart -= GeneralWavesManager_OnWaveStart;
-        GeneralWavesManager.OnWaveCompleted -= GeneralWavesManager_OnWaveCompleted;
+        GameManager.OnStateChanged -= GameManager_OnStateChanged;
     }
 
     private void SetWaveText(int waveNumber) => waveText.text = $"Oleada {waveNumber}";
@@ -40,14 +38,17 @@ public class WaveUI : MonoBehaviour
         animator.SetTrigger(HIDE_TRIGGER);
     }
 
-    private void GeneralWavesManager_OnWaveStart(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    private void GameManager_OnStateChanged(object sender, GameManager.OnStateEventArgs e)
     {
-        SetWaveText(e.waveNumber);
-        ShowUI();
-    }
+        if(e.newState == GameManager.State.StartingWave)
+        {
+            SetWaveText(GeneralWavesManager.Instance.CurrentWaveNumber);
+            ShowUI();
+        }
 
-    private void GeneralWavesManager_OnWaveCompleted(object sender, GeneralWavesManager.OnWaveEventArgs e)
-    {
-        HideUI();
+        if(e.newState == GameManager.State.EndingWave)
+        {
+            HideUI();
+        }
     }
 }
