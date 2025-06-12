@@ -113,12 +113,12 @@ TextureImporter:
       name: Buttons_Red_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 138
-        width: 394
-        height: 128
+        width: 408
+        height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -134,12 +134,12 @@ TextureImporter:
       name: Buttons_Red_1
       rect:
         serializedVersion: 2
-        x: 423
+        x: 408
         y: 138
-        width: 379
-        height: 111
+        width: 408
+        height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -155,12 +155,12 @@ TextureImporter:
       name: Buttons_Red_2
       rect:
         serializedVersion: 2
-        x: 415
+        x: 0
         y: 0
-        width: 395
-        height: 129
+        width: 408
+        height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -176,12 +176,12 @@ TextureImporter:
       name: Buttons_Red_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 408
         y: 0
         width: 408
         height: 138
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []

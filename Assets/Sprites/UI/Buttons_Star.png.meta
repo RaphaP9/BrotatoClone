@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 660e848f7c4394b45a00999d7201f670
+guid: 6aa7a07bdd28bcf4791a24c9d73f6cfa
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -110,55 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Buttons_Purple_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 138
-        width: 408
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: af52167e29f6d8d46ac0d458958887c9
-      internalID: 1008266519
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buttons_Purple_1
-      rect:
-        serializedVersion: 2
-        x: 408
-        y: 138
-        width: 408
-        height: 138
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a4c617b0972fc2f42b788ce7f550b35d
-      internalID: 1338047542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Buttons_Purple_2
+      name: Buttons_Star_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 408
-        height: 138
+        width: 124
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bc29bec1fce9902438a4b6446cd24eae
-      internalID: 1282477793
+      spriteID: 7a74673892b9c954186e8253b7c58c86
+      internalID: 170029012
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Buttons_Purple_3
+      name: Buttons_Star_1
       rect:
         serializedVersion: 2
-        x: 408
+        x: 124
         y: 0
-        width: 408
-        height: 138
+        width: 124
+        height: 131
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +145,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a6fb0b81f7be88640a976839519f8efa
-      internalID: -1526944240
+      spriteID: 1f2ab0fd649a304429725cad1e3dc6c2
+      internalID: -2010471512
       vertices: []
       indices: 
       edges: []
@@ -204,10 +162,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Buttons_Purple_0: 1008266519
-      Buttons_Purple_1: 1338047542
-      Buttons_Purple_2: 1282477793
-      Buttons_Purple_3: -1526944240
+      Buttons_Star_0: 170029012
+      Buttons_Star_1: -2010471512
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
