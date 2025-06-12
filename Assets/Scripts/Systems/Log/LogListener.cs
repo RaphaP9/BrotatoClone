@@ -10,9 +10,9 @@ public class LogListener : MonoBehaviour
         PlayerHealth.OnPlayerTakeBleedDamage += PlayerHealth_OnPlayerTakeBleedDamage;
 
         EnemyKamikaze.OnEnemyExplosion += EnemyKamikaze_OnEnemyExplosion;
+
+        GameManager.OnGameLost += GameManager_OnGameLost;
     }
-
-
 
     private void OnDisable()
     {
@@ -21,6 +21,7 @@ public class LogListener : MonoBehaviour
 
         EnemyKamikaze.OnEnemyExplosion -= EnemyKamikaze_OnEnemyExplosion;
 
+        GameManager.OnGameLost += GameManager_OnGameLost;
     }
 
 
@@ -29,6 +30,7 @@ public class LogListener : MonoBehaviour
     private void PlayerHealth_OnPlayerTakeBleedDamage(object sender, EntityHealth.OnEntityTakeDamageEventArgs e) => GameLogManager.Instance.Log("Player/TakeDamage/Bleed");
 
     private void EnemyKamikaze_OnEnemyExplosion(object sender, EnemyKamikaze.OnEnemyExplosionEventArgs e) => GameLogManager.Instance.Log($"Enemy/SelfDestroy/{e.enemySO.id}");
-    
+
+    private void GameManager_OnGameLost(object sender, System.EventArgs e) => GameLogManager.Instance.Log($"Game/Lose");
     #endregion
 }

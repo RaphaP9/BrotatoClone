@@ -28,6 +28,7 @@ public class NewAttackInput : AttackInput
         if (GameManager.Instance.GameState == GameManager.State.StartingWave) return true;
         if (GameManager.Instance.GameState == GameManager.State.Wave) return true;
         if (GameManager.Instance.GameState == GameManager.State.EndingWave) return true;
+
         return false;
     }
 

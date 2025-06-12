@@ -17,12 +17,16 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(2f, 5f)] private float endingWaveTimer;
     [SerializeField, Range(1f, 5f)] private float dialogueInterval;
 
+    [Header("Lose")]
+    [SerializeField,Range(1f, 3f)] private float timeToEndAfterLose;
+    [SerializeField] private string loseScene;
 
     public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose, Dialogue}
 
     public State GameState => state;
 
     public static event EventHandler<OnStateEventArgs> OnStateChanged;
+    public static event EventHandler OnGameLost;
 
     #region Flags
     private bool firstUpdateLogicCompleted = false;
@@ -42,6 +46,8 @@ public class GameManager : MonoBehaviour
         ShopOpeningManager.OnShopClose += ShopOpeningManager_OnShopClose;
 
         DialogueManager.OnGeneralDialogueConcluded += DialogueManager_OnGeneralDialogueConcluded;
+
+        PlayerHealth.OnPlayerDeath += PlayerHealth_OnPlayerDeath;
     }
 
     private void OnDisable()
@@ -176,6 +182,20 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    private void LoseGame()
+    {
+        StopAllCoroutines();
+        SetGameState(State.Lose);
+        OnGameLost?.Invoke(this, EventArgs.Empty);
+        StartCoroutine(LoseGameCoroutine());
+    }
+
+    private IEnumerator LoseGameCoroutine()
+    {
+        yield return new WaitForSeconds(timeToEndAfterLose);
+        ScenesManager.Instance.FadeLoadTargetScene(loseScene);
+    }
+
     #region GeneralWavesManager Subscriptions
     private void GeneralWavesManager_OnWaveCompleted(object sender, GeneralWavesManager.OnWaveEventArgs e)
     {
@@ -194,6 +214,11 @@ public class GameManager : MonoBehaviour
     private void DialogueManager_OnGeneralDialogueConcluded(object sender, EventArgs e)
     {
         dialogueConcluded = true;
+    }
+
+    private void PlayerHealth_OnPlayerDeath(object sender, EntityHealth.OnEntityDeathEventArgs e)
+    {
+        LoseGame();
     }
     #endregion
 }
