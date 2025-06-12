@@ -53,8 +53,6 @@ public class GoldDropperManager : MonoBehaviour
         int goldDropped = GoldManager.Instance.AddGold(goldAmount);
 
         OnEntityDropGold?.Invoke(this, new OnEntityDropGoldEventArgs { goldAmount = goldDropped, entityPosition = entityPosition });
-
-        Debug.Log($"{goldDropped} gold dropped at {entityPosition}");
     }
 
     private void HandleGoldDrop(object sender, EnemyHealth.OnEnemyDeathEventArgs e)

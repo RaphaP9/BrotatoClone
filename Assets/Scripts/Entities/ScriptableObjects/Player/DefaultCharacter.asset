@@ -17,7 +17,7 @@ MonoBehaviour:
   description: Default Character
   sprite: {fileID: 0}
   damageColor: {r: 1, g: 1, b: 1, a: 1}
-  maxHealth: 100
+  maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 10

@@ -21,7 +21,7 @@ MonoBehaviour:
   embeddedStats:
   - statType: 0
     statModificationType: 0
-    value: 50
+    value: 5
   cost: 0
   weaponType: 1
   fireType: 1
