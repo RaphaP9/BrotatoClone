@@ -116,7 +116,7 @@ TextureImporter:
         x: 0
         y: 132
         width: 128
-        height: 124
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,7 +137,7 @@ TextureImporter:
         x: 128
         y: 132
         width: 128
-        height: 112
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: Minus_buttons_2
       rect:
         serializedVersion: 2
-        x: 128
+        x: 0
         y: 0
         width: 128
-        height: 124
+        height: 132
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,7 +176,7 @@ TextureImporter:
       name: Minus_buttons_3
       rect:
         serializedVersion: 2
-        x: 0
+        x: 128
         y: 0
         width: 128
         height: 132

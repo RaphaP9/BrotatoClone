@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f15d6012d8b82b34f99ae260008381ca
+guid: cf9048e056336234292a785974c9ecc8
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Plus_Buttons_0
+      name: BirdPlayer_Dash_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 132
-        width: 128
-        height: 132
+        y: 604
+        width: 265
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,20 +124,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74567c7f66b5f14438bc782002e122f1
-      internalID: -1715003470
+      spriteID: 10fb6d7215b09f648bb8704c69f2d4a4
+      internalID: 1336156946
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plus_Buttons_1
+      name: BirdPlayer_Dash_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 132
-        width: 128
-        height: 132
+        x: 265
+        y: 604
+        width: 265
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -145,20 +145,146 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a65ce32495db2248b175b786d4ee7fd
-      internalID: -556087159
+      spriteID: 0d491daab012d5a4fbc2f3a3c910db18
+      internalID: 1212889084
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plus_Buttons_2
+      name: BirdPlayer_Dash_2
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 604
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc83c5baa7c4e7448865537abbb67982
+      internalID: -588366734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_3
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 604
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d790575770ca81b4293b12c06b55533c
+      internalID: 1184651378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_4
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 936577a4a7201764e910964f06afaf64
+      internalID: 586633673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_5
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 302
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9bc6224c669905647bfe1f534ff4a733
+      internalID: -165668956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_6
+      rect:
+        serializedVersion: 2
+        x: 530
+        y: 302
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7320628e63e3ca344946efbd8056c50b
+      internalID: -1881994143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_7
+      rect:
+        serializedVersion: 2
+        x: 795
+        y: 302
+        width: 265
+        height: 302
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf545653a10fd6048bca7d1381310500
+      internalID: 736346934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BirdPlayer_Dash_8
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
-        height: 132
+        width: 265
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,20 +292,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: dcffbcf58e929cf488d9ece91bcc2917
-      internalID: -167089552
+      spriteID: 2f69687cd7b132848905e75eb4676070
+      internalID: -1130688388
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Plus_Buttons_3
+      name: BirdPlayer_Dash_9
       rect:
         serializedVersion: 2
-        x: 128
+        x: 265
         y: 0
-        width: 128
-        height: 132
+        width: 265
+        height: 302
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -187,8 +313,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6feb4b8b58df2ce4a8a570dab6428373
-      internalID: -1628319270
+      spriteID: 38532aeaf59d4934cb20d974ebb5a91a
+      internalID: 995137770
       vertices: []
       indices: 
       edges: []
@@ -204,10 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Plus_Buttons_0: -1715003470
-      Plus_Buttons_1: -556087159
-      Plus_Buttons_2: -167089552
-      Plus_Buttons_3: -1628319270
+      BirdPlayer_Dash_0: 1336156946
+      BirdPlayer_Dash_1: 1212889084
+      BirdPlayer_Dash_2: -588366734
+      BirdPlayer_Dash_3: 1184651378
+      BirdPlayer_Dash_4: 586633673
+      BirdPlayer_Dash_5: -165668956
+      BirdPlayer_Dash_6: -1881994143
+      BirdPlayer_Dash_7: 736346934
+      BirdPlayer_Dash_8: -1130688388
+      BirdPlayer_Dash_9: 995137770
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
