@@ -15,7 +15,7 @@ public class EnemySpawnVFXHandler : MonoBehaviour
         enemySpawningHandler.OnThisEnemySpawnStart += EnemySpawningHandler_OnThisEnemySpawnStart;
         enemySpawningHandler.OnThisEnemySpawnAlmostComplete += EnemySpawningHandler_OnThisEnemySpawnComplete;
 
-        enemyHealth.OnThisEnemyDeath -= EnemyHealth_OnThisEnemyDeath;
+        enemyHealth.OnThisEnemyDeath += EnemyHealth_OnThisEnemyDeath;
     }
 
     private void OnDisable()

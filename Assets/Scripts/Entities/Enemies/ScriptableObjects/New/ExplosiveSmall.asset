@@ -28,8 +28,8 @@ MonoBehaviour:
   critChance: 0
   critDamageMultiplier: 0
   enemyPrefab: {fileID: 3877430779044931455, guid: c7410bb03bec20748847796c5dd3921d, type: 3}
-  kamikazeRegularDamage: 5
-  kamikazeBleedDamage: 1
+  kamikazeRegularDamage: 4
+  kamikazeBleedDamage: 0
   kamikazeBleedDuration: 4
   kamikazeBleedTickTime: 1
   kamikazeExplosionTime: 0.45
