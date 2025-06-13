@@ -74,8 +74,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4285267871
+  m_fontColor: {r: 0.62511045, g: 1, b: 0.4198113, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -329,7 +329,7 @@ MonoBehaviour:
   maxAngle: 91
   numberText: {fileID: 8830431119094152469}
   chosenDirection: {x: 0, y: 0}
-  healColor: {r: 0, g: 4, b: 0.6043892, a: 1}
+  healColor: {r: 0, g: 2.9960785, b: 0.1608886, a: 1}
 --- !u!1 &5332708980485238590
 GameObject:
   m_ObjectHideFlags: 0

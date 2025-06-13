@@ -44,6 +44,9 @@ TagManager:
   - name: Entity
     uniqueID: 1532604799
     locked: 0
+  - name: VFX
+    uniqueID: 2912924855
+    locked: 0
   - name: Enemies
     uniqueID: 881589521
     locked: 0

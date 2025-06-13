@@ -7,7 +7,7 @@ public abstract class EnemySO : EntitySO
     [Header("Enemy Stats Settings")]
     [Range(0,100)] public int goldDrop;
     [Space]
-    [Range(1f, 5f)] public float spawnDuration;
+    [Range(0.5f, 5f)] public float spawnDuration;
     [Range(1f, 10f)] public float cleanupTime;
     [Space]
     [Range(0f, 1f)] public float critChance;

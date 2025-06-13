@@ -20,6 +20,10 @@ public class EnemySpawningHandler : MonoBehaviour
     public event EventHandler<OnEnemySpawnEventArgs> OnThisEnemySpawnStart;
     public event EventHandler<OnEnemySpawnEventArgs> OnThisEnemySpawnComplete;
 
+    public event EventHandler<OnEnemySpawnEventArgs> OnThisEnemySpawnAlmostComplete;
+
+    private const float ALMOST_COMPLETE_SPAWN_TIME = 0.2f;
+
     public class OnEnemySpawnEventArgs
     {
         public int id;
@@ -40,6 +44,16 @@ public class EnemySpawningHandler : MonoBehaviour
         float spawningTimer = 0f;
 
         while (spawningTimer < enemyIdentifier.EnemySO.spawnDuration)
+        {
+            spawningTimer += Time.deltaTime;
+            yield return null;
+        }
+
+        OnThisEnemySpawnAlmostComplete?.Invoke(this, new OnEnemySpawnEventArgs { id = enemyIdentifier.EnemySO.id });
+
+        spawningTimer = 0f;
+
+        while (spawningTimer < ALMOST_COMPLETE_SPAWN_TIME)
         {
             spawningTimer += Time.deltaTime;
             yield return null;
