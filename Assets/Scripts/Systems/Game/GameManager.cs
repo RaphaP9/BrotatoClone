@@ -56,6 +56,8 @@ public class GameManager : MonoBehaviour
         ShopOpeningManager.OnShopClose -= ShopOpeningManager_OnShopClose;
 
         DialogueManager.OnGeneralDialogueConcluded -= DialogueManager_OnGeneralDialogueConcluded;
+
+        PlayerHealth.OnPlayerDeath -= PlayerHealth_OnPlayerDeath;
     }
 
     private void Awake()
