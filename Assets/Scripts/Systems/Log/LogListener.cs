@@ -21,7 +21,7 @@ public class LogListener : MonoBehaviour
 
         EnemyKamikaze.OnEnemyExplosion -= EnemyKamikaze_OnEnemyExplosion;
 
-        GameManager.OnGameLost += GameManager_OnGameLost;
+        GameManager.OnGameLost -= GameManager_OnGameLost;
     }
 
 

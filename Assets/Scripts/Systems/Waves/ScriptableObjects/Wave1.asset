@@ -15,5 +15,5 @@ MonoBehaviour:
   duration: 20
   baseSpawnTime: 4
   waveEnemies:
-  - enemySO: {fileID: 11400000, guid: 6909b0b1b743df041867a3c20567c39f, type: 2}
+  - enemySO: {fileID: 11400000, guid: 3755b4f67543af64c95312df28039532, type: 2}
     weight: 4

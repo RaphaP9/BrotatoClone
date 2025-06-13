@@ -12124,7 +12124,7 @@ MonoBehaviour:
   - id: 1
     logToShake: Player/TakeDamage/Regular
     settings:
-      amplitude: 1.5
+      amplitude: 1
       frequency: 2
       shakeTime: 0.3
       shakeFadeInTime: 0.05
@@ -12141,6 +12141,14 @@ MonoBehaviour:
     logToShake: Enemy/SelfDestroy/1
     settings:
       amplitude: 4
+      frequency: 2
+      shakeTime: 0.5
+      shakeFadeInTime: 0.05
+      shakeFadeOutTime: 0.05
+  - id: 3
+    logToShake: Enemy/SelfDestroy/2
+    settings:
+      amplitude: 1.5
       frequency: 2
       shakeTime: 0.5
       shakeFadeInTime: 0.05
