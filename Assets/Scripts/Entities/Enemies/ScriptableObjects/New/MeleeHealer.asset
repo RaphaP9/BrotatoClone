@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51d6b5f4c2fb29342b6b60b6d5ac10f4, type: 3}
+  m_Name: MeleeHealer
+  m_EditorClassIdentifier: 
+  id: 5
+  entityName: MeleeHealer
+  description: MeleeHealer
+  sprite: {fileID: 0}
+  damageColor: {r: 1, g: 0.23921569, b: 0.23921569, a: 1}
+  maxHealth: 20
+  armorPercentage: 0
+  dodgeChance: 0
+  moveSpeed: 3
+  lifeSteal: 0
+  goldDrop: 1
+  spawnDuration: 3
+  cleanupTime: 3
+  critChance: 0
+  critDamageMultiplier: 0
+  enemyPrefab: {fileID: 3877430779044931455, guid: bc73dd5d4eb76d84caa36f5c6cf69e27, type: 3}
+  attackDistance: 3
+  chargingTime: 0.25
+  attackingTime: 0.2
+  postAttackTime: 0.25
+  attackRegularDamage: 3
+  attackBleedDamage: 0
+  attackBleedDuration: 2
+  attackBleedTickTime: 0.5
+  attackArea: 1

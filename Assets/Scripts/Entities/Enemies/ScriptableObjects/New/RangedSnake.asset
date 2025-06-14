@@ -38,9 +38,9 @@ MonoBehaviour:
   projectileBleedDamage: 1
   projectileBleedDuration: 2
   projectileBleedTickTime: 1
-  projectileRange: 10
+  projectileRange: 15
   projectileSpeed: 5
   dispersionAngle: 0
   projectileDamageType: 0
   projectileArea: 0
-  projectilePrefab: {fileID: 909037060864899003, guid: 3c361aca19d8adc4aa04f3701e2317c2, type: 3}
+  projectilePrefab: {fileID: 909037060864899003, guid: 0415a0d89d2f22d4f9df2e97d647fcef, type: 3}

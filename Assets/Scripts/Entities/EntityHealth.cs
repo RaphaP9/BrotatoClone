@@ -296,7 +296,7 @@ public abstract class EntityHealth : MonoBehaviour
     protected void SetIsBleeding(bool bleeding) => isBleeding = bleeding;
     protected void SetCurrentBleedDamage(int damage) => currentBleedDamage = damage;
     public void SetIsGhosted(bool value) => isGhosted = value; //When Ghosted, entity does not take damage and proyectiles do not collide;
-    protected bool IsFullHealth() => currentHealth == maxHealth;
+    public bool IsFullHealth() => currentHealth == maxHealth;
 
     public abstract void InstaKill(IDamageDealer damageSource);
 

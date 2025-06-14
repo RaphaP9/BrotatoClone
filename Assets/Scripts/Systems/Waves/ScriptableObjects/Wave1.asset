@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Wave1
   m_EditorClassIdentifier: 
   duration: 20
-  baseSpawnTime: 4
+  baseSpawnTime: 10
   waveEnemies:
-  - enemySO: {fileID: 11400000, guid: 87a9837c76e011348900579f330ed422, type: 2}
+  - enemySO: {fileID: 11400000, guid: 7b1df4dfd2933f7478540dc9197df593, type: 2}
     weight: 4

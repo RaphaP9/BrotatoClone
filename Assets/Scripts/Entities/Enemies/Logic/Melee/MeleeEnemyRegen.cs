@@ -29,6 +29,9 @@ public class MeleeEnemyRegen : MonoBehaviour
     public static event EventHandler OnEnemyRenegInterrupted;
     public event EventHandler OnThisEnemyRenegInterrupted;
 
+    public static event EventHandler OnEnemyRenegInterruptedFullHealth;
+    public event EventHandler OnThisEnemyRenegInterruptedFullHealth;
+
     private void OnEnable()
     {
         enemySpawningHandler.OnThisEnemySpawnComplete += EnemySpawningHandler_OnThisEnemySpawnComplete;
@@ -55,14 +58,14 @@ public class MeleeEnemyRegen : MonoBehaviour
 
     private void Start()
     {
-        SetGhostingState(RegenState.NotRegenerating);
+        SetRegenState(RegenState.NotRegenerating);
     }
 
     private IEnumerator RegenerateEnemyAfterTimeCoroutine(float time)
     {
         if (regenState == RegenState.Regenerating) yield break;
 
-        SetGhostingState(RegenState.Regenerating);
+        SetRegenState(RegenState.Regenerating);
 
         yield return new WaitForSeconds(time);
 
@@ -71,6 +74,13 @@ public class MeleeEnemyRegen : MonoBehaviour
 
         while (true)
         {
+            if (enemyHealth.IsFullHealth())
+            {
+                OnEnemyRenegInterruptedFullHealth?.Invoke(this, EventArgs.Empty);
+                OnThisEnemyRenegInterruptedFullHealth?.Invoke(this, EventArgs.Empty);
+                break;
+            }
+
             enemyHealth.Heal(regeneration);
             yield return new WaitForSeconds(regenInterval);
         }
@@ -80,7 +90,7 @@ public class MeleeEnemyRegen : MonoBehaviour
     {
         if (regenState != RegenState.Regenerating) return;
 
-        SetGhostingState(RegenState.NotRegenerating);
+        SetRegenState(RegenState.NotRegenerating);
 
         StopAllCoroutines();
 
@@ -88,7 +98,7 @@ public class MeleeEnemyRegen : MonoBehaviour
         OnThisEnemyRenegInterrupted?.Invoke(this, EventArgs.Empty);
     }
 
-    private void SetGhostingState(RegenState ghostingState) => this.regenState = ghostingState;
+    private void SetRegenState(RegenState regenState) => this.regenState = regenState;
 
     #region Susbcriptions
     private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
