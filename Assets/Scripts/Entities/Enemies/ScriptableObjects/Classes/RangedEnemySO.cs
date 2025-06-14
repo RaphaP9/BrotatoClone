@@ -18,7 +18,7 @@ public class RangedEnemySO : EnemySO, IProjectileSpawner
     [Range(0, 10)] public int projectileRegularDamage;
     [Space]
     [Range(0f, 10)] public int projectileBleedDamage;
-    [Range(2f, 10f)] public float projectileBleedDuration;
+    [Range(1f, 10f)] public float projectileBleedDuration;
     [Range(0.25f, 2f)] public float projectileBleedTickTime;
     [Space]
     [Range(3f, 20f)] public float projectileRange;

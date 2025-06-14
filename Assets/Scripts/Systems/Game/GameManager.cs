@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance {  get; private set; }
+    public static int LastWave;
 
     [Header("States")]
     [SerializeField] private State state;
@@ -63,12 +64,16 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         SetSingleton();
+        ResetWavesSurvived();
     }
 
     private void Update()
     {
         FirstUpdateLogic();
     }
+
+    private void SetLastWaveSurvived(int wave) => LastWave = wave;
+    private void ResetWavesSurvived() => LastWave = 1;
 
     private void FirstUpdateLogic()
     {
@@ -140,6 +145,8 @@ public class GameManager : MonoBehaviour
             }
             #endregion
 
+            SetLastWaveSurvived(waveNumber);
+
             #region Wave Logic
             ChangeState(State.StartingWave);
             yield return new WaitForSeconds(startingWaveTimer);
@@ -153,7 +160,6 @@ public class GameManager : MonoBehaviour
             ChangeState(State.EndingWave);
             yield return new WaitForSeconds(endingWaveTimer);
             #endregion
-
 
             #region PostCombat Dialogue Logic
             if (DialogueTriggerHandler.Instance.ExistDialogueWithConditions(characterSO, waveNumber, DialogueChronology.PostCombat))

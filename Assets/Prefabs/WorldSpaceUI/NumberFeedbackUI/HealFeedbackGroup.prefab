@@ -329,7 +329,7 @@ MonoBehaviour:
   maxAngle: 91
   numberText: {fileID: 8830431119094152469}
   chosenDirection: {x: 0, y: 0}
-  healColor: {r: 0, g: 2.9960785, b: 0.1608886, a: 1}
+  healColor: {r: 0.370199, g: 0.9811321, b: 0.26379493, a: 1}
 --- !u!1 &5332708980485238590
 GameObject:
   m_ObjectHideFlags: 0

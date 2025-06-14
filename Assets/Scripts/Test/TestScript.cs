@@ -56,6 +56,6 @@ public class TestScript : MonoBehaviour
     {
         if (e.damageSource.GetDamageDealerClassification() != DamageDealerClassification.Weapon) return;
 
-        Debug.Log(e.enemySO.goldDrop);
+        //Debug.Log(e.enemySO.goldDrop);
     }
 }
