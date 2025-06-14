@@ -41,6 +41,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: EnvironmentUnder
+    uniqueID: 2766396283
+    locked: 0
   - name: Shadows
     uniqueID: 933808741
     locked: 0
@@ -58,6 +61,9 @@ TagManager:
     locked: 0
   - name: Projectiles
     uniqueID: 2877149733
+    locked: 0
+  - name: EnvironmentOver
+    uniqueID: 4080012849
     locked: 0
   - name: UI
     uniqueID: 208162151
