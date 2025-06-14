@@ -114,9 +114,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 468
-        width: 167
-        height: 156
+        y: 159
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -134,10 +134,10 @@ TextureImporter:
       name: MeleeHealer_Run_1
       rect:
         serializedVersion: 2
-        x: 167
-        y: 468
-        width: 167
-        height: 156
+        x: 144
+        y: 159
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,10 +155,10 @@ TextureImporter:
       name: MeleeHealer_Run_2
       rect:
         serializedVersion: 2
-        x: 334
-        y: 468
-        width: 167
-        height: 156
+        x: 288
+        y: 159
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,10 +176,10 @@ TextureImporter:
       name: MeleeHealer_Run_3
       rect:
         serializedVersion: 2
-        x: 501
-        y: 468
-        width: 167
-        height: 156
+        x: 432
+        y: 159
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -198,9 +198,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 312
-        width: 167
-        height: 156
+        y: 0
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,10 +218,10 @@ TextureImporter:
       name: MeleeHealer_Run_5
       rect:
         serializedVersion: 2
-        x: 167
-        y: 312
-        width: 167
-        height: 156
+        x: 144
+        y: 0
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,10 +239,10 @@ TextureImporter:
       name: MeleeHealer_Run_6
       rect:
         serializedVersion: 2
-        x: 334
-        y: 312
-        width: 167
-        height: 156
+        x: 288
+        y: 0
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -260,10 +260,10 @@ TextureImporter:
       name: MeleeHealer_Run_7
       rect:
         serializedVersion: 2
-        x: 501
-        y: 312
-        width: 167
-        height: 156
+        x: 432
+        y: 0
+        width: 144
+        height: 159
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,174 +273,6 @@ TextureImporter:
       bones: []
       spriteID: 1351b3bada6337e4d90fce99e0f433d7
       internalID: -139526233
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_8
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 156
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 7a438cce80fd4ae4eb716fd9e8fd3551
-      internalID: -104596645
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_9
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 156
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a3a2e7fb310e657478654e314e00a028
-      internalID: 1446522246
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_10
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 156
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 3e705113da894d44a9bc6b2e517eec4b
-      internalID: 1769140429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_11
-      rect:
-        serializedVersion: 2
-        x: 501
-        y: 156
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 9aa3942e745ce28429b8512bdc987a8b
-      internalID: -972186219
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_12
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 0
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 0e7ad0a950123fd4f8fe2cbaf9a6c021
-      internalID: -289208887
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_13
-      rect:
-        serializedVersion: 2
-        x: 167
-        y: 0
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1d2525db24cd7c24aa03d51a66ce1aec
-      internalID: -1813239997
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_14
-      rect:
-        serializedVersion: 2
-        x: 334
-        y: 0
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: fbfc3c7478439654a8a67766a419e3f1
-      internalID: 1292688540
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: MeleeHealer_Run_15
-      rect:
-        serializedVersion: 2
-        x: 501
-        y: 0
-        width: 167
-        height: 156
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5b992dfeaca6c934f8408922199134a4
-      internalID: 1472031457
       vertices: []
       indices: 
       edges: []
@@ -458,20 +290,12 @@ TextureImporter:
     nameFileIdTable:
       MeleeHealer_Run_0: 1910122606
       MeleeHealer_Run_1: 1810274730
-      MeleeHealer_Run_10: 1769140429
-      MeleeHealer_Run_11: -972186219
-      MeleeHealer_Run_12: -289208887
-      MeleeHealer_Run_13: -1813239997
-      MeleeHealer_Run_14: 1292688540
-      MeleeHealer_Run_15: 1472031457
       MeleeHealer_Run_2: -1745641747
       MeleeHealer_Run_3: 339608963
       MeleeHealer_Run_4: 2012144360
       MeleeHealer_Run_5: -113234794
       MeleeHealer_Run_6: -2049978718
       MeleeHealer_Run_7: -139526233
-      MeleeHealer_Run_8: -104596645
-      MeleeHealer_Run_9: 1446522246
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
