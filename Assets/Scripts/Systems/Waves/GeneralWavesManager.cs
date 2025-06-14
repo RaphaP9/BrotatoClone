@@ -44,11 +44,13 @@ public class GeneralWavesManager : MonoBehaviour
     private void OnEnable()
     {
         WaveSpawningSystemManager.OnWaveCompleted += WaveSpawningSystemManager_OnWaveCompleted;
+        GameManager.OnGameLost += GameManager_OnGameLost;
     }
 
     private void OnDisable()
     {
         WaveSpawningSystemManager.OnWaveCompleted -= WaveSpawningSystemManager_OnWaveCompleted;
+        GameManager.OnGameLost -= GameManager_OnGameLost;
     }
 
     private void Awake()
@@ -149,6 +151,11 @@ public class GeneralWavesManager : MonoBehaviour
     private void WaveSpawningSystemManager_OnWaveCompleted(object sender, WaveSpawningSystemManager.OnWaveEventArgs e)
     {
         waveCompleted = true;
+    }
+
+    private void GameManager_OnGameLost(object sender, EventArgs e)
+    {
+        SuddenCompleteWave();
     }
     #endregion
 }
