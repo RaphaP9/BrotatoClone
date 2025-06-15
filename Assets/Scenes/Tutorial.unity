@@ -17552,7 +17552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   state: 0
   previousState: 0
-  startingGameTimer: 2
+  startingGameTimer: 1.5
   startingWaveTimer: 2
   endingWaveTimer: 2
   dialogueInterval: 0.5

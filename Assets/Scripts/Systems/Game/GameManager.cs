@@ -13,9 +13,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private State previousState;
 
     [Header("Settings")]
-    [SerializeField, Range (2f,5f)] private float startingGameTimer;
-    [SerializeField, Range(2f, 5f)] private float startingWaveTimer;
-    [SerializeField, Range(2f, 5f)] private float endingWaveTimer;
+    [SerializeField, Range (1f,5f)] private float startingGameTimer;
+    [SerializeField, Range(1f, 5f)] private float startingWaveTimer;
+    [SerializeField, Range(1f, 5f)] private float endingWaveTimer;
     [SerializeField, Range(0.5f, 5f)] private float dialogueInterval;
     [Space]
     [SerializeField] private bool infiniteWaves;

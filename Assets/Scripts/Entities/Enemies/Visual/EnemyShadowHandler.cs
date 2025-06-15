@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.VFX;
 
 public class EnemyShadowHandler : MonoBehaviour
 {
@@ -37,6 +36,7 @@ public class EnemyShadowHandler : MonoBehaviour
 
     private void EnemySpawningHandler_OnThisEnemySpawnComplete(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
     {
+        if (!enemyHealth.IsAlive()) return;
         EnableShadow();
     }
 

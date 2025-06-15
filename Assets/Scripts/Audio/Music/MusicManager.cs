@@ -15,6 +15,7 @@ public class MusicManager : MonoBehaviour
 
     private AudioSource audioSource;
 
+    private const string WELCOME_SCENE_NAME = "WelcomeScene";
     private const string MENU_SCENE_NAME = "MainMenu";
     private const string GAMEPLAY_SCENE_NAME = "Gameplay";
     private const string OPTIONS_SCENE_NAME = "Options";
@@ -103,6 +104,10 @@ public class MusicManager : MonoBehaviour
             case LOSE_SCENE_NAME:
                 PlayMusic(musicPoolSO.loseMusic);
                 Debug.Log("LoseMusicPlay");
+                break;
+            case WELCOME_SCENE_NAME:
+                PlayMusic(musicPoolSO.welcomeMusic);
+                Debug.Log("WelcomeMusicPlay");
                 break;
             default:
                 StopMusic();

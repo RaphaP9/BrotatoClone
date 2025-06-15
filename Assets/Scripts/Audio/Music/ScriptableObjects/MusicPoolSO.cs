@@ -6,6 +6,7 @@ using UnityEngine;
 public class MusicPoolSO : ScriptableObject
 {
     [Header("Scenes")]
+    public AudioClip welcomeMusic;
     public AudioClip menuMusic;
     public AudioClip optionsMusic;
     public AudioClip creditsMusic;
