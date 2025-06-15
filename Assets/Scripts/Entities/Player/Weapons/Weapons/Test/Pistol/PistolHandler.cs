@@ -11,7 +11,7 @@ public class PistolHandler : RangedWeaponHandler
 
     protected override void Attack()
     {
-        ShootProjectile(projectilePrefab, firePoint);
+        ShootProjectile(projectilePrefab, firePoint, weaponAim.AimDirection);
     }
 
     private void OnDrawGizmos()

@@ -18,11 +18,9 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
         public Transform firePoint;
     }
 
-    protected void ShootProjectile(Transform projectilePrefab, Transform firePoint)
+    protected void ShootProjectile(Transform projectilePrefab, Transform firePoint, Vector2 shootDirection)
     {
         bool isCrit = GeneralGameplayUtilities.EvaluateCritAttack(GetWeaponModifiedCritChance());
-
-        Vector2 shootDirection = weaponAim.AimDirection;
         Vector2 shootPosition = GeneralUtilities.TransformPositionVector2(firePoint);
 
         CreateProjectile(projectilePrefab, shootPosition, shootDirection, isCrit);

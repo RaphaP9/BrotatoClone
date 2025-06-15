@@ -17,8 +17,5 @@ public abstract class InventoryObjectSO : ScriptableObject
     [Header("Embedded Stats")]
     public List<EmbeddedStat> embeddedStats;
 
-    [Header("Cost")]
-    public int cost;
-
     public abstract InventoryObjectType GetInventoryObjectType();
 }
