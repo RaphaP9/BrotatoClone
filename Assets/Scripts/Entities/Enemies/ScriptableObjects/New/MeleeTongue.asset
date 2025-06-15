@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
-  moveSpeed: 3
+  moveSpeed: 2
   lifeSteal: 0
   goldDrop: 1
   spawnDuration: 3

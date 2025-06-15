@@ -17,12 +17,12 @@ MonoBehaviour:
   description: MeleeGhost
   sprite: {fileID: 0}
   damageColor: {r: 0.49056602, g: 0.034709856, b: 0.034709856, a: 1}
-  maxHealth: 20
+  maxHealth: 100
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 3
   lifeSteal: 0
-  goldDrop: 1
+  goldDrop: 10
   spawnDuration: 3
   cleanupTime: 3
   critChance: 0

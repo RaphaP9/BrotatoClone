@@ -20,7 +20,7 @@ MonoBehaviour:
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
-  moveSpeed: 3
+  moveSpeed: 2.5
   lifeSteal: 0
   goldDrop: 2
   spawnDuration: 3
@@ -31,9 +31,9 @@ MonoBehaviour:
   tooCloseDistance: 4.5
   preferredDistance: 8
   tooFarDistance: 15
-  aimingTime: 0.2
-  shootingTime: 0.2
-  postShootTime: 0.35
+  aimingTime: 0.3
+  shootingTime: 0.3
+  postShootTime: 0.55
   projectileRegularDamage: 2
   projectileBleedDamage: 0
   projectileBleedDuration: 2

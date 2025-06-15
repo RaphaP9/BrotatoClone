@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range(0.5f, 5f)] private float dialogueInterval;
     [Space]
     [SerializeField] private bool infiniteWaves;
+    [SerializeField] private bool ignoreGameFlow;
 
     [Header("Lose")]
     [SerializeField,Range(1f, 3f)] private float timeToEndAfterLose;
@@ -125,8 +126,11 @@ public class GameManager : MonoBehaviour
     #region Logic
     private IEnumerator GameCoroutine()
     {
-        //ChangeState(State.Wave); //Testing Enemies Only
-        //yield break;
+        if (ignoreGameFlow)
+        {
+            ChangeState(State.Wave);
+            yield break;
+        }
 
         ChangeState(State.StartingGame);
         yield return new WaitForSeconds(startingGameTimer);

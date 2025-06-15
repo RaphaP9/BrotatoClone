@@ -17,12 +17,12 @@ MonoBehaviour:
   description: MeleeRocky
   sprite: {fileID: 60566752, guid: e163217e094bdc041a3a3326fd90914a, type: 3}
   damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
-  maxHealth: 20
+  maxHealth: 50
   armorPercentage: 0
   dodgeChance: 0
-  moveSpeed: 3
+  moveSpeed: 2
   lifeSteal: 0
-  goldDrop: 1
+  goldDrop: 5
   spawnDuration: 3
   cleanupTime: 3
   critChance: 0
@@ -32,7 +32,7 @@ MonoBehaviour:
   chargingTime: 0.25
   attackingTime: 0.2
   postAttackTime: 0.25
-  attackRegularDamage: 4
+  attackRegularDamage: 5
   attackBleedDamage: 0
   attackBleedDuration: 2
   attackBleedTickTime: 0.5
