@@ -8,7 +8,9 @@ public class EnemySpawnVFXHandler : MonoBehaviour
     [Header("Components")]
     [SerializeField] private EnemySpawningHandler enemySpawningHandler;
     [SerializeField] private EnemyHealth enemyHealth;
-    [SerializeField] private VisualEffect visualEffect; 
+    [SerializeField] private VisualEffect visualEffect;
+
+    private const float LIFESPAN = 2f;
 
     private void OnEnable()
     {
@@ -36,6 +38,14 @@ public class EnemySpawnVFXHandler : MonoBehaviour
     {
         transform.SetParent(null);
         visualEffect.Stop();
+
+        StartCoroutine(DestroyCoroutine());
+    }
+
+    private IEnumerator DestroyCoroutine()
+    {
+        yield return new WaitForSeconds(LIFESPAN);
+        Destroy(gameObject);
     }
 
     private void EnemySpawningHandler_OnThisEnemySpawnStart(object sender, EnemySpawningHandler.OnEnemySpawnEventArgs e)
