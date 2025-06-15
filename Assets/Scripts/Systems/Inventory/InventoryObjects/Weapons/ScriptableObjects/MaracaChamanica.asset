@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75243dc7122d8c24e941d81c3888e838, type: 3}
+  m_Name: MaracaChamanica
+  m_EditorClassIdentifier: 
+  id: 6
+  inventoryObjectName: "Maraca Cham\xE1nica"
+  objectRarity: 1
+  description: "Maraca Cham\xE1nica"
+  sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
+  price: 10
+  embeddedStats: []
+  weaponType: 0
+  fireType: 1
+  regularDamage: 5
+  bleedDamage: 0
+  bleedDuration: 2
+  bleedTickTime: 0.25
+  critChance: 0
+  critDamageMultiplier: 0
+  damageColor: {r: 0.78431374, g: 0.09803922, b: 0.09803922, a: 1}
+  weaponTransform: {fileID: 625562748042871188, guid: e1436e74e037bed4b9692f39f90d7910, type: 3}
+  attackSpeed: 4
+  attackArea: 1
