@@ -14,9 +14,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   dialogueSentences:
-  - localID: 0
+  - localID: 1
     dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
-    sentenceText: Listo
+    sentenceText: "Con esto dicho, podr\xE1s emprender tu viaje y enfrentarte a las
+      adversidades que aparezcan en tu camino."
+    speakerOnRight: 0
+    triggerSentenceTransition: 0
+    audioClip: {fileID: 0}
+  - localID: 2
+    dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
+    sentenceText: "No te conf\xEDes Paloma, pues los peligros abundan."
+    speakerOnRight: 0
+    triggerSentenceTransition: 0
+    audioClip: {fileID: 0}
+  - localID: 3
+    dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
+    sentenceText: Buena suerte, que Wiracocha se apiade de ti.
     speakerOnRight: 0
     triggerSentenceTransition: 0
     audioClip: {fileID: 0}

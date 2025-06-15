@@ -18,33 +18,54 @@ MonoBehaviour:
     weight: 80
     cap: 3
   - objectType: 0
-    weight: 20
+    weight: 30
     cap: 1
   inventoryObjectRaritySettings:
   - objectRarity: 0
-    weight: 1
-    cap: 2
+    weight: 100
+    cap: 5
   - objectRarity: 1
-    weight: 1
+    weight: 30
     cap: 2
   - objectRarity: 2
-    weight: 1
-    cap: 2
+    weight: 15
+    cap: 1
   - objectRarity: 3
-    weight: 1
-    cap: 2
+    weight: 5
+    cap: 1
   - objectRarity: 4
-    weight: 1
-    cap: 2
-  rerollBaseCost: 5
+    weight: 5
+    cap: 1
+  rerollBaseCost: 3
   rerollCostIncreasePerReroll: 1
   weaponsPool:
-  - {fileID: 11400000, guid: dbb2b4922ed9b214e88ff857e402d06e, type: 2}
-  - {fileID: 11400000, guid: f20d295efea2ee84c9595b69c025ea9c, type: 2}
+  - {fileID: 11400000, guid: 55632c6d15e05c14a87ec175668a4345, type: 2}
+  - {fileID: 11400000, guid: de294cefb4d92ae498ad236e25d88761, type: 2}
+  - {fileID: 11400000, guid: 2009ff59a6b32c24bac21e0d1f85acff, type: 2}
+  - {fileID: 11400000, guid: bcfd2b12f57511e47b5ac064d45f264b, type: 2}
+  - {fileID: 11400000, guid: 324fd047d79c07741b0b428f72708840, type: 2}
+  - {fileID: 11400000, guid: e2d2c6f02cd1bfc4eb14b88cdaeacc5a, type: 2}
+  - {fileID: 11400000, guid: 918e9d888e8fc3f4abc2e7a97285adf3, type: 2}
+  - {fileID: 11400000, guid: c0e57b6370e069246873bc0d2e5bce77, type: 2}
   objectsPool:
-  - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
-  - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}
-  - {fileID: 11400000, guid: 79c0384ac9a551e4fa7001f7867aa773, type: 2}
+  - {fileID: 11400000, guid: 3cc2b66580eb286489c03d53b2028461, type: 2}
+  - {fileID: 11400000, guid: 05d42efa56afc5f4e98e8747a69a326e, type: 2}
+  - {fileID: 11400000, guid: e95b0ddaeca655b42a2d8279c67e5ba1, type: 2}
+  - {fileID: 11400000, guid: d55f306166682fb4c89f87b23b81f04a, type: 2}
+  - {fileID: 11400000, guid: 0b8728947f0d99747a0341761a87240b, type: 2}
+  - {fileID: 11400000, guid: d9495a8560bdc544f9cb7702304e9b7c, type: 2}
+  - {fileID: 11400000, guid: 3a49c6bfc83df5644838c1b2551a9aad, type: 2}
+  - {fileID: 11400000, guid: 1e0149960a48ee14c8409487961f73e8, type: 2}
+  - {fileID: 11400000, guid: 5febda4a8164f5944a71f404df62569e, type: 2}
+  - {fileID: 11400000, guid: 272cb947c5956354e8bb7ffa19f65814, type: 2}
+  - {fileID: 11400000, guid: 0796d8e24addf15458a58d6e645151e6, type: 2}
+  - {fileID: 11400000, guid: 38b806b5613b15b42bd251afe8f4d7a1, type: 2}
+  - {fileID: 11400000, guid: 8edf547afa29b664fab0a01399a38d99, type: 2}
+  - {fileID: 11400000, guid: 71b0bb343fa9a244591f0b516cccab4b, type: 2}
   randomBreakerInventoryObjectList:
-  - {fileID: 11400000, guid: 4143d17481e729044a7667acbcc35f85, type: 2}
-  - {fileID: 11400000, guid: 295668a1831e49442afacfa05559a2e3, type: 2}
+  - {fileID: 11400000, guid: 2009ff59a6b32c24bac21e0d1f85acff, type: 2}
+  - {fileID: 11400000, guid: de294cefb4d92ae498ad236e25d88761, type: 2}
+  - {fileID: 11400000, guid: 5febda4a8164f5944a71f404df62569e, type: 2}
+  - {fileID: 11400000, guid: 272cb947c5956354e8bb7ffa19f65814, type: 2}
+  - {fileID: 11400000, guid: 0796d8e24addf15458a58d6e645151e6, type: 2}
+  - {fileID: 11400000, guid: 71b0bb343fa9a244591f0b516cccab4b, type: 2}

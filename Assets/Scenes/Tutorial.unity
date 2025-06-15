@@ -9861,7 +9861,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6678a8658d628554189e7d152010c98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGold: 100
+  currentGold: 20
   debug: 0
 --- !u!1 &1020644032
 GameObject:

@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3fe289dfdf1a14bbe5289d28f81b12, type: 3}
+  m_Name: AmuletoDeLosJaguaresCelestes
+  m_EditorClassIdentifier: 
+  id: 12
+  inventoryObjectName: Amuleto de los Jaguares Celestes
+  objectRarity: 1
+  description: Otorga la fiereza y el instinto de los protectores de la selva.
+  sprite: {fileID: 0}
+  price: 15
+  embeddedStats:
+  - statType: 9
+    statModificationType: 0
+    value: 0.1
+  - statType: 12
+    statModificationType: 0
+    value: 0.03

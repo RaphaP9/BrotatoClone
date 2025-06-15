@@ -14,10 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 7
   inventoryObjectName: Daga de Caoba
-  objectRarity: 1
-  description: Daga de Caoba
+  objectRarity: 0
+  description: Hoja liviana tallada en madera.
   sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
-  price: 10
+  price: 15
   embeddedStats: []
   weaponType: 0
   fireType: 1

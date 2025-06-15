@@ -22,6 +22,7 @@ public class TypewriterHandler : MonoBehaviour
     private bool SkipInput => DialogueInput.Instance.GetSkipDown();
 
     private const char PERIOD_CHARACTER = '.';
+    private const char COMA_CHARACTER = ',';
 
     //Runtime Filled Values
     private int currentVisibleCharacterIndex;
@@ -201,6 +202,7 @@ public class TypewriterHandler : MonoBehaviour
     private bool EvaluateInterpuntuationCharacter(char character)
     {
         if (character == PERIOD_CHARACTER) return true;
+        if (character == COMA_CHARACTER) return true;
 
         return false;
     }

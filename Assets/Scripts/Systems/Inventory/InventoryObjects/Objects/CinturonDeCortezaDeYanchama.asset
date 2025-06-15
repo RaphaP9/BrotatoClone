@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3fe289dfdf1a14bbe5289d28f81b12, type: 3}
+  m_Name: CinturonDeCortezaDeYanchama
+  m_EditorClassIdentifier: 
+  id: 11
+  inventoryObjectName: "Cintur\xF3n de Corteza de Yanchama"
+  objectRarity: 1
+  description: "Protecci\xF3n tejida con la fuerza de los \xE1rboles madre."
+  sprite: {fileID: 0}
+  price: 15
+  embeddedStats:
+  - statType: 0
+    statModificationType: 0
+    value: 10
+  - statType: 2
+    statModificationType: 0
+    value: 0.05

@@ -22,7 +22,7 @@ MonoBehaviour:
   dodgeChance: 0
   moveSpeed: 2.5
   lifeSteal: 0
-  goldDrop: 2
+  goldDrop: 3
   spawnDuration: 2
   cleanupTime: 3
   critChance: 0

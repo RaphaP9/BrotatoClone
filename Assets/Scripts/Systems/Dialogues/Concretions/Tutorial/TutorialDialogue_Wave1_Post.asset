@@ -14,9 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   id: 1
   dialogueSentences:
-  - localID: 0
+  - localID: 1
     dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
-    sentenceText: Tienda
+    sentenceText: "Atenta Paloma, a continuaci\xF3n podr\xE1s <b>comprar valiosos
+      objetos y armas</b> que podr\xE1s usar durante tu traves\xEDa."
+    speakerOnRight: 0
+    triggerSentenceTransition: 0
+    audioClip: {fileID: 0}
+  - localID: 2
+    dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
+    sentenceText: "Deber\xE1s elegir sabiamente."
     speakerOnRight: 0
     triggerSentenceTransition: 0
     audioClip: {fileID: 0}

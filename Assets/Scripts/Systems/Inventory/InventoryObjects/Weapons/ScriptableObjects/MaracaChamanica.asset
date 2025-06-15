@@ -15,9 +15,9 @@ MonoBehaviour:
   id: 6
   inventoryObjectName: "Maraca Cham\xE1nica"
   objectRarity: 1
-  description: "Maraca Cham\xE1nica"
+  description: "Agita el ritmo de los esp\xEDritus y despierta fuerzas ocultas."
   sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
-  price: 10
+  price: 25
   embeddedStats: []
   weaponType: 0
   fireType: 1

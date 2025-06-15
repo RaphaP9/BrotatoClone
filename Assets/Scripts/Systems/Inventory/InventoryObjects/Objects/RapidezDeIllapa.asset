@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3fe289dfdf1a14bbe5289d28f81b12, type: 3}
+  m_Name: RapidezDeIllapa
+  m_EditorClassIdentifier: 
+  id: 7
+  inventoryObjectName: Rapidez de Illapa
+  objectRarity: 4
+  description: "Bendice con la velocidad del esp\xEDritu del rel\xE1mpago."
+  sprite: {fileID: 0}
+  price: 35
+  embeddedStats:
+  - statType: 7
+    statModificationType: 0
+    value: 0.08
+  - statType: 5
+    statModificationType: 0
+    value: 1

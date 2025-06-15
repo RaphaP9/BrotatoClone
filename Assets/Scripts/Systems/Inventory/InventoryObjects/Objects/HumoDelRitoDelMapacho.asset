@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c3fe289dfdf1a14bbe5289d28f81b12, type: 3}
+  m_Name: HumoDelRitoDelMapacho
+  m_EditorClassIdentifier: 
+  id: 2
+  inventoryObjectName: Humo del Rito del Mapacho
+  objectRarity: 3
+  description: Usado para limpieza espiritual antes de entrar a la selva sagrada.
+  sprite: {fileID: 0}
+  price: 30
+  embeddedStats:
+  - statType: 0
+    statModificationType: 0
+    value: 10
+  - statType: 1
+    statModificationType: 0
+    value: 2
