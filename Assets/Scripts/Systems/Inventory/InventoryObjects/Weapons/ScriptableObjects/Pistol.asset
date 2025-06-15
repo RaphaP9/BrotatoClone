@@ -37,5 +37,6 @@ MonoBehaviour:
   projectileRange: 15
   projectileSpeed: 15
   dispersionAngle: 5
+  pierceEnemies: 0
   projectileDamageType: 0
   projectileArea: 1

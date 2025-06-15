@@ -48,6 +48,6 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
 
         projectileHandler.SetProjectile(RangedWeaponSO.projectileSpeed, RangedWeaponSO.projectileRange, RangedWeaponSO.regularDamage,
             RangedWeaponSO.bleedDamage, RangedWeaponSO.bleedDuration, RangedWeaponSO.bleedTickTime, RangedWeaponSO.critChance,RangedWeaponSO.critDamageMultiplier, RangedWeaponSO.projectileDamageType,
-            RangedWeaponSO.projectileArea, RangedWeaponSO, processedShootDirection, isCrit);
+            RangedWeaponSO.projectileArea, RangedWeaponSO, processedShootDirection, isCrit, RangedWeaponSO.pierceEnemies);
     }
 }

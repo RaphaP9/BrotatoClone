@@ -10,6 +10,7 @@ public class RangedWeaponSO : AttackBasedWeaponSO, IProjectileSpawner
     [Range(3f, 20f)] public float projectileRange;
     [Range(5f, 30f)] public float projectileSpeed;
     [Range(0f, 20f)] public float dispersionAngle;
+    public bool pierceEnemies;
     [Space]
     public ProjectileDamageType projectileDamageType;
     [Range(0f,3f)] public float projectileArea;

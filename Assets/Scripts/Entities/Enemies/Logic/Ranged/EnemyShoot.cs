@@ -213,7 +213,7 @@ public class EnemyShoot : MonoBehaviour
 
         projectileHandler.SetProjectile(RangedEnemySO.projectileSpeed, RangedEnemySO.projectileRange, RangedEnemySO.projectileRegularDamage,
             RangedEnemySO.projectileBleedDamage, RangedEnemySO.projectileBleedDuration, RangedEnemySO.projectileBleedTickTime, RangedEnemySO.critChance, RangedEnemySO.critDamageMultiplier, RangedEnemySO.projectileDamageType,
-            RangedEnemySO.projectileArea, RangedEnemySO, processedShootDirection, isCrit);
+            RangedEnemySO.projectileArea, RangedEnemySO, processedShootDirection, isCrit, false); //Enemy Projectiles never pierce
     }
 
     private Vector2 CalculateShootDirection()

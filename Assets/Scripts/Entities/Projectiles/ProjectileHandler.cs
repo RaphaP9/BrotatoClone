@@ -11,8 +11,6 @@ public class ProjectileHandler : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private LayerMask targetLayermask;
     [SerializeField] private LayerMask impactLayermask;
-    [Space]
-    [SerializeField] private bool pierce;
 
     [Header("Runtime Filled Settings")]
     [SerializeField, Range(5f, 15f)] private float speed;
@@ -32,6 +30,7 @@ public class ProjectileHandler : MonoBehaviour
     [SerializeField] private float projectileArea;
     [Space]
     [SerializeField] private Vector2 direction;
+    [SerializeField] private bool pierce;
 
     private IDamageDealer projectileSource;
 
@@ -210,7 +209,7 @@ public class ProjectileHandler : MonoBehaviour
         }
     }
 
-    public void SetProjectile(float projectileSpeed, float range, int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier, ProjectileDamageType projectileDamageType, float projectileArea, IDamageDealer projectileSource, Vector2 direction, bool isCrit)
+    public void SetProjectile(float projectileSpeed, float range, int regularDamage, int bleedDamage, float bleedDuration, float bleedTickTime, float critChance, float critDamageMultiplier, ProjectileDamageType projectileDamageType, float projectileArea, IDamageDealer projectileSource, Vector2 direction, bool isCrit, bool pierce)
     {
         SetSpeed(projectileSpeed);
         SetLifespan(projectileSpeed, range);
@@ -218,6 +217,7 @@ public class ProjectileHandler : MonoBehaviour
         SetProjectileDamageType(projectileDamageType,projectileArea);
         SetProjectileSource(projectileSource);
         SetProjectileDirection(direction);
+        SetPierce(pierce);
     }
 
     protected void SetSpeed(float speed) => this.speed = speed;
@@ -245,6 +245,8 @@ public class ProjectileHandler : MonoBehaviour
         this.direction = direction;
         OnProjectileDirectionSet?.Invoke(this, new OnProjectileDirectionEventArgs { direction = direction });
     }
+    protected void SetPierce(bool pierce) => this.pierce = pierce;
+
 
     protected bool HasBleedDamage() => bleedDamage > 0;
     protected bool HasRegularDamage() => regularDamage > 0;
