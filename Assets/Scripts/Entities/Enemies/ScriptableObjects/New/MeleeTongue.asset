@@ -23,7 +23,7 @@ MonoBehaviour:
   moveSpeed: 2
   lifeSteal: 0
   goldDrop: 1
-  spawnDuration: 3
+  spawnDuration: 2
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
