@@ -6,7 +6,9 @@ using System;
 public class EspinasDeAyahuascaHandler : RangedWeaponHandler
 {
     [Header("Components")]
-    [SerializeField] private Transform firePoint;
+    [SerializeField] private Transform firePoint1;
+    [SerializeField] private Transform firePoint2;
+    [SerializeField] private Transform firePoint3;
     [SerializeField] private Transform projectilePrefab;
     [SerializeField, Range(10f,30f)] private float deviationAngle;
 
@@ -15,9 +17,9 @@ public class EspinasDeAyahuascaHandler : RangedWeaponHandler
     protected override void Attack()
     {
         //3 attacks
-        ShootProjectile(projectilePrefab, firePoint, weaponAim.AimDirection);
-        ShootProjectile(projectilePrefab, firePoint, GeneralUtilities.RotateVector2ByAngleDegrees(weaponAim.AimDirection, deviationAngle));
-        ShootProjectile(projectilePrefab, firePoint, GeneralUtilities.RotateVector2ByAngleDegrees(weaponAim.AimDirection, -deviationAngle));
+        ShootProjectile(projectilePrefab, firePoint1, weaponAim.AimDirection);
+        ShootProjectile(projectilePrefab, firePoint2, GeneralUtilities.RotateVector2ByAngleDegrees(weaponAim.AimDirection, deviationAngle));
+        ShootProjectile(projectilePrefab, firePoint3, GeneralUtilities.RotateVector2ByAngleDegrees(weaponAim.AimDirection, -deviationAngle));
 
         OnEspinasDeAyahuascaAttack?.Invoke(this, EventArgs.Empty);
     }
@@ -28,6 +30,6 @@ public class EspinasDeAyahuascaHandler : RangedWeaponHandler
 
         Gizmos.color = gizmosColor;
 
-        Gizmos.DrawLine(firePoint.position, firePoint.position + GeneralUtilities.Vector2ToVector3(weaponAim.AimDirection) * RangedWeaponSO.projectileRange);
+        Gizmos.DrawLine(firePoint1.position, firePoint1.position + GeneralUtilities.Vector2ToVector3(weaponAim.AimDirection) * RangedWeaponSO.projectileRange);
     }
 }
