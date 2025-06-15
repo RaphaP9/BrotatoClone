@@ -32,7 +32,7 @@ MonoBehaviour:
   chargingTime: 0.25
   attackingTime: 0.2
   postAttackTime: 0.25
-  attackRegularDamage: 5
+  attackRegularDamage: 4
   attackBleedDamage: 0
   attackBleedDuration: 2
   attackBleedTickTime: 0.5

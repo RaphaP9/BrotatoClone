@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 1532604799
   m_SortingLayer: 3
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 54128089, guid: 316413561cbae9547ae70dc2c3495336, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.64, y: 2.6542563}
+  m_Size: {x: 2.87, y: 2.6}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &7255662092305812705
@@ -214,7 +214,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.75
+  m_Radius: 1
 --- !u!50 &2062992557493091449
 Rigidbody2D:
   serializedVersion: 4
@@ -393,8 +393,8 @@ Transform:
   m_GameObject: {fileID: 2085582341292089790}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.628, z: 0}
-  m_LocalScale: {x: 0.25, y: 0.11428409, z: 0.17856818}
+  m_LocalPosition: {x: 0, y: -0.756, z: 0}
+  m_LocalScale: {x: 0.35, y: 0.15999773, z: 0.24999546}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6738715435935704628}
@@ -645,15 +645,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.6
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -855,7 +855,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.85
+      value: 1.209
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 8
   entityName: MeleeGhost
   description: MeleeGhost
-  sprite: {fileID: 0}
+  sprite: {fileID: 54128089, guid: 316413561cbae9547ae70dc2c3495336, type: 3}
   damageColor: {r: 0.49056602, g: 0.034709856, b: 0.034709856, a: 1}
   maxHealth: 100
   armorPercentage: 0
@@ -29,10 +29,10 @@ MonoBehaviour:
   critDamageMultiplier: 0
   enemyPrefab: {fileID: 3877430779044931455, guid: c0fbd3afc6a1ce34fad22f5c3c5963b2, type: 3}
   attackDistance: 3
-  chargingTime: 0.3
-  attackingTime: 0.18
-  postAttackTime: 0.21
-  attackRegularDamage: 3
+  chargingTime: 0.25
+  attackingTime: 0.2
+  postAttackTime: 0.2
+  attackRegularDamage: 5
   attackBleedDamage: 0
   attackBleedDuration: 2
   attackBleedTickTime: 0.5

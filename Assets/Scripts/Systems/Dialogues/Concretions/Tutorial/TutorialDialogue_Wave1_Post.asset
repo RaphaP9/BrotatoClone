@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 1
   dialogueSentences:
   - localID: 0
-    dialogueSpeakerSO: {fileID: 11400000, guid: a92f0bdce03b0a846ad4572db854db4a, type: 2}
+    dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
     sentenceText: Tienda
     speakerOnRight: 0
     triggerSentenceTransition: 0
