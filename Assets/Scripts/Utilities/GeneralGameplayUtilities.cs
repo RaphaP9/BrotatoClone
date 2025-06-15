@@ -113,6 +113,12 @@ public static class GeneralGameplayUtilities
         float modifiedArea = baseWeaponArea * areaModificationPercentage;
         return modifiedArea;
     }
+
+    public static float GetWeaponModifiedRange(float baseWeaponRange, float rangeModificationPercentage)
+    {
+        float modifiedRange = baseWeaponRange * rangeModificationPercentage;
+        return modifiedRange;
+    }
     #endregion
 
     #region DamageProcessing

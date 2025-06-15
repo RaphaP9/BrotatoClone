@@ -31,7 +31,7 @@ MonoBehaviour:
   damageColor: {r: 0.7830189, g: 0.09972411, b: 0.09972411, a: 1}
   weaponTransform: {fileID: 625562748042871188, guid: cd98860c1aae4fc4ea031a32e778a1f1, type: 3}
   attackSpeed: 2
-  projectileRange: 15
+  projectileRange: 10
   projectileSpeed: 15
   dispersionAngle: 1
   pierceEnemies: 0

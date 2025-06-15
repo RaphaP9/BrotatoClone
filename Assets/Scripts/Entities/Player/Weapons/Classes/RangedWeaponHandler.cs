@@ -43,9 +43,12 @@ public abstract class RangedWeaponHandler : AttackBasedWeaponHandler
         }
 
         Vector2 processedShootDirection = GeneralGameplayUtilities.DeviateShootDirection(shootDirection, RangedWeaponSO.dispersionAngle);
+        float projectileRange = GetWeaponModifiedRange();
 
-        projectileHandler.SetProjectile(RangedWeaponSO.projectileSpeed, RangedWeaponSO.projectileRange, RangedWeaponSO.regularDamage,
+        projectileHandler.SetProjectile(RangedWeaponSO.projectileSpeed, GetWeaponModifiedRange(), RangedWeaponSO.regularDamage,
             RangedWeaponSO.bleedDamage, RangedWeaponSO.bleedDuration, RangedWeaponSO.bleedTickTime, RangedWeaponSO.critChance,RangedWeaponSO.critDamageMultiplier, RangedWeaponSO.projectileDamageType,
             RangedWeaponSO.projectileArea, RangedWeaponSO, processedShootDirection, isCrit, RangedWeaponSO.pierceEnemies);
     }
+
+    protected float GetWeaponModifiedRange() => GeneralGameplayUtilities.GetWeaponModifiedRange(RangedWeaponSO.projectileRange, AttackRangeMultiplierStatManager.Instance.AttackRangeMultiplierStat);
 }
