@@ -163,6 +163,7 @@ MonoBehaviour:
   impactLayermask:
     serializedVersion: 2
     m_Bits: 1024
+  pierce: 0
   speed: 5
   lifespan: 5
   regularDamage: 0

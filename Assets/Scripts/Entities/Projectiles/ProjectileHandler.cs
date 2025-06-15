@@ -11,6 +11,8 @@ public class ProjectileHandler : MonoBehaviour
     [Header("Settings")]
     [SerializeField] private LayerMask targetLayermask;
     [SerializeField] private LayerMask impactLayermask;
+    [Space]
+    [SerializeField] private bool pierce;
 
     [Header("Runtime Filled Settings")]
     [SerializeField, Range(5f, 15f)] private float speed;
@@ -37,7 +39,8 @@ public class ProjectileHandler : MonoBehaviour
 
     public int ID => id;
 
-    public static event EventHandler<OnProjectileEventArgs> OnProjectileImpact;
+    public static event EventHandler<OnProjectileEventArgs> OnProjectileDamageImpact;
+    public static event EventHandler<OnProjectileEventArgs> OnProjectileRegularImpact;
     public static event EventHandler<OnProjectileEventArgs> OnProjectileLifespanEnd;
 
     public event EventHandler<OnProjectileDirectionEventArgs> OnProjectileDirectionSet;
@@ -85,11 +88,20 @@ public class ProjectileHandler : MonoBehaviour
         Destroy(gameObject);
     }
 
-    private void ImpactProjectile()
+    private void DamageImpactProjectile()
     {
-        OnProjectileImpact?.Invoke(this, new OnProjectileEventArgs { id = id });
+        OnProjectileDamageImpact?.Invoke(this, new OnProjectileEventArgs { id = id });
+
+        if (pierce) return;
         Destroy(gameObject);
     }
+
+    private void RegularImpactProjectile()
+    {
+        OnProjectileRegularImpact?.Invoke(this, new OnProjectileEventArgs { id = id });
+        Destroy(gameObject);
+    }
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -115,7 +127,7 @@ public class ProjectileHandler : MonoBehaviour
                     break;
             }
 
-            ImpactProjectile();
+            DamageImpactProjectile();
             return;
         }
 
@@ -133,7 +145,7 @@ public class ProjectileHandler : MonoBehaviour
                     break;
             }
 
-            ImpactProjectile();
+            RegularImpactProjectile();
             return;
         }      
     }
