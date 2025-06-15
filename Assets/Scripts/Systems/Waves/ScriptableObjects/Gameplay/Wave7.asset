@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ef00a25ab6e84ad438421cd1d050e462, type: 3}
-  m_Name: Wave2
+  m_Name: Wave7
   m_EditorClassIdentifier: 
-  duration: 5
-  baseSpawnTime: 4
+  duration: 30
+  baseSpawnTime: 4.5
   waveEnemies:
-  - enemySO: {fileID: 11400000, guid: a0b72d5b03b739c4cb45d52ec0cd48b6, type: 2}
-    weight: 10
-  - enemySO: {fileID: 11400000, guid: 54b2bb9dfc7c6f24dbd653d5176ad77f, type: 2}
-    weight: 8
-  - enemySO: {fileID: 11400000, guid: 4cfa419f2c6cb2a4d854b7375f08f5d5, type: 2}
-    weight: 4
+  - enemySO: {fileID: 11400000, guid: 34b4551f52b58684e8cfc97e0ccc578a, type: 2}
+    weight: 20
+  - enemySO: {fileID: 11400000, guid: 87a9837c76e011348900579f330ed422, type: 2}
+    weight: 30
+  - enemySO: {fileID: 11400000, guid: 3755b4f67543af64c95312df28039532, type: 2}
+    weight: 20

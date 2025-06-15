@@ -117,7 +117,7 @@ public class GeneralWavesManager : MonoBehaviour
         return waves[waveNumber-1];
     }
 
-    private bool WaveWithWaveNumberExists(int waveNumber)
+    public bool WaveWithWaveNumberExists(int waveNumber)
     {
         if(waves.Count < waveNumber) return false;
         return true;

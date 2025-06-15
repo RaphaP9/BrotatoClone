@@ -9,6 +9,7 @@ public class MusicPoolSO : ScriptableObject
     public AudioClip menuMusic;
     public AudioClip optionsMusic;
     public AudioClip creditsMusic;
+    public AudioClip loseMusic;
 
     [Header("Gameplay")]
     public AudioClip gameplayMusic;

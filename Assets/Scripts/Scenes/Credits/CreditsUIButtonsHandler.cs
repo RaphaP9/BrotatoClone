@@ -5,7 +5,11 @@ using UnityEngine.UI;
 
 public class CreditsUIButtonsHandler : MonoBehaviour
 {
-    [Header("Play")]
+    [Header("Retry")]
+    [SerializeField] private Button retryButton;
+    [SerializeField] private string retryScene;
+
+    [Header("Back")]
     [SerializeField] private Button backButton;
     [SerializeField] private string backScene;
 
@@ -16,8 +20,10 @@ public class CreditsUIButtonsHandler : MonoBehaviour
 
     private void InitializeButtonsListeners()
     {
+        retryButton.onClick.AddListener(LoadRetryScene);
         backButton.onClick.AddListener(LoadBackScene);
     }
 
+    private void LoadRetryScene() => ScenesManager.Instance.FadeLoadTargetScene(retryScene);
     private void LoadBackScene() => ScenesManager.Instance.FadeLoadTargetScene(backScene);
 }

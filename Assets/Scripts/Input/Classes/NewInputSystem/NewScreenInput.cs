@@ -15,6 +15,7 @@ public class NewScreenInput : ScreenInput
         if( GameManager.Instance.GameState == GameManager.State.StartingGame) return false;
         if( GameManager.Instance.GameState == GameManager.State.Dialogue) return false;
         if( GameManager.Instance.GameState == GameManager.State.Lose) return false;
+        if( GameManager.Instance.GameState == GameManager.State.Win) return false;
 
         return true;
     }

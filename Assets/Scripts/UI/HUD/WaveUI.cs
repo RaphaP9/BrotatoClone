@@ -11,6 +11,9 @@ public class WaveUI : MonoBehaviour
     [Header("UI Components")]
     [SerializeField] private TextMeshProUGUI waveText;
 
+    [Header("Suffix")]
+    [SerializeField] private bool addTutorialSuffix;
+
     private const string SHOW_TRIGGER = "Show";
     private const string HIDE_TRIGGER = "Hide";
 
@@ -24,7 +27,11 @@ public class WaveUI : MonoBehaviour
         GameManager.OnStateChanged -= GameManager_OnStateChanged;
     }
 
-    private void SetWaveText(int waveNumber) => waveText.text = $"Oleada {waveNumber}";
+    private void SetWaveText(int waveNumber)
+    {
+        if(addTutorialSuffix) waveText.text = $"Tutorial - Oleada {waveNumber}";
+        else waveText.text = $"Oleada {waveNumber}";
+    }
 
     public void ShowUI()
     {

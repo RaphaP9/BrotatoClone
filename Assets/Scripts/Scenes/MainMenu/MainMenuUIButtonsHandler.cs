@@ -9,6 +9,10 @@ public class MainMenuUIButtonsHandler : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private string playScene;
 
+    [Header("Play")]
+    [SerializeField] private Button tutorialButton;
+    [SerializeField] private string tutorialScene;
+
     [Header("Credits")]
     [SerializeField] private Button creditsButton;
     [SerializeField] private string creditsScene;
@@ -24,12 +28,14 @@ public class MainMenuUIButtonsHandler : MonoBehaviour
     private void InitializeButtonsListeners()
     {
         playButton.onClick.AddListener(LoadPlayScene);
+        tutorialButton.onClick.AddListener(LoadTutorialScene);
         creditsButton.onClick.AddListener(LoadCreditsScene);
         quitButton.onClick.AddListener(QuitGame);
     }
 
 
     private void LoadPlayScene() => ScenesManager.Instance.FadeLoadTargetScene(playScene);
+    private void LoadTutorialScene() => ScenesManager.Instance.FadeLoadTargetScene(tutorialScene);
     private void LoadCreditsScene() => ScenesManager.Instance.FadeLoadTargetScene(creditsScene);
     private void QuitGame() => ScenesManager.Instance.QuitGame();
 }

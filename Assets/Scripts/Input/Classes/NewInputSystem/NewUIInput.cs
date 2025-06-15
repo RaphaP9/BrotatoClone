@@ -24,6 +24,11 @@ public class NewUIInput : UIInput
 
     public override bool CanProcessInput()
     {
+        if(GameLogManager.Instance != null)
+        {
+            if (GameManager.Instance.GameState == GameManager.State.Lose) return false;
+        }
+
         return true;
     }
 

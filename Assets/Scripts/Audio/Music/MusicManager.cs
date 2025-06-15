@@ -19,6 +19,8 @@ public class MusicManager : MonoBehaviour
     private const string GAMEPLAY_SCENE_NAME = "Gameplay";
     private const string OPTIONS_SCENE_NAME = "Options";
     private const string CREDITS_SCENE_NAME = "Credits";
+    private const string LOSE_SCENE_NAME = "LoseScene";
+
     private const string START_CINEMATIC_SCENE_NAME = "StartCinematic";
     private const string END_CINEMATIC_SCENE_NAME = "EndCinematic";
 
@@ -97,6 +99,10 @@ public class MusicManager : MonoBehaviour
             case CREDITS_SCENE_NAME:
                 PlayMusic(musicPoolSO.creditsMusic);
                 Debug.Log("CreditsMusicPlay");
+                break;
+            case LOSE_SCENE_NAME:
+                PlayMusic(musicPoolSO.loseMusic);
+                Debug.Log("LoseMusicPlay");
                 break;
             default:
                 StopMusic();

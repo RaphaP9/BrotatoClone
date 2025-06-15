@@ -16,18 +16,25 @@ public class GameManager : MonoBehaviour
     [SerializeField, Range (2f,5f)] private float startingGameTimer;
     [SerializeField, Range(2f, 5f)] private float startingWaveTimer;
     [SerializeField, Range(2f, 5f)] private float endingWaveTimer;
-    [SerializeField, Range(1f, 5f)] private float dialogueInterval;
+    [SerializeField, Range(0.5f, 5f)] private float dialogueInterval;
+    [Space]
+    [SerializeField] private bool infiniteWaves;
 
     [Header("Lose")]
     [SerializeField,Range(1f, 3f)] private float timeToEndAfterLose;
     [SerializeField] private string loseScene;
 
-    public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose, Dialogue}
+    [Header("Win")]
+    [SerializeField, Range(1f, 3f)] private float timeToEndAfterWin;
+    [SerializeField] private string winScene;
+
+    public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose, Dialogue, Win}
 
     public State GameState => state;
 
     public static event EventHandler<OnStateEventArgs> OnStateChanged;
     public static event EventHandler OnGameLost;
+    public static event EventHandler OnGameWon;
 
     #region Flags
     private bool firstUpdateLogicCompleted = false;
@@ -178,6 +185,17 @@ public class GameManager : MonoBehaviour
             GeneralWavesManager.Instance.IncreaseCurrentWaveNumber();
             waveNumber = GeneralWavesManager.Instance.CurrentWaveNumber;
 
+            #region Win Logic
+            if (!infiniteWaves)
+            {
+                if (!GeneralWavesManager.Instance.WaveWithWaveNumberExists(waveNumber))
+                {
+                    gameEnded = true;
+                    break;
+                }
+            }
+            #endregion
+
             #region Shop Logic
             ChangeState(State.Shop);
             shopClosed = false;
@@ -186,6 +204,11 @@ public class GameManager : MonoBehaviour
             shopClosed = false;
             #endregion
         }
+
+        SetGameState(State.Win);
+        OnGameWon?.Invoke(this, EventArgs.Empty);
+
+        yield return WinGameCoroutine();
     }
 
     #endregion
@@ -202,6 +225,12 @@ public class GameManager : MonoBehaviour
     {
         yield return new WaitForSeconds(timeToEndAfterLose);
         ScenesManager.Instance.FadeLoadTargetScene(loseScene);
+    }
+
+    private IEnumerator WinGameCoroutine()
+    {
+        yield return new WaitForSeconds(timeToEndAfterWin);
+        ScenesManager.Instance.FadeLoadTargetScene(winScene);
     }
 
     #region GeneralWavesManager Subscriptions
