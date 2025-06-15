@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3062787185139798593}
-  - component: {fileID: 5687267616944082354}
+  - component: {fileID: 5445618075349044818}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 4701626528939616342}
   m_Father: {fileID: 909037060864899003}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5687267616944082354
+--- !u!114 &5445618075349044818
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 1404519309259787941}
   - component: {fileID: 2829926417536018494}
   m_Layer: 0
-  m_Name: PistolProjectile
+  m_Name: RangedPoisonousProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 3974519844677327811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.25
 --- !u!50 &1404519309259787941
 Rigidbody2D:
   serializedVersion: 4
@@ -159,10 +159,10 @@ MonoBehaviour:
   id: 0
   targetLayermask:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 64
   impactLayermask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1025
   speed: 5
   lifespan: 5
   regularDamage: 0
@@ -202,7 +202,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3062787185139798593}
@@ -248,7 +248,7 @@ SpriteRenderer:
   m_SortingLayerID: -1417817563
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 098e444c7514eec41912d1619ad85380, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

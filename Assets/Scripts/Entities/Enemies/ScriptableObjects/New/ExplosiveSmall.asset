@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 2
   entityName: ExplosiveBig
   description: ExplosiveBig
-  sprite: {fileID: 0}
+  sprite: {fileID: 1986656463, guid: 5e0407bcd85fead4a9da27273a06d035, type: 3}
   damageColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
   maxHealth: 20
   armorPercentage: 0

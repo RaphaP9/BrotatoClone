@@ -15,7 +15,7 @@ MonoBehaviour:
   id: 5
   entityName: MeleeHealer
   description: MeleeHealer
-  sprite: {fileID: 0}
+  sprite: {fileID: 1910122606, guid: 274c9e2457d0c9b48a471e800e6156ec, type: 3}
   damageColor: {r: 1, g: 0.23921569, b: 0.23921569, a: 1}
   maxHealth: 20
   armorPercentage: 0

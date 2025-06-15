@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a382cec08eb61a49b06943b253f6911, type: 3}
+  m_Name: RangedPoisonous
+  m_EditorClassIdentifier: 
+  id: 6
+  entityName: RangedPoisonous
+  description: RangedPoisonous
+  sprite: {fileID: 1214559916, guid: 76b2269af40a3eb4abe258ff8fe48a57, type: 3}
+  damageColor: {r: 0.7167752, g: 1.8821328, b: 0.15092577, a: 1}
+  maxHealth: 20
+  armorPercentage: 0
+  dodgeChance: 0
+  moveSpeed: 3
+  lifeSteal: 0
+  goldDrop: 2
+  spawnDuration: 3
+  cleanupTime: 3
+  critChance: 0
+  critDamageMultiplier: 0
+  enemyPrefab: {fileID: 3877430779044931455, guid: 965c4c1bdddc6ea4a8366a1801ae43a5, type: 3}
+  tooCloseDistance: 4.5
+  preferredDistance: 8
+  tooFarDistance: 15
+  aimingTime: 0.3
+  shootingTime: 0.25
+  postShootTime: 0.3
+  projectileRegularDamage: 1
+  projectileBleedDamage: 1
+  projectileBleedDuration: 2
+  projectileBleedTickTime: 1
+  projectileRange: 15
+  projectileSpeed: 5
+  dispersionAngle: 0
+  projectileDamageType: 0
+  projectileArea: 0
+  projectilePrefab: {fileID: 909037060864899003, guid: 5d3c49bafde848649870a233d3752b07, type: 3}
