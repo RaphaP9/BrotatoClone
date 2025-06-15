@@ -27,9 +27,9 @@ public static class GeneralUIUtilities
     private const string DODGE_CHANCE_STAT = "Evasión";
     private const string MOVEMENT_SPEED_STAT = "Vel. de Movimiento";
     private const string DASHES_STAT = "Desplazamiento(s)";
-    private const string ATTACK_AREA_STAT = "Area de Ataque";
+    private const string ATTACK_AREA_STAT = "Área de Ataque";
+    private const string ATTACK_RANGE_STAT = "Rango de Proyectil";
     private const string ATTACK_SPEED_STAT = "Vel. de Ataque";
-    private const string ATTACK_RANGE_STAT = "Rango de Ataque";
     private const string ATTACK_DAMAGE_MULT_STAT = "Daño de Ataque";
     private const string ATTACK_CRIT_CHANCE_STAT = "Prob. de Crítico";
     private const string ATTACK_CRIT_DAMAGE_MULTIPLIER_STAT = "Daño Crítico";

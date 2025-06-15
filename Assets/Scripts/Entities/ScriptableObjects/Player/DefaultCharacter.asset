@@ -29,7 +29,7 @@ MonoBehaviour:
   attackRangeMultiplier: 1
   attackDamageMultiplier: 1
   attackCritChance: 0
-  attackCritDamageMultiplier: 1.5
+  attackCritDamageMultiplier: 2
   weaponSlots: 6
   startingWeapons:
   - {fileID: 11400000, guid: 2009ff59a6b32c24bac21e0d1f85acff, type: 2}
