@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.99, y: 1.35}
+  m_Size: {x: 1.41, y: 1.25}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -95,7 +95,7 @@ Animator:
   m_GameObject: {fileID: 444055906639749641}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6b8bb2568137cf74aa3141cb8dc27b6e, type: 2}
+  m_Controller: {fileID: 9100000, guid: b9d1bf323d4dcc443a08eabb14b41c6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -155,7 +155,7 @@ GameObject:
   - component: {fileID: 6000539653414035718}
   - component: {fileID: 5719129700666416927}
   m_Layer: 7
-  m_Name: MeleeRocky
+  m_Name: MeleeTongue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -253,7 +253,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f47744491b64fe428b68baa88fd0e76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemySO: {fileID: 11400000, guid: 34b4551f52b58684e8cfc97e0ccc578a, type: 2}
+  enemySO: {fileID: 11400000, guid: 6c833bc5ab56126409d1098a884072d0, type: 2}
 --- !u!114 &1715791615252644950
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -526,8 +526,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: -0.54, z: 0}
-  m_LocalScale: {x: 0.35, y: 0.16, z: 0.25}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.22, y: 0.10057143, z: 0.15714286}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 6738715435935704628}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -624,15 +624,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.90000004
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.90000004
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.90000004
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 1057391937110949805, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_ConstrainProportionsScale
@@ -699,28 +699,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
-      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key0.b
-      value: 0.030971883
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
-      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key0.g
-      value: 0.07322988
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
-      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key0.r
-      value: 0.2264151
-      objectReference: {fileID: 0}
-    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.b
-      value: 0.929038
+      value: 1.0606683
       objectReference: {fileID: 0}
     - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.g
-      value: 2.4228575
+      value: 0.5242855
       objectReference: {fileID: 0}
     - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.r
-      value: 0.4228572
+      value: 3.8327067
       objectReference: {fileID: 0}
     - target: {fileID: 8600108896936358201, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_IsActive
@@ -822,7 +810,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.979
+      value: 0.85
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

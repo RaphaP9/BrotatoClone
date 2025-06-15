@@ -162,7 +162,7 @@ MonoBehaviour:
     m_Bits: 64
   impactLayermask:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 1024
   speed: 5
   lifespan: 5
   regularDamage: 0

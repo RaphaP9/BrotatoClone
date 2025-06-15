@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51d6b5f4c2fb29342b6b60b6d5ac10f4, type: 3}
-  m_Name: MeleeHealer
+  m_Name: MeleeGhost
   m_EditorClassIdentifier: 
-  id: 5
-  entityName: MeleeHealer
-  description: MeleeHealer
-  sprite: {fileID: 1910122606, guid: 274c9e2457d0c9b48a471e800e6156ec, type: 3}
-  damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
+  id: 8
+  entityName: MeleeGhost
+  description: MeleeGhost
+  sprite: {fileID: 0}
+  damageColor: {r: 0.49056602, g: 0.034709856, b: 0.034709856, a: 1}
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
@@ -27,11 +27,11 @@ MonoBehaviour:
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
-  enemyPrefab: {fileID: 3877430779044931455, guid: bc73dd5d4eb76d84caa36f5c6cf69e27, type: 3}
+  enemyPrefab: {fileID: 3877430779044931455, guid: c0fbd3afc6a1ce34fad22f5c3c5963b2, type: 3}
   attackDistance: 3
-  chargingTime: 0.25
-  attackingTime: 0.2
-  postAttackTime: 0.25
+  chargingTime: 0.3
+  attackingTime: 0.18
+  postAttackTime: 0.21
   attackRegularDamage: 3
   attackBleedDamage: 0
   attackBleedDuration: 2

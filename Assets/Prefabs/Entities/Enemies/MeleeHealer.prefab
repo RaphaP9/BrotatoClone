@@ -79,7 +79,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.44, y: 1.59}
+  m_Size: {x: 1.7, y: 1.57}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 0
@@ -723,7 +723,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 1.085
+      value: 1.129
       objectReference: {fileID: 0}
     - target: {fileID: 5566468291033210972, guid: 28144f7507e2e314794b1454a72c7aa3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -835,6 +835,18 @@ PrefabInstance:
     - target: {fileID: 8241777288475948725, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
+      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.b
+      value: 1.0606683
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
+      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.g
+      value: 0.5242855
+      objectReference: {fileID: 0}
+    - target: {fileID: 8463624199591721584, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
+      propertyPath: m_PropertySheet.m_Gradient.m_Array.Array.data[0].m_Value.key1.r
+      value: 3.8327067
       objectReference: {fileID: 0}
     - target: {fileID: 8600108896936358201, guid: 7644e27dfa9031f47a644061a3e832e3, type: 3}
       propertyPath: m_IsActive

@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51d6b5f4c2fb29342b6b60b6d5ac10f4, type: 3}
-  m_Name: MeleeHealer
+  m_Name: MeleeTongue
   m_EditorClassIdentifier: 
-  id: 5
-  entityName: MeleeHealer
-  description: MeleeHealer
-  sprite: {fileID: 1910122606, guid: 274c9e2457d0c9b48a471e800e6156ec, type: 3}
+  id: 7
+  entityName: MeleeTongue
+  description: MeleeRocky
+  sprite: {fileID: -196090823, guid: 38f2646d617391546a396be69513df2e, type: 3}
   damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
   maxHealth: 20
   armorPercentage: 0
@@ -27,12 +27,12 @@ MonoBehaviour:
   cleanupTime: 3
   critChance: 0
   critDamageMultiplier: 0
-  enemyPrefab: {fileID: 3877430779044931455, guid: bc73dd5d4eb76d84caa36f5c6cf69e27, type: 3}
+  enemyPrefab: {fileID: 3877430779044931455, guid: 9141ccd8d54ebcf4bb1a39c87e70b0fd, type: 3}
   attackDistance: 3
-  chargingTime: 0.25
-  attackingTime: 0.2
-  postAttackTime: 0.25
-  attackRegularDamage: 3
+  chargingTime: 0.35
+  attackingTime: 0.18
+  postAttackTime: 0.18
+  attackRegularDamage: 1
   attackBleedDamage: 0
   attackBleedDuration: 2
   attackBleedTickTime: 0.5

@@ -34,10 +34,10 @@ MonoBehaviour:
   aimingTime: 0.3
   shootingTime: 0.25
   postShootTime: 0.3
-  projectileRegularDamage: 1
+  projectileRegularDamage: 2
   projectileBleedDamage: 1
   projectileBleedDuration: 2
-  projectileBleedTickTime: 1
+  projectileBleedTickTime: 0.5
   projectileRange: 15
   projectileSpeed: 5
   dispersionAngle: 0

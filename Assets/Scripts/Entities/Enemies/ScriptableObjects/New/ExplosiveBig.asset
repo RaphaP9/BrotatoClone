@@ -16,7 +16,7 @@ MonoBehaviour:
   entityName: ExplosiveBig
   description: ExplosiveBig
   sprite: {fileID: 472909314, guid: c1a99438ee92a5f40be1890ab2530f7e, type: 3}
-  damageColor: {r: 1, g: 0.24056602, b: 0.24056602, a: 1}
+  damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
   maxHealth: 20
   armorPercentage: 0
   dodgeChance: 0
@@ -28,7 +28,7 @@ MonoBehaviour:
   critChance: 0
   critDamageMultiplier: 0
   enemyPrefab: {fileID: 3877430779044931455, guid: 0e5c3bc9c366cd1449e0defff2732956, type: 3}
-  kamikazeRegularDamage: 6
+  kamikazeRegularDamage: 8
   kamikazeBleedDamage: 0
   kamikazeBleedDuration: 4
   kamikazeBleedTickTime: 1
