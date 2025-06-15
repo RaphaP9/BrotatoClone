@@ -120,7 +120,7 @@ public class WeaponsInventoryManager : MonoBehaviour
         OnWeaponRemovedFromInventory?.Invoke(this, new OnWeaponEventArgs { weapon = weaponIdentified });
     }
 
-    private void RemoveWeaponFromInventoryByGUID(string GUID)
+    public void RemoveWeaponFromInventoryByGUID(string GUID)
     {
         WeaponInventoryIdentified weaponIdentified = FindWeaponByGUID(GUID);
 
@@ -175,7 +175,9 @@ public class WeaponsInventoryManager : MonoBehaviour
     private void ClearWeaponsInventory() => weaponsInventory.Clear();
 
     public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.weaponSlots;
-    public int GetWeaponsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.weaponSlots;    
+    public int GetWeaponsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.weaponSlots;
+
+    public bool HasOneOrLessWeapons() => weaponsInventory.Count <= 1;
 
     public bool WeaponInInventoryByWeaponSO(WeaponSO weaponSO)
     {
