@@ -6,9 +6,5 @@ using UnityEngine;
 public class SFXPool : ScriptableObject
 {
     [Header("Player")]
-    public AudioClip[] playerJump;
-    [Space]
     public AudioClip[] playerDash;
-    [Space]
-    public AudioClip[] playerLand;
 }

@@ -13,5 +13,6 @@ public class MusicPoolSO : ScriptableObject
     public AudioClip loseMusic;
 
     [Header("Gameplay")]
+    public AudioClip tutorialMusic;
     public AudioClip gameplayMusic;
 }

@@ -18,6 +18,7 @@ public class MusicManager : MonoBehaviour
     private const string WELCOME_SCENE_NAME = "WelcomeScene";
     private const string MENU_SCENE_NAME = "MainMenu";
     private const string GAMEPLAY_SCENE_NAME = "Gameplay";
+    private const string TUTORIAL_SCENE_NAME = "Tutorial";
     private const string OPTIONS_SCENE_NAME = "Options";
     private const string CREDITS_SCENE_NAME = "Credits";
     private const string LOSE_SCENE_NAME = "LoseScene";
@@ -88,6 +89,10 @@ public class MusicManager : MonoBehaviour
             case GAMEPLAY_SCENE_NAME:
                 PlayMusic(musicPoolSO.gameplayMusic);
                 Debug.Log("GameplayMusicPlay");
+                break;
+            case TUTORIAL_SCENE_NAME:
+                PlayMusic(musicPoolSO.tutorialMusic);
+                Debug.Log("TutorialMusicPlay");
                 break;
             case MENU_SCENE_NAME:
                 PlayMusic(musicPoolSO.menuMusic);
