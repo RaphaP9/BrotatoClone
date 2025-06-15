@@ -18,6 +18,7 @@ MonoBehaviour:
   description: Usado en pinturas guerreras para invocar fuerza espiritual.
   sprite: {fileID: 0}
   price: 10
+  sellPrice: 10
   embeddedStats:
   - statType: 9
     statModificationType: 0

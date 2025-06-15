@@ -115,7 +115,7 @@ public class PlayerWeaponsHandler : MonoBehaviour
             if (pointWeaponSlot.weaponIdentifier.WeaponSO == weaponSO)
             {
                 ClearPointWeaponSlot(pointWeaponSlot);
-                break;
+                return;
             }
         }
 

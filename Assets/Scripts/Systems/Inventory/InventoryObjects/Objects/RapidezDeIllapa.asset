@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Bendice con la velocidad del esp\xEDritu del rel\xE1mpago."
   sprite: {fileID: 0}
   price: 35
+  sellPrice: 35
   embeddedStats:
   - statType: 7
     statModificationType: 0

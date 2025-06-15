@@ -26,6 +26,7 @@ public class ObjectsInventoryManager : MonoBehaviour
     public class OnObjectsEventArgs : EventArgs
     {
         public List<ObjectInventoryIdentified> objects;
+        public int capacity;
     }
 
     private void OnEnable()
@@ -64,7 +65,7 @@ public class ObjectsInventoryManager : MonoBehaviour
 
     private void InitializeObjectsInventory()
     {
-        OnObjectsInventoryInitialized?.Invoke(this, new OnObjectsEventArgs { objects = objectsInventory });
+        OnObjectsInventoryInitialized?.Invoke(this, new OnObjectsEventArgs { objects = objectsInventory, capacity = GetObjectsInventoryCapacity() });
     }
 
     public void AddObjectToInventory(ObjectSO objectSO)
@@ -161,6 +162,7 @@ public class ObjectsInventoryManager : MonoBehaviour
 
     public bool ObjectsInventoryFull() => objectsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.objectSlots;
     public int GetObjectsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.objectSlots;
+    public int GetObjectsInventoryCount() => objectsInventory.Count;
 
 
     public bool ObjectInInventoryByObjectSO(ObjectSO objectSO)

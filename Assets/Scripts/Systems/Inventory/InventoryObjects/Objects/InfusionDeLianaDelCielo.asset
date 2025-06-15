@@ -18,6 +18,7 @@ MonoBehaviour:
   description: Bebida ceremonial que abre los sentidos a planos ocultos.
   sprite: {fileID: 0}
   price: 25
+  sellPrice: 25
   embeddedStats:
   - statType: 10
     statModificationType: 0

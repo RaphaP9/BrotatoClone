@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Representa el ojo de la gran serpiente de agua, guardiana del r\xEDo."
   sprite: {fileID: 0}
   price: 10
+  sellPrice: 10
   embeddedStats:
   - statType: 10
     statModificationType: 0

@@ -12,6 +12,7 @@ public abstract class InventoryObjectSO : ScriptableObject
     public Sprite sprite;
     [Space]
     [Range(0, 1000)] public int price;
+    [Range(0, 1000)] public int sellPrice;
     [Space]
 
     [Header("Embedded Stats")]

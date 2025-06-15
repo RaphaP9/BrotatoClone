@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Dispara tres aguijones m\xEDsticos que hieren a los enemigos."
   sprite: {fileID: 21300000, guid: 505e75357c9b1da49a3780d796101b86, type: 3}
   price: 25
+  sellPrice: 25
   embeddedStats: []
   weaponType: 1
   fireType: 1

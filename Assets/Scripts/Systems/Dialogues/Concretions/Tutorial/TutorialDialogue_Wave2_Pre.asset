@@ -17,7 +17,8 @@ MonoBehaviour:
   - localID: 1
     dialogueSpeakerSO: {fileID: 11400000, guid: 3dabe606021f00d4caa78f5bc8208473, type: 2}
     sentenceText: "No te olvides de tus capadicades. Presiona la tecla <b>Espacio
-      para desplazarte r\xE1pidamente</b> en tu direcci\xF3n de movimiento.\r"
+      para desplazarte r\xE1pidamente</b> en tu direcci\xF3n de movimiento, evadiendo
+      todos los ataques.\r"
     speakerOnRight: 0
     triggerSentenceTransition: 0
     audioClip: {fileID: 0}

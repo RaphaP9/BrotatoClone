@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Conecta el alma con los ciclos c\xF3smicos."
   sprite: {fileID: 0}
   price: 15
+  sellPrice: 15
   embeddedStats:
   - statType: 8
     statModificationType: 0

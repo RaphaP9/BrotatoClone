@@ -81,6 +81,7 @@ public class ShopSellHandler : MonoBehaviour
     {
         SwitchToNonSelectedMode();
         ObjectsInventoryManager.Instance.RemoveObjectFromInventoryByGUID(selectedInventoryObject.GUID);
+        GoldManager.Instance.AddGold(selectedInventoryObject.inventoryObjectSO.sellPrice);
 
         OnObjectSold?.Invoke(this, new OnObjectSoldEventArgs { objectSO = selectedInventoryObject.inventoryObjectSO as ObjectSO });
 
@@ -96,6 +97,7 @@ public class ShopSellHandler : MonoBehaviour
 
         SwitchToNonSelectedMode();
         WeaponsInventoryManager.Instance.RemoveWeaponFromInventoryByGUID(selectedInventoryObject.GUID);
+        GoldManager.Instance.AddGold(selectedInventoryObject.inventoryObjectSO.sellPrice);
 
         OnWeaponSold?.Invoke(this, new OnWeaponSoldEventArgs { weaponSO = selectedInventoryObject.inventoryObjectSO as WeaponSO });
     }

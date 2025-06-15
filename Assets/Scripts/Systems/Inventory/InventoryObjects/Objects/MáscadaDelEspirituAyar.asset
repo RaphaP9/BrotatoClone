@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Empleada para guiar el alma a trav\xE9s del trance ceremonial."
   sprite: {fileID: 0}
   price: 10
+  sellPrice: 10
   embeddedStats:
   - statType: 3
     statModificationType: 0

@@ -18,6 +18,7 @@ MonoBehaviour:
   description: Otorga la fiereza y el instinto de los protectores de la selva.
   sprite: {fileID: 0}
   price: 15
+  sellPrice: 15
   embeddedStats:
   - statType: 9
     statModificationType: 0

@@ -34,6 +34,7 @@ public class WeaponsInventoryManager : MonoBehaviour
     public class OnWeaponsEventArgs : EventArgs
     {
         public List<WeaponInventoryIdentified> weapons;
+        public int capacity;
     }
 
 
@@ -73,7 +74,7 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     private void InitializeWeaponsInventory()
     {
-        OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weapons = weaponsInventory });
+        OnWeaponsInventoryInitialized?.Invoke(this , new OnWeaponsEventArgs { weapons = weaponsInventory, capacity = GetWeaponsInventoryCapacity()});
     }
 
     public void AddWeaponToInventory(WeaponSO weaponSO)
@@ -176,6 +177,8 @@ public class WeaponsInventoryManager : MonoBehaviour
 
     public bool WeaponsInventoryFull() => weaponsInventory.Count >= PlayerIdentifier.Instance.CharacterSO.weaponSlots;
     public int GetWeaponsInventoryCapacity() => PlayerIdentifier.Instance.CharacterSO.weaponSlots;
+    public int GetWeaponsInventoryCount() => weaponsInventory.Count;
+
 
     public bool HasOneOrLessWeapons() => weaponsInventory.Count <= 1;
 

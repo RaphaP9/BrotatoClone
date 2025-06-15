@@ -18,6 +18,7 @@ MonoBehaviour:
   description: "Herramienta cham\xE1nica para extender el alcance del esp\xEDritu."
   sprite: {fileID: 0}
   price: 25
+  sellPrice: 25
   embeddedStats:
   - statType: 6
     statModificationType: 0
