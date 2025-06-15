@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectInventoryUI : MonoBehaviour
+public class ObjectInventoryUI : InventoryObjectInventoryUI
 {
     [Header("Runtime Filled")]
     [SerializeField] private ObjectInventoryIdentified objectInventoryIdentified;
@@ -18,5 +18,7 @@ public class ObjectInventoryUI : MonoBehaviour
     {
         this.objectInventoryIdentified = objectInventoryIdentified;
         OnObjectInventorySet?.Invoke(this, new OnObjectInventorySetEventArgs { objectInventoryIdentified = objectInventoryIdentified });
+
+        SetPrimitiveInventoryObject(objectInventoryIdentified.GUID, objectInventoryIdentified.objectSO);
     }
 }

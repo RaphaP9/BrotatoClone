@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponInventoryUI : MonoBehaviour
+public class WeaponInventoryUI : InventoryObjectInventoryUI
 {
     [Header("Runtime Filled")]
     [SerializeField] private WeaponInventoryIdentified weaponInventoryIdentified;
@@ -18,5 +18,7 @@ public class WeaponInventoryUI : MonoBehaviour
     {
         this.weaponInventoryIdentified = weaponInventoryIdentified;
         OnWeaponInventorySet?.Invoke(this, new OnWeaponInventorySetEventArgs { weaponInventoryIdentified = weaponInventoryIdentified });
+
+        SetPrimitiveInventoryObject(weaponInventoryIdentified.GUID, weaponInventoryIdentified.weaponSO);
     }
 }

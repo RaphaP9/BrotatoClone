@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class InventoryObjectInventoryUI : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [Header("Runtime Filled")]
+    [SerializeField] private PrimitiveInventoryObject primitiveInventoryObject;
+
+    public PrimitiveInventoryObject PrimitiveInventoryObject => primitiveInventoryObject;
+
+    protected void SetPrimitiveInventoryObject(string GUID, InventoryObjectSO inventoryObjectSO)
     {
-        
+        primitiveInventoryObject = new PrimitiveInventoryObject { GUID = GUID, inventoryObjectSO = inventoryObjectSO };
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    protected void ClearPrimitiveInventoryObject() => primitiveInventoryObject = null;
 }
