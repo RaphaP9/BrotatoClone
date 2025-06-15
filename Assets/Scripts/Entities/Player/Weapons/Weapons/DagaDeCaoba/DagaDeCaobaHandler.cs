@@ -1,19 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
-public class LanzaDeChontaHandler : MeleeWeaponHandler
+public class DagaDeCaobaHandler : MeleeWeaponHandler
 {
     [Header("Components")]
     [SerializeField] private List<Transform> attackPoints;
 
-    public event EventHandler OnLanzaDeChontaAttack;
+    public event EventHandler OnDagaDeCaobaAttack;
 
     protected override void Attack()
     {
         MeleeAttack(attackPoints);
-        OnLanzaDeChontaAttack?.Invoke(this, EventArgs.Empty);
+        OnDagaDeCaobaAttack?.Invoke(this, EventArgs.Empty);
     }
 
     private void OnDrawGizmos()

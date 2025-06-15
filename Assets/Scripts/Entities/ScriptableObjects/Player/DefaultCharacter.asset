@@ -32,7 +32,7 @@ MonoBehaviour:
   attackCritDamageMultiplier: 1.5
   weaponSlots: 6
   startingWeapons:
-  - {fileID: 11400000, guid: e2d2c6f02cd1bfc4eb14b88cdaeacc5a, type: 2}
+  - {fileID: 11400000, guid: 918e9d888e8fc3f4abc2e7a97285adf3, type: 2}
   objectSlots: 12
   startingObjects: []
   characterVisualTransform: {fileID: 7787992204139562473, guid: dcd287ac495cece459748f290bacf97b, type: 3}

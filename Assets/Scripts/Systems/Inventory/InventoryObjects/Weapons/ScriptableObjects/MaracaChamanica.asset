@@ -30,4 +30,4 @@ MonoBehaviour:
   damageColor: {r: 0.78431374, g: 0.09803922, b: 0.09803922, a: 1}
   weaponTransform: {fileID: 625562748042871188, guid: e1436e74e037bed4b9692f39f90d7910, type: 3}
   attackSpeed: 4
-  attackArea: 1
+  attackArea: 1.2

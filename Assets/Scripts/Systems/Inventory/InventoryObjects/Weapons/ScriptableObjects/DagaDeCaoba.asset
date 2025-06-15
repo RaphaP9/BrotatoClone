@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75243dc7122d8c24e941d81c3888e838, type: 3}
-  m_Name: LanzaDeChonta
+  m_Name: DagaDeCaoba
   m_EditorClassIdentifier: 
-  id: 1
-  inventoryObjectName: Lanza de Chonta
+  id: 7
+  inventoryObjectName: Daga de Caoba
   objectRarity: 1
-  description: Lanza de Chonta
+  description: Daga de Caoba
   sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
   price: 10
   embeddedStats: []
   weaponType: 0
   fireType: 1
-  regularDamage: 5
+  regularDamage: 3
   bleedDamage: 0
   bleedDuration: 2
-  bleedTickTime: 1
+  bleedTickTime: 0.25
   critChance: 0
   critDamageMultiplier: 0
   damageColor: {r: 0.78431374, g: 0.09803922, b: 0.09803922, a: 1}
-  weaponTransform: {fileID: 625562748042871188, guid: b3e8256bd13d6c544807b140891607dc, type: 3}
-  attackSpeed: 4
+  weaponTransform: {fileID: 625562748042871188, guid: 1bad6981f9446b14c97294343f6b981a, type: 3}
+  attackSpeed: 2.5
   attackArea: 1

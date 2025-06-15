@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class MaracaChamanicaHandler : MeleeWeaponHandler
 {
-    [Header("Fists Components")]
+    [Header("Components")]
     [SerializeField] private List<Transform> attackPoints;
 
     public event EventHandler OnMaracaChamanicaAttack;

@@ -21,7 +21,7 @@ MonoBehaviour:
   embeddedStats: []
   weaponType: 1
   fireType: 1
-  regularDamage: 5
+  regularDamage: 4
   bleedDamage: 0
   bleedDuration: 2
   bleedTickTime: 0.25
@@ -34,5 +34,5 @@ MonoBehaviour:
   projectileSpeed: 15
   dispersionAngle: 1
   pierceEnemies: 0
-  projectileDamageType: 0
-  projectileArea: 1
+  projectileDamageType: 1
+  projectileArea: 1.25
