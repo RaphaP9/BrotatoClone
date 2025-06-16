@@ -12,32 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ee4922e87a5fb94ab07e11b117c659b, type: 3}
   m_Name: MusicPool
   m_EditorClassIdentifier: 
+  welcomeMusic: {fileID: 0}
   menuMusic: {fileID: 8300000, guid: 4fe3fb8d95626764aa6bb1b3468d1d27, type: 3}
   optionsMusic: {fileID: 8300000, guid: 5d0bf120a9e04274286d40bbb9c29cc7, type: 3}
   creditsMusic: {fileID: 8300000, guid: 4bd6b77f1cc1cfc42a25f285a53b163e, type: 3}
-  zurryth0: {fileID: 8300000, guid: b80bf705c298a6d4baa1172b07e6361d, type: 3}
-  zurryth1: {fileID: 8300000, guid: 2fc2b3e3b7dda324b9366c123a07a57b, type: 3}
-  lobby: {fileID: 8300000, guid: 7c50784a7010e7147ba1fd062d5a1cb3, type: 3}
-  rakithu0: {fileID: 8300000, guid: 979bd0685a04af2468dae65c70113a1d, type: 3}
-  rakithu1: {fileID: 8300000, guid: ace6b65234caa23459d1590baa3b7f01, type: 3}
-  rakithu2: {fileID: 8300000, guid: 93f2f4c691dcf0a41939b1a5f108f3a5, type: 3}
-  rakithu3: {fileID: 8300000, guid: 6fc27c0dd5a1fdc4d99318c01b63da12, type: 3}
-  rakithu4: {fileID: 8300000, guid: f9461d383ae74b348b64d91664ccde39, type: 3}
-  xotark0: {fileID: 8300000, guid: 2c2857036e10e7a46a25adfcc4e085b9, type: 3}
-  xotark1: {fileID: 8300000, guid: fcada9d190eabbd4dbda0ce60e310465, type: 3}
-  xotark2: {fileID: 8300000, guid: de7f1356470c51144b6274d96b790778, type: 3}
-  xotark3: {fileID: 8300000, guid: a6fee25240a438840a98c9bbd74c85f4, type: 3}
-  xotark4: {fileID: 8300000, guid: 795cf8bc450692d479d9980958ea1c14, type: 3}
-  vythanu0: {fileID: 8300000, guid: 826839d5454dcfd41b20c39914ddc4e1, type: 3}
-  vythanu1: {fileID: 8300000, guid: 0e84e461dd7fc5d4c85ae84be95010b4, type: 3}
-  vythanu2: {fileID: 8300000, guid: f577eedf23e62db43896a5aac44745ea, type: 3}
-  vythanu3: {fileID: 8300000, guid: 0886be525c2252a4abb75a09375fa1eb, type: 3}
-  vythanu4: {fileID: 8300000, guid: 0251e2cac2a879d41a2c480e7be430af, type: 3}
-  boss0: {fileID: 8300000, guid: 5e9584ddf9e79d1488dd682240bf3945, type: 3}
-  boss1: {fileID: 8300000, guid: 8394180892362b94a8c4194bd19cf599, type: 3}
-  boss2: {fileID: 8300000, guid: 67a6f3b9bb0f29447b79e6edb8a9174c, type: 3}
-  boss3: {fileID: 8300000, guid: 3e27e66e3d6426b489e74222c5b60745, type: 3}
-  bossAlmostDefeated: {fileID: 8300000, guid: 16e163b610794034d9e913ed71a008b1, type: 3}
-  bossDefeated: {fileID: 8300000, guid: c88e079f87c753246aee8d9493469ff9, type: 3}
-  finalRoom: {fileID: 8300000, guid: c88e079f87c753246aee8d9493469ff9, type: 3}
-  easterEgg1: {fileID: 8300000, guid: 7c50784a7010e7147ba1fd062d5a1cb3, type: 3}
+  loseMusic: {fileID: 0}
+  tutorialMusic: {fileID: 0}
+  gameplayMusic: {fileID: 8300000, guid: 4d7344217b9063248b924c5ea6980e6b, type: 3}

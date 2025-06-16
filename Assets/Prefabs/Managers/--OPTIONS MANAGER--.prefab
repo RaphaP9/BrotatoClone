@@ -95,7 +95,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAudioMixer: {fileID: 24100000, guid: 42b9a11a03eb0f94db8182625120543c, type: 2}
-  initialVolume: 0.5
+  initialVolume: 1
   playerPrefsKey: MasterVolume
 --- !u!114 &1658459860771566871
 MonoBehaviour:
@@ -110,7 +110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAudioMixer: {fileID: 24100000, guid: 42b9a11a03eb0f94db8182625120543c, type: 2}
-  initialVolume: 0.5
+  initialVolume: 1
   playerPrefsKey: MusicVolume
 --- !u!114 &4566451730547987623
 MonoBehaviour:
@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAudioMixer: {fileID: 24100000, guid: 42b9a11a03eb0f94db8182625120543c, type: 2}
-  initialVolume: 0.5
+  initialVolume: 1
   playerPrefsKey: SFXVolume
 --- !u!114 &1456684763339280463
 MonoBehaviour:
@@ -140,7 +140,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAudioMixer: {fileID: 24100000, guid: 42b9a11a03eb0f94db8182625120543c, type: 2}
-  initialVolume: 0.5
+  initialVolume: 1
   playerPrefsKey: DialoguesVolume
 --- !u!114 &5280646529314961256
 MonoBehaviour:
@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   masterAudioMixer: {fileID: 24100000, guid: 42b9a11a03eb0f94db8182625120543c, type: 2}
-  initialVolume: 0.5
+  initialVolume: 1
   playerPrefsKey: CinematicsVolume
 --- !u!1 &8742970435926945671
 GameObject:

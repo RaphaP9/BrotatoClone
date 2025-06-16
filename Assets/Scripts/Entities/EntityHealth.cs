@@ -273,6 +273,7 @@ public abstract class EntityHealth : MonoBehaviour
     public void Heal(int healAmount)
     {
         if (IsFullHealth()) return;
+        if (healAmount <= 0) return;
 
         int previousHealth = currentHealth;
         int newHealth = currentHealth + healAmount > maxHealth? maxHealth : currentHealth + healAmount;
