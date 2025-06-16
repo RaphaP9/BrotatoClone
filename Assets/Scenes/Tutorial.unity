@@ -11962,7 +11962,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6678a8658d628554189e7d152010c98b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentGold: 20
+  currentGold: 50
   debug: 0
 --- !u!1 &1018883109
 GameObject:
@@ -20234,6 +20234,7 @@ MonoBehaviour:
   dialogueInterval: 0.5
   infiniteWaves: 0
   ignoreGameFlow: 0
+  allowActionsWhileStartingGame: 0
   timeToEndAfterLose: 3
   loseScene: MainMenu
   timeToEndAfterWin: 1
