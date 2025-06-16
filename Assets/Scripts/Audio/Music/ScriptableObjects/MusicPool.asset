@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MusicPool
   m_EditorClassIdentifier: 
   welcomeMusic: {fileID: 0}
-  menuMusic: {fileID: 8300000, guid: 4fe3fb8d95626764aa6bb1b3468d1d27, type: 3}
+  menuMusic: {fileID: 8300000, guid: 052092e7ade92b547a53a334329a0a45, type: 3}
   optionsMusic: {fileID: 8300000, guid: 5d0bf120a9e04274286d40bbb9c29cc7, type: 3}
   creditsMusic: {fileID: 8300000, guid: 4bd6b77f1cc1cfc42a25f285a53b163e, type: 3}
   loseMusic: {fileID: 0}
