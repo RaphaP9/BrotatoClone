@@ -20,6 +20,10 @@ public class MainMenuUIButtonsHandler : MonoBehaviour
     [Header("Quit")]
     [SerializeField] private Button quitButton;
 
+    [Header("Cinematic")]
+    [SerializeField] private Button cinematicButton;
+    [SerializeField] private string cinematicScene;
+
     private void Awake()
     {
         InitializeButtonsListeners();
@@ -31,6 +35,8 @@ public class MainMenuUIButtonsHandler : MonoBehaviour
         tutorialButton.onClick.AddListener(LoadTutorialScene);
         creditsButton.onClick.AddListener(LoadCreditsScene);
         quitButton.onClick.AddListener(QuitGame);
+
+        cinematicButton.onClick.AddListener(LoadCinematicScene);
     }
 
 
@@ -38,4 +44,6 @@ public class MainMenuUIButtonsHandler : MonoBehaviour
     private void LoadTutorialScene() => ScenesManager.Instance.FadeLoadTargetScene(tutorialScene);
     private void LoadCreditsScene() => ScenesManager.Instance.FadeLoadTargetScene(creditsScene);
     private void QuitGame() => ScenesManager.Instance.QuitGame();
+
+    private void LoadCinematicScene() => ScenesManager.Instance.FadeLoadTargetScene(cinematicScene);
 }
