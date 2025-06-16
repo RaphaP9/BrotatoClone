@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: "Sable de S\xE1bila"
   objectRarity: 4
   description: Su filo punzante abre heridas que no cierran, un sangrado temporal.
-  sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
+  sprite: {fileID: 21300000, guid: 58affda8832b8fc4895755f47aa5608d, type: 3}
   price: 50
   sellPrice: 50
   embeddedStats: []

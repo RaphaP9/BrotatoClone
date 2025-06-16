@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Lanza de Chonta
   objectRarity: 2
   description: Arma ritual de madera sagrada, recta y letal.
-  sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
+  sprite: {fileID: 21300000, guid: 72d4826dbcd7d9c48b3ed6da950f0d49, type: 3}
   price: 35
   sellPrice: 35
   embeddedStats: []

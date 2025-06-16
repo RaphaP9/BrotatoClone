@@ -17,7 +17,7 @@ MonoBehaviour:
   description: MeleeHealer
   sprite: {fileID: 1910122606, guid: 274c9e2457d0c9b48a471e800e6156ec, type: 3}
   damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
-  maxHealth: 40
+  maxHealth: 25
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 3

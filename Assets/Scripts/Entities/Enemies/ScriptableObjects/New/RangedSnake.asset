@@ -17,7 +17,7 @@ MonoBehaviour:
   description: RangedSnake
   sprite: {fileID: 411091621, guid: 9cc050c31a7efec4fb42c90b7ce4a86e, type: 3}
   damageColor: {r: 1.6603774, g: 0.7127092, b: 1.2771297, a: 1}
-  maxHealth: 20
+  maxHealth: 15
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 2.5

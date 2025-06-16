@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: "Maraca Cham\xE1nica"
   objectRarity: 1
   description: "Agita el ritmo de los esp\xEDritus y golpea con gran fuerza."
-  sprite: {fileID: 21300000, guid: 463618a49d50e44429354c2cecddb710, type: 3}
+  sprite: {fileID: 21300000, guid: 895a1cc9df2862e4c817088c5009a83c, type: 3}
   price: 25
   sellPrice: 25
   embeddedStats: []

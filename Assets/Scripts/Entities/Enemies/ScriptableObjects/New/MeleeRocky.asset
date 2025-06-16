@@ -17,7 +17,7 @@ MonoBehaviour:
   description: MeleeRocky
   sprite: {fileID: 60566752, guid: e163217e094bdc041a3a3326fd90914a, type: 3}
   damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
-  maxHealth: 50
+  maxHealth: 30
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 2

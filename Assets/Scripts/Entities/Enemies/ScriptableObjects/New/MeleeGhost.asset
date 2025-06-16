@@ -17,7 +17,7 @@ MonoBehaviour:
   description: MeleeGhost
   sprite: {fileID: 54128089, guid: 316413561cbae9547ae70dc2c3495336, type: 3}
   damageColor: {r: 0.49056602, g: 0.034709856, b: 0.034709856, a: 1}
-  maxHealth: 100
+  maxHealth: 80
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 3

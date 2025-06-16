@@ -17,7 +17,7 @@ MonoBehaviour:
   description: ExplosiveBig
   sprite: {fileID: 472909314, guid: c1a99438ee92a5f40be1890ab2530f7e, type: 3}
   damageColor: {r: 0.49019608, g: 0.03529412, b: 0.03529412, a: 1}
-  maxHealth: 60
+  maxHealth: 50
   armorPercentage: 0
   dodgeChance: 0
   moveSpeed: 4

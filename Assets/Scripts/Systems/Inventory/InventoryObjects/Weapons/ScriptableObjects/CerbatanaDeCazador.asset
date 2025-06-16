@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Cerbatana de Cazador
   objectRarity: 0
   description: Lanza dardos guiados por el instinto ancestral.
-  sprite: {fileID: 21300000, guid: 505e75357c9b1da49a3780d796101b86, type: 3}
+  sprite: {fileID: 21300000, guid: ff9ac9c1b8785eb4aab99733a8fbbaf5, type: 3}
   price: 15
   sellPrice: 15
   embeddedStats: []

@@ -52,7 +52,7 @@ public class PlayerHealth : EntityHealth
         PlayerDash.OnPlayerDash += PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped += PlayerDash_OnPlayerDashStopped;
 
-        //GeneralWavesManager.OnWaveStarting += GeneralWavesManager_OnWaveStarting;
+        GameManager.OnStateChanged += GameManager_OnStateChanged;
     }
 
     private void OnDisable()
@@ -78,7 +78,7 @@ public class PlayerHealth : EntityHealth
         PlayerDash.OnPlayerDash -= PlayerDash_OnPlayerDash;
         PlayerDash.OnPlayerDashStopped -= PlayerDash_OnPlayerDashStopped;
 
-        //GeneralWavesManager.OnWaveStarting -= GeneralWavesManager_OnWaveStarting;
+        GameManager.OnStateChanged -= GameManager_OnStateChanged;
     }
 
     private void Awake()
@@ -251,9 +251,10 @@ public class PlayerHealth : EntityHealth
         SetIsGhosted(false);
     }
 
-    private void GeneralWavesManager_OnWaveStarting(object sender, GeneralWavesManager.OnWaveEventArgs e)
+    private void GameManager_OnStateChanged(object sender, GameManager.OnStateEventArgs e)
     {
-        if (e.waveNumber == FIRST_WAVE_NUMBER) return;
+        if (e.newState != GameManager.State.StartingWave) return;
+        if (GeneralWavesManager.Instance.CurrentWaveNumber == FIRST_WAVE_NUMBER) return;
         HealFromHealthRegen();
     }
 
