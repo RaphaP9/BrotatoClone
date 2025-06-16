@@ -15,6 +15,6 @@ public class LoseTextUIHandler : MonoBehaviour
 
     private void SetLoseText()
     {
-        loseText.text = $"Has sobrevivido durante {GameManager.LastWave} oleada(s) al Yacuruna";
+        loseText.text = $"Has sobrevivido durante {GameManager.LastWave} oleada(s)";
     }
 }
