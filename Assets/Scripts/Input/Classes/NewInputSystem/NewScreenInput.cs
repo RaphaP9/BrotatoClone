@@ -12,8 +12,8 @@ public class NewScreenInput : ScreenInput
     public override bool CanProcessInput()
     {
         if (PauseManager.Instance.GamePaused) return false;
-        if( GameManager.Instance.GameState == GameManager.State.StartingGame) return false;
-        if( GameManager.Instance.GameState == GameManager.State.Dialogue) return false;
+        if (GameManager.Instance.GameState == GameManager.State.StartingGame && !GameManager.Instance.AllowActionsWhileStartingGame) return false;
+        if ( GameManager.Instance.GameState == GameManager.State.Dialogue) return false;
         if( GameManager.Instance.GameState == GameManager.State.Lose) return false;
         if( GameManager.Instance.GameState == GameManager.State.Win) return false;
 

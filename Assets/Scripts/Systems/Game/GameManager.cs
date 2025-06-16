@@ -13,13 +13,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private State previousState;
 
     [Header("Settings")]
-    [SerializeField, Range (1f,5f)] private float startingGameTimer;
+    [SerializeField, Range (0.5f,5f)] private float startingGameTimer;
     [SerializeField, Range(1f, 5f)] private float startingWaveTimer;
     [SerializeField, Range(1f, 5f)] private float endingWaveTimer;
     [SerializeField, Range(0.5f, 5f)] private float dialogueInterval;
     [Space]
     [SerializeField] private bool infiniteWaves;
     [SerializeField] private bool ignoreGameFlow;
+    [Space]
+    [SerializeField] private bool allowActionsWhileStartingGame;
 
     [Header("Lose")]
     [SerializeField,Range(1f, 3f)] private float timeToEndAfterLose;
@@ -32,6 +34,7 @@ public class GameManager : MonoBehaviour
     public enum State {StartingGame, StartingWave, Wave, EndingWave, Shop, Lose, Dialogue, Win}
 
     public State GameState => state;
+    public bool AllowActionsWhileStartingGame => allowActionsWhileStartingGame;
 
     public static event EventHandler<OnStateEventArgs> OnStateChanged;
     public static event EventHandler OnGameLost;

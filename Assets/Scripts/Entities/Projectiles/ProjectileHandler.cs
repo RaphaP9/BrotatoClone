@@ -43,6 +43,7 @@ public class ProjectileHandler : MonoBehaviour
     public static event EventHandler<OnProjectileEventArgs> OnProjectileLifespanEnd;
 
     public event EventHandler<OnProjectileDirectionEventArgs> OnProjectileDirectionSet;
+    public event EventHandler OnProjectileDestroyByImpact;
 
     public class OnProjectileEventArgs : EventArgs
     {
@@ -92,12 +93,14 @@ public class ProjectileHandler : MonoBehaviour
         OnProjectileDamageImpact?.Invoke(this, new OnProjectileEventArgs { id = id });
 
         if (pierce) return;
+        OnProjectileDestroyByImpact?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject);
     }
 
     private void RegularImpactProjectile()
     {
         OnProjectileRegularImpact?.Invoke(this, new OnProjectileEventArgs { id = id });
+        OnProjectileDestroyByImpact?.Invoke(this, EventArgs.Empty);
         Destroy(gameObject);
     }
 

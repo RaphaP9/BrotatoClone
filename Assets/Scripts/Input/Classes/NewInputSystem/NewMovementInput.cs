@@ -25,6 +25,7 @@ public class NewMovementInput : MovementInput
 
     public override bool CanProcessInput()
     {
+        if (GameManager.Instance.GameState == GameManager.State.StartingGame && GameManager.Instance.AllowActionsWhileStartingGame) return true;
         if (GameManager.Instance.GameState == GameManager.State.StartingWave) return true;
         if (GameManager.Instance.GameState == GameManager.State.Wave) return true;
         if (GameManager.Instance.GameState == GameManager.State.EndingWave) return true;

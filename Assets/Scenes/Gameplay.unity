@@ -19433,6 +19433,7 @@ MonoBehaviour:
   dialogueInterval: 1
   infiniteWaves: 1
   ignoreGameFlow: 0
+  allowActionsWhileStartingGame: 1
   timeToEndAfterLose: 3
   loseScene: LoseScene
   timeToEndAfterWin: 3
