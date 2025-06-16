@@ -135,7 +135,7 @@ public class ShopSellHandler : MonoBehaviour
     private void SetInventoryObjectSelection(PrimitiveInventoryObject primitiveInventoryObject)
     {
         SetSelectedInventoryObject(primitiveInventoryObject);
-        SetPriceText(primitiveInventoryObject.inventoryObjectSO.price);
+        SetPriceText(primitiveInventoryObject.inventoryObjectSO.sellPrice);
 
         SwitchToSelectedMode();
     }
