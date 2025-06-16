@@ -18,7 +18,7 @@ MonoBehaviour:
   description: "Dispara colmillos perforantes r\xE1pidamente con fuerza letal y silente."
   sprite: {fileID: 21300000, guid: adc70c73eada89d4ebc1f4d9462e5bb4, type: 3}
   price: 40
-  sellPrice: 40
+  sellPrice: 24
   embeddedStats: []
   weaponType: 1
   fireType: 1

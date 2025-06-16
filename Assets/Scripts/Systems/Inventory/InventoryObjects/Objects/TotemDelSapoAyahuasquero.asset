@@ -18,7 +18,7 @@ MonoBehaviour:
   description: "Figura que representa sabidur\xEDa ancestral en rituales de visi\xF3n."
   sprite: {fileID: 0}
   price: 10
-  sellPrice: 10
+  sellPrice: 6
   embeddedStats:
   - statType: 2
     statModificationType: 0

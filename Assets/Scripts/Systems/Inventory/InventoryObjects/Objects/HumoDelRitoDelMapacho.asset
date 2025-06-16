@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Usado para limpieza espiritual antes de entrar a la selva sagrada.
   sprite: {fileID: 0}
   price: 30
-  sellPrice: 30
+  sellPrice: 18
   embeddedStats:
   - statType: 0
     statModificationType: 0

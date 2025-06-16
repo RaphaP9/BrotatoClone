@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Masticadas en rituales bajo la luna para obtener claridad y fuerza.
   sprite: {fileID: 0}
   price: 25
-  sellPrice: 25
+  sellPrice: 15
   embeddedStats:
   - statType: 0
     statModificationType: 0

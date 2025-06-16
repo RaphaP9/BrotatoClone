@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Hoja liviana tallada en madera.
   sprite: {fileID: 21300000, guid: 02a758b57d97f0e4fa3283f6ead4d52c, type: 3}
   price: 15
-  sellPrice: 15
+  sellPrice: 9
   embeddedStats: []
   weaponType: 0
   fireType: 1

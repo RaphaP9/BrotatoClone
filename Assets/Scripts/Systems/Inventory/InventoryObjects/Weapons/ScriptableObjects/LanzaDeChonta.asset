@@ -18,7 +18,7 @@ MonoBehaviour:
   description: Arma ritual de madera sagrada, recta y letal.
   sprite: {fileID: 21300000, guid: 72d4826dbcd7d9c48b3ed6da950f0d49, type: 3}
   price: 35
-  sellPrice: 35
+  sellPrice: 21
   embeddedStats: []
   weaponType: 0
   fireType: 1

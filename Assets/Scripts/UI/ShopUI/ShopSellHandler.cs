@@ -18,10 +18,18 @@ public class ShopSellHandler : MonoBehaviour
     [Header("Runtime Filled")]
     [SerializeField] private PrimitiveInventoryObject selectedInventoryObject;
 
+    public static event EventHandler<OnInventoryObjectSelectedEventArgs> OnInventoryObjectSelected;
+    public static event EventHandler<OnInventoryObjectSelectedEventArgs> OnInventoryObjectDeselected;
+
     public static event EventHandler OnWeaponSellDeniedByOnlyOne;
 
     public static event EventHandler<OnObjectSoldEventArgs> OnObjectSold;
     public static event EventHandler<OnWeaponSoldEventArgs> OnWeaponSold;
+
+    public class OnInventoryObjectSelectedEventArgs : EventArgs
+    {
+        public PrimitiveInventoryObject inventoryObject;
+    }
 
     public class OnObjectSoldEventArgs : EventArgs
     {
@@ -35,14 +43,14 @@ public class ShopSellHandler : MonoBehaviour
 
     private void OnEnable()
     {
-        InventoryObjectSelectionHandler.OnInventoryObjectSelection += InventoryObjectSelectionHandler_OnInventoryObjectSelection;
-        InventoryObjectSelectionHandler.OnInventoryObjectDeselection += InventoryObjectSelectionHandler_OnInventoryObjectDeselection;
+        InventoryObjectClickSelectionHandler.OnInventoryObjectSelectionCommand += InventoryObjectClickSelectionHandler_OnInventoryObjectSelectionCommand;
+        InventoryObjectClickSelectionHandler.OnInventoryObjectDeselectionCommand += InventoryObjectClickSelectionHandler_OnInventoryObjectDeselectionCommand;
     }
 
     private void OnDisable()
     {
-        InventoryObjectSelectionHandler.OnInventoryObjectSelection -= InventoryObjectSelectionHandler_OnInventoryObjectSelection;
-        InventoryObjectSelectionHandler.OnInventoryObjectDeselection -= InventoryObjectSelectionHandler_OnInventoryObjectDeselection;
+        InventoryObjectClickSelectionHandler.OnInventoryObjectSelectionCommand -= InventoryObjectClickSelectionHandler_OnInventoryObjectSelectionCommand;
+        InventoryObjectClickSelectionHandler.OnInventoryObjectDeselectionCommand -= InventoryObjectClickSelectionHandler_OnInventoryObjectDeselectionCommand;
     }
 
     private void Awake()
@@ -140,18 +148,29 @@ public class ShopSellHandler : MonoBehaviour
 
     private void SetPriceText(int price) => priceText.text = price.ToString();
 
-    private void SetSelectedInventoryObject(PrimitiveInventoryObject primitiveInventoryObject) => selectedInventoryObject = primitiveInventoryObject;
-    private void ClearSelectedInventoryObject() => selectedInventoryObject = null;
+    private void SetSelectedInventoryObject(PrimitiveInventoryObject primitiveInventoryObject)
+    {
+        OnInventoryObjectDeselected?.Invoke(this, new OnInventoryObjectSelectedEventArgs { inventoryObject = selectedInventoryObject }); //Deselection of the previous one
+        selectedInventoryObject = primitiveInventoryObject;
+
+        OnInventoryObjectSelected?.Invoke(this, new OnInventoryObjectSelectedEventArgs { inventoryObject = selectedInventoryObject }); //Selection of the previous one
+    }
+
+    private void ClearSelectedInventoryObject()
+    {
+        OnInventoryObjectDeselected?.Invoke(this, new OnInventoryObjectSelectedEventArgs { inventoryObject = selectedInventoryObject }); //Deselection of the previous one
+        selectedInventoryObject = null;
+    }
 
     #region Subscriptions
-    private void InventoryObjectSelectionHandler_OnInventoryObjectSelection(object sender, InventoryObjectSelectionHandler.OnInventoryObjectEventArgs e)
+    private void InventoryObjectClickSelectionHandler_OnInventoryObjectSelectionCommand(object sender, InventoryObjectClickSelectionHandler.OnInventoryObjectEventArgs e)
     {
         if (selectedInventoryObject == e.primitiveInventoryObject) return; //AlreadySelected
 
         SetInventoryObjectSelection(e.primitiveInventoryObject);
     }
 
-    private void InventoryObjectSelectionHandler_OnInventoryObjectDeselection(object sender, InventoryObjectSelectionHandler.OnInventoryObjectEventArgs e)
+    private void InventoryObjectClickSelectionHandler_OnInventoryObjectDeselectionCommand(object sender, InventoryObjectClickSelectionHandler.OnInventoryObjectEventArgs e)
     {
         if (selectedInventoryObject != e.primitiveInventoryObject) return; //Other was selected
 

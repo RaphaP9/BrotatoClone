@@ -18,7 +18,7 @@ MonoBehaviour:
   description: "Protecci\xF3n tejida con la fuerza de los \xE1rboles madre."
   sprite: {fileID: 0}
   price: 15
-  sellPrice: 15
+  sellPrice: 9
   embeddedStats:
   - statType: 0
     statModificationType: 0
