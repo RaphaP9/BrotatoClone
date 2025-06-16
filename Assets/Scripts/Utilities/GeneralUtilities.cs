@@ -40,8 +40,9 @@ public static class GeneralUtilities
 
     #region Floats
     public static float RoundToNDecimalPlaces(float number, int decimalPlaces) => Mathf.Round(number * Mathf.Pow(10, decimalPlaces)) / Mathf.Pow(10, decimalPlaces);
-
     public static float ClampNumber01(float number) => Mathf.Clamp01(number);
+
+    public static float GetRandomFloatBetween(float minValue, float maxValue) => UnityEngine.Random.Range(minValue, maxValue);
 
     #endregion
 
