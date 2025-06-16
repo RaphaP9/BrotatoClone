@@ -31,5 +31,5 @@ MonoBehaviour:
   critDamageMultiplier: 0
   damageColor: {r: 0.5754717, g: 0, b: 0, a: 1}
   weaponTransform: {fileID: 625562748042871188, guid: 1bad6981f9446b14c97294343f6b981a, type: 3}
-  attackSpeed: 2
+  attackSpeed: 1
   attackArea: 1
