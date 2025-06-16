@@ -75,7 +75,7 @@ Transform:
   m_GameObject: {fileID: 3974519844677327811}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4, y: 0.5, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -116,7 +116,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.1
+  m_Radius: 0.2
 --- !u!50 &1404519309259787941
 Rigidbody2D:
   serializedVersion: 4
@@ -163,7 +163,6 @@ MonoBehaviour:
   impactLayermask:
     serializedVersion: 2
     m_Bits: 1024
-  pierce: 0
   speed: 5
   lifespan: 5
   regularDamage: 0
@@ -176,6 +175,7 @@ MonoBehaviour:
   projectileDamageType: 0
   projectileArea: 0
   direction: {x: 1, y: 0}
+  pierce: 0
 --- !u!1 &7194684746368560150
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +203,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3062787185139798593}
@@ -249,7 +249,7 @@ SpriteRenderer:
   m_SortingLayerID: -1417817563
   m_SortingLayer: 7
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2413806693520163455, guid: a86470a33a6bf42c4b3595704624658b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: cc4088d340fe9f2468e022731bd84d37, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
