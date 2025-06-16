@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 2
   inventoryObjectName: Espinas de Ayahuasca
   objectRarity: 1
-  description: "Dispara tres aguijones m\xEDsticos que hieren a los enemigos."
+  description: "Dispara tres aguijones m\xEDsticos que hieren a los enemigos. Los
+    proyectiles se esparcen en un cono frontal, alcanzando a m\xFAltiples objetivos."
   sprite: {fileID: 21300000, guid: 8f79b28978362a24d9229a4040be0c01, type: 3}
   price: 25
   sellPrice: 15

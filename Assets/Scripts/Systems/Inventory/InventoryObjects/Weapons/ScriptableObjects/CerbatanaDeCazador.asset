@@ -15,7 +15,8 @@ MonoBehaviour:
   id: 4
   inventoryObjectName: Cerbatana de Cazador
   objectRarity: 0
-  description: Lanza dardos guiados por el instinto ancestral.
+  description: "Arma lanzadora de dardos usada tradicionalmente en la caza. \xDAtil
+    para mantener la distancia contra los enemigos."
   sprite: {fileID: 21300000, guid: ff9ac9c1b8785eb4aab99733a8fbbaf5, type: 3}
   price: 15
   sellPrice: 9
