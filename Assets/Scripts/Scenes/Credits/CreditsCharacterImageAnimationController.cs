@@ -15,10 +15,10 @@ public class CreditsCharacterImageAnimationController : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine(MoveCoroutine());
+        StartCoroutine(BlinkCoroutine());
     }
 
-    private IEnumerator MoveCoroutine()
+    private IEnumerator BlinkCoroutine()
     {
         while (true)
         {
