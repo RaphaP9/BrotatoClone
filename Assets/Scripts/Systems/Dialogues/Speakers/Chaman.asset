@@ -15,4 +15,4 @@ MonoBehaviour:
   id: 1
   speakerName: "Cham\xE1n"
   speakerImage: {fileID: 21300000, guid: 3a9fe5a7f8a115f4892abea6fd14359d, type: 3}
-  nameColor: {r: 0.6556604, g: 0.81954134, b: 1, a: 1}
+  nameColor: {r: 0.9254902, g: 0.7607843, b: 1, a: 1}
