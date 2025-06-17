@@ -16,6 +16,6 @@ MonoBehaviour:
   menuMusic: {fileID: 8300000, guid: 052092e7ade92b547a53a334329a0a45, type: 3}
   optionsMusic: {fileID: 8300000, guid: 5d0bf120a9e04274286d40bbb9c29cc7, type: 3}
   creditsMusic: {fileID: 8300000, guid: 4bd6b77f1cc1cfc42a25f285a53b163e, type: 3}
-  loseMusic: {fileID: 0}
-  tutorialMusic: {fileID: 0}
+  loseMusic: {fileID: 8300000, guid: 127d2a68caa86174680185a5692374fe, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 4d7344217b9063248b924c5ea6980e6b, type: 3}
   gameplayMusic: {fileID: 8300000, guid: 4d7344217b9063248b924c5ea6980e6b, type: 3}
