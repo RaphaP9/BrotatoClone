@@ -358,7 +358,8 @@ public static class GeneralGameplayUtilities
     public static string TransformToPercentage(float value)
     {
         float percentageValue = value * 100;
-        string stringValue = percentageValue.ToString() + PERCENTAGE_CHARACTER;
+        float roundedPercentageValue = Mathf.RoundToInt(percentageValue);
+        string stringValue = roundedPercentageValue.ToString() + PERCENTAGE_CHARACTER;
         return stringValue;
     }
 
