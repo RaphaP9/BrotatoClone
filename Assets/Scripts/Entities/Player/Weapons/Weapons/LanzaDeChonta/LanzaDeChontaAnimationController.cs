@@ -20,6 +20,16 @@ public class LanzaDeChontaAnimationController : MonoBehaviour
         lanzaDeChontaHandler.OnLanzaDeChontaAttack -= LanzaDeChontaHandler_OnLanzaDeChontaAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = lanzaDeChontaHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void LanzaDeChontaHandler_OnLanzaDeChontaAttack(object sender, System.EventArgs e)
     {
         animator.Play(ATTACK_ANIMATION_NAME);

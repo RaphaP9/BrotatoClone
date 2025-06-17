@@ -20,6 +20,16 @@ public class SopladorDeSerpienteAnimationController : MonoBehaviour
         sopladorDeSerpienteHandler.OnSopladorDeSerpienteAttack -= SopladorDeSerpienteHandler_OnSopladorDeSerpienteAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = sopladorDeSerpienteHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void SopladorDeSerpienteHandler_OnSopladorDeSerpienteAttack(object sender, System.EventArgs e)
     {
         animator.Play(SHOOT_ANIMATION_NAME);

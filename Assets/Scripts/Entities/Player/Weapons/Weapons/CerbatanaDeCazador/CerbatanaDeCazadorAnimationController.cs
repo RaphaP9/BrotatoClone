@@ -20,6 +20,16 @@ public class CerbatanaDeCazadorAnimationController : MonoBehaviour
         cerbatanaDeCazadorHandler.OnCerbatanaDeCazadorAttack -= CerbatanaDeCazadorHandler_OnCerbatanaDeCazadorAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = cerbatanaDeCazadorHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void CerbatanaDeCazadorHandler_OnCerbatanaDeCazadorAttack(object sender, System.EventArgs e)
     {
         animator.Play(SHOOT_ANIMATION_NAME);

@@ -20,6 +20,16 @@ public class SableDeSabilaAnimationController : MonoBehaviour
         sableDeSabilaHandler.OnSableDeSabilaAttack -= SableDeSabilaHandler_OnSableDeSabilaAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = sableDeSabilaHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void SableDeSabilaHandler_OnSableDeSabilaAttack(object sender, System.EventArgs e)
     {
         animator.Play(ATTACK_ANIMATION_NAME);

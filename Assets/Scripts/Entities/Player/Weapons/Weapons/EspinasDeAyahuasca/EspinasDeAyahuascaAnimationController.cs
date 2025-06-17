@@ -20,6 +20,16 @@ public class EspinasDeAyahuascaAnimationController : MonoBehaviour
         espinasDeAyahuascaHandler.OnEspinasDeAyahuascaAttack -= EspinasDeAyahuascaHandler_OnEspinasDeAyahuascaAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = espinasDeAyahuascaHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void EspinasDeAyahuascaHandler_OnEspinasDeAyahuascaAttack(object sender, System.EventArgs e)
     {
         animator.Play(SHOOT_ANIMATION_NAME);

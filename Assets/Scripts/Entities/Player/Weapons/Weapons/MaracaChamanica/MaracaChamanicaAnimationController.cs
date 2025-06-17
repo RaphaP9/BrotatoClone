@@ -20,6 +20,16 @@ public class MaracaChamanicaAnimationController : MonoBehaviour
         maracaChamanicaHandler.OnMaracaChamanicaAttack -= MaracaChamanicaHandler_OnMaracaChamanicaAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = maracaChamanicaHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void MaracaChamanicaHandler_OnMaracaChamanicaAttack(object sender, System.EventArgs e)
     {
         animator.Play(ATTACK_ANIMATION_NAME);

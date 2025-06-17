@@ -20,6 +20,16 @@ public class CanonesGemelosDeTotoraAnimationController : MonoBehaviour
         canonesGemelosDeTotoraHandler.OnCanonesGemelosDeTotoraAttack -= CanonesGemelosDeTotoraHandler_OnCanonesGemelosDeTotoraAttack;
     }
 
+    private void Update()
+    {
+        HandleAnimatorSpeed();
+    }
+
+    private void HandleAnimatorSpeed()
+    {
+        animator.speed = canonesGemelosDeTotoraHandler.GetAttackSpeedRatioToBaseSpeed();
+    }
+
     private void CanonesGemelosDeTotoraHandler_OnCanonesGemelosDeTotoraAttack(object sender, System.EventArgs e)
     {
         animator.Play(SHOOT_ANIMATION_NAME);
