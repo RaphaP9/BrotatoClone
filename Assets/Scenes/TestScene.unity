@@ -1735,6 +1735,54 @@ RectTransform:
   m_AnchoredPosition: {x: 100, y: -75}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &179228664
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 179228665}
+  - component: {fileID: 179228666}
+  m_Layer: 0
+  m_Name: DodgeFeedbackManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &179228665
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179228664}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1606969450}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &179228666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 179228664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d949a9e2310a49469ca8c335919d232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dodgeUIPrefab: {fileID: 4750588696306321746, guid: 5fea0c75e1a9f414ca3c2e82d0d45326, type: 3}
+  YOffset: 0.5
+  maxXOffset: 0.75
+  debug: 1
 --- !u!1 &181958239
 GameObject:
   m_ObjectHideFlags: 0
@@ -20905,6 +20953,7 @@ Transform:
   m_Children:
   - {fileID: 893048510}
   - {fileID: 1243790555}
+  - {fileID: 179228665}
   - {fileID: 1529196525}
   m_Father: {fileID: 2042103032}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
