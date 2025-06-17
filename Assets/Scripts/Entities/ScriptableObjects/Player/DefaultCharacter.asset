@@ -22,7 +22,7 @@ MonoBehaviour:
   dodgeChance: 0
   moveSpeed: 10
   lifeSteal: 0
-  healthRegen: 1
+  healthRegen: 0
   dashes: 1
   areaMultiplier: 1
   attackSpeedMultiplier: 1

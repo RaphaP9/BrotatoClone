@@ -268,8 +268,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293454079
+  m_fontColor: {r: 1, g: 0.9103774, b: 0.9103774, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -669,7 +669,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_AnchorMax.x
@@ -677,7 +677,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_AnchorMin.x
@@ -685,7 +685,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_SizeDelta.x
@@ -729,7 +729,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: -402.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 5337d7284a79e054fa1f577d5bdae360, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -786,7 +786,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_Pivot.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -794,7 +794,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_AnchorMin.x
@@ -802,7 +802,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_SizeDelta.x
@@ -846,7 +846,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 100
+      value: -402.5
       objectReference: {fileID: 0}
     - target: {fileID: 3335130954597702730, guid: 6362f07c2e742824f993e4afec47f97f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1255,8 +1255,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4293454079
+  m_fontColor: {r: 1, g: 0.9098039, b: 0.9098039, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
