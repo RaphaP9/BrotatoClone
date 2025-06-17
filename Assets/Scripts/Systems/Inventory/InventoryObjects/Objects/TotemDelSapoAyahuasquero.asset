@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: "T\xF3tem del Sapo Ayahuasquero"
   objectRarity: 0
   description: "Figura que representa sabidur\xEDa ancestral en rituales de visi\xF3n."
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: b106452c340c0c44fb6783e82100aa84, type: 3}
   price: 10
   sellPrice: 6
   embeddedStats:

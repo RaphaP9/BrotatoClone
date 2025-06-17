@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Rapidez de Illapa
   objectRarity: 4
   description: "Bendice con la velocidad del esp\xEDritu del rel\xE1mpago."
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 62ff67df89dfbbf478ca41d14598df31, type: 3}
   price: 35
   sellPrice: 21
   embeddedStats:

@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Humo del Rito del Mapacho
   objectRarity: 3
   description: Usado para limpieza espiritual antes de entrar a la selva sagrada.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 79120169ec5bdce45bbd4e47a7042cc9, type: 3}
   price: 30
   sellPrice: 18
   embeddedStats:

@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Pigmento de Sangre de Achiote
   objectRarity: 0
   description: Usado en pinturas guerreras para invocar fuerza espiritual.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 83e1e25caff4d3a43a2ca8af635d7232, type: 3}
   price: 10
   sellPrice: 6
   embeddedStats:

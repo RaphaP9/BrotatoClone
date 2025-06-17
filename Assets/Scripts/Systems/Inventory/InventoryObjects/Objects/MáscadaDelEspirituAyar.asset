@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: "M\xE1scara del Esp\xEDritu Ayar"
   objectRarity: 0
   description: "Empleada para guiar el alma a trav\xE9s del trance ceremonial."
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 64fa9804f322eb246b7c5c8b35434021, type: 3}
   price: 10
   sellPrice: 6
   embeddedStats:

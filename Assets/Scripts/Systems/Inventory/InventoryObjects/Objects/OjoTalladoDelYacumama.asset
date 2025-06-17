@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Ojo Tallado del Yacumama
   objectRarity: 0
   description: "Representa el ojo de la gran serpiente de agua, guardiana del r\xEDo."
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 392b28ce963659a41bad8a22a4e7813a, type: 3}
   price: 10
   sellPrice: 6
   embeddedStats:

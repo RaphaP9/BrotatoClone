@@ -16,7 +16,7 @@ MonoBehaviour:
   inventoryObjectName: Amuleto de los Jaguares Celestes
   objectRarity: 1
   description: Otorga la fiereza y el instinto de los protectores de la selva.
-  sprite: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 7267c9bd9d447034a8de74b2a0531e1d, type: 3}
   price: 15
   sellPrice: 9
   embeddedStats:
